@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { incidentIoPlugin } from './plugin';
+import { incidentPlugin } from "./plugin";
 
-describe('incident', () => {
-  it('should export plugin', () => {
-    expect(incidentIoPlugin).toBeDefined();
+describe("incident", () => {
+  it("should export plugin", () => {
+    expect(incidentPlugin).toBeDefined();
   });
 });
