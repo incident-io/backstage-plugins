@@ -126,7 +126,7 @@ export const EntityIncidentCard = ({
         )}
         {!incidentsLoading && !incidentsError && incidents && (
           <>
-            {incidents && incidents.length >= 0 && (
+            {incidents && incidents.length > 0 && (
               <Typography variant="subtitle1">
                 There are <strong>{incidents.length}</strong> ongoing incidents
                 involving <strong>{entity.metadata.name}</strong>.

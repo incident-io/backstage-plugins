@@ -51,7 +51,7 @@ const EntityIncidentCard = incidentPlugin.provide(
   createComponentExtension({
     name: "EntityIncidentCard",
     component: {
-      lazy: () => import('./index-cb07f7e1.esm.js').then(
+      lazy: () => import('./index-0b104295.esm.js').then(
         (m) => m.EntityIncidentCard
       )
     }
@@ -59,4 +59,4 @@ const EntityIncidentCard = incidentPlugin.provide(
 );
 
 export { EntityIncidentCard as E, IncidentApiRef as I, incidentPlugin as i };
-//# sourceMappingURL=index-68ada870.esm.js.map
+//# sourceMappingURL=index-44e2d69d.esm.js.map

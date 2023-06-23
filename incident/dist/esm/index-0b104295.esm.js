@@ -9,7 +9,7 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react';
 import { useAsync } from 'react-use';
-import { I as IncidentApiRef } from './index-68ada870.esm.js';
+import { I as IncidentApiRef } from './index-44e2d69d.esm.js';
 import { DateTime, Duration } from 'luxon';
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 
@@ -145,7 +145,7 @@ const EntityIncidentCard = ({
       )),
       subheader: /* @__PURE__ */ React.createElement(HeaderIconLinkRow, { links: [createIncidentLink, viewIncidentsLink] })
     }
-  ), /* @__PURE__ */ React.createElement(Divider, null), /* @__PURE__ */ React.createElement(CardContent, null, incidentsLoading && /* @__PURE__ */ React.createElement(Progress, null), incidentsError && /* @__PURE__ */ React.createElement(Alert, { severity: "error" }, incidentsError.message), !incidentsLoading && !incidentsError && incidents && /* @__PURE__ */ React.createElement(React.Fragment, null, incidents && incidents.length >= 0 && /* @__PURE__ */ React.createElement(Typography, { variant: "subtitle1" }, "There are ", /* @__PURE__ */ React.createElement("strong", null, incidents.length), " ongoing incidents involving ", /* @__PURE__ */ React.createElement("strong", null, entity.metadata.name), "."), incidents && incidents.length === 0 && /* @__PURE__ */ React.createElement(Typography, { variant: "subtitle1" }, "No ongoing incidents."), /* @__PURE__ */ React.createElement(List, { dense: true }, (_a = incidents == null ? void 0 : incidents.slice(0, maxIncidents)) == null ? void 0 : _a.map((incident) => {
+  ), /* @__PURE__ */ React.createElement(Divider, null), /* @__PURE__ */ React.createElement(CardContent, null, incidentsLoading && /* @__PURE__ */ React.createElement(Progress, null), incidentsError && /* @__PURE__ */ React.createElement(Alert, { severity: "error" }, incidentsError.message), !incidentsLoading && !incidentsError && incidents && /* @__PURE__ */ React.createElement(React.Fragment, null, incidents && incidents.length > 0 && /* @__PURE__ */ React.createElement(Typography, { variant: "subtitle1" }, "There are ", /* @__PURE__ */ React.createElement("strong", null, incidents.length), " ongoing incidents involving ", /* @__PURE__ */ React.createElement("strong", null, entity.metadata.name), "."), incidents && incidents.length === 0 && /* @__PURE__ */ React.createElement(Typography, { variant: "subtitle1" }, "No ongoing incidents."), /* @__PURE__ */ React.createElement(List, { dense: true }, (_a = incidents == null ? void 0 : incidents.slice(0, maxIncidents)) == null ? void 0 : _a.map((incident) => {
     return /* @__PURE__ */ React.createElement(
       IncidentListItem,
       {
@@ -179,4 +179,4 @@ function getEntityFieldID(config, entity) {
 }
 
 export { EntityIncidentCard };
-//# sourceMappingURL=index-cb07f7e1.esm.js.map
+//# sourceMappingURL=index-0b104295.esm.js.map
