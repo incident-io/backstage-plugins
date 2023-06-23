@@ -9,7 +9,7 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react';
 import { useAsync } from 'react-use';
-import { I as IncidentApiRef } from './index-91fad684.esm.js';
+import { I as IncidentApiRef } from './index-50e32be6.esm.js';
 import { DateTime, Duration } from 'luxon';
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 
@@ -166,17 +166,17 @@ const EntityIncidentCard = ({
 function getEntityFieldID(config, entity) {
   switch (entity.kind) {
     case "API":
-      return config.get("integrations.incident.fields.api");
+      return config.get("incident.fields.api");
     case "Component":
-      return config.get("integrations.incident.fields.component");
+      return config.get("incident.fields.component");
     case "Domain":
-      return config.get("integrations.incident.fields.domain");
+      return config.get("incident.fields.domain");
     case "System":
-      return config.get("integrations.incident.fields.system");
+      return config.get("incident.fields.system");
     default:
       throw new Error(`unrecognised entity kind: ${entity.kind}`);
   }
 }
 
 export { EntityIncidentCard };
-//# sourceMappingURL=index-c77be796.esm.js.map
+//# sourceMappingURL=index-5c6e75af.esm.js.map

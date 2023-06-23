@@ -169,13 +169,13 @@ export const EntityIncidentCard = ({
 function getEntityFieldID(config: ConfigApi, entity: Entity) {
   switch (entity.kind) {
     case 'API':
-      return config.get('integrations.incident.fields.api');
+      return config.get('incident.fields.api');
     case 'Component':
-      return config.get('integrations.incident.fields.component');
+      return config.get('incident.fields.component');
     case 'Domain':
-      return config.get('integrations.incident.fields.domain');
+      return config.get('incident.fields.domain');
     case 'System':
-      return config.get('integrations.incident.fields.system');
+      return config.get('incident.fields.system');
     default:
       throw new Error(`unrecognised entity kind: ${entity.kind}`);
   }
