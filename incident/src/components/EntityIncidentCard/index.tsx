@@ -100,7 +100,7 @@ export const EntityIncidentCard = ({
   return (
     <Card>
       <CardHeader
-        title="Incidents"
+        title="incident.io"
         action={
           <>
             <IconButton

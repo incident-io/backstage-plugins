@@ -9,7 +9,7 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react';
 import { useAsync } from 'react-use';
-import { I as IncidentApiRef } from './index-50e32be6.esm.js';
+import { I as IncidentApiRef } from './index-68ada870.esm.js';
 import { DateTime, Duration } from 'luxon';
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 
@@ -131,7 +131,7 @@ const EntityIncidentCard = ({
   return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(
     CardHeader,
     {
-      title: "Incidents",
+      title: "incident.io",
       action: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
         IconButton,
         {
@@ -179,4 +179,4 @@ function getEntityFieldID(config, entity) {
 }
 
 export { EntityIncidentCard };
-//# sourceMappingURL=index-5c6e75af.esm.js.map
+//# sourceMappingURL=index-cb07f7e1.esm.js.map
