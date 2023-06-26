@@ -1,8 +1,10 @@
 # incident.io
 
-Use this plugin to display on-going and historic incidents against Backstage
-components, and to provide quick-links to open new incidents for that service
-inside of incident.io.
+[incident]: https://incident.io
+
+Use this plugin to display ongoing and historic incidents against Backstage
+components, and to provide quick links to open new incidents for that service
+inside of [incident.io][incident].
 
 ## How it works
 
@@ -46,50 +48,18 @@ inside the outermost `Grid` defined there, just before the closing `</Grid>`
 tag:
 
 ```ts
-<EntitySwitch>
-  <EntitySwitch.Case if={isIncidentAvailable}>
-    <Grid item md={6}>
-      <EntityIncidentCard />
-    </Grid>
-  </EntitySwitch.Case>
-</EntitySwitch>
-```
-
-When you're done, the `overviewContent` definition should look something like
-this:
-
-```ts
-const overviewContent = (
-  <Grid ...>
-    ...
-    <EntitySwitch>
-      <EntitySwitch.Case if={isIncidentAvailable}>
-        <Grid item md={6}>
-          <EntityIncidentCard />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-  </Grid>
-);
+<Grid item md={6}>
+  <EntityIncidentCard />
+</Grid>
 ```
 
 ## Configure the plugin
 
-[annotate]: https://backstage.io/docs/features/software-catalog/descriptor-format#annotations-optional
-
-First, [annotate][annotate] the appropriate entity with the incident.io
-integration key in its `.yaml` configuration file:
-
-```yaml
-annotations:
-  incident.io/api-key: [API_KEY]
-```
-
 [api-keys]: https://app.incident.io/settings/api-keys/
 [api-docs]: https://api-docs.incident.io/
 
-Next, provide the [API key][api-keys] that the client will use to make requests
-to the [incident.io API][api-docs].
+First, provide the [API key][api-keys] that the client will use to make 
+requests to the [incident.io API][api-docs].
 
 Add the proxy configuration in `app-config.yaml`:
 
@@ -103,13 +73,14 @@ proxy:
 ```
 
 Finally, for any of the custom fields you've configured in incident that are
-powered by Backstage catalog types, fill out the following `app-config.yaml`:
+powered by Backstage catalog types, fill out the following details within
+`app-config.yaml`:
 
 ```yaml
-integrations:
-  incident:
-    api-field: "<id-of-api-custom-field>"
-    component-field: "<id-of-component-custom-field>"
-    system-field: "<id-of-system-custom-field>"
-    domain-field: "<id-of-domain-custom-field>"
+incident:
+  fields:
+    api: "<id-of-api-custom-field>"
+    component: "<id-of-component-custom-field>"
+    system: "<id-of-system-custom-field>"
+    domain: "<id-of-domain-custom-field>"
 ```
