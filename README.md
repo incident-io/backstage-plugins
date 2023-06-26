@@ -1,5 +1,8 @@
 # incident.io Backstage plugins
 
-This repository contains a Backstage plugin that will allow you to see incidents from [incident.io][1] within Backstage.
+We use this repository to host our [Backstage][1] plugins.
 
-[1]: https://incident.io/
+Currently, there is a single plugin that will allow you to see incidents from [incident.io][2] within Backstage.
+
+[1]: https://backstage.io/
+[2]: https://incident.io/

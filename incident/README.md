@@ -18,7 +18,9 @@ We recommend creating a multi-select field called something like "Affected
 services" or "Impacted components".
 
 Remember the custom field ID (taken from the incident.io dashboard) as you'll
-need it later.
+need it later -- you'll find it after `custom-field` in the URL (e.g. 
+https://app.incident.io/~/settings/custom-fields/01GD0ECMPR9WF330S1PHSRDVB7/edit)
+or in the responses from our API.
 
 ## Install the plugin
 
