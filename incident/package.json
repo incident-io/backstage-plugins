@@ -62,5 +62,10 @@
     "config.d.ts",
     "dist",
     "src"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/incident-io/backstage-plugins.git",
+    "directory": "incident"
+  }
 }
