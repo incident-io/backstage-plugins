@@ -53,6 +53,10 @@ tag:
 </Grid>
 ```
 
+If you want to include the list of incidents in places like the page for a
+system, it's worth noting that `overviewContent` isn't reused on every page.
+You may find you need to make more edits to `EntityPage`, based on your setup.
+
 ## Configure the plugin
 
 [api-keys]: https://app.incident.io/settings/api-keys/
@@ -84,3 +88,8 @@ incident:
     system: "<id-of-system-custom-field>"
     domain: "<id-of-domain-custom-field>"
 ```
+
+If you don't have a custom field set up for one of these entities, then you
+can omit that field completely. If you try and include the `EntityIncidentCard`
+on the page for an entity which doesn't have the configuration, we'll show you
+an error that directs you to update your config.
