@@ -9,7 +9,7 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react';
 import { useAsync } from 'react-use';
-import { I as IncidentApiRef } from './index-44e2d69d.esm.js';
+import { I as IncidentApiRef } from './index-9302f6bc.esm.js';
 import { DateTime, Duration } from 'luxon';
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 
@@ -101,6 +101,9 @@ const EntityIncidentCard = ({
   const IncidentApi = useApi(IncidentApiRef);
   const [reload, setReload] = useState(false);
   const entityFieldID = getEntityFieldID(config, entity);
+  if (!entityFieldID) {
+    return /* @__PURE__ */ React.createElement(IncorrectConfigCard, null);
+  }
   const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
   const query = new URLSearchParams();
   query.set(`custom_field[${entityFieldID}][one_of]`, entityID);
@@ -163,20 +166,23 @@ const EntityIncidentCard = ({
     "see more."
   )))));
 };
+const IncorrectConfigCard = () => {
+  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(CardHeader, { title: "incident.io" }), /* @__PURE__ */ React.createElement(Divider, null), /* @__PURE__ */ React.createElement(CardContent, null, /* @__PURE__ */ React.createElement(Typography, { variant: "subtitle1" }, "No custom field configuration was found. In order to display incidents, this entity must be mapped to an incident.io custom field ID in Backstage's app-config.yaml.")));
+};
 function getEntityFieldID(config, entity) {
   switch (entity.kind) {
     case "API":
-      return config.get("incident.fields.api");
+      return config.getOptional("incident.fields.api");
     case "Component":
-      return config.get("incident.fields.component");
+      return config.getOptional("incident.fields.component");
     case "Domain":
-      return config.get("incident.fields.domain");
+      return config.getOptional("incident.fields.domain");
     case "System":
-      return config.get("incident.fields.system");
+      return config.getOptional("incident.fields.system");
     default:
       throw new Error(`unrecognised entity kind: ${entity.kind}`);
   }
 }
 
 export { EntityIncidentCard };
-//# sourceMappingURL=index-0b104295.esm.js.map
+//# sourceMappingURL=index-d6d4efc6.esm.js.map
