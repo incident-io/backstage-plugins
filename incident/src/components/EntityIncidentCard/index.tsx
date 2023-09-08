@@ -39,7 +39,7 @@ import React, { useState } from "react";
 import { useAsync } from "react-use";
 import { IncidentApiRef } from "../../api/client";
 import { definitions } from "../../api/types";
-import { getBaseUrl } from "../../config";
+import { buildUrl } from "../../config";
 import { IncidentListItem } from "../IncidentListItem";
 
 // The card displayed on the entity page showing a handful of the most recent
@@ -50,7 +50,6 @@ export const EntityIncidentCard = ({
   maxIncidents?: number;
 }) => {
   const config = useApi(configApiRef);
-  const baseUrl = getBaseUrl(config);
   const { entity } = useEntity();
 
   const IncidentApi = useApi(IncidentApiRef);
@@ -78,14 +77,14 @@ export const EntityIncidentCard = ({
     label: "Create incident",
     disabled: false,
     icon: <WhatshotIcon />,
-    href: `${baseUrl}/incidents/create`,
+    href: buildUrl(config, "incidents/create"),
   };
 
   const viewIncidentsLink: IconLinkVerticalProps = {
     label: "View past incidents",
     disabled: false,
     icon: <HistoryIcon />,
-    href: `${baseUrl}/incidents?${query.toString()}`,
+    href: buildUrl(config, "incidents", query),
   };
 
   const {
@@ -143,11 +142,7 @@ export const EntityIncidentCard = ({
             <List dense>
               {incidents?.slice(0, maxIncidents)?.map((incident) => {
                 return (
-                  <IncidentListItem
-                    key={incident.id}
-                    incident={incident}
-                    baseUrl={baseUrl}
-                  />
+                  <IncidentListItem key={incident.id} incident={incident} />
                 );
               })}
             </List>
@@ -155,7 +150,7 @@ export const EntityIncidentCard = ({
               Click to{" "}
               <Link
                 target="_blank"
-                href={`${baseUrl}/incidents?${queryLive.toString()}`}
+                href={buildUrl(config, "incidents", queryLive)}
               >
                 see more.
               </Link>

@@ -13,18 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ConfigApi } from '@backstage/core-plugin-api';
+import { ConfigApi } from "@backstage/core-plugin-api";
 
 // Find the baseUrl of the incident dashboard.
-export function getBaseUrl(config: ConfigApi) {
+function getBaseUrl(config: ConfigApi) {
   try {
-    const baseUrl = config.getString('incident.baseUrl');
-    if (baseUrl !== '') {
-      return baseUrl;
+    const baseUrl = config.getString("incident.baseUrl");
+    if (baseUrl !== "") {
+      return new URL(baseUrl);
     }
   } catch (e) {
     // no action
   }
 
-  return 'https://app.incident.io';
+  return new URL("https://app.incident.io");
+}
+
+// Build a URL to the incident.io dashboard.
+export function buildUrl(
+  config: ConfigApi,
+  path: string,
+  query: URLSearchParams = new URLSearchParams()
+): string {
+  const baseUrl = getBaseUrl(config);
+  // Allocate a new URL
+  const url = new URL(path, baseUrl);
+  url.search = query.toString();
+
+  return url.toString();
 }

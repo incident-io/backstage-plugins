@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { DateTime, Duration } from 'luxon';
-import { BackstageTheme } from '@backstage/theme';
+import { DateTime, Duration } from "luxon";
+import { configApiRef, useApi } from "@backstage/core-plugin-api";
+import { BackstageTheme } from "@backstage/theme";
 import {
   Chip,
   IconButton,
@@ -24,27 +25,28 @@ import {
   Tooltip,
   Typography,
   makeStyles,
-} from '@material-ui/core';
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
-import React from 'react';
-import { definitions } from '../../api/types';
+} from "@material-ui/core";
+import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
+import React from "react";
+import { definitions } from "../../api/types";
+import { buildUrl } from "../../config";
 
-const useStyles = makeStyles<BackstageTheme>(theme => ({
+const useStyles = makeStyles<BackstageTheme>((theme) => ({
   listItemPrimary: {
-    display: 'flex', // vertically align with chip
-    fontWeight: 'bold',
+    display: "flex", // vertically align with chip
+    fontWeight: "bold",
   },
   warning: {
     borderColor: theme.palette.status.warning,
     color: theme.palette.status.warning,
-    '& *': {
+    "& *": {
       color: theme.palette.status.warning,
     },
   },
   error: {
     borderColor: theme.palette.status.error,
     color: theme.palette.status.error,
-    '& *': {
+    "& *": {
       color: theme.palette.status.error,
     },
   },
@@ -52,15 +54,15 @@ const useStyles = makeStyles<BackstageTheme>(theme => ({
 
 // Single item in the list of on-going incidents.
 export const IncidentListItem = ({
-  baseUrl,
   incident,
 }: {
-  baseUrl: string;
-  incident: definitions['IncidentV2ResponseBody'];
+  incident: definitions["IncidentV2ResponseBody"];
 }) => {
+  const config = useApi(configApiRef);
+
   const classes = useStyles();
-  const reportedAt = incident.incident_timestamp_values?.find(ts =>
-    ts.incident_timestamp.name.match(/reported/i),
+  const reportedAt = incident.incident_timestamp_values?.find((ts) =>
+    ts.incident_timestamp.name.match(/reported/i)
   );
 
   // If reported isn't here for some reason, use created at.
@@ -70,9 +72,9 @@ export const IncidentListItem = ({
     new Date().getTime() - new Date(reportedAtDate).getTime();
   const sinceReportedLabel = DateTime.local()
     .minus(Duration.fromMillis(sinceReported))
-    .toRelative({ locale: 'en' });
-  const lead = incident.incident_role_assignments.find(roleAssignment => {
-    return roleAssignment.role.role_type === 'lead';
+    .toRelative({ locale: "en" });
+  const lead = incident.incident_role_assignments.find((roleAssignment) => {
+    return roleAssignment.role.role_type === "lead";
   });
 
   return (
@@ -86,7 +88,7 @@ export const IncidentListItem = ({
               size="small"
               variant="outlined"
               className={
-                ['live'].includes(incident.incident_status.category)
+                ["live"].includes(incident.incident_status.category)
                   ? classes.error
                   : classes.warning
               }
@@ -95,15 +97,15 @@ export const IncidentListItem = ({
           </>
         }
         primaryTypographyProps={{
-          variant: 'body1',
+          variant: "body1",
           className: classes.listItemPrimary,
         }}
         secondary={
           <Typography noWrap variant="body2" color="textSecondary">
-            Reported {sinceReportedLabel} and{' '}
+            Reported {sinceReportedLabel} and{" "}
             {lead?.assignee
               ? `${lead.assignee.name} is lead`
-              : 'the lead is unassigned'}
+              : "the lead is unassigned"}
             .
           </Typography>
         }
@@ -111,7 +113,7 @@ export const IncidentListItem = ({
       <ListItemSecondaryAction>
         <Tooltip title="View in incident.io" placement="top">
           <IconButton
-            href={`${baseUrl}/incidents/${incident.id}`}
+            href={buildUrl(config, `incidents/${incident.id}`)}
             target="_blank"
             rel="noopener noreferrer"
             color="primary"
