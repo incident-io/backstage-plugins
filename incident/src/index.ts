@@ -13,4 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { incidentPlugin, EntityIncidentCard } from './plugin';
+export {
+  incidentPlugin,
+  EntityIncidentCard,
+  HomePageIncidentCard,
+} from './plugin';

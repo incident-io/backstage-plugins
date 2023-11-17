@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Entity } from "@backstage/catalog-model";
+import { Entity } from '@backstage/catalog-model';
 import {
   HeaderIconLinkRow,
   IconLinkVerticalProps,
   Progress,
-} from "@backstage/core-components";
-import { ConfigApi, configApiRef, useApi } from "@backstage/core-plugin-api";
-import { useEntity } from "@backstage/plugin-catalog-react";
+} from '@backstage/core-components';
+import { ConfigApi, configApiRef, useApi } from '@backstage/core-plugin-api';
+import { useEntity } from '@backstage/plugin-catalog-react';
 import {
   Card,
   CardContent,
@@ -29,18 +29,32 @@ import {
   IconButton,
   List,
   Typography,
-} from "@material-ui/core";
-import Link from "@material-ui/core/Link";
-import CachedIcon from "@material-ui/icons/Cached";
-import HistoryIcon from "@material-ui/icons/History";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
-import { Alert } from "@material-ui/lab";
-import React, { useState } from "react";
-import { useAsync } from "react-use";
-import { IncidentApiRef } from "../../api/client";
-import { definitions } from "../../api/types";
-import { getBaseUrl } from "../../config";
-import { IncidentListItem } from "../IncidentListItem";
+} from '@material-ui/core';
+import Link from '@material-ui/core/Link';
+import CachedIcon from '@material-ui/icons/Cached';
+import HistoryIcon from '@material-ui/icons/History';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import { Alert } from '@material-ui/lab';
+import React, { useState } from 'react';
+import { getBaseUrl } from '../../config';
+import { useIncidentList } from '../../hooks/useIncidentRequest';
+import { IncidentListItem } from '../IncidentListItem';
+
+const IncorrectConfigCard = () => {
+  return (
+    <Card>
+      <CardHeader title="incident.io" />
+      <Divider />
+      <CardContent>
+        <Typography variant="subtitle1">
+          No custom field configuration was found. In order to display
+          incidents, this entity must be mapped to an incident.io custom field
+          ID in Backstage's app-config.yaml.
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
 
 // The card displayed on the entity page showing a handful of the most recent
 // incidents that are on-going for that component.
@@ -53,16 +67,9 @@ export const EntityIncidentCard = ({
   const baseUrl = getBaseUrl(config);
   const { entity } = useEntity();
 
-  const IncidentApi = useApi(IncidentApiRef);
-
   const [reload, setReload] = useState(false);
 
   const entityFieldID = getEntityFieldID(config, entity);
-
-  if (!entityFieldID) {
-    return <IncorrectConfigCard />;
-  }
-
   const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
 
   // This query filters incidents for those that are associated with this
@@ -72,17 +79,17 @@ export const EntityIncidentCard = ({
 
   // This restricts the previous filter to focus only on live incidents.
   const queryLive = new URLSearchParams(query);
-  queryLive.set(`status_category[one_of]`, "live");
+  queryLive.set(`status_category[one_of]`, 'live');
 
   const createIncidentLink: IconLinkVerticalProps = {
-    label: "Create incident",
+    label: 'Create incident',
     disabled: false,
     icon: <WhatshotIcon />,
     href: `${baseUrl}/incidents/create`,
   };
 
   const viewIncidentsLink: IconLinkVerticalProps = {
-    label: "View past incidents",
+    label: 'View past incidents',
     disabled: false,
     icon: <HistoryIcon />,
     href: `${baseUrl}/incidents?${query.toString()}`,
@@ -92,15 +99,13 @@ export const EntityIncidentCard = ({
     value: incidentsResponse,
     loading: incidentsLoading,
     error: incidentsError,
-  } = useAsync(async () => {
-    return await IncidentApi.request<
-      definitions["IncidentsV2ListResponseBody"]
-    >({
-      path: `/v2/incidents?${queryLive.toString()}`,
-    });
-  }, [reload]);
+  } = useIncidentList(queryLive, [reload]);
 
   const incidents = incidentsResponse?.incidents;
+
+  if (!entityFieldID) {
+    return <IncorrectConfigCard />;
+  }
 
   return (
     <Card>
@@ -152,7 +157,7 @@ export const EntityIncidentCard = ({
               })}
             </List>
             <Typography variant="subtitle1">
-              Click to{" "}
+              Click to{' '}
               <Link
                 target="_blank"
                 href={`${baseUrl}/incidents?${queryLive.toString()}`}
@@ -167,36 +172,20 @@ export const EntityIncidentCard = ({
   );
 };
 
-const IncorrectConfigCard = () => {
-  return (
-    <Card>
-      <CardHeader title="incident.io" />
-      <Divider />
-      <CardContent>
-        <Typography variant="subtitle1">
-          No custom field configuration was found. In order to display
-          incidents, this entity must be mapped to an incident.io custom field
-          ID in Backstage's app-config.yaml.
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
-
 // Find the ID of the custom field in incident that represents the association
 // to this type of entity.
 //
 // In practice, this will be kind=Component => ID of Affected components field.
 function getEntityFieldID(config: ConfigApi, entity: Entity) {
   switch (entity.kind) {
-    case "API":
-      return config.getOptional("incident.fields.api");
-    case "Component":
-      return config.getOptional("incident.fields.component");
-    case "Domain":
-      return config.getOptional("incident.fields.domain");
-    case "System":
-      return config.getOptional("incident.fields.system");
+    case 'API':
+      return config.getOptional('incident.fields.api');
+    case 'Component':
+      return config.getOptional('incident.fields.component');
+    case 'Domain':
+      return config.getOptional('incident.fields.domain');
+    case 'System':
+      return config.getOptional('incident.fields.system');
     default:
       throw new Error(`unrecognised entity kind: ${entity.kind}`);
   }

@@ -20,6 +20,7 @@ import {
   discoveryApiRef,
   identityApiRef,
 } from '@backstage/core-plugin-api';
+import { createCardExtension } from '@backstage/plugin-home-react';
 
 import { IncidentApi, IncidentApiRef } from './api/client';
 
@@ -45,8 +46,16 @@ export const EntityIncidentCard = incidentPlugin.provide(
     component: {
       lazy: () =>
         import('./components/EntityIncidentCard').then(
-          m => m.EntityIncidentCard,
+          (m) => m.EntityIncidentCard
         ),
     },
-  }),
+  })
+);
+
+export const HomePageIncidentCard = incidentPlugin.provide(
+  createCardExtension({
+    name: 'HomePageIncidentCard',
+    title: 'Ongoing Incidents',
+    components: () => import('./components/HomePageIncidentCard'),
+  })
 );
