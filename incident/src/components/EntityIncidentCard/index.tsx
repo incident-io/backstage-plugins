@@ -70,10 +70,6 @@ export const EntityIncidentCard = ({
     loading: identityResponseLoading,
     error: identityResponseError,
   } = useIdentity();
-  const baseUrl =
-    identityResponseLoading || identityResponseError
-      ? getBaseUrl(config)
-      : identityResponse?.identity.dashboard_url;
 
   const [reload, setReload] = useState(false);
 
@@ -89,6 +85,24 @@ export const EntityIncidentCard = ({
   const queryLive = new URLSearchParams(query);
   queryLive.set(`status_category[one_of]`, "live");
 
+  const {
+    value: incidentsResponse,
+    loading: incidentsLoading,
+    error: incidentsError,
+  } = useIncidentList(queryLive, [reload]);
+
+  const incidents = incidentsResponse?.incidents;
+
+  if (!entityFieldID) {
+    return <IncorrectConfigCard />;
+  }
+
+  if (incidentsLoading || identityResponseLoading || !identityResponse) {
+    return <Progress />;
+  }
+
+  const baseUrl = identityResponse.identity.dashboard_url;
+
   const createIncidentLink: IconLinkVerticalProps = {
     label: "Create incident",
     disabled: false,
@@ -102,18 +116,6 @@ export const EntityIncidentCard = ({
     icon: <HistoryIcon />,
     href: `${baseUrl}/incidents?${query.toString()}`,
   };
-
-  const {
-    value: incidentsResponse,
-    loading: incidentsLoading,
-    error: incidentsError,
-  } = useIncidentList(queryLive, [reload]);
-
-  const incidents = incidentsResponse?.incidents;
-
-  if (!entityFieldID) {
-    return <IncorrectConfigCard />;
-  }
 
   return (
     <Card>
@@ -138,9 +140,11 @@ export const EntityIncidentCard = ({
       />
       <Divider />
       <CardContent>
-        {incidentsLoading && <Progress />}
         {incidentsError && (
           <Alert severity="error">{incidentsError.message}</Alert>
+        )}
+        {identityResponseError && (
+          <Alert severity="error">{identityResponseError.message}</Alert>
         )}
         {!incidentsLoading && !incidentsError && incidents && (
           <>
@@ -159,7 +163,7 @@ export const EntityIncidentCard = ({
                   <IncidentListItem
                     key={incident.id}
                     incident={incident}
-                    baseUrl={baseUrl || ""}
+                    baseUrl={baseUrl}
                   />
                 );
               })}
