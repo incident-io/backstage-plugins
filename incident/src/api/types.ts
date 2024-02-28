@@ -7066,6 +7066,11 @@ export interface definitions {
       | 'catalog_viewer'
       | 'catalog_editor'
     )[];
+    /**
+     * @description The dashboard URL for your org
+     * @example "https://app.incident.io/my-company"
+     */
+    dashboard_url: string;
   };
   /**
    * IncidentAttachmentV1ResponseBody
