@@ -20,3 +20,17 @@ export const useIncidentList = (
 
   return { loading, error, value };
 };
+
+export const useIdentity = () => {
+  const IncidentApi = useApi(IncidentApiRef);
+
+  const { value, loading, error } = useAsync(async () => {
+    return await IncidentApi.request<
+      definitions['UtilitiesV1IdentityResponseBody']
+    >({
+      path: `/v1/identity`,
+    });
+  });
+
+  return { value, loading, error };
+};
