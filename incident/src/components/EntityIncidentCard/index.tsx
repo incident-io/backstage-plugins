@@ -159,7 +159,7 @@ export const EntityIncidentCard = ({
                   <IncidentListItem
                     key={incident.id}
                     incident={incident}
-                    baseUrl={baseUrl}
+                    baseUrl={baseUrl || ""}
                   />
                 );
               })}
