@@ -36,7 +36,6 @@ import HistoryIcon from "@material-ui/icons/History";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import { Alert } from "@material-ui/lab";
 import React, { useState } from "react";
-import { getBaseUrl } from "../../config";
 import { useIncidentList, useIdentity } from "../../hooks/useIncidentRequest";
 import { IncidentListItem } from "../IncidentListItem";
 
