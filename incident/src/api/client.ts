@@ -17,13 +17,13 @@ import {
   DiscoveryApi,
   IdentityApi,
   createApiRef,
-} from '@backstage/core-plugin-api';
+} from "@backstage/core-plugin-api";
 
 export const IncidentApiRef = createApiRef<Incident>({
-  id: 'plugin.incident.service',
+  id: "plugin.incident.service",
 });
 
-type HTTPMethods = 'GET' | 'PUT' | 'POST' | 'PATCH' | 'DELETE';
+type HTTPMethods = "GET" | "PUT" | "POST" | "PATCH" | "DELETE";
 
 export interface Incident {
   request<T>({
@@ -37,7 +37,7 @@ export interface Incident {
   }): Promise<T>;
 }
 
-const DEFAULT_PROXY_PATH = '/incident/api';
+const DEFAULT_PROXY_PATH = "/incident/api";
 
 type Options = {
   discoveryApi: DiscoveryApi;
@@ -58,7 +58,7 @@ export class IncidentApi implements Incident {
 
   async request<T = any>({
     path,
-    method = 'GET',
+    method = "GET",
     body,
   }: {
     path: string;
@@ -66,7 +66,7 @@ export class IncidentApi implements Incident {
     body?: string;
   }): Promise<T> {
     const apiUrl =
-      (await this.discoveryApi.getBaseUrl('proxy')) + this.proxyPath;
+      (await this.discoveryApi.getBaseUrl("proxy")) + this.proxyPath;
     const { token } = await this.identityApi.getCredentials();
 
     const resp = await fetch(`${apiUrl}${path}`, {

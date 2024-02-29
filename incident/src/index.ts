@@ -17,4 +17,4 @@ export {
   incidentPlugin,
   EntityIncidentCard,
   HomePageIncidentCard,
-} from './plugin';
+} from "./plugin";

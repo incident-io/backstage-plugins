@@ -18,7 +18,7 @@ We recommend creating a multi-select field called something like "Affected
 services" or "Impacted components".
 
 Remember the custom field ID (taken from the incident.io dashboard) as you'll
-need it later -- you'll find it after `custom-field` in the URL (e.g. 
+need it later -- you'll find it after `custom-field` in the URL (e.g.
 https://app.incident.io/~/settings/custom-fields/01GD0ECMPR9WF330S1PHSRDVB7/edit)
 or in the responses from our API.
 
@@ -64,7 +64,7 @@ You may find you need to make more edits to `EntityPage`, based on your setup.
 [api-keys]: https://app.incident.io/settings/api-keys/
 [api-docs]: https://api-docs.incident.io/
 
-First, provide the [API key][api-keys] that the client will use to make 
+First, provide the [API key][api-keys] that the client will use to make
 requests to the [incident.io API][api-docs].
 
 Add the proxy configuration in `app-config.yaml`:
