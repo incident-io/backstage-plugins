@@ -1,19 +1,19 @@
-import { Progress } from '@backstage/core-components';
-import Link from '@material-ui/core/Link';
-import { Alert } from '@material-ui/lab';
-import React from 'react';
-import { useIncidentList } from '../../hooks/useIncidentRequest';
-import { Typography, List } from '@material-ui/core';
-import { IncidentListItem } from '../IncidentListItem';
-import { configApiRef, useApi } from '@backstage/core-plugin-api';
-import { getBaseUrl } from '../../config';
+import { Progress } from "@backstage/core-components";
+import Link from "@material-ui/core/Link";
+import { Alert } from "@material-ui/lab";
+import React from "react";
+import { useIncidentList } from "../../hooks/useIncidentRequest";
+import { Typography, List } from "@material-ui/core";
+import { IncidentListItem } from "../IncidentListItem";
+import { configApiRef, useApi } from "@backstage/core-plugin-api";
+import { getBaseUrl } from "../../config";
 
 export const HomePageIncidentCardContent = () => {
   const config = useApi(configApiRef);
   const baseUrl = getBaseUrl(config);
 
   const query = new URLSearchParams();
-  query.set(`status_category[one_of]`, 'live');
+  query.set(`status_category[one_of]`, "live");
   const { loading, error, value } = useIncidentList(query);
   const incidents = value?.incidents;
 
@@ -42,7 +42,7 @@ export const HomePageIncidentCardContent = () => {
         })}
       </List>
       <Typography variant="subtitle1">
-        Click to{' '}
+        Click to{" "}
         <Link target="_blank" href={`${baseUrl}/incidents?${query.toString()}`}>
           see more.
         </Link>

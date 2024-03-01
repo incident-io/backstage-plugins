@@ -15,169 +15,169 @@
  */
 
 export interface paths {
-  '/v1/actions': {
+  "/v1/actions": {
     /** List all actions for an organisation. */
-    get: operations['Actions V1#List'];
+    get: operations["Actions V1#List"];
   };
-  '/v1/actions/{id}': {
+  "/v1/actions/{id}": {
     /** Get a single incident action. */
-    get: operations['Actions V1#Show'];
+    get: operations["Actions V1#Show"];
   };
-  '/v1/custom_field_options': {
+  "/v1/custom_field_options": {
     /** Show custom field options for a custom field */
-    get: operations['Custom Field Options V1#List'];
+    get: operations["Custom Field Options V1#List"];
     /** Create a custom field option. If the sort key is not supplied, it'll default to 1000, so the option appears near the end of the list. */
-    post: operations['Custom Field Options V1#Create'];
+    post: operations["Custom Field Options V1#Create"];
   };
-  '/v1/custom_field_options/{id}': {
+  "/v1/custom_field_options/{id}": {
     /** Get a single custom field option */
-    get: operations['Custom Field Options V1#Show'];
+    get: operations["Custom Field Options V1#Show"];
     /** Update a custom field option */
-    put: operations['Custom Field Options V1#Update'];
+    put: operations["Custom Field Options V1#Update"];
     /** Delete a custom field option */
-    delete: operations['Custom Field Options V1#Delete'];
+    delete: operations["Custom Field Options V1#Delete"];
   };
-  '/v1/custom_fields': {
+  "/v1/custom_fields": {
     /** List all custom fields for an organisation. */
-    get: operations['Custom Fields V1#List'];
+    get: operations["Custom Fields V1#List"];
     /** Create a new custom field */
-    post: operations['Custom Fields V1#Create'];
+    post: operations["Custom Fields V1#Create"];
   };
-  '/v1/custom_fields/{id}': {
+  "/v1/custom_fields/{id}": {
     /** Get a single custom field. */
-    get: operations['Custom Fields V1#Show'];
+    get: operations["Custom Fields V1#Show"];
     /** Update the details of a custom field */
-    put: operations['Custom Fields V1#Update'];
+    put: operations["Custom Fields V1#Update"];
     /** Delete a custom field */
-    delete: operations['Custom Fields V1#Delete'];
+    delete: operations["Custom Fields V1#Delete"];
   };
-  '/v1/identity': {
+  "/v1/identity": {
     /** Test if your API key is valid, and which roles it has. */
-    get: operations['Utilities V1#Identity'];
+    get: operations["Utilities V1#Identity"];
   };
-  '/v1/incident_attachments': {
+  "/v1/incident_attachments": {
     /** List all incident attachements for a given external resource or incident. You must provide either a specific incident ID or a specific external resource type and external ID. */
-    get: operations['Incident Attachments V1#List'];
+    get: operations["Incident Attachments V1#List"];
     /** Attaches an external resource to an incident */
-    post: operations['Incident Attachments V1#Create'];
+    post: operations["Incident Attachments V1#Create"];
   };
-  '/v1/incident_attachments/{id}': {
+  "/v1/incident_attachments/{id}": {
     /** Unattaches an external resouce from an incident */
-    delete: operations['Incident Attachments V1#Delete'];
+    delete: operations["Incident Attachments V1#Delete"];
   };
-  '/v1/incident_roles': {
+  "/v1/incident_roles": {
     /** List all incident roles for an organisation. */
-    get: operations['Incident Roles V1#List'];
+    get: operations["Incident Roles V1#List"];
     /** Create a new incident role */
-    post: operations['Incident Roles V1#Create'];
+    post: operations["Incident Roles V1#Create"];
   };
-  '/v1/incident_roles/{id}': {
+  "/v1/incident_roles/{id}": {
     /** Get a single incident role. */
-    get: operations['Incident Roles V1#Show'];
+    get: operations["Incident Roles V1#Show"];
     /** Update an existing incident role */
-    put: operations['Incident Roles V1#Update'];
+    put: operations["Incident Roles V1#Update"];
     /** Removes an existing role */
-    delete: operations['Incident Roles V1#Delete'];
+    delete: operations["Incident Roles V1#Delete"];
   };
-  '/v1/incident_statuses': {
+  "/v1/incident_statuses": {
     /** List all incident statuses for an organisation. */
-    get: operations['IncidentStatuses V1#List'];
+    get: operations["IncidentStatuses V1#List"];
     /** Create a new incident status */
-    post: operations['IncidentStatuses V1#Create'];
+    post: operations["IncidentStatuses V1#Create"];
   };
-  '/v1/incident_statuses/{id}': {
+  "/v1/incident_statuses/{id}": {
     /** Get a single incident status. */
-    get: operations['IncidentStatuses V1#Show'];
+    get: operations["IncidentStatuses V1#Show"];
     /** Update an existing incident status */
-    put: operations['IncidentStatuses V1#Update'];
+    put: operations["IncidentStatuses V1#Update"];
     /** Delete an incident status */
-    delete: operations['IncidentStatuses V1#Delete'];
+    delete: operations["IncidentStatuses V1#Delete"];
   };
-  '/v1/incident_types': {
+  "/v1/incident_types": {
     /** List all incident types for an organisation. */
-    get: operations['Incident Types V1#List'];
+    get: operations["Incident Types V1#List"];
   };
-  '/v1/incident_types/{id}': {
+  "/v1/incident_types/{id}": {
     /** Get a single incident type. */
-    get: operations['Incident Types V1#Show'];
+    get: operations["Incident Types V1#Show"];
   };
-  '/v1/incidents': {
+  "/v1/incidents": {
     /** List all incidents for an organisation. */
-    get: operations['Incidents V1#List'];
+    get: operations["Incidents V1#List"];
     /** Create a new incident. */
-    post: operations['Incidents V1#Create'];
+    post: operations["Incidents V1#Create"];
   };
-  '/v1/incidents/{id}': {
+  "/v1/incidents/{id}": {
     /** Get a single incident. */
-    get: operations['Incidents V1#Show'];
+    get: operations["Incidents V1#Show"];
   };
-  '/v1/openapi.json': {
+  "/v1/openapi.json": {
     /** Get the OpenAPI (v2) definition. */
-    get: operations['Utilities V1#OpenAPI'];
+    get: operations["Utilities V1#OpenAPI"];
   };
-  '/v1/severities': {
+  "/v1/severities": {
     /** List all incident severities for an organisation. */
-    get: operations['Severities V1#List'];
+    get: operations["Severities V1#List"];
     /** Create a new severity */
-    post: operations['Severities V1#Create'];
+    post: operations["Severities V1#Create"];
   };
-  '/v1/severities/{id}': {
+  "/v1/severities/{id}": {
     /** Get a single incident severity. */
-    get: operations['Severities V1#Show'];
+    get: operations["Severities V1#Show"];
     /** Update an existing severity */
-    put: operations['Severities V1#Update'];
+    put: operations["Severities V1#Update"];
     /** Delete a severity */
-    delete: operations['Severities V1#Delete'];
+    delete: operations["Severities V1#Delete"];
   };
-  '/v2/catalog_entries': {
+  "/v2/catalog_entries": {
     /** List entries for a catalog type. */
-    get: operations['Catalog V2#ListEntries'];
+    get: operations["Catalog V2#ListEntries"];
     /** Create an entry for a type in the catalog. */
-    post: operations['Catalog V2#CreateEntry'];
+    post: operations["Catalog V2#CreateEntry"];
   };
-  '/v2/catalog_entries/{id}': {
+  "/v2/catalog_entries/{id}": {
     /** Show a single catalog entry. */
-    get: operations['Catalog V2#ShowEntry'];
+    get: operations["Catalog V2#ShowEntry"];
     /** Updates an existing catalog entry. */
-    put: operations['Catalog V2#UpdateEntry'];
+    put: operations["Catalog V2#UpdateEntry"];
     /** Archives a catalog entry. */
-    delete: operations['Catalog V2#DestroyEntry'];
+    delete: operations["Catalog V2#DestroyEntry"];
   };
-  '/v2/catalog_resources': {
+  "/v2/catalog_resources": {
     /** List available engine resources for the catalog */
-    get: operations['Catalog V2#ListResources'];
+    get: operations["Catalog V2#ListResources"];
   };
-  '/v2/catalog_types': {
+  "/v2/catalog_types": {
     /** List all catalog types for an organisation, including those synced from external resources. */
-    get: operations['Catalog V2#ListTypes'];
+    get: operations["Catalog V2#ListTypes"];
     /** Create a catalog type. */
-    post: operations['Catalog V2#CreateType'];
+    post: operations["Catalog V2#CreateType"];
   };
-  '/v2/catalog_types/{id}': {
+  "/v2/catalog_types/{id}": {
     /** Show a single catalog type. */
-    get: operations['Catalog V2#ShowType'];
+    get: operations["Catalog V2#ShowType"];
     /** Updates an existing catalog type. */
-    put: operations['Catalog V2#UpdateType'];
+    put: operations["Catalog V2#UpdateType"];
     /** Archives a catalog type and associated entries. */
-    delete: operations['Catalog V2#DestroyType'];
+    delete: operations["Catalog V2#DestroyType"];
   };
-  '/v2/catalog_types/{id}/actions/update_schema': {
+  "/v2/catalog_types/{id}/actions/update_schema": {
     /** Update an existing catalog types schema, adding or removing attributes. */
-    post: operations['Catalog V2#UpdateTypeSchema'];
+    post: operations["Catalog V2#UpdateTypeSchema"];
   };
-  '/v2/incident_timestamps': {
+  "/v2/incident_timestamps": {
     /** List all incident timestamps for an organisation. */
-    get: operations['Incident Timestamps V2#List'];
+    get: operations["Incident Timestamps V2#List"];
   };
-  '/v2/incident_timestamps/{id}': {
+  "/v2/incident_timestamps/{id}": {
     /** Get a single incident timestamp. */
-    get: operations['Incident Timestamps V2#Show'];
+    get: operations["Incident Timestamps V2#Show"];
   };
-  '/v2/incident_updates': {
+  "/v2/incident_updates": {
     /** List all incident updates for an organisation, or for a specific incident. */
-    get: operations['Incident Updates V2#List'];
+    get: operations["Incident Updates V2#List"];
   };
-  '/v2/incidents': {
+  "/v2/incidents": {
     /**
      * List all incidents for an organisation.
      *
@@ -269,20 +269,20 @@ export interface paths {
      * 			--get 'https://api.incident.io/v2/incidents' \
      * 			--data 'custom_field[ABC][not_in]=XYZ'
      */
-    get: operations['Incidents V2#List'];
+    get: operations["Incidents V2#List"];
     /**
      * Create a new incident.
      *
      * Note that if the incident mode is set to "retrospective" then the new incident
      * will not be announced in Slack.
      */
-    post: operations['Incidents V2#Create'];
+    post: operations["Incidents V2#Create"];
   };
-  '/v2/incidents/{id}': {
+  "/v2/incidents/{id}": {
     /** Get a single incident. */
-    get: operations['Incidents V2#Show'];
+    get: operations["Incidents V2#Show"];
   };
-  '/v2/incidents/{id}/actions/edit': {
+  "/v2/incidents/{id}/actions/edit": {
     /**
      * Edit an existing incident.
      *
@@ -291,267 +291,267 @@ export interface paths {
      * When using this endpoint, only fields that are provided will be edited (omitted fields
      * will be ignored).
      */
-    post: operations['Incidents V2#Edit'];
+    post: operations["Incidents V2#Edit"];
   };
-  '/x-audit-logs/announcement_rule.created.1': {
+  "/x-audit-logs/announcement_rule.created.1": {
     /** This entry is created whenever a announcement rule is created */
-    get: operations['Audit logs#AnnouncementRuleCreatedV1'];
+    get: operations["Audit logs#AnnouncementRuleCreatedV1"];
   };
-  '/x-audit-logs/announcement_rule.deleted.1': {
+  "/x-audit-logs/announcement_rule.deleted.1": {
     /** This entry is created whenever a announcement rule is deleted */
-    get: operations['Audit logs#AnnouncementRuleDeletedV1'];
+    get: operations["Audit logs#AnnouncementRuleDeletedV1"];
   };
-  '/x-audit-logs/announcement_rule.updated.1': {
+  "/x-audit-logs/announcement_rule.updated.1": {
     /** This entry is created whenever a announcement rule is updated */
-    get: operations['Audit logs#AnnouncementRuleUpdatedV1'];
+    get: operations["Audit logs#AnnouncementRuleUpdatedV1"];
   };
-  '/x-audit-logs/api_key.created.1': {
+  "/x-audit-logs/api_key.created.1": {
     /** This entry is created whenever a api key is created */
-    get: operations['Audit logs#ApiKeyCreatedV1'];
+    get: operations["Audit logs#ApiKeyCreatedV1"];
   };
-  '/x-audit-logs/api_key.deleted.1': {
+  "/x-audit-logs/api_key.deleted.1": {
     /** This entry is created whenever a api key is deleted */
-    get: operations['Audit logs#ApiKeyDeletedV1'];
+    get: operations["Audit logs#ApiKeyDeletedV1"];
   };
-  '/x-audit-logs/custom_field.created.1': {
+  "/x-audit-logs/custom_field.created.1": {
     /** This entry is created whenever a custom field is created */
-    get: operations['Audit logs#CustomFieldCreatedV1'];
+    get: operations["Audit logs#CustomFieldCreatedV1"];
   };
-  '/x-audit-logs/custom_field.deleted.1': {
+  "/x-audit-logs/custom_field.deleted.1": {
     /** This entry is created whenever a custom field is deleted */
-    get: operations['Audit logs#CustomFieldDeletedV1'];
+    get: operations["Audit logs#CustomFieldDeletedV1"];
   };
-  '/x-audit-logs/custom_field.updated.1': {
+  "/x-audit-logs/custom_field.updated.1": {
     /** This entry is created whenever a custom field is updated */
-    get: operations['Audit logs#CustomFieldUpdatedV1'];
+    get: operations["Audit logs#CustomFieldUpdatedV1"];
   };
-  '/x-audit-logs/follow_up_priority.created.1': {
+  "/x-audit-logs/follow_up_priority.created.1": {
     /** This entry is created whenever a follow up priority is created */
-    get: operations['Audit logs#FollowUpPriorityCreatedV1'];
+    get: operations["Audit logs#FollowUpPriorityCreatedV1"];
   };
-  '/x-audit-logs/follow_up_priority.deleted.1': {
+  "/x-audit-logs/follow_up_priority.deleted.1": {
     /** This entry is created whenever a follow up priority is deleted */
-    get: operations['Audit logs#FollowUpPriorityDeletedV1'];
+    get: operations["Audit logs#FollowUpPriorityDeletedV1"];
   };
-  '/x-audit-logs/follow_up_priority.updated.1': {
+  "/x-audit-logs/follow_up_priority.updated.1": {
     /** This entry is created whenever a follow up priority is updated */
-    get: operations['Audit logs#FollowUpPriorityUpdatedV1'];
+    get: operations["Audit logs#FollowUpPriorityUpdatedV1"];
   };
-  '/x-audit-logs/incident_duration_metric.created.1': {
+  "/x-audit-logs/incident_duration_metric.created.1": {
     /** This entry is created whenever a incident duration metric is created */
-    get: operations['Audit logs#IncidentDurationMetricCreatedV1'];
+    get: operations["Audit logs#IncidentDurationMetricCreatedV1"];
   };
-  '/x-audit-logs/incident_duration_metric.deleted.1': {
+  "/x-audit-logs/incident_duration_metric.deleted.1": {
     /** This entry is created whenever a incident duration metric is deleted */
-    get: operations['Audit logs#IncidentDurationMetricDeletedV1'];
+    get: operations["Audit logs#IncidentDurationMetricDeletedV1"];
   };
-  '/x-audit-logs/incident_duration_metric.updated.1': {
+  "/x-audit-logs/incident_duration_metric.updated.1": {
     /** This entry is created whenever a incident duration metric is updated */
-    get: operations['Audit logs#IncidentDurationMetricUpdatedV1'];
+    get: operations["Audit logs#IncidentDurationMetricUpdatedV1"];
   };
-  '/x-audit-logs/incident_role.created.1': {
+  "/x-audit-logs/incident_role.created.1": {
     /** This entry is created whenever a incident role is created */
-    get: operations['Audit logs#IncidentRoleCreatedV1'];
+    get: operations["Audit logs#IncidentRoleCreatedV1"];
   };
-  '/x-audit-logs/incident_role.deleted.1': {
+  "/x-audit-logs/incident_role.deleted.1": {
     /** This entry is created whenever a incident role is deleted */
-    get: operations['Audit logs#IncidentRoleDeletedV1'];
+    get: operations["Audit logs#IncidentRoleDeletedV1"];
   };
-  '/x-audit-logs/incident_role.updated.1': {
+  "/x-audit-logs/incident_role.updated.1": {
     /** This entry is created whenever a incident role is updated */
-    get: operations['Audit logs#IncidentRoleUpdatedV1'];
+    get: operations["Audit logs#IncidentRoleUpdatedV1"];
   };
-  '/x-audit-logs/incident_status.created.1': {
+  "/x-audit-logs/incident_status.created.1": {
     /** This entry is created whenever a incident status is created */
-    get: operations['Audit logs#IncidentStatusCreatedV1'];
+    get: operations["Audit logs#IncidentStatusCreatedV1"];
   };
-  '/x-audit-logs/incident_status.deleted.1': {
+  "/x-audit-logs/incident_status.deleted.1": {
     /** This entry is created whenever a incident status is deleted */
-    get: operations['Audit logs#IncidentStatusDeletedV1'];
+    get: operations["Audit logs#IncidentStatusDeletedV1"];
   };
-  '/x-audit-logs/incident_status.updated.1': {
+  "/x-audit-logs/incident_status.updated.1": {
     /** This entry is created whenever a incident status is updated */
-    get: operations['Audit logs#IncidentStatusUpdatedV1'];
+    get: operations["Audit logs#IncidentStatusUpdatedV1"];
   };
-  '/x-audit-logs/incident_timestamp.created.1': {
+  "/x-audit-logs/incident_timestamp.created.1": {
     /** This entry is created whenever a incident timestamp is created */
-    get: operations['Audit logs#IncidentTimestampCreatedV1'];
+    get: operations["Audit logs#IncidentTimestampCreatedV1"];
   };
-  '/x-audit-logs/incident_timestamp.deleted.1': {
+  "/x-audit-logs/incident_timestamp.deleted.1": {
     /** This entry is created whenever a incident timestamp is deleted */
-    get: operations['Audit logs#IncidentTimestampDeletedV1'];
+    get: operations["Audit logs#IncidentTimestampDeletedV1"];
   };
-  '/x-audit-logs/incident_timestamp.updated.1': {
+  "/x-audit-logs/incident_timestamp.updated.1": {
     /** This entry is created whenever a incident timestamp is updated */
-    get: operations['Audit logs#IncidentTimestampUpdatedV1'];
+    get: operations["Audit logs#IncidentTimestampUpdatedV1"];
   };
-  '/x-audit-logs/incident_type.created.1': {
+  "/x-audit-logs/incident_type.created.1": {
     /** This entry is created whenever a incident type is created */
-    get: operations['Audit logs#IncidentTypeCreatedV1'];
+    get: operations["Audit logs#IncidentTypeCreatedV1"];
   };
-  '/x-audit-logs/incident_type.deleted.1': {
+  "/x-audit-logs/incident_type.deleted.1": {
     /** This entry is created whenever a incident type is deleted */
-    get: operations['Audit logs#IncidentTypeDeletedV1'];
+    get: operations["Audit logs#IncidentTypeDeletedV1"];
   };
-  '/x-audit-logs/incident_type.updated.1': {
+  "/x-audit-logs/incident_type.updated.1": {
     /** This entry is created whenever a incident type is updated */
-    get: operations['Audit logs#IncidentTypeUpdatedV1'];
+    get: operations["Audit logs#IncidentTypeUpdatedV1"];
   };
-  '/x-audit-logs/integration.installed.1': {
+  "/x-audit-logs/integration.installed.1": {
     /** This entry is created whenever an integration is installed */
-    get: operations['Audit logs#IntegrationInstalledV1'];
+    get: operations["Audit logs#IntegrationInstalledV1"];
   };
-  '/x-audit-logs/integration.uninstalled.1': {
+  "/x-audit-logs/integration.uninstalled.1": {
     /** This entry is created whenever an integration is uninstalled */
-    get: operations['Audit logs#IntegrationUninstalledV1'];
+    get: operations["Audit logs#IntegrationUninstalledV1"];
   };
-  '/x-audit-logs/policy.created.1': {
+  "/x-audit-logs/policy.created.1": {
     /** This entry is created whenever a policy is created */
-    get: operations['Audit logs#PolicyCreatedV1'];
+    get: operations["Audit logs#PolicyCreatedV1"];
   };
-  '/x-audit-logs/policy.deleted.1': {
+  "/x-audit-logs/policy.deleted.1": {
     /** This entry is created whenever a policy is deleted */
-    get: operations['Audit logs#PolicyDeletedV1'];
+    get: operations["Audit logs#PolicyDeletedV1"];
   };
-  '/x-audit-logs/policy.updated.1': {
+  "/x-audit-logs/policy.updated.1": {
     /** This entry is created whenever a policy is updated */
-    get: operations['Audit logs#PolicyUpdatedV1'];
+    get: operations["Audit logs#PolicyUpdatedV1"];
   };
-  '/x-audit-logs/private_incident.access_attempted.1': {
+  "/x-audit-logs/private_incident.access_attempted.1": {
     /** This entry is created whenever someone attempts to access a private incident. */
-    get: operations['Audit logs#PrivateIncidentAccessAttemptedV1'];
+    get: operations["Audit logs#PrivateIncidentAccessAttemptedV1"];
   };
-  '/x-audit-logs/private_incident.access_requested.1': {
+  "/x-audit-logs/private_incident.access_requested.1": {
     /** This entry is created whenever someone requests access to a private incident. */
-    get: operations['Audit logs#PrivateIncidentAccessRequestedV1'];
+    get: operations["Audit logs#PrivateIncidentAccessRequestedV1"];
   };
-  '/x-audit-logs/private_incident_membership.granted.1': {
+  "/x-audit-logs/private_incident_membership.granted.1": {
     /** This entry is created whenever someone is granted access to a private incident. If they have the 'manage private incidents' permission, then it'll appear that the system has given them access to the incident. */
-    get: operations['Audit logs#PrivateIncidentMembershipGrantedV1'];
+    get: operations["Audit logs#PrivateIncidentMembershipGrantedV1"];
   };
-  '/x-audit-logs/private_incident_membership.revoked.1': {
+  "/x-audit-logs/private_incident_membership.revoked.1": {
     /** This entry is created whenever someone's access to a private incident is revoked. */
-    get: operations['Audit logs#PrivateIncidentMembershipRevokedV1'];
+    get: operations["Audit logs#PrivateIncidentMembershipRevokedV1"];
   };
-  '/x-audit-logs/rbac_role.created.1': {
+  "/x-audit-logs/rbac_role.created.1": {
     /** This entry is created whenever a rbac role is created */
-    get: operations['Audit logs#RbacRoleCreatedV1'];
+    get: operations["Audit logs#RbacRoleCreatedV1"];
   };
-  '/x-audit-logs/rbac_role.deleted.1': {
+  "/x-audit-logs/rbac_role.deleted.1": {
     /** This entry is created whenever a rbac role is deleted */
-    get: operations['Audit logs#RbacRoleDeletedV1'];
+    get: operations["Audit logs#RbacRoleDeletedV1"];
   };
-  '/x-audit-logs/rbac_role.updated.1': {
+  "/x-audit-logs/rbac_role.updated.1": {
     /** This entry is created whenever a rbac role is updated */
-    get: operations['Audit logs#RbacRoleUpdatedV1'];
+    get: operations["Audit logs#RbacRoleUpdatedV1"];
   };
-  '/x-audit-logs/scim_group.role_mappings_updated.1': {
+  "/x-audit-logs/scim_group.role_mappings_updated.1": {
     /** This entry is created whenever a SCIM group is mapped to a new RBAC role */
-    get: operations['Audit logs#ScimGroupRoleMappingsUpdatedV1'];
+    get: operations["Audit logs#ScimGroupRoleMappingsUpdatedV1"];
   };
-  '/x-audit-logs/severity.created.1': {
+  "/x-audit-logs/severity.created.1": {
     /** This entry is created whenever a severity is created */
-    get: operations['Audit logs#SeverityCreatedV1'];
+    get: operations["Audit logs#SeverityCreatedV1"];
   };
-  '/x-audit-logs/severity.deleted.1': {
+  "/x-audit-logs/severity.deleted.1": {
     /** This entry is created whenever a severity is deleted */
-    get: operations['Audit logs#SeverityDeletedV1'];
+    get: operations["Audit logs#SeverityDeletedV1"];
   };
-  '/x-audit-logs/severity.updated.1': {
+  "/x-audit-logs/severity.updated.1": {
     /** This entry is created whenever a severity is updated */
-    get: operations['Audit logs#SeverityUpdatedV1'];
+    get: operations["Audit logs#SeverityUpdatedV1"];
   };
-  '/x-audit-logs/status_page.created.1': {
+  "/x-audit-logs/status_page.created.1": {
     /** This entry is created whenever a status page is created */
-    get: operations['Audit logs#StatusPageCreatedV1'];
+    get: operations["Audit logs#StatusPageCreatedV1"];
   };
-  '/x-audit-logs/status_page.deleted.1': {
+  "/x-audit-logs/status_page.deleted.1": {
     /** This entry is created whenever a status page is deleted */
-    get: operations['Audit logs#StatusPageDeletedV1'];
+    get: operations["Audit logs#StatusPageDeletedV1"];
   };
-  '/x-audit-logs/status_page.updated.1': {
+  "/x-audit-logs/status_page.updated.1": {
     /** This entry is created whenever a status page has its configuration updated */
-    get: operations['Audit logs#StatusPageUpdatedV1'];
+    get: operations["Audit logs#StatusPageUpdatedV1"];
   };
-  '/x-audit-logs/status_page_template.created.1': {
+  "/x-audit-logs/status_page_template.created.1": {
     /** This entry is created whenever a status page template is created */
-    get: operations['Audit logs#StatusPageTemplateCreatedV1'];
+    get: operations["Audit logs#StatusPageTemplateCreatedV1"];
   };
-  '/x-audit-logs/status_page_template.deleted.1': {
+  "/x-audit-logs/status_page_template.deleted.1": {
     /** This entry is created whenever a status page template is deleted */
-    get: operations['Audit logs#StatusPageTemplateDeletedV1'];
+    get: operations["Audit logs#StatusPageTemplateDeletedV1"];
   };
-  '/x-audit-logs/status_page_template.updated.1': {
+  "/x-audit-logs/status_page_template.updated.1": {
     /** This entry is created whenever a status page template is updated */
-    get: operations['Audit logs#StatusPageTemplateUpdatedV1'];
+    get: operations["Audit logs#StatusPageTemplateUpdatedV1"];
   };
-  '/x-audit-logs/user.created.1': {
+  "/x-audit-logs/user.created.1": {
     /** This entry is created whenever a user is created */
-    get: operations['Audit logs#UserCreatedV1'];
+    get: operations["Audit logs#UserCreatedV1"];
   };
-  '/x-audit-logs/user.deactivated.1': {
+  "/x-audit-logs/user.deactivated.1": {
     /** This entry is created whenever a user is deactivated */
-    get: operations['Audit logs#UserDeactivatedV1'];
+    get: operations["Audit logs#UserDeactivatedV1"];
   };
-  '/x-audit-logs/user.reinstated.1': {
+  "/x-audit-logs/user.reinstated.1": {
     /** This entry is created when a user is reinstated after being deactivated */
-    get: operations['Audit logs#UserReinstatedV1'];
+    get: operations["Audit logs#UserReinstatedV1"];
   };
-  '/x-audit-logs/user.role_memberships_updated.1': {
+  "/x-audit-logs/user.role_memberships_updated.1": {
     /** This entry is created whenever a user's role memberships are changed. */
-    get: operations['Audit logs#UserRoleMembershipsUpdatedV1'];
+    get: operations["Audit logs#UserRoleMembershipsUpdatedV1"];
   };
-  '/x-audit-logs/user.updated.1': {
+  "/x-audit-logs/user.updated.1": {
     /** This entry is created whenever a user is updated */
-    get: operations['Audit logs#UserUpdatedV1'];
+    get: operations["Audit logs#UserUpdatedV1"];
   };
-  '/x-audit-logs/workflow.created.1': {
+  "/x-audit-logs/workflow.created.1": {
     /** This entry is created whenever a workflow is created */
-    get: operations['Audit logs#WorkflowCreatedV1'];
+    get: operations["Audit logs#WorkflowCreatedV1"];
   };
-  '/x-audit-logs/workflow.deleted.1': {
+  "/x-audit-logs/workflow.deleted.1": {
     /** This entry is created whenever a workflow is deleted */
-    get: operations['Audit logs#WorkflowDeletedV1'];
+    get: operations["Audit logs#WorkflowDeletedV1"];
   };
-  '/x-audit-logs/workflow.updated.1': {
+  "/x-audit-logs/workflow.updated.1": {
     /** This entry is created whenever a workflow is updated */
-    get: operations['Audit logs#WorkflowUpdatedV1'];
+    get: operations["Audit logs#WorkflowUpdatedV1"];
   };
-  '/x-webhooks/__all__': {
+  "/x-webhooks/__all__": {
     /** Enables us to generate a type for all webhook types, so we can use a single serializer. */
-    get: operations['Webhooks#All'];
+    get: operations["Webhooks#All"];
   };
-  '/x-webhooks/private_incident.follow_up_created_v1': {
+  "/x-webhooks/private_incident.follow_up_created_v1": {
     /** This webhook is emitted whenever a follow-up for a private incident is created. */
-    get: operations['Webhooks#PrivateIncidentFollowUpCreatedV1'];
+    get: operations["Webhooks#PrivateIncidentFollowUpCreatedV1"];
   };
-  '/x-webhooks/private_incident.follow_up_updated_v1': {
+  "/x-webhooks/private_incident.follow_up_updated_v1": {
     /** This webhook is emitted whenever a follow-up for a private incident is updated. */
-    get: operations['Webhooks#PrivateIncidentFollowUpUpdatedV1'];
+    get: operations["Webhooks#PrivateIncidentFollowUpUpdatedV1"];
   };
-  '/x-webhooks/private_incident.incident_created_v2': {
+  "/x-webhooks/private_incident.incident_created_v2": {
     /** This webhook is emitted whenever a new private incident is created. */
-    get: operations['Webhooks#PrivateIncidentIncidentCreatedV2'];
+    get: operations["Webhooks#PrivateIncidentIncidentCreatedV2"];
   };
-  '/x-webhooks/private_incident.incident_updated_v2': {
+  "/x-webhooks/private_incident.incident_updated_v2": {
     /** This webhook is emitted whenever a private incident is updated. */
-    get: operations['Webhooks#PrivateIncidentIncidentUpdatedV2'];
+    get: operations["Webhooks#PrivateIncidentIncidentUpdatedV2"];
   };
-  '/x-webhooks/public_incident.follow_up_created_v1': {
+  "/x-webhooks/public_incident.follow_up_created_v1": {
     /** This webhook is emitted whenever a follow-up is created. */
-    get: operations['Webhooks#PublicIncidentFollowUpCreatedV1'];
+    get: operations["Webhooks#PublicIncidentFollowUpCreatedV1"];
   };
-  '/x-webhooks/public_incident.follow_up_updated_v1': {
+  "/x-webhooks/public_incident.follow_up_updated_v1": {
     /** This webhook is emitted whenever a follow-up is updated. */
-    get: operations['Webhooks#PublicIncidentFollowUpUpdatedV1'];
+    get: operations["Webhooks#PublicIncidentFollowUpUpdatedV1"];
   };
-  '/x-webhooks/public_incident.incident_created_v2': {
+  "/x-webhooks/public_incident.incident_created_v2": {
     /** This webhook is emitted whenever a new incident is created. */
-    get: operations['Webhooks#PublicIncidentIncidentCreatedV2'];
+    get: operations["Webhooks#PublicIncidentIncidentCreatedV2"];
   };
-  '/x-webhooks/public_incident.incident_updated_v2': {
+  "/x-webhooks/public_incident.incident_updated_v2": {
     /** This webhook is emitted whenever an incident is updated. */
-    get: operations['Webhooks#PublicIncidentIncidentUpdatedV2'];
+    get: operations["Webhooks#PublicIncidentIncidentUpdatedV2"];
   };
 }
 
@@ -626,7 +626,7 @@ export interface definitions {
    * }
    */
   ActionV1ResponseBody: {
-    assignee?: definitions['UserV1ResponseBody'];
+    assignee?: definitions["UserV1ResponseBody"];
     /**
      * Format: date-time
      * @description When the action was completed
@@ -644,7 +644,7 @@ export interface definitions {
      * @example Call the fire brigade
      */
     description?: string;
-    external_issue_reference?: definitions['ExternalIssueReferenceV1ResponseBody'];
+    external_issue_reference?: definitions["ExternalIssueReferenceV1ResponseBody"];
     /**
      * @description Whether an action is marked as follow-up
      * @example true
@@ -665,7 +665,7 @@ export interface definitions {
      * @example outstanding
      * @enum {string}
      */
-    status: 'outstanding' | 'completed' | 'deleted' | 'not_doing';
+    status: "outstanding" | "completed" | "deleted" | "not_doing";
     /**
      * Format: date-time
      * @description When the action was last updated
@@ -729,7 +729,7 @@ export interface definitions {
      *   }
      * ]
      */
-    actions: definitions['ActionV1ResponseBody'][];
+    actions: definitions["ActionV1ResponseBody"][];
   };
   /**
    * ActionsV1ShowResponseBody
@@ -759,7 +759,7 @@ export interface definitions {
    * }
    */
   ActionsV1ShowResponseBody: {
-    action: definitions['ActionV1ResponseBody'];
+    action: definitions["ActionV1ResponseBody"];
   };
   /**
    * ActorV1ResponseBody
@@ -778,8 +778,8 @@ export interface definitions {
    * }
    */
   ActorV1ResponseBody: {
-    api_key?: definitions['APIKeyV1ResponseBody'];
-    user?: definitions['UserV1ResponseBody'];
+    api_key?: definitions["APIKeyV1ResponseBody"];
+    user?: definitions["UserV1ResponseBody"];
   };
   /**
    * ActorV2ResponseBody
@@ -798,8 +798,8 @@ export interface definitions {
    * }
    */
   ActorV2ResponseBody: {
-    api_key?: definitions['APIKeyV2ResponseBody'];
-    user?: definitions['UserV2ResponseBody'];
+    api_key?: definitions["APIKeyV2ResponseBody"];
+    user?: definitions["UserV2ResponseBody"];
   };
   /**
    * AuditLogActorMetadataV2ResponseBody
@@ -856,7 +856,7 @@ export interface definitions {
      * @example 01FCNDV6P870EA6S7TK1DSYDG0
      */
     id: string;
-    metadata?: definitions['AuditLogActorMetadataV2ResponseBody'];
+    metadata?: definitions["AuditLogActorMetadataV2ResponseBody"];
     /**
      * @description The name of the actor
      * @example John Doe
@@ -867,7 +867,7 @@ export interface definitions {
      * @example user
      * @enum {string}
      */
-    type: 'user' | 'system' | 'api_key' | 'workflow' | 'external_resource';
+    type: "user" | "system" | "api_key" | "workflow" | "external_resource";
   };
   /**
    * AuditLogEntryContextV2ResponseBody
@@ -900,7 +900,7 @@ export interface definitions {
      * @example granted
      * @enum {string}
      */
-    outcome?: 'granted' | 'denied';
+    outcome?: "granted" | "denied";
   };
   /**
    * AuditLogTargetV2ResponseBody
@@ -927,26 +927,26 @@ export interface definitions {
      * @enum {string}
      */
     type:
-      | 'announcement_rule'
-      | 'api_key'
-      | 'custom_field'
-      | 'follow_up_priority'
-      | 'incident'
-      | 'incident_duration_metric'
-      | 'incident_role'
-      | 'incident_status'
-      | 'incident_timestamp'
-      | 'incident_type'
-      | 'integration'
-      | 'policy'
-      | 'private_incident_membership'
-      | 'rbac_role'
-      | 'scim_group'
-      | 'severity'
-      | 'status_page'
-      | 'status_page_template'
-      | 'user'
-      | 'workflow';
+      | "announcement_rule"
+      | "api_key"
+      | "custom_field"
+      | "follow_up_priority"
+      | "incident"
+      | "incident_duration_metric"
+      | "incident_role"
+      | "incident_status"
+      | "incident_timestamp"
+      | "incident_type"
+      | "integration"
+      | "policy"
+      | "private_incident_membership"
+      | "rbac_role"
+      | "scim_group"
+      | "severity"
+      | "status_page"
+      | "status_page_template"
+      | "user"
+      | "workflow";
   };
   /**
    * AuditLogUserRoleMembershipChangedMetadataV2ResponseBody
@@ -1044,8 +1044,8 @@ export interface definitions {
      * @example api_key.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1062,7 +1062,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1104,8 +1104,8 @@ export interface definitions {
      * @example api_key.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1122,7 +1122,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1164,8 +1164,8 @@ export interface definitions {
      * @example announcement_rule.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1182,7 +1182,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1224,8 +1224,8 @@ export interface definitions {
      * @example announcement_rule.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1242,7 +1242,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1284,8 +1284,8 @@ export interface definitions {
      * @example announcement_rule.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1302,7 +1302,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1344,8 +1344,8 @@ export interface definitions {
      * @example custom_field.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1362,7 +1362,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1404,8 +1404,8 @@ export interface definitions {
      * @example custom_field.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1422,7 +1422,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1464,8 +1464,8 @@ export interface definitions {
      * @example custom_field.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1482,7 +1482,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1524,8 +1524,8 @@ export interface definitions {
      * @example follow_up_priority.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1542,7 +1542,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1584,8 +1584,8 @@ export interface definitions {
      * @example follow_up_priority.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1602,7 +1602,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1644,8 +1644,8 @@ export interface definitions {
      * @example follow_up_priority.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1662,7 +1662,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1704,8 +1704,8 @@ export interface definitions {
      * @example incident_duration_metric.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1722,7 +1722,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1764,8 +1764,8 @@ export interface definitions {
      * @example incident_duration_metric.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1782,7 +1782,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1824,8 +1824,8 @@ export interface definitions {
      * @example incident_duration_metric.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1842,7 +1842,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1884,8 +1884,8 @@ export interface definitions {
      * @example incident_role.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1902,7 +1902,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -1944,8 +1944,8 @@ export interface definitions {
      * @example incident_role.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -1962,7 +1962,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2004,8 +2004,8 @@ export interface definitions {
      * @example incident_role.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2022,7 +2022,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2064,8 +2064,8 @@ export interface definitions {
      * @example incident_status.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2082,7 +2082,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2124,8 +2124,8 @@ export interface definitions {
      * @example incident_status.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2142,7 +2142,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2184,8 +2184,8 @@ export interface definitions {
      * @example incident_status.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2202,7 +2202,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2244,8 +2244,8 @@ export interface definitions {
      * @example incident_timestamp.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2262,7 +2262,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2304,8 +2304,8 @@ export interface definitions {
      * @example incident_timestamp.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2322,7 +2322,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2364,8 +2364,8 @@ export interface definitions {
      * @example incident_timestamp.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2382,7 +2382,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2424,8 +2424,8 @@ export interface definitions {
      * @example incident_type.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2442,7 +2442,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2484,8 +2484,8 @@ export interface definitions {
      * @example incident_type.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2502,7 +2502,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2544,8 +2544,8 @@ export interface definitions {
      * @example incident_type.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2562,7 +2562,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2604,8 +2604,8 @@ export interface definitions {
      * @example integration.installed
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2622,7 +2622,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2664,8 +2664,8 @@ export interface definitions {
      * @example integration.uninstalled
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2682,7 +2682,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2724,8 +2724,8 @@ export interface definitions {
      * @example policy.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2742,7 +2742,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2784,8 +2784,8 @@ export interface definitions {
      * @example policy.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2802,7 +2802,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2844,8 +2844,8 @@ export interface definitions {
      * @example policy.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2862,7 +2862,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2907,9 +2907,9 @@ export interface definitions {
      * @example private_incident.access_attempted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
-    metadata: definitions['AuditLogPrivateIncidentAccessAttemptedMetadataV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
+    metadata: definitions["AuditLogPrivateIncidentAccessAttemptedMetadataV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2926,7 +2926,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -2968,8 +2968,8 @@ export interface definitions {
      * @example private_incident.access_requested
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -2986,7 +2986,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3033,8 +3033,8 @@ export interface definitions {
      * @example private_incident_membership.granted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3056,7 +3056,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3103,8 +3103,8 @@ export interface definitions {
      * @example private_incident_membership.revoked
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3126,7 +3126,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3168,8 +3168,8 @@ export interface definitions {
      * @example rbac_role.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3186,7 +3186,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3228,8 +3228,8 @@ export interface definitions {
      * @example rbac_role.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3246,7 +3246,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3288,8 +3288,8 @@ export interface definitions {
      * @example rbac_role.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3306,7 +3306,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3354,9 +3354,9 @@ export interface definitions {
      * @example scim_group.role_mappings_updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
-    metadata: definitions['AuditLogUserSCIMGroupMappingChangedMetadataV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
+    metadata: definitions["AuditLogUserSCIMGroupMappingChangedMetadataV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3373,7 +3373,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3415,8 +3415,8 @@ export interface definitions {
      * @example severity.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3433,7 +3433,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3475,8 +3475,8 @@ export interface definitions {
      * @example severity.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3493,7 +3493,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3535,8 +3535,8 @@ export interface definitions {
      * @example severity.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3553,7 +3553,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3595,8 +3595,8 @@ export interface definitions {
      * @example status_page.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3613,7 +3613,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3655,8 +3655,8 @@ export interface definitions {
      * @example status_page.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3673,7 +3673,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3715,8 +3715,8 @@ export interface definitions {
      * @example status_page_template.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3733,7 +3733,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3775,8 +3775,8 @@ export interface definitions {
      * @example status_page_template.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3793,7 +3793,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3835,8 +3835,8 @@ export interface definitions {
      * @example status_page_template.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3853,7 +3853,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3895,8 +3895,8 @@ export interface definitions {
      * @example status_page.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3913,7 +3913,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -3955,8 +3955,8 @@ export interface definitions {
      * @example user.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -3973,7 +3973,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4015,8 +4015,8 @@ export interface definitions {
      * @example user.deactivated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4033,7 +4033,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4075,8 +4075,8 @@ export interface definitions {
      * @example user.reinstated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4093,7 +4093,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4141,9 +4141,9 @@ export interface definitions {
      * @example user.role_memberships_updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
-    metadata: definitions['AuditLogUserRoleMembershipChangedMetadataV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
+    metadata: definitions["AuditLogUserRoleMembershipChangedMetadataV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4160,7 +4160,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4202,8 +4202,8 @@ export interface definitions {
      * @example user.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4220,7 +4220,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4262,8 +4262,8 @@ export interface definitions {
      * @example workflow.created
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4280,7 +4280,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4322,8 +4322,8 @@ export interface definitions {
      * @example workflow.deleted
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4340,7 +4340,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4382,8 +4382,8 @@ export interface definitions {
      * @example workflow.updated
      */
     action: string;
-    actor: definitions['AuditLogActorV2ResponseBody'];
-    context: definitions['AuditLogEntryContextV2ResponseBody'];
+    actor: definitions["AuditLogActorV2ResponseBody"];
+    context: definitions["AuditLogEntryContextV2ResponseBody"];
     /**
      * Format: date-time
      * @description When the entry occurred
@@ -4400,7 +4400,7 @@ export interface definitions {
      *   }
      * ]
      */
-    targets: definitions['AuditLogTargetV2ResponseBody'][];
+    targets: definitions["AuditLogTargetV2ResponseBody"][];
     /**
      * Format: int64
      * @description Which version the event is
@@ -4430,8 +4430,8 @@ export interface definitions {
      *   }
      * ]
      */
-    array_value?: definitions['CatalogAttributeValuePayloadV2RequestBody'][];
-    value?: definitions['CatalogAttributeValuePayloadV2RequestBody'];
+    array_value?: definitions["CatalogAttributeValuePayloadV2RequestBody"][];
+    value?: definitions["CatalogAttributeValuePayloadV2RequestBody"];
   };
   /**
    * CatalogAttributeBindingV2ResponseBody
@@ -4482,8 +4482,8 @@ export interface definitions {
      *   }
      * ]
      */
-    array_value?: definitions['CatalogAttributeValueV2ResponseBody'][];
-    value?: definitions['CatalogAttributeValueV2ResponseBody'];
+    array_value?: definitions["CatalogAttributeValueV2ResponseBody"][];
+    value?: definitions["CatalogAttributeValueV2ResponseBody"];
   };
   /**
    * CatalogAttributeValuePayloadV2RequestBody
@@ -4514,7 +4514,7 @@ export interface definitions {
    * }
    */
   CatalogAttributeValueV2ResponseBody: {
-    catalog_entry?: definitions['CatalogEntryReferenceV2ResponseBody'];
+    catalog_entry?: definitions["CatalogEntryReferenceV2ResponseBody"];
     /**
      * @description If appropriate, URL to an image that can be displayed alongside the option
      * @example https://avatars.slack-edge.com/2021-08-09/2372763167857_6f65d94928b0a0ac590b_192.jpg
@@ -4655,7 +4655,7 @@ export interface definitions {
      * }
      */
     attribute_values: {
-      [key: string]: definitions['CatalogAttributeBindingV2ResponseBody'];
+      [key: string]: definitions["CatalogAttributeBindingV2ResponseBody"];
     };
     /**
      * @description ID of this catalog type
@@ -4712,7 +4712,7 @@ export interface definitions {
      * @example custom
      * @enum {string}
      */
-    category: 'primitive' | 'custom' | 'external';
+    category: "primitive" | "custom" | "external";
     /**
      * @description Human readable description for this resource
      * @example Boolean true or false value
@@ -4824,7 +4824,7 @@ export interface definitions {
      *   }
      * ]
      */
-    attributes: definitions['CatalogTypeAttributeV2ResponseBody'][];
+    attributes: definitions["CatalogTypeAttributeV2ResponseBody"][];
     /**
      * Format: int64
      * @description The version number of this schema
@@ -4880,7 +4880,7 @@ export interface definitions {
      * @example slate
      * @enum {string}
      */
-    color: 'slate' | 'red' | 'yellow' | 'green' | 'blue' | 'violet';
+    color: "slate" | "red" | "yellow" | "green" | "blue" | "violet";
     /**
      * Format: date-time
      * @description When this type was created
@@ -4909,22 +4909,22 @@ export interface definitions {
      * @enum {string}
      */
     icon:
-      | 'bolt'
-      | 'box'
-      | 'briefcase'
-      | 'browser'
-      | 'bulb'
-      | 'clock'
-      | 'cog'
-      | 'database'
-      | 'doc'
-      | 'email'
-      | 'server'
-      | 'severity'
-      | 'star'
-      | 'tag'
-      | 'user'
-      | 'users';
+      | "bolt"
+      | "box"
+      | "briefcase"
+      | "browser"
+      | "bulb"
+      | "clock"
+      | "cog"
+      | "database"
+      | "doc"
+      | "email"
+      | "server"
+      | "severity"
+      | "star"
+      | "tag"
+      | "user"
+      | "users";
     /**
      * @description ID of this resource
      * @example 01FCNDV6P870EA6S7TK1DSYDG0
@@ -4952,7 +4952,7 @@ export interface definitions {
      * ]
      */
     required_integrations?: string[];
-    schema: definitions['CatalogTypeSchemaV2ResponseBody'];
+    schema: definitions["CatalogTypeSchemaV2ResponseBody"];
     /**
      * @description Semantic type of this resource
      * @example custom
@@ -5020,7 +5020,7 @@ export interface definitions {
      * }
      */
     attribute_values: {
-      [key: string]: definitions['CatalogAttributeBindingPayloadV2RequestBody'];
+      [key: string]: definitions["CatalogAttributeBindingPayloadV2RequestBody"];
     };
     /**
      * @description ID of this catalog type
@@ -5093,7 +5093,7 @@ export interface definitions {
    * }
    */
   CatalogV2CreateEntryResponseBody: {
-    catalog_entry: definitions['CatalogEntryV2ResponseBody'];
+    catalog_entry: definitions["CatalogEntryV2ResponseBody"];
   };
   /**
    * CatalogV2CreateTypeRequestBody
@@ -5123,7 +5123,7 @@ export interface definitions {
      * @example slate
      * @enum {string}
      */
-    color?: 'slate' | 'red' | 'yellow' | 'green' | 'blue' | 'violet';
+    color?: "slate" | "red" | "yellow" | "green" | "blue" | "violet";
     /**
      * @description Human readble description of this type
      * @example Represents Kubernetes clusters that we run inside of GKE.
@@ -5135,22 +5135,22 @@ export interface definitions {
      * @enum {string}
      */
     icon?:
-      | 'bolt'
-      | 'box'
-      | 'briefcase'
-      | 'browser'
-      | 'bulb'
-      | 'clock'
-      | 'cog'
-      | 'database'
-      | 'doc'
-      | 'email'
-      | 'server'
-      | 'severity'
-      | 'star'
-      | 'tag'
-      | 'user'
-      | 'users';
+      | "bolt"
+      | "box"
+      | "briefcase"
+      | "browser"
+      | "bulb"
+      | "clock"
+      | "cog"
+      | "database"
+      | "doc"
+      | "email"
+      | "server"
+      | "severity"
+      | "star"
+      | "tag"
+      | "user"
+      | "users";
     /**
      * @description Name is the human readable name of this type
      * @example Kubernetes Cluster
@@ -5210,7 +5210,7 @@ export interface definitions {
    * }
    */
   CatalogV2CreateTypeResponseBody: {
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
   };
   /**
    * CatalogV2ListEntriesResponseBody
@@ -5346,9 +5346,9 @@ export interface definitions {
      *   }
      * ]
      */
-    catalog_entries: definitions['CatalogEntryV2ResponseBody'][];
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
-    pagination_meta: definitions['PaginationMetaResultResponseBody'];
+    catalog_entries: definitions["CatalogEntryV2ResponseBody"][];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
+    pagination_meta: definitions["PaginationMetaResultResponseBody"];
   };
   /**
    * CatalogV2ListResourcesResponseBody
@@ -5376,7 +5376,7 @@ export interface definitions {
      *   }
      * ]
      */
-    resources: definitions['CatalogResourceV2ResponseBody'][];
+    resources: definitions["CatalogResourceV2ResponseBody"][];
   };
   /**
    * CatalogV2ListTypesResponseBody
@@ -5454,7 +5454,7 @@ export interface definitions {
      *   }
      * ]
      */
-    catalog_types: definitions['CatalogTypeV2ResponseBody'][];
+    catalog_types: definitions["CatalogTypeV2ResponseBody"][];
   };
   /**
    * CatalogV2ShowEntryResponseBody
@@ -5537,8 +5537,8 @@ export interface definitions {
    * }
    */
   CatalogV2ShowEntryResponseBody: {
-    catalog_entry: definitions['CatalogEntryV2ResponseBody'];
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
+    catalog_entry: definitions["CatalogEntryV2ResponseBody"];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
   };
   /**
    * CatalogV2ShowTypeResponseBody
@@ -5578,7 +5578,7 @@ export interface definitions {
    * }
    */
   CatalogV2ShowTypeResponseBody: {
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
   };
   /**
    * CatalogV2UpdateEntryRequestBody
@@ -5629,7 +5629,7 @@ export interface definitions {
      * }
      */
     attribute_values: {
-      [key: string]: definitions['CatalogAttributeBindingPayloadV2RequestBody'];
+      [key: string]: definitions["CatalogAttributeBindingPayloadV2RequestBody"];
     };
     /**
      * @description An optional alternative ID for this entry, which is ensured to be unique for the type
@@ -5729,8 +5729,8 @@ export interface definitions {
    * }
    */
   CatalogV2UpdateEntryResponseBody: {
-    catalog_entry: definitions['CatalogEntryV2ResponseBody'];
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
+    catalog_entry: definitions["CatalogEntryV2ResponseBody"];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
   };
   /**
    * CatalogV2UpdateTypeRequestBody
@@ -5759,7 +5759,7 @@ export interface definitions {
      * @example slate
      * @enum {string}
      */
-    color?: 'slate' | 'red' | 'yellow' | 'green' | 'blue' | 'violet';
+    color?: "slate" | "red" | "yellow" | "green" | "blue" | "violet";
     /**
      * @description Human readble description of this type
      * @example Represents Kubernetes clusters that we run inside of GKE.
@@ -5771,22 +5771,22 @@ export interface definitions {
      * @enum {string}
      */
     icon?:
-      | 'bolt'
-      | 'box'
-      | 'briefcase'
-      | 'browser'
-      | 'bulb'
-      | 'clock'
-      | 'cog'
-      | 'database'
-      | 'doc'
-      | 'email'
-      | 'server'
-      | 'severity'
-      | 'star'
-      | 'tag'
-      | 'user'
-      | 'users';
+      | "bolt"
+      | "box"
+      | "briefcase"
+      | "browser"
+      | "bulb"
+      | "clock"
+      | "cog"
+      | "database"
+      | "doc"
+      | "email"
+      | "server"
+      | "severity"
+      | "star"
+      | "tag"
+      | "user"
+      | "users";
     /**
      * @description Name is the human readable name of this type
      * @example Kubernetes Cluster
@@ -5841,7 +5841,7 @@ export interface definitions {
    * }
    */
   CatalogV2UpdateTypeResponseBody: {
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
   };
   /**
    * CatalogV2UpdateTypeSchemaRequestBody
@@ -5868,7 +5868,7 @@ export interface definitions {
      *   }
      * ]
      */
-    attributes: definitions['CatalogTypeAttributePayloadV2RequestBody'][];
+    attributes: definitions["CatalogTypeAttributePayloadV2RequestBody"][];
     /**
      * Format: int64
      * @example 1
@@ -5926,7 +5926,7 @@ export interface definitions {
    * }
    */
   CatalogV2UpdateTypeSchemaResponseBody: {
-    catalog_type: definitions['CatalogTypeV2ResponseBody'];
+    catalog_type: definitions["CatalogTypeV2ResponseBody"];
   };
   /**
    * CustomFieldEntryPayloadV1RequestBody
@@ -5963,7 +5963,7 @@ export interface definitions {
      *   }
      * ]
      */
-    values: definitions['CustomFieldValuePayloadV1RequestBody'][];
+    values: definitions["CustomFieldValuePayloadV1RequestBody"][];
   };
   /**
    * CustomFieldEntryPayloadV2RequestBody
@@ -6000,7 +6000,7 @@ export interface definitions {
      *   }
      * ]
      */
-    values: definitions['CustomFieldValuePayloadV2RequestBody'][];
+    values: definitions["CustomFieldValuePayloadV2RequestBody"][];
   };
   /**
    * CustomFieldEntryV1ResponseBody
@@ -6035,7 +6035,7 @@ export interface definitions {
    * }
    */
   CustomFieldEntryV1ResponseBody: {
-    custom_field: definitions['CustomFieldTypeInfoV1ResponseBody'];
+    custom_field: definitions["CustomFieldTypeInfoV1ResponseBody"];
     /**
      * @description List of custom field values set on this entry
      * @example [
@@ -6052,7 +6052,7 @@ export interface definitions {
      *   }
      * ]
      */
-    values: definitions['CustomFieldValueV1ResponseBody'][];
+    values: definitions["CustomFieldValueV1ResponseBody"][];
   };
   /**
    * CustomFieldEntryV2ResponseBody
@@ -6087,7 +6087,7 @@ export interface definitions {
    * }
    */
   CustomFieldEntryV2ResponseBody: {
-    custom_field: definitions['CustomFieldTypeInfoV2ResponseBody'];
+    custom_field: definitions["CustomFieldTypeInfoV2ResponseBody"];
     /**
      * @description List of custom field values set on this entry
      * @example [
@@ -6104,7 +6104,7 @@ export interface definitions {
      *   }
      * ]
      */
-    values: definitions['CustomFieldValueV2ResponseBody'][];
+    values: definitions["CustomFieldValueV2ResponseBody"][];
   };
   /**
    * CustomFieldOptionV1ResponseBody
@@ -6211,7 +6211,7 @@ export interface definitions {
    * }
    */
   CustomFieldOptionsV1CreateResponseBody: {
-    custom_field_option: definitions['CustomFieldOptionV1ResponseBody'];
+    custom_field_option: definitions["CustomFieldOptionV1ResponseBody"];
   };
   /**
    * CustomFieldOptionsV1ListResponseBody
@@ -6237,7 +6237,7 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_field_options: definitions['CustomFieldOptionV1ResponseBody'][];
+    custom_field_options: definitions["CustomFieldOptionV1ResponseBody"][];
   };
   /**
    * CustomFieldOptionsV1ShowResponseBody
@@ -6251,7 +6251,7 @@ export interface definitions {
    * }
    */
   CustomFieldOptionsV1ShowResponseBody: {
-    custom_field_option: definitions['CustomFieldOptionV1ResponseBody'];
+    custom_field_option: definitions["CustomFieldOptionV1ResponseBody"];
   };
   /**
    * CustomFieldOptionsV1UpdateRequestBody
@@ -6288,7 +6288,7 @@ export interface definitions {
    * }
    */
   CustomFieldOptionsV1UpdateResponseBody: {
-    custom_field_option: definitions['CustomFieldOptionV1ResponseBody'];
+    custom_field_option: definitions["CustomFieldOptionV1ResponseBody"];
   };
   /**
    * CustomFieldTypeInfoV1ResponseBody
@@ -6318,7 +6318,7 @@ export interface definitions {
      * @example single_select
      * @enum {string}
      */
-    field_type: 'single_select' | 'multi_select' | 'text' | 'link' | 'numeric';
+    field_type: "single_select" | "multi_select" | "text" | "link" | "numeric";
     /**
      * @description Unique identifier for the custom field
      * @example 01FCNDV6P870EA6S7TK1DSYDG0
@@ -6340,7 +6340,7 @@ export interface definitions {
      *   }
      * ]
      */
-    options: definitions['CustomFieldOptionV1ResponseBody'][];
+    options: definitions["CustomFieldOptionV1ResponseBody"][];
   } & {
     organisation_id: unknown;
     dynamic_options: unknown;
@@ -6382,7 +6382,7 @@ export interface definitions {
      * @example single_select
      * @enum {string}
      */
-    field_type: 'single_select' | 'multi_select' | 'text' | 'link' | 'numeric';
+    field_type: "single_select" | "multi_select" | "text" | "link" | "numeric";
     /**
      * @description Unique identifier for the custom field
      * @example 01FCNDV6P870EA6S7TK1DSYDG0
@@ -6404,7 +6404,7 @@ export interface definitions {
      *   }
      * ]
      */
-    options: definitions['CustomFieldOptionV2ResponseBody'][];
+    options: definitions["CustomFieldOptionV2ResponseBody"][];
   } & {
     organisation_id: unknown;
     dynamic_options: unknown;
@@ -6459,7 +6459,7 @@ export interface definitions {
      * @example single_select
      * @enum {string}
      */
-    field_type: 'single_select' | 'multi_select' | 'text' | 'link' | 'numeric';
+    field_type: "single_select" | "multi_select" | "text" | "link" | "numeric";
     /**
      * @description Unique identifier for the custom field
      * @example 01FCNDV6P870EA6S7TK1DSYDG0
@@ -6481,13 +6481,13 @@ export interface definitions {
      *   }
      * ]
      */
-    options: definitions['CustomFieldOptionV1ResponseBody'][];
+    options: definitions["CustomFieldOptionV1ResponseBody"][];
     /**
      * @description When this custom field must be set during the incident lifecycle.
      * @example never
      * @enum {string}
      */
-    required: 'never' | 'before_closure' | 'always';
+    required: "never" | "before_closure" | "always";
     /**
      * @description Whether a custom field should be shown in the incident close modal. If this custom field is required before closure, but no value has been set for it, the field will be shown in the closure modal whatever the value of this setting.
      * @example true
@@ -6626,7 +6626,7 @@ export interface definitions {
      * @example 123.456
      */
     value_numeric?: string;
-    value_option?: definitions['CustomFieldOptionV1ResponseBody'];
+    value_option?: definitions["CustomFieldOptionV1ResponseBody"];
     /**
      * @description If the custom field type is 'text', this will contain the value assigned.
      * @example This is my text field, I hope you like it
@@ -6658,7 +6658,7 @@ export interface definitions {
      * @example 123.456
      */
     value_numeric?: string;
-    value_option?: definitions['CustomFieldOptionV2ResponseBody'];
+    value_option?: definitions["CustomFieldOptionV2ResponseBody"];
     /**
      * @description If the custom field type is 'text', this will contain the value assigned.
      * @example This is my text field, I hope you like it
@@ -6689,7 +6689,7 @@ export interface definitions {
      * @example single_select
      * @enum {string}
      */
-    field_type: 'single_select' | 'multi_select' | 'text' | 'link' | 'numeric';
+    field_type: "single_select" | "multi_select" | "text" | "link" | "numeric";
     /**
      * @description Human readable name for the custom field
      * @example Affected Team
@@ -6700,7 +6700,7 @@ export interface definitions {
      * @example never
      * @enum {string}
      */
-    required: 'never' | 'before_closure' | 'always';
+    required: "never" | "before_closure" | "always";
     /**
      * @description Whether a custom field should be shown in the incident close modal. If this custom field is required before closure, but no value has been set for it, the field will be shown in the closure modal whatever the value of this setting.
      * @example true
@@ -6754,7 +6754,7 @@ export interface definitions {
    * }
    */
   CustomFieldsV1CreateResponseBody: {
-    custom_field: definitions['CustomFieldV1ResponseBody'];
+    custom_field: definitions["CustomFieldV1ResponseBody"];
   };
   /**
    * CustomFieldsV1ListResponseBody
@@ -6810,7 +6810,7 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_fields: definitions['CustomFieldV1ResponseBody'][];
+    custom_fields: definitions["CustomFieldV1ResponseBody"][];
   };
   /**
    * CustomFieldsV1ShowResponseBody
@@ -6839,7 +6839,7 @@ export interface definitions {
    * }
    */
   CustomFieldsV1ShowResponseBody: {
-    custom_field: definitions['CustomFieldV1ResponseBody'];
+    custom_field: definitions["CustomFieldV1ResponseBody"];
   };
   /**
    * CustomFieldsV1UpdateRequestBody
@@ -6869,7 +6869,7 @@ export interface definitions {
      * @example never
      * @enum {string}
      */
-    required: 'never' | 'before_closure' | 'always';
+    required: "never" | "before_closure" | "always";
     /**
      * @description Whether a custom field should be shown in the incident close modal. If this custom field is required before closure, but no value has been set for it, the field will be shown in the closure modal whatever the value of this setting.
      * @example true
@@ -6923,7 +6923,7 @@ export interface definitions {
    * }
    */
   CustomFieldsV1UpdateResponseBody: {
-    custom_field: definitions['CustomFieldV1ResponseBody'];
+    custom_field: definitions["CustomFieldV1ResponseBody"];
   };
   /**
    * ExternalIssueReferenceV1ResponseBody
@@ -6950,12 +6950,12 @@ export interface definitions {
      * @enum {string}
      */
     provider?:
-      | 'asana'
-      | 'linear'
-      | 'jira'
-      | 'jira_server'
-      | 'github'
-      | 'shortcut';
+      | "asana"
+      | "linear"
+      | "jira"
+      | "jira_server"
+      | "github"
+      | "shortcut";
   };
   /**
    * ExternalIssueReferenceV2ResponseBody
@@ -6982,12 +6982,12 @@ export interface definitions {
      * @enum {string}
      */
     provider:
-      | 'asana'
-      | 'linear'
-      | 'jira'
-      | 'jira_server'
-      | 'github'
-      | 'shortcut';
+      | "asana"
+      | "linear"
+      | "jira"
+      | "jira_server"
+      | "github"
+      | "shortcut";
   } & {
     issue_id: unknown;
   };
@@ -7017,14 +7017,14 @@ export interface definitions {
      * @enum {string}
      */
     resource_type:
-      | 'pager_duty_incident'
-      | 'opsgenie_alert'
-      | 'datadog_monitor_alert'
-      | 'github_pull_request'
-      | 'sentry_issue'
-      | 'atlassian_statuspage_incident'
-      | 'zendesk_ticket'
-      | 'statuspage_incident';
+      | "pager_duty_incident"
+      | "opsgenie_alert"
+      | "datadog_monitor_alert"
+      | "github_pull_request"
+      | "sentry_issue"
+      | "atlassian_statuspage_incident"
+      | "zendesk_ticket"
+      | "statuspage_incident";
     /**
      * @description Title of resource
      * @example The database has gone down
@@ -7058,13 +7058,13 @@ export interface definitions {
      * ]
      */
     roles: (
-      | 'viewer'
-      | 'incident_creator'
-      | 'incident_editor'
-      | 'manage_settings'
-      | 'global_access'
-      | 'catalog_viewer'
-      | 'catalog_editor'
+      | "viewer"
+      | "incident_creator"
+      | "incident_editor"
+      | "manage_settings"
+      | "global_access"
+      | "catalog_viewer"
+      | "catalog_editor"
     )[];
     /**
      * @description The dashboard URL for your org
@@ -7096,7 +7096,7 @@ export interface definitions {
      * @example 01FCNDV6P870EA6S7TK1DSYD5H
      */
     incident_id: string;
-    resource: definitions['ExternalResourceV1ResponseBody'];
+    resource: definitions["ExternalResourceV1ResponseBody"];
   } & {
     organisation_id: unknown;
     creator: unknown;
@@ -7136,14 +7136,14 @@ export interface definitions {
        * @enum {string}
        */
       resource_type:
-        | 'pager_duty_incident'
-        | 'opsgenie_alert'
-        | 'datadog_monitor_alert'
-        | 'github_pull_request'
-        | 'sentry_issue'
-        | 'atlassian_statuspage_incident'
-        | 'zendesk_ticket'
-        | 'statuspage_incident';
+        | "pager_duty_incident"
+        | "opsgenie_alert"
+        | "datadog_monitor_alert"
+        | "github_pull_request"
+        | "sentry_issue"
+        | "atlassian_statuspage_incident"
+        | "zendesk_ticket"
+        | "statuspage_incident";
     } & {
       id: unknown;
       permalink: unknown;
@@ -7169,7 +7169,7 @@ export interface definitions {
    * }
    */
   IncidentAttachmentsV1CreateResponseBody: {
-    incident_attachment: definitions['IncidentAttachmentV1ResponseBody'];
+    incident_attachment: definitions["IncidentAttachmentV1ResponseBody"];
   };
   /**
    * IncidentAttachmentsV1ListResponseBody
@@ -7203,7 +7203,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_attachments: definitions['IncidentAttachmentV1ResponseBody'][];
+    incident_attachments: definitions["IncidentAttachmentV1ResponseBody"][];
   };
   /**
    * IncidentEditPayloadV2RequestBody
@@ -7253,7 +7253,7 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_field_entries?: definitions['CustomFieldEntryPayloadV2RequestBody'][];
+    custom_field_entries?: definitions["CustomFieldEntryPayloadV2RequestBody"][];
     /**
      * @description Assign the incident's timestamps to these values
      * @example [
@@ -7263,7 +7263,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_timestamp_values?: definitions['IncidentTimestampValuePayloadV2RequestBody'][];
+    incident_timestamp_values?: definitions["IncidentTimestampValuePayloadV2RequestBody"][];
     /**
      * @description Explanation of the incident
      * @example Our database is sad
@@ -7292,7 +7292,7 @@ export interface definitions {
    * }
    */
   IncidentRoleAssignmentPayloadV1RequestBody: {
-    assignee: definitions['UserReferencePayloadV1RequestBody'];
+    assignee: definitions["UserReferencePayloadV1RequestBody"];
     /**
      * @description Unique ID of an incident role
      * @example 01FH5TZRWMNAFB0DZ23FD1TV96
@@ -7311,7 +7311,7 @@ export interface definitions {
    * }
    */
   IncidentRoleAssignmentPayloadV2RequestBody: {
-    assignee?: definitions['UserReferencePayloadV2RequestBody'];
+    assignee?: definitions["UserReferencePayloadV2RequestBody"];
     /**
      * @description Unique ID of an incident role
      * @example 01FH5TZRWMNAFB0DZ23FD1TV96
@@ -7342,8 +7342,8 @@ export interface definitions {
    * }
    */
   IncidentRoleAssignmentV1ResponseBody: {
-    assignee?: definitions['UserV1ResponseBody'];
-    role: definitions['IncidentRoleV1ResponseBody'];
+    assignee?: definitions["UserV1ResponseBody"];
+    role: definitions["IncidentRoleV1ResponseBody"];
   };
   /**
    * IncidentRoleAssignmentV2ResponseBody
@@ -7369,8 +7369,8 @@ export interface definitions {
    * }
    */
   IncidentRoleAssignmentV2ResponseBody: {
-    assignee?: definitions['UserV2ResponseBody'];
-    role: definitions['IncidentRoleV2ResponseBody'];
+    assignee?: definitions["UserV2ResponseBody"];
+    role: definitions["IncidentRoleV2ResponseBody"];
   };
   /**
    * IncidentRoleV1ResponseBody
@@ -7423,7 +7423,7 @@ export interface definitions {
      * @example lead
      * @enum {string}
      */
-    role_type: 'lead' | 'reporter' | 'custom';
+    role_type: "lead" | "reporter" | "custom";
     /**
      * @description Short human readable name for Slack
      * @example lead
@@ -7489,7 +7489,7 @@ export interface definitions {
      * @example lead
      * @enum {string}
      */
-    role_type: 'lead' | 'reporter' | 'custom';
+    role_type: "lead" | "reporter" | "custom";
     /**
      * @description Short human readable name for Slack
      * @example lead
@@ -7564,7 +7564,7 @@ export interface definitions {
    * }
    */
   IncidentRolesV1CreateResponseBody: {
-    incident_role: definitions['IncidentRoleV1ResponseBody'];
+    incident_role: definitions["IncidentRoleV1ResponseBody"];
   };
   /**
    * IncidentRolesV1ListResponseBody
@@ -7600,7 +7600,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_roles: definitions['IncidentRoleV1ResponseBody'][];
+    incident_roles: definitions["IncidentRoleV1ResponseBody"][];
   };
   /**
    * IncidentRolesV1ShowResponseBody
@@ -7619,7 +7619,7 @@ export interface definitions {
    * }
    */
   IncidentRolesV1ShowResponseBody: {
-    incident_role: definitions['IncidentRoleV1ResponseBody'];
+    incident_role: definitions["IncidentRoleV1ResponseBody"];
   };
   /**
    * IncidentRolesV1UpdateRequestBody
@@ -7680,7 +7680,7 @@ export interface definitions {
    * }
    */
   IncidentRolesV1UpdateResponseBody: {
-    incident_role: definitions['IncidentRoleV1ResponseBody'];
+    incident_role: definitions["IncidentRoleV1ResponseBody"];
   };
   /**
    * IncidentStatusV1ResponseBody
@@ -7700,7 +7700,7 @@ export interface definitions {
      * @example triage
      * @enum {string}
      */
-    category: 'triage' | 'declined' | 'merged' | 'live' | 'closed';
+    category: "triage" | "declined" | "merged" | "live" | "closed";
     /**
      * Format: date-time
      * @example 2021-08-17T13:28:57.801578Z
@@ -7751,7 +7751,7 @@ export interface definitions {
      * @example triage
      * @enum {string}
      */
-    category: 'triage' | 'declined' | 'merged' | 'live' | 'closed';
+    category: "triage" | "declined" | "merged" | "live" | "closed";
     /**
      * Format: date-time
      * @example 2021-08-17T13:28:57.801578Z
@@ -7798,7 +7798,7 @@ export interface definitions {
      * @example live
      * @enum {string}
      */
-    category: 'live' | 'closed';
+    category: "live" | "closed";
     /**
      * @description Rich text description of the incident status
      * @example Impact has been **fully mitigated**, and we're ready to learn from this incident.
@@ -7830,7 +7830,7 @@ export interface definitions {
    * }
    */
   IncidentStatusesV1CreateResponseBody: {
-    incident_status: definitions['IncidentStatusV1ResponseBody'];
+    incident_status: definitions["IncidentStatusV1ResponseBody"];
   };
   /**
    * IncidentStatusesV1ListResponseBody
@@ -7862,7 +7862,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_statuses: definitions['IncidentStatusV1ResponseBody'][];
+    incident_statuses: definitions["IncidentStatusV1ResponseBody"][];
   };
   /**
    * IncidentStatusesV1ShowResponseBody
@@ -7879,7 +7879,7 @@ export interface definitions {
    * }
    */
   IncidentStatusesV1ShowResponseBody: {
-    incident_status: definitions['IncidentStatusV1ResponseBody'];
+    incident_status: definitions["IncidentStatusV1ResponseBody"];
   };
   /**
    * IncidentStatusesV1UpdateRequestBody
@@ -7920,7 +7920,7 @@ export interface definitions {
    * }
    */
   IncidentStatusesV1UpdateResponseBody: {
-    incident_status: definitions['IncidentStatusV1ResponseBody'];
+    incident_status: definitions["IncidentStatusV1ResponseBody"];
   };
   /**
    * IncidentTimestampV1ResponseBody
@@ -8037,8 +8037,8 @@ export interface definitions {
    * }
    */
   IncidentTimestampWithValueV2ResponseBody: {
-    incident_timestamp: definitions['IncidentTimestampV2ResponseBody'];
-    value?: definitions['IncidentTimestampValueV2ResponseBody'];
+    incident_timestamp: definitions["IncidentTimestampV2ResponseBody"];
+    value?: definitions["IncidentTimestampValueV2ResponseBody"];
   };
   /**
    * IncidentTimestampsV2ListResponseBody
@@ -8062,7 +8062,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_timestamps: definitions['IncidentTimestampV2ResponseBody'][];
+    incident_timestamps: definitions["IncidentTimestampV2ResponseBody"][];
   };
   /**
    * IncidentTimestampsV2ShowResponseBody
@@ -8075,7 +8075,7 @@ export interface definitions {
    * }
    */
   IncidentTimestampsV2ShowResponseBody: {
-    incident_timestamp: definitions['IncidentTimestampV2ResponseBody'];
+    incident_timestamp: definitions["IncidentTimestampV2ResponseBody"];
   };
   /**
    * IncidentTypeV1ResponseBody
@@ -8096,7 +8096,7 @@ export interface definitions {
      * @example always
      * @enum {string}
      */
-    create_in_triage: 'always' | 'optional';
+    create_in_triage: "always" | "optional";
     /**
      * Format: date-time
      * @description When this resource was created
@@ -8158,7 +8158,7 @@ export interface definitions {
      * @example always
      * @enum {string}
      */
-    create_in_triage: 'always' | 'optional';
+    create_in_triage: "always" | "optional";
     /**
      * Format: date-time
      * @description When this resource was created
@@ -8233,7 +8233,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_types: definitions['IncidentTypeV1ResponseBody'][];
+    incident_types: definitions["IncidentTypeV1ResponseBody"][];
   };
   /**
    * IncidentTypesV1ShowResponseBody
@@ -8251,7 +8251,7 @@ export interface definitions {
    * }
    */
   IncidentTypesV1ShowResponseBody: {
-    incident_type: definitions['IncidentTypeV1ResponseBody'];
+    incident_type: definitions["IncidentTypeV1ResponseBody"];
   };
   /**
    * IncidentUpdateV2ResponseBody
@@ -8314,9 +8314,9 @@ export interface definitions {
      * @example The cat is getting irritable, best rescue it soon
      */
     message?: string;
-    new_incident_status: definitions['IncidentStatusV2ResponseBody'];
-    new_severity?: definitions['SeverityV2ResponseBody'];
-    updater: definitions['ActorV2ResponseBody'];
+    new_incident_status: definitions["IncidentStatusV2ResponseBody"];
+    new_severity?: definitions["SeverityV2ResponseBody"];
+    updater: definitions["ActorV2ResponseBody"];
   } & {
     next_update_in_minutes: unknown;
   };
@@ -8408,8 +8408,8 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_updates: definitions['IncidentUpdateV2ResponseBody'][];
-    pagination_meta?: definitions['PaginationMetaResultResponseBody'];
+    incident_updates: definitions["IncidentUpdateV2ResponseBody"][];
+    pagination_meta?: definitions["PaginationMetaResultResponseBody"];
   };
   /**
    * IncidentV1ResponseBody
@@ -8533,7 +8533,7 @@ export interface definitions {
      * @example 2021-08-17T13:28:57.801578Z
      */
     created_at: string;
-    creator: definitions['ActorV1ResponseBody'];
+    creator: definitions["ActorV1ResponseBody"];
     /**
      * @description Custom field entries for this incident
      * @example [
@@ -8568,7 +8568,7 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_field_entries: definitions['CustomFieldEntryV1ResponseBody'][];
+    custom_field_entries: definitions["CustomFieldEntryV1ResponseBody"][];
     /**
      * @description Unique identifier for the incident
      * @example 01FDAG4SAP5TYPT98WGR2N7W91
@@ -8599,14 +8599,14 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_role_assignments: definitions['IncidentRoleAssignmentV1ResponseBody'][];
-    incident_type?: definitions['IncidentTypeV1ResponseBody'];
+    incident_role_assignments: definitions["IncidentRoleAssignmentV1ResponseBody"][];
+    incident_type?: definitions["IncidentTypeV1ResponseBody"];
     /**
      * @description Whether the incident is real, a test, a tutorial, or importing as a retrospective incident
      * @example real
      * @enum {string}
      */
-    mode: 'real' | 'test' | 'tutorial';
+    mode: "real" | "test" | "tutorial";
     /**
      * @description Explanation of the incident
      * @example Our database is sad
@@ -8627,7 +8627,7 @@ export interface definitions {
      * @example INC-123
      */
     reference: string;
-    severity?: definitions['SeverityV1ResponseBody'];
+    severity?: definitions["SeverityV1ResponseBody"];
     /**
      * @description ID of the Slack channel in the organisation Slack workspace
      * @example C02AW36C1M5
@@ -8649,12 +8649,12 @@ export interface definitions {
      * @enum {string}
      */
     status:
-      | 'triage'
-      | 'investigating'
-      | 'fixing'
-      | 'monitoring'
-      | 'closed'
-      | 'declined';
+      | "triage"
+      | "investigating"
+      | "fixing"
+      | "monitoring"
+      | "closed"
+      | "declined";
     /**
      * @description Detailed description of the incident
      * @example Our database is really really sad, and we don't know why yet.
@@ -8669,7 +8669,7 @@ export interface definitions {
      *   }
      * ]
      */
-    timestamps?: definitions['IncidentTimestampV1ResponseBody'][];
+    timestamps?: definitions["IncidentTimestampV1ResponseBody"][];
     /**
      * Format: date-time
      * @description When the incident was last updated
@@ -8681,7 +8681,7 @@ export interface definitions {
      * @example public
      * @enum {string}
      */
-    visibility: 'public' | 'private';
+    visibility: "public" | "private";
   } & {
     external_id: unknown;
     incident_status: unknown;
@@ -8833,7 +8833,7 @@ export interface definitions {
      * @example 2021-08-17T13:28:57.801578Z
      */
     created_at: string;
-    creator: definitions['ActorV2ResponseBody'];
+    creator: definitions["ActorV2ResponseBody"];
     /**
      * @description Custom field entries for this incident
      * @example [
@@ -8868,8 +8868,8 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_field_entries: definitions['CustomFieldEntryV2ResponseBody'][];
-    external_issue_reference?: definitions['ExternalIssueReferenceV2ResponseBody'];
+    custom_field_entries: definitions["CustomFieldEntryV2ResponseBody"][];
+    external_issue_reference?: definitions["ExternalIssueReferenceV2ResponseBody"];
     /**
      * @description Unique identifier for the incident
      * @example 01FDAG4SAP5TYPT98WGR2N7W91
@@ -8900,8 +8900,8 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_role_assignments: definitions['IncidentRoleAssignmentV2ResponseBody'][];
-    incident_status: definitions['IncidentStatusV2ResponseBody'];
+    incident_role_assignments: definitions["IncidentRoleAssignmentV2ResponseBody"][];
+    incident_status: definitions["IncidentStatusV2ResponseBody"];
     /**
      * @description Incident lifecycle events and when they occurred
      * @example [
@@ -8917,14 +8917,14 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_timestamp_values?: definitions['IncidentTimestampWithValueV2ResponseBody'][];
-    incident_type?: definitions['IncidentTypeV2ResponseBody'];
+    incident_timestamp_values?: definitions["IncidentTimestampWithValueV2ResponseBody"][];
+    incident_type?: definitions["IncidentTypeV2ResponseBody"];
     /**
      * @description Whether the incident is real, a test, a tutorial, or importing as a retrospective incident
      * @example standard
      * @enum {string}
      */
-    mode: 'standard' | 'retrospective' | 'test' | 'tutorial';
+    mode: "standard" | "retrospective" | "test" | "tutorial";
     /**
      * @description Explanation of the incident
      * @example Our database is sad
@@ -8945,7 +8945,7 @@ export interface definitions {
      * @example INC-123
      */
     reference: string;
-    severity?: definitions['SeverityV2ResponseBody'];
+    severity?: definitions["SeverityV2ResponseBody"];
     /**
      * @description ID of the Slack channel in the organisation Slack workspace
      * @example C02AW36C1M5
@@ -8977,7 +8977,7 @@ export interface definitions {
      * @example public
      * @enum {string}
      */
-    visibility: 'public' | 'private';
+    visibility: "public" | "private";
   } & {
     external_id: unknown;
     idempotency_key: unknown;
@@ -9047,7 +9047,7 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_field_entries?: definitions['CustomFieldEntryPayloadV1RequestBody'][];
+    custom_field_entries?: definitions["CustomFieldEntryPayloadV1RequestBody"][];
     /**
      * @description Unique string used to de-duplicate incident create requests
      * @example alert-uuid
@@ -9066,7 +9066,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_role_assignments?: definitions['IncidentRoleAssignmentPayloadV1RequestBody'][];
+    incident_role_assignments?: definitions["IncidentRoleAssignmentPayloadV1RequestBody"][];
     /**
      * @description Incident type to create this incident as
      * @example 01FH5TZRWMNAFB0DZ23FD1TV96
@@ -9077,7 +9077,7 @@ export interface definitions {
      * @example real
      * @enum {string}
      */
-    mode?: 'real' | 'test';
+    mode?: "real" | "test";
     /**
      * @description Explanation of the incident
      * @example Our database is sad
@@ -9109,12 +9109,12 @@ export interface definitions {
      * @enum {string}
      */
     status?:
-      | 'triage'
-      | 'investigating'
-      | 'fixing'
-      | 'monitoring'
-      | 'closed'
-      | 'declined';
+      | "triage"
+      | "investigating"
+      | "fixing"
+      | "monitoring"
+      | "closed"
+      | "declined";
     /**
      * @description Detailed description of the incident
      * @example Our database is really really sad, and we don't know why yet.
@@ -9125,7 +9125,7 @@ export interface definitions {
      * @example public
      * @enum {string}
      */
-    visibility: 'public' | 'private';
+    visibility: "public" | "private";
   };
   /**
    * IncidentsV1CreateResponseBody
@@ -9240,7 +9240,7 @@ export interface definitions {
    * }
    */
   IncidentsV1CreateResponseBody: {
-    incident: definitions['IncidentV1ResponseBody'];
+    incident: definitions["IncidentV1ResponseBody"];
   };
   /**
    * IncidentsV1ListResponseBody
@@ -9473,8 +9473,8 @@ export interface definitions {
      *   }
      * ]
      */
-    incidents: definitions['IncidentV1ResponseBody'][];
-    pagination_meta?: definitions['PaginationMetaResultWithTotalResponseBody'];
+    incidents: definitions["IncidentV1ResponseBody"][];
+    pagination_meta?: definitions["PaginationMetaResultWithTotalResponseBody"];
   };
   /**
    * IncidentsV1ShowResponseBody
@@ -9589,7 +9589,7 @@ export interface definitions {
    * }
    */
   IncidentsV1ShowResponseBody: {
-    incident: definitions['IncidentV1ResponseBody'];
+    incident: definitions["IncidentV1ResponseBody"];
   };
   /**
    * IncidentsV2CreateRequestBody
@@ -9659,7 +9659,7 @@ export interface definitions {
      *   }
      * ]
      */
-    custom_field_entries?: definitions['CustomFieldEntryPayloadV2RequestBody'][];
+    custom_field_entries?: definitions["CustomFieldEntryPayloadV2RequestBody"][];
     /**
      * @description Unique identifier for the incident
      * @example 01FDAG4SAP5TYPT98WGR2N7W91
@@ -9683,7 +9683,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_role_assignments?: definitions['IncidentRoleAssignmentPayloadV2RequestBody'][];
+    incident_role_assignments?: definitions["IncidentRoleAssignmentPayloadV2RequestBody"][];
     /**
      * @description Incident status to assign to the incident
      * @example 01G0J1EXE7AXZ2C93K61WBPYEH
@@ -9698,7 +9698,7 @@ export interface definitions {
      *   }
      * ]
      */
-    incident_timestamp_values?: definitions['IncidentTimestampValuePayloadV2RequestBody'][];
+    incident_timestamp_values?: definitions["IncidentTimestampValuePayloadV2RequestBody"][];
     /**
      * @description Incident type to create this incident as
      * @example 01FH5TZRWMNAFB0DZ23FD1TV96
@@ -9709,13 +9709,13 @@ export interface definitions {
      * @example standard
      * @enum {string}
      */
-    mode?: 'standard' | 'retrospective' | 'test' | 'tutorial';
+    mode?: "standard" | "retrospective" | "test" | "tutorial";
     /**
      * @description Explanation of the incident
      * @example Our database is sad
      */
     name?: string;
-    retrospective_incident_options?: definitions['RetrospectiveIncidentOptionsV2RequestBody'];
+    retrospective_incident_options?: definitions["RetrospectiveIncidentOptionsV2RequestBody"];
     /**
      * @description Severity to create incident as
      * @example 01FH5TZRWMNAFB0DZ23FD1TV96
@@ -9736,7 +9736,7 @@ export interface definitions {
      * @example public
      * @enum {string}
      */
-    visibility: 'public' | 'private';
+    visibility: "public" | "private";
   };
   /**
    * IncidentsV2CreateResponseBody
@@ -9870,7 +9870,7 @@ export interface definitions {
    * }
    */
   IncidentsV2CreateResponseBody: {
-    incident: definitions['IncidentV2ResponseBody'];
+    incident: definitions["IncidentV2ResponseBody"];
   };
   /**
    * IncidentsV2EditRequestBody
@@ -9905,7 +9905,7 @@ export interface definitions {
    * }
    */
   IncidentsV2EditRequestBody: {
-    incident: definitions['IncidentEditPayloadV2RequestBody'];
+    incident: definitions["IncidentEditPayloadV2RequestBody"];
     /**
      * @description Should we send Slack channel notifications to inform responders of this update? Note that this won't work if the Slack channel has already been archived.
      * @example true
@@ -10044,7 +10044,7 @@ export interface definitions {
    * }
    */
   IncidentsV2EditResponseBody: {
-    incident: definitions['IncidentV2ResponseBody'];
+    incident: definitions["IncidentV2ResponseBody"];
   };
   /**
    * IncidentsV2ListResponseBody
@@ -10315,8 +10315,8 @@ export interface definitions {
      *   }
      * ]
      */
-    incidents: definitions['IncidentV2ResponseBody'][];
-    pagination_meta?: definitions['PaginationMetaResultWithTotalResponseBody'];
+    incidents: definitions["IncidentV2ResponseBody"][];
+    pagination_meta?: definitions["PaginationMetaResultWithTotalResponseBody"];
   };
   /**
    * IncidentsV2ShowResponseBody
@@ -10450,7 +10450,7 @@ export interface definitions {
    * }
    */
   IncidentsV2ShowResponseBody: {
-    incident: definitions['IncidentV2ResponseBody'];
+    incident: definitions["IncidentV2ResponseBody"];
   };
   /**
    * PaginationMetaResultResponseBody
@@ -10554,7 +10554,7 @@ export interface definitions {
    * }
    */
   SeveritiesV1CreateResponseBody: {
-    severity: definitions['SeverityV1ResponseBody'];
+    severity: definitions["SeverityV1ResponseBody"];
   };
   /**
    * SeveritiesV1ListResponseBody
@@ -10584,7 +10584,7 @@ export interface definitions {
      *   }
      * ]
      */
-    severities: definitions['SeverityV1ResponseBody'][];
+    severities: definitions["SeverityV1ResponseBody"][];
   };
   /**
    * SeveritiesV1ShowResponseBody
@@ -10600,7 +10600,7 @@ export interface definitions {
    * }
    */
   SeveritiesV1ShowResponseBody: {
-    severity: definitions['SeverityV1ResponseBody'];
+    severity: definitions["SeverityV1ResponseBody"];
   };
   /**
    * SeveritiesV1UpdateRequestBody
@@ -10642,7 +10642,7 @@ export interface definitions {
    * }
    */
   SeveritiesV1UpdateResponseBody: {
-    severity: definitions['SeverityV1ResponseBody'];
+    severity: definitions["SeverityV1ResponseBody"];
   };
   /**
    * SeverityV1ResponseBody
@@ -10817,7 +10817,7 @@ export interface definitions {
      * @example viewer
      * @enum {string}
      */
-    role: 'viewer' | 'responder' | 'administrator' | 'owner' | 'unset';
+    role: "viewer" | "responder" | "administrator" | "owner" | "unset";
     /**
      * @description Slack ID of the user
      * @example U02AYNF2XJM
@@ -10859,7 +10859,7 @@ export interface definitions {
      * @example viewer
      * @enum {string}
      */
-    role: 'viewer' | 'responder' | 'administrator' | 'owner' | 'unset';
+    role: "viewer" | "responder" | "administrator" | "owner" | "unset";
     /**
      * @description Slack ID of the user
      * @example U02AYNF2XJM
@@ -10882,7 +10882,7 @@ export interface definitions {
    * }
    */
   UtilitiesV1IdentityResponseBody: {
-    identity: definitions['IdentityV1ResponseBody'];
+    identity: definitions["IdentityV1ResponseBody"];
   };
   /**
    * WebhooksAllResponseBody
@@ -11205,22 +11205,22 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'private_incident.follow_up_created_v1'?: definitions['webhook_private_resourceV2ResponseBody'];
-    'private_incident.follow_up_updated_v1'?: definitions['webhook_private_resourceV2ResponseBody'];
-    'private_incident.incident_created_v2'?: definitions['webhook_private_resourceV2ResponseBody'];
-    'private_incident.incident_updated_v2'?: definitions['webhook_private_resourceV2ResponseBody'];
-    'public_incident.follow_up_created_v1'?: definitions['ActionV1ResponseBody'];
-    'public_incident.follow_up_updated_v1'?: definitions['ActionV1ResponseBody'];
-    'public_incident.incident_created_v2'?: definitions['IncidentV2ResponseBody'];
-    'public_incident.incident_updated_v2'?: definitions['IncidentV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "private_incident.follow_up_created_v1"?: definitions["webhook_private_resourceV2ResponseBody"];
+    "private_incident.follow_up_updated_v1"?: definitions["webhook_private_resourceV2ResponseBody"];
+    "private_incident.incident_created_v2"?: definitions["webhook_private_resourceV2ResponseBody"];
+    "private_incident.incident_updated_v2"?: definitions["webhook_private_resourceV2ResponseBody"];
+    "public_incident.follow_up_created_v1"?: definitions["ActionV1ResponseBody"];
+    "public_incident.follow_up_updated_v1"?: definitions["ActionV1ResponseBody"];
+    "public_incident.incident_created_v2"?: definitions["IncidentV2ResponseBody"];
+    "public_incident.incident_updated_v2"?: definitions["IncidentV2ResponseBody"];
   };
   /**
    * WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody
@@ -11238,15 +11238,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'private_incident.follow_up_created_v1': definitions['webhook_private_resourceV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "private_incident.follow_up_created_v1": definitions["webhook_private_resourceV2ResponseBody"];
   };
   /**
    * WebhooksPrivateIncidentFollowUpUpdatedV1ResponseBody
@@ -11264,15 +11264,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'private_incident.follow_up_updated_v1': definitions['webhook_private_resourceV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "private_incident.follow_up_updated_v1": definitions["webhook_private_resourceV2ResponseBody"];
   };
   /**
    * WebhooksPrivateIncidentIncidentCreatedV2ResponseBody
@@ -11290,15 +11290,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'private_incident.incident_created_v2': definitions['webhook_private_resourceV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "private_incident.incident_created_v2": definitions["webhook_private_resourceV2ResponseBody"];
   };
   /**
    * WebhooksPrivateIncidentIncidentUpdatedV2ResponseBody
@@ -11316,15 +11316,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'private_incident.incident_updated_v2': definitions['webhook_private_resourceV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "private_incident.incident_updated_v2": definitions["webhook_private_resourceV2ResponseBody"];
   };
   /**
    * WebhooksPublicIncidentFollowUpCreatedV1ResponseBody
@@ -11361,15 +11361,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'public_incident.follow_up_created_v1': definitions['ActionV1ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "public_incident.follow_up_created_v1": definitions["ActionV1ResponseBody"];
   };
   /**
    * WebhooksPublicIncidentFollowUpUpdatedV1ResponseBody
@@ -11406,15 +11406,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'public_incident.follow_up_updated_v1': definitions['ActionV1ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "public_incident.follow_up_updated_v1": definitions["ActionV1ResponseBody"];
   };
   /**
    * WebhooksPublicIncidentIncidentCreatedV2ResponseBody
@@ -11555,15 +11555,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'public_incident.incident_created_v2': definitions['IncidentV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "public_incident.incident_created_v2": definitions["IncidentV2ResponseBody"];
   };
   /**
    * WebhooksPublicIncidentIncidentUpdatedV2ResponseBody
@@ -11704,15 +11704,15 @@ export interface definitions {
      * @enum {string}
      */
     event_type:
-      | 'public_incident.incident_created_v2'
-      | 'private_incident.incident_created_v2'
-      | 'public_incident.incident_updated_v2'
-      | 'private_incident.incident_updated_v2'
-      | 'public_incident.follow_up_created_v1'
-      | 'private_incident.follow_up_created_v1'
-      | 'public_incident.follow_up_updated_v1'
-      | 'private_incident.follow_up_updated_v1';
-    'public_incident.incident_updated_v2': definitions['IncidentV2ResponseBody'];
+      | "public_incident.incident_created_v2"
+      | "private_incident.incident_created_v2"
+      | "public_incident.incident_updated_v2"
+      | "private_incident.incident_updated_v2"
+      | "public_incident.follow_up_created_v1"
+      | "private_incident.follow_up_created_v1"
+      | "public_incident.follow_up_updated_v1"
+      | "private_incident.follow_up_updated_v1";
+    "public_incident.incident_updated_v2": definitions["IncidentV2ResponseBody"];
   };
   /**
    * webhook_private_resourceV2ResponseBody
@@ -11731,7 +11731,7 @@ export interface definitions {
 
 export interface operations {
   /** List all actions for an organisation. */
-  'Actions V1#List': {
+  "Actions V1#List": {
     parameters: {
       query: {
         /** Find actions related to this incident */
@@ -11739,18 +11739,18 @@ export interface operations {
         /** Filter to actions marked as being follow up actions */
         is_follow_up?: boolean;
         /** Filter to actions from incidents of the given mode. If not set, only actions from `real` incidents are returned */
-        incident_mode?: 'real' | 'test' | 'tutorial';
+        incident_mode?: "real" | "test" | "tutorial";
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['ActionsV1ListResponseBody'];
+        schema: definitions["ActionsV1ListResponseBody"];
       };
     };
   };
   /** Get a single incident action. */
-  'Actions V1#Show': {
+  "Actions V1#Show": {
     parameters: {
       path: {
         /** Unique identifier for the action */
@@ -11760,12 +11760,12 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['ActionsV1ShowResponseBody'];
+        schema: definitions["ActionsV1ShowResponseBody"];
       };
     };
   };
   /** Show custom field options for a custom field */
-  'Custom Field Options V1#List': {
+  "Custom Field Options V1#List": {
     parameters: {
       query: {
         /** number of records to return */
@@ -11779,26 +11779,26 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CustomFieldOptionsV1ListResponseBody'];
+        schema: definitions["CustomFieldOptionsV1ListResponseBody"];
       };
     };
   };
   /** Create a custom field option. If the sort key is not supplied, it'll default to 1000, so the option appears near the end of the list. */
-  'Custom Field Options V1#Create': {
+  "Custom Field Options V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['CustomFieldOptionsV1CreateRequestBody'];
+        CreateRequestBody: definitions["CustomFieldOptionsV1CreateRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['CustomFieldOptionsV1CreateResponseBody'];
+        schema: definitions["CustomFieldOptionsV1CreateResponseBody"];
       };
     };
   };
   /** Get a single custom field option */
-  'Custom Field Options V1#Show': {
+  "Custom Field Options V1#Show": {
     parameters: {
       path: {
         /** Unique identifier for the custom field option */
@@ -11808,30 +11808,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CustomFieldOptionsV1ShowResponseBody'];
+        schema: definitions["CustomFieldOptionsV1ShowResponseBody"];
       };
     };
   };
   /** Update a custom field option */
-  'Custom Field Options V1#Update': {
+  "Custom Field Options V1#Update": {
     parameters: {
       path: {
         /** Unique identifier for the custom field option */
         id: string;
       };
       body: {
-        UpdateRequestBody: definitions['CustomFieldOptionsV1UpdateRequestBody'];
+        UpdateRequestBody: definitions["CustomFieldOptionsV1UpdateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CustomFieldOptionsV1UpdateResponseBody'];
+        schema: definitions["CustomFieldOptionsV1UpdateResponseBody"];
       };
     };
   };
   /** Delete a custom field option */
-  'Custom Field Options V1#Delete': {
+  "Custom Field Options V1#Delete": {
     parameters: {
       path: {
         /** Unique identifier for the custom field option */
@@ -11844,30 +11844,30 @@ export interface operations {
     };
   };
   /** List all custom fields for an organisation. */
-  'Custom Fields V1#List': {
+  "Custom Fields V1#List": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CustomFieldsV1ListResponseBody'];
+        schema: definitions["CustomFieldsV1ListResponseBody"];
       };
     };
   };
   /** Create a new custom field */
-  'Custom Fields V1#Create': {
+  "Custom Fields V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['CustomFieldsV1CreateRequestBody'];
+        CreateRequestBody: definitions["CustomFieldsV1CreateRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['CustomFieldsV1CreateResponseBody'];
+        schema: definitions["CustomFieldsV1CreateResponseBody"];
       };
     };
   };
   /** Get a single custom field. */
-  'Custom Fields V1#Show': {
+  "Custom Fields V1#Show": {
     parameters: {
       path: {
         /** Unique identifier for the custom field */
@@ -11877,30 +11877,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CustomFieldsV1ShowResponseBody'];
+        schema: definitions["CustomFieldsV1ShowResponseBody"];
       };
     };
   };
   /** Update the details of a custom field */
-  'Custom Fields V1#Update': {
+  "Custom Fields V1#Update": {
     parameters: {
       path: {
         /** Unique identifier for the custom field */
         id: string;
       };
       body: {
-        UpdateRequestBody: definitions['CustomFieldsV1UpdateRequestBody'];
+        UpdateRequestBody: definitions["CustomFieldsV1UpdateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CustomFieldsV1UpdateResponseBody'];
+        schema: definitions["CustomFieldsV1UpdateResponseBody"];
       };
     };
   };
   /** Delete a custom field */
-  'Custom Fields V1#Delete': {
+  "Custom Fields V1#Delete": {
     parameters: {
       path: {
         /** Unique identifier for the custom field */
@@ -11913,16 +11913,16 @@ export interface operations {
     };
   };
   /** Test if your API key is valid, and which roles it has. */
-  'Utilities V1#Identity': {
+  "Utilities V1#Identity": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['UtilitiesV1IdentityResponseBody'];
+        schema: definitions["UtilitiesV1IdentityResponseBody"];
       };
     };
   };
   /** List all incident attachements for a given external resource or incident. You must provide either a specific incident ID or a specific external resource type and external ID. */
-  'Incident Attachments V1#List': {
+  "Incident Attachments V1#List": {
     parameters: {
       query: {
         /** Incident that this attachment is against */
@@ -11931,39 +11931,39 @@ export interface operations {
         external_id?: string;
         /** E.g. PagerDuty: the external system that holds the resource */
         resource_type?:
-          | 'pager_duty_incident'
-          | 'opsgenie_alert'
-          | 'datadog_monitor_alert'
-          | 'github_pull_request'
-          | 'sentry_issue'
-          | 'atlassian_statuspage_incident'
-          | 'zendesk_ticket'
-          | 'statuspage_incident';
+          | "pager_duty_incident"
+          | "opsgenie_alert"
+          | "datadog_monitor_alert"
+          | "github_pull_request"
+          | "sentry_issue"
+          | "atlassian_statuspage_incident"
+          | "zendesk_ticket"
+          | "statuspage_incident";
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentAttachmentsV1ListResponseBody'];
+        schema: definitions["IncidentAttachmentsV1ListResponseBody"];
       };
     };
   };
   /** Attaches an external resource to an incident */
-  'Incident Attachments V1#Create': {
+  "Incident Attachments V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['IncidentAttachmentsV1CreateRequestBody'];
+        CreateRequestBody: definitions["IncidentAttachmentsV1CreateRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['IncidentAttachmentsV1CreateResponseBody'];
+        schema: definitions["IncidentAttachmentsV1CreateResponseBody"];
       };
     };
   };
   /** Unattaches an external resouce from an incident */
-  'Incident Attachments V1#Delete': {
+  "Incident Attachments V1#Delete": {
     parameters: {
       path: {
         /** Unique identifier of this incident membership */
@@ -11976,30 +11976,30 @@ export interface operations {
     };
   };
   /** List all incident roles for an organisation. */
-  'Incident Roles V1#List': {
+  "Incident Roles V1#List": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentRolesV1ListResponseBody'];
+        schema: definitions["IncidentRolesV1ListResponseBody"];
       };
     };
   };
   /** Create a new incident role */
-  'Incident Roles V1#Create': {
+  "Incident Roles V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['IncidentRolesV1CreateRequestBody'];
+        CreateRequestBody: definitions["IncidentRolesV1CreateRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['IncidentRolesV1CreateResponseBody'];
+        schema: definitions["IncidentRolesV1CreateResponseBody"];
       };
     };
   };
   /** Get a single incident role. */
-  'Incident Roles V1#Show': {
+  "Incident Roles V1#Show": {
     parameters: {
       path: {
         /** Unique identifier for the role */
@@ -12009,30 +12009,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentRolesV1ShowResponseBody'];
+        schema: definitions["IncidentRolesV1ShowResponseBody"];
       };
     };
   };
   /** Update an existing incident role */
-  'Incident Roles V1#Update': {
+  "Incident Roles V1#Update": {
     parameters: {
       path: {
         /** Unique identifier for the role */
         id: string;
       };
       body: {
-        UpdateRequestBody: definitions['IncidentRolesV1UpdateRequestBody'];
+        UpdateRequestBody: definitions["IncidentRolesV1UpdateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentRolesV1UpdateResponseBody'];
+        schema: definitions["IncidentRolesV1UpdateResponseBody"];
       };
     };
   };
   /** Removes an existing role */
-  'Incident Roles V1#Delete': {
+  "Incident Roles V1#Delete": {
     parameters: {
       path: {
         /** Unique identifier for the role */
@@ -12045,30 +12045,30 @@ export interface operations {
     };
   };
   /** List all incident statuses for an organisation. */
-  'IncidentStatuses V1#List': {
+  "IncidentStatuses V1#List": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentStatusesV1ListResponseBody'];
+        schema: definitions["IncidentStatusesV1ListResponseBody"];
       };
     };
   };
   /** Create a new incident status */
-  'IncidentStatuses V1#Create': {
+  "IncidentStatuses V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['IncidentStatusesV1CreateRequestBody'];
+        CreateRequestBody: definitions["IncidentStatusesV1CreateRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['IncidentStatusesV1CreateResponseBody'];
+        schema: definitions["IncidentStatusesV1CreateResponseBody"];
       };
     };
   };
   /** Get a single incident status. */
-  'IncidentStatuses V1#Show': {
+  "IncidentStatuses V1#Show": {
     parameters: {
       path: {
         /** Unique ID of this incident status */
@@ -12078,30 +12078,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentStatusesV1ShowResponseBody'];
+        schema: definitions["IncidentStatusesV1ShowResponseBody"];
       };
     };
   };
   /** Update an existing incident status */
-  'IncidentStatuses V1#Update': {
+  "IncidentStatuses V1#Update": {
     parameters: {
       path: {
         /** Unique ID of this incident status */
         id: string;
       };
       body: {
-        UpdateRequestBody: definitions['IncidentStatusesV1UpdateRequestBody'];
+        UpdateRequestBody: definitions["IncidentStatusesV1UpdateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentStatusesV1UpdateResponseBody'];
+        schema: definitions["IncidentStatusesV1UpdateResponseBody"];
       };
     };
   };
   /** Delete an incident status */
-  'IncidentStatuses V1#Delete': {
+  "IncidentStatuses V1#Delete": {
     parameters: {
       path: {
         /** Unique ID of this incident status */
@@ -12114,16 +12114,16 @@ export interface operations {
     };
   };
   /** List all incident types for an organisation. */
-  'Incident Types V1#List': {
+  "Incident Types V1#List": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentTypesV1ListResponseBody'];
+        schema: definitions["IncidentTypesV1ListResponseBody"];
       };
     };
   };
   /** Get a single incident type. */
-  'Incident Types V1#Show': {
+  "Incident Types V1#Show": {
     parameters: {
       path: {
         /** Unique identifier for this Incident Type */
@@ -12133,12 +12133,12 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentTypesV1ShowResponseBody'];
+        schema: definitions["IncidentTypesV1ShowResponseBody"];
       };
     };
   };
   /** List all incidents for an organisation. */
-  'Incidents V1#List': {
+  "Incidents V1#List": {
     parameters: {
       query: {
         /** Integer number of records to return */
@@ -12152,26 +12152,26 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV1ListResponseBody'];
+        schema: definitions["IncidentsV1ListResponseBody"];
       };
     };
   };
   /** Create a new incident. */
-  'Incidents V1#Create': {
+  "Incidents V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['IncidentsV1CreateRequestBody'];
+        CreateRequestBody: definitions["IncidentsV1CreateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV1CreateResponseBody'];
+        schema: definitions["IncidentsV1CreateResponseBody"];
       };
     };
   };
   /** Get a single incident. */
-  'Incidents V1#Show': {
+  "Incidents V1#Show": {
     parameters: {
       path: {
         /** Unique identifier for the incident */
@@ -12181,12 +12181,12 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV1ShowResponseBody'];
+        schema: definitions["IncidentsV1ShowResponseBody"];
       };
     };
   };
   /** Get the OpenAPI (v2) definition. */
-  'Utilities V1#OpenAPI': {
+  "Utilities V1#OpenAPI": {
     responses: {
       /** OK response. */
       200: {
@@ -12195,30 +12195,30 @@ export interface operations {
     };
   };
   /** List all incident severities for an organisation. */
-  'Severities V1#List': {
+  "Severities V1#List": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['SeveritiesV1ListResponseBody'];
+        schema: definitions["SeveritiesV1ListResponseBody"];
       };
     };
   };
   /** Create a new severity */
-  'Severities V1#Create': {
+  "Severities V1#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['SeveritiesV1CreateRequestBody'];
+        CreateRequestBody: definitions["SeveritiesV1CreateRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['SeveritiesV1CreateResponseBody'];
+        schema: definitions["SeveritiesV1CreateResponseBody"];
       };
     };
   };
   /** Get a single incident severity. */
-  'Severities V1#Show': {
+  "Severities V1#Show": {
     parameters: {
       path: {
         /** Unique identifier of the severity */
@@ -12228,30 +12228,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['SeveritiesV1ShowResponseBody'];
+        schema: definitions["SeveritiesV1ShowResponseBody"];
       };
     };
   };
   /** Update an existing severity */
-  'Severities V1#Update': {
+  "Severities V1#Update": {
     parameters: {
       path: {
         /** Unique identifier of the severity */
         id: string;
       };
       body: {
-        UpdateRequestBody: definitions['SeveritiesV1UpdateRequestBody'];
+        UpdateRequestBody: definitions["SeveritiesV1UpdateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['SeveritiesV1UpdateResponseBody'];
+        schema: definitions["SeveritiesV1UpdateResponseBody"];
       };
     };
   };
   /** Delete a severity */
-  'Severities V1#Delete': {
+  "Severities V1#Delete": {
     parameters: {
       path: {
         /** Unique identifier of the severity */
@@ -12264,7 +12264,7 @@ export interface operations {
     };
   };
   /** List entries for a catalog type. */
-  'Catalog V2#ListEntries': {
+  "Catalog V2#ListEntries": {
     parameters: {
       query: {
         /** ID of this catalog type */
@@ -12278,26 +12278,26 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2ListEntriesResponseBody'];
+        schema: definitions["CatalogV2ListEntriesResponseBody"];
       };
     };
   };
   /** Create an entry for a type in the catalog. */
-  'Catalog V2#CreateEntry': {
+  "Catalog V2#CreateEntry": {
     parameters: {
       body: {
-        CreateEntryRequestBody: definitions['CatalogV2CreateEntryRequestBody'];
+        CreateEntryRequestBody: definitions["CatalogV2CreateEntryRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['CatalogV2CreateEntryResponseBody'];
+        schema: definitions["CatalogV2CreateEntryResponseBody"];
       };
     };
   };
   /** Show a single catalog entry. */
-  'Catalog V2#ShowEntry': {
+  "Catalog V2#ShowEntry": {
     parameters: {
       path: {
         /** ID of this resource */
@@ -12307,30 +12307,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2ShowEntryResponseBody'];
+        schema: definitions["CatalogV2ShowEntryResponseBody"];
       };
     };
   };
   /** Updates an existing catalog entry. */
-  'Catalog V2#UpdateEntry': {
+  "Catalog V2#UpdateEntry": {
     parameters: {
       path: {
         /** ID of this resource */
         id: string;
       };
       body: {
-        UpdateEntryRequestBody: definitions['CatalogV2UpdateEntryRequestBody'];
+        UpdateEntryRequestBody: definitions["CatalogV2UpdateEntryRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2UpdateEntryResponseBody'];
+        schema: definitions["CatalogV2UpdateEntryResponseBody"];
       };
     };
   };
   /** Archives a catalog entry. */
-  'Catalog V2#DestroyEntry': {
+  "Catalog V2#DestroyEntry": {
     parameters: {
       path: {
         /** ID of this resource */
@@ -12343,39 +12343,39 @@ export interface operations {
     };
   };
   /** List available engine resources for the catalog */
-  'Catalog V2#ListResources': {
+  "Catalog V2#ListResources": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2ListResourcesResponseBody'];
+        schema: definitions["CatalogV2ListResourcesResponseBody"];
       };
     };
   };
   /** List all catalog types for an organisation, including those synced from external resources. */
-  'Catalog V2#ListTypes': {
+  "Catalog V2#ListTypes": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2ListTypesResponseBody'];
+        schema: definitions["CatalogV2ListTypesResponseBody"];
       };
     };
   };
   /** Create a catalog type. */
-  'Catalog V2#CreateType': {
+  "Catalog V2#CreateType": {
     parameters: {
       body: {
-        CreateTypeRequestBody: definitions['CatalogV2CreateTypeRequestBody'];
+        CreateTypeRequestBody: definitions["CatalogV2CreateTypeRequestBody"];
       };
     };
     responses: {
       /** Created response. */
       201: {
-        schema: definitions['CatalogV2CreateTypeResponseBody'];
+        schema: definitions["CatalogV2CreateTypeResponseBody"];
       };
     };
   };
   /** Show a single catalog type. */
-  'Catalog V2#ShowType': {
+  "Catalog V2#ShowType": {
     parameters: {
       path: {
         /** ID of this resource */
@@ -12385,30 +12385,30 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2ShowTypeResponseBody'];
+        schema: definitions["CatalogV2ShowTypeResponseBody"];
       };
     };
   };
   /** Updates an existing catalog type. */
-  'Catalog V2#UpdateType': {
+  "Catalog V2#UpdateType": {
     parameters: {
       path: {
         /** ID of this resource */
         id: string;
       };
       body: {
-        UpdateTypeRequestBody: definitions['CatalogV2UpdateTypeRequestBody'];
+        UpdateTypeRequestBody: definitions["CatalogV2UpdateTypeRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2UpdateTypeResponseBody'];
+        schema: definitions["CatalogV2UpdateTypeResponseBody"];
       };
     };
   };
   /** Archives a catalog type and associated entries. */
-  'Catalog V2#DestroyType': {
+  "Catalog V2#DestroyType": {
     parameters: {
       path: {
         /** ID of this resource */
@@ -12421,34 +12421,34 @@ export interface operations {
     };
   };
   /** Update an existing catalog types schema, adding or removing attributes. */
-  'Catalog V2#UpdateTypeSchema': {
+  "Catalog V2#UpdateTypeSchema": {
     parameters: {
       path: {
         /** ID of this resource */
         id: string;
       };
       body: {
-        UpdateTypeSchemaRequestBody: definitions['CatalogV2UpdateTypeSchemaRequestBody'];
+        UpdateTypeSchemaRequestBody: definitions["CatalogV2UpdateTypeSchemaRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['CatalogV2UpdateTypeSchemaResponseBody'];
+        schema: definitions["CatalogV2UpdateTypeSchemaResponseBody"];
       };
     };
   };
   /** List all incident timestamps for an organisation. */
-  'Incident Timestamps V2#List': {
+  "Incident Timestamps V2#List": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentTimestampsV2ListResponseBody'];
+        schema: definitions["IncidentTimestampsV2ListResponseBody"];
       };
     };
   };
   /** Get a single incident timestamp. */
-  'Incident Timestamps V2#Show': {
+  "Incident Timestamps V2#Show": {
     parameters: {
       path: {
         /** Unique ID of this incident timestamp */
@@ -12458,12 +12458,12 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentTimestampsV2ShowResponseBody'];
+        schema: definitions["IncidentTimestampsV2ShowResponseBody"];
       };
     };
   };
   /** List all incident updates for an organisation, or for a specific incident. */
-  'Incident Updates V2#List': {
+  "Incident Updates V2#List": {
     parameters: {
       query: {
         /** Incident whose updates you want to list */
@@ -12477,7 +12477,7 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentUpdatesV2ListResponseBody'];
+        schema: definitions["IncidentUpdatesV2ListResponseBody"];
       };
     };
   };
@@ -12572,7 +12572,7 @@ export interface operations {
    * 			--get 'https://api.incident.io/v2/incidents' \
    * 			--data 'custom_field[ABC][not_in]=XYZ'
    */
-  'Incidents V2#List': {
+  "Incidents V2#List": {
     parameters: {
       query: {
         /** number of records to return */
@@ -12594,7 +12594,7 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV2ListResponseBody'];
+        schema: definitions["IncidentsV2ListResponseBody"];
       };
     };
   };
@@ -12604,21 +12604,21 @@ export interface operations {
    * Note that if the incident mode is set to "retrospective" then the new incident
    * will not be announced in Slack.
    */
-  'Incidents V2#Create': {
+  "Incidents V2#Create": {
     parameters: {
       body: {
-        CreateRequestBody: definitions['IncidentsV2CreateRequestBody'];
+        CreateRequestBody: definitions["IncidentsV2CreateRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV2CreateResponseBody'];
+        schema: definitions["IncidentsV2CreateResponseBody"];
       };
     };
   };
   /** Get a single incident. */
-  'Incidents V2#Show': {
+  "Incidents V2#Show": {
     parameters: {
       path: {
         /** Unique identifier for the incident */
@@ -12628,7 +12628,7 @@ export interface operations {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV2ShowResponseBody'];
+        schema: definitions["IncidentsV2ShowResponseBody"];
       };
     };
   };
@@ -12640,605 +12640,605 @@ export interface operations {
    * When using this endpoint, only fields that are provided will be edited (omitted fields
    * will be ignored).
    */
-  'Incidents V2#Edit': {
+  "Incidents V2#Edit": {
     parameters: {
       path: {
         /** The unique identifier of the incident that you want to edit */
         id: string;
       };
       body: {
-        EditRequestBody: definitions['IncidentsV2EditRequestBody'];
+        EditRequestBody: definitions["IncidentsV2EditRequestBody"];
       };
     };
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['IncidentsV2EditResponseBody'];
+        schema: definitions["IncidentsV2EditResponseBody"];
       };
     };
   };
   /** This entry is created whenever a announcement rule is created */
-  'Audit logs#AnnouncementRuleCreatedV1': {
+  "Audit logs#AnnouncementRuleCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsAnnouncementRuleCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsAnnouncementRuleCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a announcement rule is deleted */
-  'Audit logs#AnnouncementRuleDeletedV1': {
+  "Audit logs#AnnouncementRuleDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsAnnouncementRuleDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsAnnouncementRuleDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a announcement rule is updated */
-  'Audit logs#AnnouncementRuleUpdatedV1': {
+  "Audit logs#AnnouncementRuleUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsAnnouncementRuleUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsAnnouncementRuleUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a api key is created */
-  'Audit logs#ApiKeyCreatedV1': {
+  "Audit logs#ApiKeyCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsAPIKeyCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsAPIKeyCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a api key is deleted */
-  'Audit logs#ApiKeyDeletedV1': {
+  "Audit logs#ApiKeyDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsAPIKeyDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsAPIKeyDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a custom field is created */
-  'Audit logs#CustomFieldCreatedV1': {
+  "Audit logs#CustomFieldCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsCustomFieldCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsCustomFieldCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a custom field is deleted */
-  'Audit logs#CustomFieldDeletedV1': {
+  "Audit logs#CustomFieldDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsCustomFieldDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsCustomFieldDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a custom field is updated */
-  'Audit logs#CustomFieldUpdatedV1': {
+  "Audit logs#CustomFieldUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsCustomFieldUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsCustomFieldUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a follow up priority is created */
-  'Audit logs#FollowUpPriorityCreatedV1': {
+  "Audit logs#FollowUpPriorityCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsFollowUpPriorityCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsFollowUpPriorityCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a follow up priority is deleted */
-  'Audit logs#FollowUpPriorityDeletedV1': {
+  "Audit logs#FollowUpPriorityDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsFollowUpPriorityDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsFollowUpPriorityDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a follow up priority is updated */
-  'Audit logs#FollowUpPriorityUpdatedV1': {
+  "Audit logs#FollowUpPriorityUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsFollowUpPriorityUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsFollowUpPriorityUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident duration metric is created */
-  'Audit logs#IncidentDurationMetricCreatedV1': {
+  "Audit logs#IncidentDurationMetricCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentDurationMetricCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentDurationMetricCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident duration metric is deleted */
-  'Audit logs#IncidentDurationMetricDeletedV1': {
+  "Audit logs#IncidentDurationMetricDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentDurationMetricDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentDurationMetricDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident duration metric is updated */
-  'Audit logs#IncidentDurationMetricUpdatedV1': {
+  "Audit logs#IncidentDurationMetricUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentDurationMetricUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentDurationMetricUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident role is created */
-  'Audit logs#IncidentRoleCreatedV1': {
+  "Audit logs#IncidentRoleCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentRoleCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentRoleCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident role is deleted */
-  'Audit logs#IncidentRoleDeletedV1': {
+  "Audit logs#IncidentRoleDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentRoleDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentRoleDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident role is updated */
-  'Audit logs#IncidentRoleUpdatedV1': {
+  "Audit logs#IncidentRoleUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentRoleUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentRoleUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident status is created */
-  'Audit logs#IncidentStatusCreatedV1': {
+  "Audit logs#IncidentStatusCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentStatusCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentStatusCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident status is deleted */
-  'Audit logs#IncidentStatusDeletedV1': {
+  "Audit logs#IncidentStatusDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentStatusDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentStatusDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident status is updated */
-  'Audit logs#IncidentStatusUpdatedV1': {
+  "Audit logs#IncidentStatusUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentStatusUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentStatusUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident timestamp is created */
-  'Audit logs#IncidentTimestampCreatedV1': {
+  "Audit logs#IncidentTimestampCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentTimestampCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentTimestampCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident timestamp is deleted */
-  'Audit logs#IncidentTimestampDeletedV1': {
+  "Audit logs#IncidentTimestampDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentTimestampDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentTimestampDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident timestamp is updated */
-  'Audit logs#IncidentTimestampUpdatedV1': {
+  "Audit logs#IncidentTimestampUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentTimestampUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentTimestampUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident type is created */
-  'Audit logs#IncidentTypeCreatedV1': {
+  "Audit logs#IncidentTypeCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentTypeCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentTypeCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident type is deleted */
-  'Audit logs#IncidentTypeDeletedV1': {
+  "Audit logs#IncidentTypeDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentTypeDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentTypeDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a incident type is updated */
-  'Audit logs#IncidentTypeUpdatedV1': {
+  "Audit logs#IncidentTypeUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIncidentTypeUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsIncidentTypeUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever an integration is installed */
-  'Audit logs#IntegrationInstalledV1': {
+  "Audit logs#IntegrationInstalledV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIntegrationInstalledV1ResponseBody'];
+        schema: definitions["AuditLogsIntegrationInstalledV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever an integration is uninstalled */
-  'Audit logs#IntegrationUninstalledV1': {
+  "Audit logs#IntegrationUninstalledV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsIntegrationUninstalledV1ResponseBody'];
+        schema: definitions["AuditLogsIntegrationUninstalledV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a policy is created */
-  'Audit logs#PolicyCreatedV1': {
+  "Audit logs#PolicyCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPolicyCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsPolicyCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a policy is deleted */
-  'Audit logs#PolicyDeletedV1': {
+  "Audit logs#PolicyDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPolicyDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsPolicyDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a policy is updated */
-  'Audit logs#PolicyUpdatedV1': {
+  "Audit logs#PolicyUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPolicyUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsPolicyUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever someone attempts to access a private incident. */
-  'Audit logs#PrivateIncidentAccessAttemptedV1': {
+  "Audit logs#PrivateIncidentAccessAttemptedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPrivateIncidentAccessAttemptedV1ResponseBody'];
+        schema: definitions["AuditLogsPrivateIncidentAccessAttemptedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever someone requests access to a private incident. */
-  'Audit logs#PrivateIncidentAccessRequestedV1': {
+  "Audit logs#PrivateIncidentAccessRequestedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPrivateIncidentAccessRequestedV1ResponseBody'];
+        schema: definitions["AuditLogsPrivateIncidentAccessRequestedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever someone is granted access to a private incident. If they have the 'manage private incidents' permission, then it'll appear that the system has given them access to the incident. */
-  'Audit logs#PrivateIncidentMembershipGrantedV1': {
+  "Audit logs#PrivateIncidentMembershipGrantedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPrivateIncidentMembershipGrantedV1ResponseBody'];
+        schema: definitions["AuditLogsPrivateIncidentMembershipGrantedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever someone's access to a private incident is revoked. */
-  'Audit logs#PrivateIncidentMembershipRevokedV1': {
+  "Audit logs#PrivateIncidentMembershipRevokedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsPrivateIncidentMembershipRevokedV1ResponseBody'];
+        schema: definitions["AuditLogsPrivateIncidentMembershipRevokedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a rbac role is created */
-  'Audit logs#RbacRoleCreatedV1': {
+  "Audit logs#RbacRoleCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsRbacRoleCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsRbacRoleCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a rbac role is deleted */
-  'Audit logs#RbacRoleDeletedV1': {
+  "Audit logs#RbacRoleDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsRbacRoleDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsRbacRoleDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a rbac role is updated */
-  'Audit logs#RbacRoleUpdatedV1': {
+  "Audit logs#RbacRoleUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsRbacRoleUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsRbacRoleUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a SCIM group is mapped to a new RBAC role */
-  'Audit logs#ScimGroupRoleMappingsUpdatedV1': {
+  "Audit logs#ScimGroupRoleMappingsUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsScimGroupRoleMappingsUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsScimGroupRoleMappingsUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a severity is created */
-  'Audit logs#SeverityCreatedV1': {
+  "Audit logs#SeverityCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsSeverityCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsSeverityCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a severity is deleted */
-  'Audit logs#SeverityDeletedV1': {
+  "Audit logs#SeverityDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsSeverityDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsSeverityDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a severity is updated */
-  'Audit logs#SeverityUpdatedV1': {
+  "Audit logs#SeverityUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsSeverityUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsSeverityUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a status page is created */
-  'Audit logs#StatusPageCreatedV1': {
+  "Audit logs#StatusPageCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsStatusPageCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsStatusPageCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a status page is deleted */
-  'Audit logs#StatusPageDeletedV1': {
+  "Audit logs#StatusPageDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsStatusPageDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsStatusPageDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a status page has its configuration updated */
-  'Audit logs#StatusPageUpdatedV1': {
+  "Audit logs#StatusPageUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsStatusPageUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsStatusPageUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a status page template is created */
-  'Audit logs#StatusPageTemplateCreatedV1': {
+  "Audit logs#StatusPageTemplateCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsStatusPageTemplateCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsStatusPageTemplateCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a status page template is deleted */
-  'Audit logs#StatusPageTemplateDeletedV1': {
+  "Audit logs#StatusPageTemplateDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsStatusPageTemplateDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsStatusPageTemplateDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a status page template is updated */
-  'Audit logs#StatusPageTemplateUpdatedV1': {
+  "Audit logs#StatusPageTemplateUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsStatusPageTemplateUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsStatusPageTemplateUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a user is created */
-  'Audit logs#UserCreatedV1': {
+  "Audit logs#UserCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsUserCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsUserCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a user is deactivated */
-  'Audit logs#UserDeactivatedV1': {
+  "Audit logs#UserDeactivatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsUserDeactivatedV1ResponseBody'];
+        schema: definitions["AuditLogsUserDeactivatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created when a user is reinstated after being deactivated */
-  'Audit logs#UserReinstatedV1': {
+  "Audit logs#UserReinstatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsUserReinstatedV1ResponseBody'];
+        schema: definitions["AuditLogsUserReinstatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a user's role memberships are changed. */
-  'Audit logs#UserRoleMembershipsUpdatedV1': {
+  "Audit logs#UserRoleMembershipsUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsUserRoleMembershipsUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsUserRoleMembershipsUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a user is updated */
-  'Audit logs#UserUpdatedV1': {
+  "Audit logs#UserUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsUserUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsUserUpdatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a workflow is created */
-  'Audit logs#WorkflowCreatedV1': {
+  "Audit logs#WorkflowCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsWorkflowCreatedV1ResponseBody'];
+        schema: definitions["AuditLogsWorkflowCreatedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a workflow is deleted */
-  'Audit logs#WorkflowDeletedV1': {
+  "Audit logs#WorkflowDeletedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsWorkflowDeletedV1ResponseBody'];
+        schema: definitions["AuditLogsWorkflowDeletedV1ResponseBody"];
       };
     };
   };
   /** This entry is created whenever a workflow is updated */
-  'Audit logs#WorkflowUpdatedV1': {
+  "Audit logs#WorkflowUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['AuditLogsWorkflowUpdatedV1ResponseBody'];
+        schema: definitions["AuditLogsWorkflowUpdatedV1ResponseBody"];
       };
     };
   };
   /** Enables us to generate a type for all webhook types, so we can use a single serializer. */
-  'Webhooks#All': {
+  "Webhooks#All": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksAllResponseBody'];
+        schema: definitions["WebhooksAllResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a follow-up for a private incident is created. */
-  'Webhooks#PrivateIncidentFollowUpCreatedV1': {
+  "Webhooks#PrivateIncidentFollowUpCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody'];
+        schema: definitions["WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a follow-up for a private incident is updated. */
-  'Webhooks#PrivateIncidentFollowUpUpdatedV1': {
+  "Webhooks#PrivateIncidentFollowUpUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPrivateIncidentFollowUpUpdatedV1ResponseBody'];
+        schema: definitions["WebhooksPrivateIncidentFollowUpUpdatedV1ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a new private incident is created. */
-  'Webhooks#PrivateIncidentIncidentCreatedV2': {
+  "Webhooks#PrivateIncidentIncidentCreatedV2": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPrivateIncidentIncidentCreatedV2ResponseBody'];
+        schema: definitions["WebhooksPrivateIncidentIncidentCreatedV2ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a private incident is updated. */
-  'Webhooks#PrivateIncidentIncidentUpdatedV2': {
+  "Webhooks#PrivateIncidentIncidentUpdatedV2": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPrivateIncidentIncidentUpdatedV2ResponseBody'];
+        schema: definitions["WebhooksPrivateIncidentIncidentUpdatedV2ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a follow-up is created. */
-  'Webhooks#PublicIncidentFollowUpCreatedV1': {
+  "Webhooks#PublicIncidentFollowUpCreatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPublicIncidentFollowUpCreatedV1ResponseBody'];
+        schema: definitions["WebhooksPublicIncidentFollowUpCreatedV1ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a follow-up is updated. */
-  'Webhooks#PublicIncidentFollowUpUpdatedV1': {
+  "Webhooks#PublicIncidentFollowUpUpdatedV1": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPublicIncidentFollowUpUpdatedV1ResponseBody'];
+        schema: definitions["WebhooksPublicIncidentFollowUpUpdatedV1ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever a new incident is created. */
-  'Webhooks#PublicIncidentIncidentCreatedV2': {
+  "Webhooks#PublicIncidentIncidentCreatedV2": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPublicIncidentIncidentCreatedV2ResponseBody'];
+        schema: definitions["WebhooksPublicIncidentIncidentCreatedV2ResponseBody"];
       };
     };
   };
   /** This webhook is emitted whenever an incident is updated. */
-  'Webhooks#PublicIncidentIncidentUpdatedV2': {
+  "Webhooks#PublicIncidentIncidentUpdatedV2": {
     responses: {
       /** OK response. */
       200: {
-        schema: definitions['WebhooksPublicIncidentIncidentUpdatedV2ResponseBody'];
+        schema: definitions["WebhooksPublicIncidentIncidentUpdatedV2ResponseBody"];
       };
     };
   };

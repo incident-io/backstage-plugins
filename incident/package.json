@@ -20,7 +20,8 @@
     "test": "backstage-cli package test",
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
-    "postpack": "backstage-cli package postpack"
+    "postpack": "backstage-cli package postpack",
+    "prettier": "npx prettier . --write"
   },
   "dependencies": {
     "@backstage/backend-tasks": "^0.5.11",
@@ -57,6 +58,7 @@
     "@types/node": "*",
     "cross-fetch": "^3.1.5",
     "msw": "^1.0.0",
+    "prettier": "3.2.5",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^6.0.0"

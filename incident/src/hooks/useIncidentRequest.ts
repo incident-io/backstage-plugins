@@ -1,18 +1,18 @@
-import { useApi } from '@backstage/core-plugin-api';
-import { useAsync } from 'react-use';
-import { IncidentApiRef } from '../api/client';
-import { definitions } from '../api/types';
-import { DependencyList } from 'react';
+import { useApi } from "@backstage/core-plugin-api";
+import { useAsync } from "react-use";
+import { IncidentApiRef } from "../api/client";
+import { definitions } from "../api/types";
+import { DependencyList } from "react";
 
 export const useIncidentList = (
   query: URLSearchParams,
-  deps?: DependencyList
+  deps?: DependencyList,
 ) => {
   const IncidentApi = useApi(IncidentApiRef);
 
   const { value, loading, error } = useAsync(async () => {
     return await IncidentApi.request<
-      definitions['IncidentsV2ListResponseBody']
+      definitions["IncidentsV2ListResponseBody"]
     >({
       path: `/v2/incidents?${query.toString()}`,
     });
@@ -26,7 +26,7 @@ export const useIdentity = () => {
 
   const { value, loading, error } = useAsync(async () => {
     return await IncidentApi.request<
-      definitions['UtilitiesV1IdentityResponseBody']
+      definitions["UtilitiesV1IdentityResponseBody"]
     >({
       path: `/v1/identity`,
     });

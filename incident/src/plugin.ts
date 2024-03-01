@@ -19,13 +19,13 @@ import {
   createPlugin,
   discoveryApiRef,
   identityApiRef,
-} from '@backstage/core-plugin-api';
-import { createCardExtension } from '@backstage/plugin-home-react';
+} from "@backstage/core-plugin-api";
+import { createCardExtension } from "@backstage/plugin-home-react";
 
-import { IncidentApi, IncidentApiRef } from './api/client';
+import { IncidentApi, IncidentApiRef } from "./api/client";
 
 export const incidentPlugin = createPlugin({
-  id: 'incident',
+  id: "incident",
   apis: [
     createApiFactory({
       api: IncidentApiRef,
@@ -42,20 +42,20 @@ export const incidentPlugin = createPlugin({
 
 export const EntityIncidentCard = incidentPlugin.provide(
   createComponentExtension({
-    name: 'EntityIncidentCard',
+    name: "EntityIncidentCard",
     component: {
       lazy: () =>
-        import('./components/EntityIncidentCard').then(
-          (m) => m.EntityIncidentCard
+        import("./components/EntityIncidentCard").then(
+          (m) => m.EntityIncidentCard,
         ),
     },
-  })
+  }),
 );
 
 export const HomePageIncidentCard = incidentPlugin.provide(
   createCardExtension({
-    name: 'HomePageIncidentCard',
-    title: 'Ongoing Incidents',
-    components: () => import('./components/HomePageIncidentCard'),
-  })
+    name: "HomePageIncidentCard",
+    title: "Ongoing Incidents",
+    components: () => import("./components/HomePageIncidentCard"),
+  }),
 );
