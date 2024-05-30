@@ -55,6 +55,12 @@ tag:
 </Grid>
 ```
 
+You can also use `maxIncidents` variable to define the number of incidents you want 
+and `useNamespace` option to avoid using Backstage Namespace when querying incident.io.
+```ts
+<EntityIncidentCard maxIncidents={2} useNamespace={false} />
+```
+
 If you want to include the list of incidents in places like the page for a
 system, it's worth noting that `overviewContent` isn't reused on every page.
 You may find you need to make more edits to `EntityPage`, based on your setup.

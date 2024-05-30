@@ -59,8 +59,10 @@ const IncorrectConfigCard = () => {
 // incidents that are on-going for that component.
 export const EntityIncidentCard = ({
   maxIncidents = 2,
+  useNamespace = true
 }: {
   maxIncidents?: number;
+  useNamespace?: boolean;
 }) => {
   const config = useApi(configApiRef);
   const { entity } = useEntity();
@@ -73,7 +75,9 @@ export const EntityIncidentCard = ({
   const [reload, setReload] = useState(false);
 
   const entityFieldID = getEntityFieldID(config, entity);
-  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
+  const entityID = useNamespace
+    ? `${entity.metadata.namespace}/${entity.metadata.name}`
+    : `${entity.metadata.name}`;
 
   // This query filters incidents for those that are associated with this
   // entity.
