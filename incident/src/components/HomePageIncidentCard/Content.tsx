@@ -13,7 +13,7 @@ export const HomePageIncidentCardContent = () => {
   const baseUrl = getBaseUrl(config);
 
   const query = new URLSearchParams();
-  query.set(`status_category[one_of]`, "live");
+  query.set(`status_category[one_of]`, "active");
   const { loading, error, value } = useIncidentList(query);
   const incidents = value?.incidents;
 

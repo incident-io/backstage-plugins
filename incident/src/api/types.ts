@@ -7700,7 +7700,7 @@ export interface definitions {
      * @example triage
      * @enum {string}
      */
-    category: "triage" | "declined" | "merged" | "live" | "closed";
+    category: "triage" | "declined" | "merged" | "active" | "closed";
     /**
      * Format: date-time
      * @example 2021-08-17T13:28:57.801578Z
@@ -7751,7 +7751,7 @@ export interface definitions {
      * @example triage
      * @enum {string}
      */
-    category: "triage" | "declined" | "merged" | "live" | "closed";
+    category: "triage" | "declined" | "merged" | "active" | "closed";
     /**
      * Format: date-time
      * @example 2021-08-17T13:28:57.801578Z
@@ -7787,7 +7787,7 @@ export interface definitions {
   /**
    * IncidentStatusesV1CreateRequestBody
    * @example {
-   *   "category": "live",
+   *   "category": "active",
    *   "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
    *   "name": "Closed"
    * }
@@ -7798,7 +7798,7 @@ export interface definitions {
      * @example live
      * @enum {string}
      */
-    category: "live" | "closed";
+    category: "active" | "closed";
     /**
      * @description Rich text description of the incident status
      * @example Impact has been **fully mitigated**, and we're ready to learn from this incident.

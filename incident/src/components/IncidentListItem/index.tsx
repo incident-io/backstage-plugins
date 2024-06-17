@@ -86,7 +86,7 @@ export const IncidentListItem = ({
               size="small"
               variant="outlined"
               className={
-                ["live"].includes(incident.incident_status.category)
+                ["active"].includes(incident.incident_status.category)
                   ? classes.error
                   : classes.warning
               }
