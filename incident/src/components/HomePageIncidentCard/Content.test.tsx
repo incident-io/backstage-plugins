@@ -12,7 +12,7 @@ const mockIncidentApi: jest.Mocked<Partial<IncidentApi>> = {
         reference: "INC-1",
         incident_status: {
           id: "status-id",
-          category: "live",
+          category: "active",
           name: "triage",
         },
         incident_role_assignments: [

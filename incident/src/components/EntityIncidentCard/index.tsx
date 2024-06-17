@@ -82,7 +82,7 @@ export const EntityIncidentCard = ({
 
   // This restricts the previous filter to focus only on live incidents.
   const queryLive = new URLSearchParams(query);
-  queryLive.set(`status_category[one_of]`, "live");
+  queryLive.set(`status_category[one_of]`, "active");
 
   const {
     value: incidentsResponse,
