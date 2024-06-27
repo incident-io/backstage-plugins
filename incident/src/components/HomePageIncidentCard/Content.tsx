@@ -6,11 +6,10 @@ import { useIncidentList } from "../../hooks/useIncidentRequest";
 import { Typography, List } from "@material-ui/core";
 import { IncidentListItem } from "../IncidentListItem";
 import { configApiRef, useApi } from "@backstage/core-plugin-api";
-import { getBaseUrl } from "../../config";
 
 export const HomePageIncidentCardContent = () => {
   const config = useApi(configApiRef);
-  const baseUrl = getBaseUrl(config);
+    const baseUrl = config.getOptionalString('incident.baseUrl') || "https://app.incident.io";
 
   const query = new URLSearchParams();
   query.set(`status_category[one_of]`, "active");

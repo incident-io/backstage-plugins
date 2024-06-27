@@ -20,7 +20,7 @@ import {
   discoveryApiRef,
   identityApiRef,
 } from "@backstage/core-plugin-api";
-import { createCardExtension } from "@backstage/plugin-home-react";
+import {CardExtensionProps, createCardExtension} from "@backstage/plugin-home-react";
 
 import { IncidentApi, IncidentApiRef } from "./api/client";
 
@@ -52,7 +52,7 @@ export const EntityIncidentCard = incidentPlugin.provide(
   }),
 );
 
-export const HomePageIncidentCard = incidentPlugin.provide(
+export const HomePageIncidentCard: (props: CardExtensionProps<unknown>) => React.JSX.Element = incidentPlugin.provide(
   createCardExtension({
     name: "HomePageIncidentCard",
     title: "Ongoing Incidents",
