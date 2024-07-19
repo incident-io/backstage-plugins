@@ -103,7 +103,7 @@ export const EntityIncidentCard = ({
   const baseUrl = identityResponse.identity.dashboard_url;
 
   const createIncidentLink: IconLinkVerticalProps = {
-    label: "Create incident",
+    label: "Declare incident",
     disabled: false,
     icon: <WhatshotIcon />,
     href: `${baseUrl}/incidents/create`,
