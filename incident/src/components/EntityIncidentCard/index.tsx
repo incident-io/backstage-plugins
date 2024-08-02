@@ -73,7 +73,7 @@ export const EntityIncidentCard = ({
   const [reload, setReload] = useState(false);
 
   const entityFieldID = getEntityFieldID(config, entity);
-  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
+  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}, ${entity.metadata.name} `;
 
   // This query filters incidents for those that are associated with this
   // entity.
