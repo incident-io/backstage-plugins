@@ -15,7 +15,7 @@
  */
 import {
   DiscoveryApi,
-  IdentityApi,
+  FetchApi,
   createApiRef,
 } from "@backstage/core-plugin-api";
 
@@ -41,18 +41,18 @@ const DEFAULT_PROXY_PATH = "/incident/api";
 
 type Options = {
   discoveryApi: DiscoveryApi;
-  identityApi: IdentityApi;
+  fetchApi: FetchApi,
   proxyPath?: string;
 };
 
 export class IncidentApi implements Incident {
   private readonly discoveryApi: DiscoveryApi;
-  private readonly identityApi: IdentityApi;
+  private readonly fetchApi: FetchApi;
   private readonly proxyPath: string;
 
   constructor(opts: Options) {
     this.discoveryApi = opts.discoveryApi;
-    this.identityApi = opts.identityApi;
+    this.fetchApi = opts.fetchApi;
     this.proxyPath = opts.proxyPath ?? DEFAULT_PROXY_PATH;
   }
 
@@ -67,14 +67,10 @@ export class IncidentApi implements Incident {
   }): Promise<T> {
     const apiUrl =
       (await this.discoveryApi.getBaseUrl("proxy")) + this.proxyPath;
-    const { token } = await this.identityApi.getCredentials();
 
-    const resp = await fetch(`${apiUrl}${path}`, {
+    const resp = await this.fetchApi.fetch(`${apiUrl}${path}`, {
       method: method,
       body: body,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
     });
     if (!resp.ok) {
       throw new Error(`${resp.status} ${resp.statusText}`);

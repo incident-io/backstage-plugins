@@ -18,7 +18,7 @@ import {
   createComponentExtension,
   createPlugin,
   discoveryApiRef,
-  identityApiRef,
+  fetchApiRef,
 } from "@backstage/core-plugin-api";
 import {CardExtensionProps, createCardExtension} from "@backstage/plugin-home-react";
 
@@ -29,11 +29,14 @@ export const incidentPlugin = createPlugin({
   apis: [
     createApiFactory({
       api: IncidentApiRef,
-      deps: { discoveryApi: discoveryApiRef, identityApi: identityApiRef },
-      factory: ({ discoveryApi, identityApi }) => {
+      deps: { 
+        discoveryApi: discoveryApiRef, 
+        fetchApi: fetchApiRef,
+      },
+      factory: ({ discoveryApi, fetchApi }) => {
         return new IncidentApi({
           discoveryApi: discoveryApi,
-          identityApi: identityApi,
+          fetchApi: fetchApi,
         });
       },
     }),
