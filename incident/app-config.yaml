@@ -6,7 +6,7 @@ backend:
   baseUrl: http://localhost:7007
 
 proxy:
-  '/incident/api':
+  "/incident/api":
     target: https://api.incident.io
     headers:
       Authorization: Bearer ${INCIDENT_API_KEY}

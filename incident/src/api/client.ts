@@ -41,7 +41,7 @@ const DEFAULT_PROXY_PATH = "/incident/api";
 
 type Options = {
   discoveryApi: DiscoveryApi;
-  fetchApi: FetchApi,
+  fetchApi: FetchApi;
   proxyPath?: string;
 };
 
