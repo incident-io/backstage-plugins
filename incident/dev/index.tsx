@@ -1,6 +1,6 @@
 import { createDevApp } from "@backstage/dev-utils";
 import React from "react";
-import { EntityIncidentCard, incidentPlugin } from "../src";
+import { EntityIncidentCard, incidentPlugin, HomePageIncidentCard, EntityIncidentAlertCard } from "../src";
 import { fakeEntity, incidentIOHandler } from "./test-utils";
 import {
   EntityProvider,
@@ -10,7 +10,6 @@ import {
 import { CatalogEntityPage } from "@backstage/plugin-catalog";
 import { setupWorker } from "msw/browser";
 import { Content, Page } from "@backstage/core-components";
-import { HomePageIncidentCardContent } from "../src/components/HomePageIncidentCard/Content";
 
 const mockEntity = fakeEntity();
 const mockApiOrigin = "http://localhost:7007/api/proxy/incident/api";
@@ -41,7 +40,7 @@ createDevApp()
   })
   .addPage({
     path: "/catalog/:namespace/:kind/:name",
-    title: "Catalog Page",
+    title: "EntityIncidentCard",
     element: <CatalogEntityPage />,
     children: (
       <EntityProvider entity={mockEntity}>
@@ -51,13 +50,23 @@ createDevApp()
   })
   .addPage({
     path: "/incidents",
-    title: "Incidents",
+    title: "HomePageIncidentCardContent",
     element: (
       <Page themeId="home">
         <Content>
-          <HomePageIncidentCardContent />
+          <HomePageIncidentCard />
         </Content>
       </Page>
+    ),
+  })
+  .addPage({
+    path: "/catalog-2/:namespace/:kind/:name",
+    title: "Catalog Page",
+    element: <CatalogEntityPage />,
+    children: (
+      <EntityProvider entity={mockEntity}>
+        <EntityIncidentAlertCard />
+      </EntityProvider>
     ),
   })
   .render();

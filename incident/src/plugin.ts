@@ -58,6 +58,18 @@ export const EntityIncidentCard = incidentPlugin.provide(
   }),
 );
 
+export const EntityIncidentAlertCard = incidentPlugin.provide(
+  createComponentExtension({
+    name: "EntityIncidentCard",
+    component: {
+      lazy: () =>
+        import("./components/EntityIncidentAlertCard").then(
+          (m) => m.EntityIncidentAlertCard,
+        ),
+    },
+  }),
+);
+
 export const HomePageIncidentCard: (
   props: CardExtensionProps<unknown>,
 ) => React.JSX.Element = incidentPlugin.provide(
