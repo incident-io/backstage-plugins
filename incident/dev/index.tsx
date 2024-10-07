@@ -66,7 +66,7 @@ createDevApp()
     element: <CatalogEntityPage />,
     children: (
         <>
-            <Header title="Graph Card"/>
+            <Header title="Entity Page"/>
             <Content>
                 <Grid container>
                     <Grid item xs={12}>
