@@ -62,7 +62,7 @@ createDevApp()
   })
   .addPage({
     path: "/catalog-2/:namespace/:kind/:name",
-    title: "Catalog Page",
+    title: "EntityIncidentWarningPanel",
     element: <CatalogEntityPage />,
     children: (
         <>

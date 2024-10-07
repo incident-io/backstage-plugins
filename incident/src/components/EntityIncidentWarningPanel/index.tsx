@@ -66,7 +66,7 @@ export const EntityIncidentWarningPanel = ({
   }
 
   if (!incidents) {
-    return
+    return <></>;
   }
 
   const baseUrl = identityResponse.identity.dashboard_url;
