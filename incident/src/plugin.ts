@@ -58,13 +58,13 @@ export const EntityIncidentCard = incidentPlugin.provide(
   }),
 );
 
-export const EntityIncidentAlertCard = incidentPlugin.provide(
+export const EntityIncidentWarningPanel = incidentPlugin.provide(
   createComponentExtension({
-    name: "EntityIncidentCard",
+    name: "EntityIncidentWarningPanel",
     component: {
       lazy: () =>
-        import("./components/EntityIncidentAlertCard").then(
-          (m) => m.EntityIncidentAlertCard,
+        import("./components/EntityIncidentWarningPanel").then(
+          (m) => m.EntityIncidentWarningPanel,
         ),
     },
   }),

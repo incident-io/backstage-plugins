@@ -1,6 +1,6 @@
 import { createDevApp } from "@backstage/dev-utils";
 import React from "react";
-import { EntityIncidentCard, incidentPlugin, HomePageIncidentCard, EntityIncidentAlertCard } from "../src";
+import { EntityIncidentCard, incidentPlugin, HomePageIncidentCard, EntityIncidentWarningPanel } from "../src";
 import { fakeEntity, incidentIOHandler } from "./test-utils";
 import {
   EntityProvider,
@@ -9,7 +9,8 @@ import {
 } from "@backstage/plugin-catalog-react";
 import { CatalogEntityPage } from "@backstage/plugin-catalog";
 import { setupWorker } from "msw/browser";
-import { Content, Page } from "@backstage/core-components";
+import {Content, Header, Page} from "@backstage/core-components";
+import {Grid} from "@material-ui/core";
 
 const mockEntity = fakeEntity();
 const mockApiOrigin = "http://localhost:7007/api/proxy/incident/api";
@@ -64,9 +65,18 @@ createDevApp()
     title: "Catalog Page",
     element: <CatalogEntityPage />,
     children: (
-      <EntityProvider entity={mockEntity}>
-        <EntityIncidentAlertCard />
-      </EntityProvider>
+        <>
+            <Header title="Graph Card"/>
+            <Content>
+                <Grid container>
+                    <Grid item xs={12}>
+                        <EntityProvider entity={mockEntity}>
+                            <EntityIncidentWarningPanel/>
+                        </EntityProvider>
+                    </Grid>
+                </Grid>
+            </Content>
+        </>
     ),
   })
   .render();

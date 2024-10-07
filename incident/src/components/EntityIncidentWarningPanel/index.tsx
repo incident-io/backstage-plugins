@@ -13,24 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Entity } from "@backstage/catalog-model";
-import {
-  Progress,
-} from "@backstage/core-components";
-import { ConfigApi, configApiRef, useApi } from "@backstage/core-plugin-api";
-import { useEntity } from "@backstage/plugin-catalog-react";
-import { Alert, AlertTitle } from "@material-ui/lab";
-import {
-  IconButton,
-  Tooltip,
-} from "@material-ui/core";
-import React, { useState } from "react";
-import { useIncidentList, useIdentity } from "../../hooks/useIncidentRequest";
-import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
+import {Entity} from "@backstage/catalog-model";
+import {Progress, WarningPanel,} from "@backstage/core-components";
+import {ConfigApi, configApiRef, useApi} from "@backstage/core-plugin-api";
+import {useEntity} from "@backstage/plugin-catalog-react";
+import {Alert} from "@material-ui/lab";
+import {List, Typography,} from "@material-ui/core";
+import React, {useState} from "react";
+import {useIdentity, useIncidentList} from "../../hooks/useIncidentRequest";
+import {IncidentListItem} from "../IncidentListItem";
+import Link from "@material-ui/core/Link";
 
 // The card displayed on the entity page showing a handful of the most recent
 // incidents that are on-going for that component.
-export const EntityIncidentAlertCard = ({
+export const EntityIncidentWarningPanel = ({
   maxIncidents = 2,
 }: {
   maxIncidents?: number;
@@ -69,34 +65,50 @@ export const EntityIncidentAlertCard = ({
     return <Progress />;
   }
 
+  if (!incidents) {
+    return
+  }
+
   const baseUrl = identityResponse.identity.dashboard_url;
+  const title = `There are *${incidents.length}* ongoing incidents
+                    involving *${entity.metadata.name}*.`
 
   return (
-    <>
-    {identityResponseError && (
-      <Alert severity="error">{identityResponseError.message}</Alert>
-    )}
-    {incidentsError && (
-      <Alert severity="error">{incidentsError.message}</Alert>
-    )}
-    {incidents?.slice(0, maxIncidents)?.map((incident) => {
-          return (
-            <Alert severity="warning">
-              <AlertTitle>{incident.reference} {incident.name}</AlertTitle>
-              <Tooltip title="View in incident.io" placement="top">
-                <IconButton
-                  href={`${baseUrl}/incidents/${incident.id}`}
-                  target="_blank"
-                    rel="noopener noreferrer"
-                    color="primary"
-                  >
-                  <OpenInBrowserIcon />
-                </IconButton>
-              </Tooltip>
-            </Alert>
-          );
-        })}
-    </>
+      <WarningPanel title={title} titleFormat="markdown">
+        {identityResponseError && (
+          <Alert severity="error">{identityResponseError.message}</Alert>
+        )}
+        {incidentsError && (
+          <Alert severity="error">{incidentsError.message}</Alert>
+        )}
+        {!incidentsLoading && !incidentsError && (
+            <>
+              {incidents && incidents.length === 0 && (
+                  <Typography variant="subtitle1">No ongoing incidents.</Typography>
+              )}
+              <List dense>
+                {incidents?.slice(0, maxIncidents)?.map((incident) => {
+                  return (
+                      <IncidentListItem
+                          key={incident.id}
+                          incident={incident}
+                          baseUrl={baseUrl}
+                      />
+                  );
+                })}
+              </List>
+              <Typography variant="subtitle1">
+                Click to{" "}
+                <Link
+                    target="_blank"
+                    href={`${baseUrl}/incidents?${queryLive.toString()}`}
+                >
+                  see more.
+                </Link>
+              </Typography>
+            </>
+        )}
+      </WarningPanel>
   );
 };
 
