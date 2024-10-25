@@ -89,6 +89,7 @@ incident:
     component: "<id-of-component-custom-field>"
     system: "<id-of-system-custom-field>"
     domain: "<id-of-domain-custom-field>"
+    group: "<id-of-group-custom-field>"
 ```
 
 If you don't have a custom field set up for one of these entities, then you

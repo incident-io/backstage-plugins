@@ -197,6 +197,8 @@ function getEntityFieldID(config: ConfigApi, entity: Entity) {
       return config.getOptional("incident.fields.domain");
     case "System":
       return config.getOptional("incident.fields.system");
+    case "Group":
+      return config.getOptional("incident.fields.group");
     default:
       throw new Error(`unrecognised entity kind: ${entity.kind}`);
   }
