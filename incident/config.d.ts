@@ -59,6 +59,11 @@ export interface Config {
        * @visibility frontend
        */
       system?: string;
+      /**
+      * The custom field ID that associated Group entities to incidents.
+      * @visibility frontend
+      */
+      group?: string;
     };
   };
 }
