@@ -45,20 +45,24 @@ export async function hasOngoingIncident(
     throw new Error(`No implementation available for ${IncidentApiRef}`);
   }
 
-  const entityFieldID = getEntityFieldID(configApi, entity);
-  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
+  try {
+    const entityFieldID = getEntityFieldID(configApi, entity);
+    const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
 
-  const query = new URLSearchParams();
-  query.set(`custom_field[${entityFieldID}][one_of]`, entityID);
-  query.set(`status_category[one_of]`, "active");
+    const query = new URLSearchParams();
+    query.set(`custom_field[${entityFieldID}][one_of]`, entityID);
+    query.set(`status_category[one_of]`, "active");
 
-  const result =  await incidentApi.request<
+    const result =  await incidentApi.request<
       definitions["IncidentsV2ListResponseBody"]
     >({
       path: `/v2/incidents?${query.toString()}`,
     });
 
-  return result.incidents.length > 0
+    return result.incidents.length > 0
+  } catch (e) {
+    return false
+  }
 }
 
 // The card displayed on the entity page showing a handful of the most recent
