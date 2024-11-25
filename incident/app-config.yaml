@@ -1,0 +1,19 @@
+app:
+  title: Incident.io Plugins
+  baseUrl: http://localhost:3000
+
+backend:
+  baseUrl: http://localhost:7007
+
+proxy:
+  "/incident/api":
+    target: https://api.incident.io
+    headers:
+      Authorization: Bearer ${INCIDENT_API_KEY}
+
+incident:
+  fields:
+    api: "<id-of-api-custom-field>"
+    component: "<id-of-component-custom-field>"
+    system: "<id-of-system-custom-field>"
+    domain: "<id-of-domain-custom-field>"
