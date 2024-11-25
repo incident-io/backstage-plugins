@@ -15,7 +15,7 @@
  */
 import {Entity} from "@backstage/catalog-model";
 import {Progress, WarningPanel,} from "@backstage/core-components";
-import {ConfigApi, configApiRef, useApi} from "@backstage/core-plugin-api";
+import {ApiHolder, ConfigApi, configApiRef, useApi} from "@backstage/core-plugin-api";
 import {useEntity} from "@backstage/plugin-catalog-react";
 import {Alert} from "@material-ui/lab";
 import {List, Typography,} from "@material-ui/core";
@@ -23,6 +23,43 @@ import React, {useState} from "react";
 import {useIdentity, useIncidentList} from "../../hooks/useIncidentRequest";
 import {IncidentListItem} from "../IncidentListItem";
 import Link from "@material-ui/core/Link";
+import {IncidentApiRef} from "../../api/client";
+import {definitions} from "../../api/types";
+
+/**
+ * Returns true if the given entity has ongoing incidents
+ *
+ * @public
+ */
+export async function hasOngoingIncident(
+  entity: Entity,
+  context: { apis: ApiHolder },
+) {
+  const configApi = context.apis.get(configApiRef);
+  if (!configApi) {
+    throw new Error(`No implementation available for ${configApiRef}`);
+  }
+
+  const incidentApi = context.apis.get(IncidentApiRef);
+  if (!incidentApi) {
+    throw new Error(`No implementation available for ${IncidentApiRef}`);
+  }
+
+  const entityFieldID = getEntityFieldID(configApi, entity);
+  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
+
+  const query = new URLSearchParams();
+  query.set(`custom_field[${entityFieldID}][one_of]`, entityID);
+  query.set(`status_category[one_of]`, "active");
+
+  const result =  await incidentApi.request<
+      definitions["IncidentsV2ListResponseBody"]
+    >({
+      path: `/v2/incidents?${query.toString()}`,
+    });
+
+  return result.incidents.length > 0
+}
 
 // The card displayed on the entity page showing a handful of the most recent
 // incidents that are on-going for that component.
@@ -65,7 +102,7 @@ export const EntityIncidentWarningPanel = ({
     return <Progress />;
   }
 
-  if (!incidents) {
+  if (!incidents || incidents.length === 0) {
     return <></>;
   }
 
