@@ -16,5 +16,12 @@
 export {
   incidentPlugin,
   EntityIncidentCard,
+  EntityIncidentWarningPanel,
   HomePageIncidentCard,
 } from "./plugin";
+
+export {
+  hasOngoingIncident,
+} from "./components/EntityIncidentWarningPanel"
+export * from './api';
+export * from './hooks';
