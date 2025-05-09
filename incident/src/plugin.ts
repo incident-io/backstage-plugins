@@ -20,7 +20,10 @@ import {
   discoveryApiRef,
   fetchApiRef,
 } from "@backstage/core-plugin-api";
-import {CardExtensionProps, createCardExtension} from "@backstage/plugin-home-react";
+import {
+  CardExtensionProps,
+  createCardExtension,
+} from "@backstage/plugin-home-react";
 
 import { IncidentApi, IncidentApiRef } from "./api/client";
 
@@ -29,8 +32,8 @@ export const incidentPlugin = createPlugin({
   apis: [
     createApiFactory({
       api: IncidentApiRef,
-      deps: { 
-        discoveryApi: discoveryApiRef, 
+      deps: {
+        discoveryApi: discoveryApiRef,
         fetchApi: fetchApiRef,
       },
       factory: ({ discoveryApi, fetchApi }) => {
@@ -55,10 +58,36 @@ export const EntityIncidentCard = incidentPlugin.provide(
   }),
 );
 
-export const HomePageIncidentCard: (props: CardExtensionProps<unknown>) => React.JSX.Element = incidentPlugin.provide(
+export const HomePageIncidentCard: (
+  props: CardExtensionProps<unknown>,
+) => React.JSX.Element = incidentPlugin.provide(
   createCardExtension({
     name: "HomePageIncidentCard",
     title: "Ongoing Incidents",
     components: () => import("./components/HomePageIncidentCard"),
+    settings: {
+      schema: {
+        type: "object",
+        properties: {
+          filterType: {
+            type: "string",
+            title: "Filter Type",
+            description: "Whether to filter on status category or status",
+            oneOf: [
+              { enum: ["status_category"], title: "Status Category" },
+              { enum: ["status"], title: "Status" },
+            ],
+            default: "status_category",
+          },
+          filter: {
+            type: "string",
+            title: "Filter",
+            description:
+              "The filter to use. This is a string that will be passed to the API.",
+            default: "active",
+          },
+        },
+      },
+    },
   }),
 );
