@@ -27,7 +27,6 @@ import {
 } from "@material-ui/core";
 import { BackstagePaletteAdditions } from "@backstage/theme";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
-import React from "react";
 import { definitions } from "../../api/types";
 
 const useStyles = makeStyles<Theme>((theme) => {
