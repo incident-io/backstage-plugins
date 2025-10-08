@@ -1,7 +1,6 @@
 import { Progress } from "@backstage/core-components";
 import Link from "@material-ui/core/Link";
 import { Alert } from "@material-ui/lab";
-import React from "react";
 import { useIncidentList } from "../../hooks/useIncidentRequest";
 import { Typography, List } from "@material-ui/core";
 import { IncidentListItem } from "../IncidentListItem";
@@ -9,7 +8,8 @@ import { configApiRef, useApi } from "@backstage/core-plugin-api";
 
 export const HomePageIncidentCardContent = () => {
   const config = useApi(configApiRef);
-    const baseUrl = config.getOptionalString('incident.baseUrl') || "https://app.incident.io";
+  const baseUrl =
+    config.getOptionalString("incident.baseUrl") || "https://app.incident.io";
 
   const query = new URLSearchParams();
   query.set(`status_category[one_of]`, "active");
