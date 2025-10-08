@@ -9,7 +9,8 @@ import { configApiRef, useApi } from "@backstage/core-plugin-api";
 
 export const HomePageIncidentCardContent = () => {
   const config = useApi(configApiRef);
-    const baseUrl = config.getOptionalString('incident.baseUrl') || "https://app.incident.io";
+  const baseUrl =
+    config.getOptionalString("incident.baseUrl") || "https://app.incident.io";
 
   const query = new URLSearchParams();
   query.set(`status_category[one_of]`, "active");
