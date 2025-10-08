@@ -6,12 +6,6 @@ First install dependencies:
 yarn
 ```
 
-Then transpile the Typescript:
-
-```shell
-yarn tsc
-```
-
 Now build the plugin:
 
 ```shell
