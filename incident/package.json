@@ -79,5 +79,8 @@
     "type": "git",
     "url": "https://github.com/incident-io/backstage-plugins.git",
     "directory": "incident"
+  },
+  "resolutions": {
+    "sha.js": "^2.4.12"
   }
 }
