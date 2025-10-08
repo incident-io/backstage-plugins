@@ -2934,22 +2934,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/theme@npm:^0.4.3":
-  version: 0.4.4
-  resolution: "@backstage/theme@npm:0.4.4"
-  dependencies:
-    "@emotion/react": "npm:^11.10.5"
-    "@emotion/styled": "npm:^11.10.5"
-    "@mui/material": "npm:^5.12.2"
-  peerDependencies:
-    "@material-ui/core": ^4.12.2
-    "@types/react": ^16.13.1 || ^17.0.0
-    react: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
-  checksum: 10/11c1ce9620263ab2ca68c2b84dfb209efd503bfa17eebd3139eb97062d6646d7ef94b932000e6a1c3428c9ef240d505ee1e37602d5efe965036822efa814f84a
-  languageName: node
-  linkType: hard
-
 "@backstage/theme@npm:^0.5.0, @backstage/theme@npm:^0.5.1":
   version: 0.5.1
   resolution: "@backstage/theme@npm:0.5.1"
@@ -3661,7 +3645,7 @@ __metadata:
     "@backstage/plugin-home-react": "npm:^0.1.4"
     "@backstage/plugin-search-react": "npm:^1.7.1"
     "@backstage/test-utils": "npm:^1.4.4"
-    "@backstage/theme": "npm:^0.4.3"
+    "@backstage/theme": "npm:^0.6.8"
     "@material-ui/core": "npm:^4.9.13"
     "@material-ui/icons": "npm:^4.9.1"
     "@material-ui/lab": "npm:^4.0.0-alpha.60"
