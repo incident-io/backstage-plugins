@@ -33,7 +33,7 @@ First, install the incident plugin via a CLI:
 
 ```bash
 # From your Backstage app root directory
-yarn add --cwd packages/app @incident-io/backstage
+yarn --cwd packages/app add @incident-io/backstage
 ```
 
 Next, add the plugin to `EntityPage.tsx` in
