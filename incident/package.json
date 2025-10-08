@@ -44,7 +44,7 @@
     "luxon": "^3.3.0",
     "moment": "^2.29.4",
     "qs": "^6.11.2",
-    "react-use": "^17.2.4"
+    "react-use": "^17.6.0"
   },
   "peerDependencies": {
     "@types/react": "^17.0.0 || ^18.0.0",
