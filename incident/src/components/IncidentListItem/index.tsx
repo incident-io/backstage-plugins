@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { DateTime, Duration } from "luxon";
-import { BackstageTheme } from "@backstage/theme";
 import {
   Chip,
   IconButton,
@@ -24,31 +23,39 @@ import {
   Tooltip,
   Typography,
   makeStyles,
+  Theme,
 } from "@material-ui/core";
+import { BackstagePaletteAdditions } from "@backstage/theme";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import React from "react";
 import { definitions } from "../../api/types";
 
-const useStyles = makeStyles<BackstageTheme>((theme) => ({
-  listItemPrimary: {
-    display: "flex", // vertically align with chip
-    fontWeight: "bold",
-  },
-  warning: {
-    borderColor: theme.palette.status.warning,
-    color: theme.palette.status.warning,
-    "& *": {
-      color: theme.palette.status.warning,
+const useStyles = makeStyles<Theme>((theme) => {
+  const backstagePalette = theme.palette as typeof theme.palette &
+    BackstagePaletteAdditions;
+
+  return {
+    listItemPrimary: {
+      display: "flex", // vertically align with chip
+      fontWeight: "bold",
     },
-  },
-  error: {
-    borderColor: theme.palette.status.error,
-    color: theme.palette.status.error,
-    "& *": {
-      color: theme.palette.status.error,
+    warning: {
+      borderColor:
+        backstagePalette.status?.warning || theme.palette.warning.main,
+      color: backstagePalette.status?.warning || theme.palette.warning.main,
+      "& *": {
+        color: backstagePalette.status?.warning || theme.palette.warning.main,
+      },
     },
-  },
-}));
+    error: {
+      borderColor: backstagePalette.status?.error || theme.palette.error.main,
+      color: backstagePalette.status?.error || theme.palette.error.main,
+      "& *": {
+        color: backstagePalette.status?.error || theme.palette.error.main,
+      },
+    },
+  };
+});
 
 // Single item in the list of on-going incidents.
 export const IncidentListItem = ({
