@@ -6,14 +6,21 @@ import { useIncidentList } from "../../hooks/useIncidentRequest";
 import { Typography, List } from "@material-ui/core";
 import { IncidentListItem } from "../IncidentListItem";
 import { configApiRef, useApi } from "@backstage/core-plugin-api";
+import { useHomePageIncidentCard } from "./Context";
 
 export const HomePageIncidentCardContent = () => {
+  const { filterType, filter } = useHomePageIncidentCard();
   const config = useApi(configApiRef);
-    const baseUrl = config.getOptionalString('incident.baseUrl') || "https://app.incident.io";
+  const baseUrl =
+    config.getOptionalString("incident.baseUrl") || "https://app.incident.io";
 
-  const query = new URLSearchParams();
-  query.set(`status_category[one_of]`, "active");
-  const { loading, error, value } = useIncidentList(query);
+  const query = React.useMemo(() => {
+    const params = new URLSearchParams();
+    params.set(`${filterType}[one_of]`, filter);
+    return params;
+  }, [filterType, filter]);
+
+  const { loading, error, value } = useIncidentList(query, [query]);
   const incidents = value?.incidents;
 
   if (loading) return <Progress />;
