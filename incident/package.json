@@ -34,7 +34,7 @@
     "@backstage/core-components": "^0.13.6",
     "@backstage/core-plugin-api": "^1.7.0",
     "@backstage/errors": "^1.2.3",
-    "@backstage/plugin-catalog-react": "^1.8.5",
+    "@backstage/plugin-catalog-react": "^1.21.2",
     "@backstage/plugin-home-react": "^0.1.4",
     "@backstage/plugin-search-react": "^1.7.1",
     "@backstage/theme": "^0.4.3",
