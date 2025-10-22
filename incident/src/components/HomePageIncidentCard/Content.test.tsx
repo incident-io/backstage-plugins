@@ -1,5 +1,4 @@
 import { TestApiProvider, renderInTestApp } from "@backstage/test-utils";
-import React from "react";
 import { IncidentApi, IncidentApiRef } from "../../api/client";
 import { HomePageIncidentCardContent } from "./Content";
 
