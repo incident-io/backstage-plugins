@@ -65,5 +65,29 @@ export const HomePageIncidentCard: (
     name: "HomePageIncidentCard",
     title: "Ongoing Incidents",
     components: () => import("./components/HomePageIncidentCard"),
+    settings: {
+      schema: {
+        type: "object",
+        properties: {
+          filterType: {
+            type: "string",
+            title: "Filter Type",
+            description: "Whether to filter on status category or status",
+            oneOf: [
+              { enum: ["status_category"], title: "Status Category" },
+              { enum: ["status"], title: "Status" },
+            ],
+            default: "status_category",
+          },
+          filter: {
+            type: "string",
+            title: "Filter",
+            description:
+              "The filter to use. This is a string that will be passed to the API.",
+            default: "active",
+          },
+        },
+      },
+    },
   }),
 );
