@@ -3007,6 +3007,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@backstage/errors@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "@backstage/errors@npm:1.2.7"
+  dependencies:
+    "@backstage/types": "npm:^1.2.1"
+    serialize-error: "npm:^8.0.1"
+  checksum: 10/99bbe2cbb9f6672afe30bab02ab1cf48daa8e994fb0c5b9390075ebf9357d5f7d450b9ea889e908e2823ee47cbf5405432e32171d338653bebf1b5914b735c35
+  languageName: node
+  linkType: hard
+
 "@backstage/eslint-plugin@npm:^0.1.3":
   version: 0.1.5
   resolution: "@backstage/eslint-plugin@npm:0.1.5"
@@ -3334,6 +3344,13 @@ __metadata:
   version: 1.1.1
   resolution: "@backstage/types@npm:1.1.1"
   checksum: 10/222f0534af8cc5d144a9ed11ca7118aaa6ec8a15b69dcb51588f4dd716d52944f7a456c9679c1263e9fb8a2684cf55b9d39473938ecf39c85c99ca14a7c048b0
+  languageName: node
+  linkType: hard
+
+"@backstage/types@npm:^1.2.1":
+  version: 1.2.2
+  resolution: "@backstage/types@npm:1.2.2"
+  checksum: 10/813129ae2f4be2765b54a16457955c8bbeb7cc6685bc2cae8b981ae7010353d9cd1110acf846f5c23cf7fbbb6bee6d56b629d5f59933247bb529f4816218c1e7
   languageName: node
   linkType: hard
 
@@ -4233,7 +4250,7 @@ __metadata:
     "@backstage/core-components": "npm:^0.13.6"
     "@backstage/core-plugin-api": "npm:^1.7.0"
     "@backstage/dev-utils": "npm:^1.0.22"
-    "@backstage/errors": "npm:^1.2.3"
+    "@backstage/errors": "npm:^1.2.7"
     "@backstage/plugin-catalog-react": "npm:^1.8.5"
     "@backstage/plugin-home-react": "npm:^0.1.4"
     "@backstage/plugin-search-react": "npm:^1.7.1"
