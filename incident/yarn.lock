@@ -2828,6 +2828,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@backstage/config@npm:^1.3.5":
+  version: 1.3.5
+  resolution: "@backstage/config@npm:1.3.5"
+  dependencies:
+    "@backstage/errors": "npm:^1.2.7"
+    "@backstage/types": "npm:^1.2.2"
+    ms: "npm:^2.1.3"
+  checksum: 10/d9f5809e624faca75f9100d175909c79ebb53334c4719fce048cff47a25554ea48ec349f739b4b7f779f1277bf7e05a091211c5811aab7dad883af089a448f50
+  languageName: node
+  linkType: hard
+
 "@backstage/core-app-api@npm:^1.11.0, @backstage/core-app-api@npm:^1.12.0":
   version: 1.12.0
   resolution: "@backstage/core-app-api@npm:1.12.0"
@@ -2955,7 +2966,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/core-plugin-api@npm:^1.7.0, @backstage/core-plugin-api@npm:^1.8.2, @backstage/core-plugin-api@npm:^1.9.0":
+"@backstage/core-plugin-api@npm:^1.11.1":
+  version: 1.11.1
+  resolution: "@backstage/core-plugin-api@npm:1.11.1"
+  dependencies:
+    "@backstage/config": "npm:^1.3.5"
+    "@backstage/errors": "npm:^1.2.7"
+    "@backstage/types": "npm:^1.2.2"
+    "@backstage/version-bridge": "npm:^1.0.11"
+    history: "npm:^5.0.0"
+  peerDependencies:
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^6.3.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/40bf2bac34a7d17e793272a233a46012a553b5c0088be78d8aaeb4bbfcbf998cd43d0698ac2aade245e4bed5918d5df51af52f3d33cb9789e82cad8d4cc8b7db
+  languageName: node
+  linkType: hard
+
+"@backstage/core-plugin-api@npm:^1.8.2, @backstage/core-plugin-api@npm:^1.9.0":
   version: 1.9.0
   resolution: "@backstage/core-plugin-api@npm:1.9.0"
   dependencies:
@@ -3004,6 +3036,16 @@ __metadata:
     "@backstage/types": "npm:^1.1.1"
     serialize-error: "npm:^8.0.1"
   checksum: 10/6905832590058344da7893c9dff3f99fad94d173feab16772edadf46ffa4e0c9ee3b5a4deaa7d10b4e9056543e6ab44ab074df72d0e42f897755125a47dad0fd
+  languageName: node
+  linkType: hard
+
+"@backstage/errors@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "@backstage/errors@npm:1.2.7"
+  dependencies:
+    "@backstage/types": "npm:^1.2.1"
+    serialize-error: "npm:^8.0.1"
+  checksum: 10/99bbe2cbb9f6672afe30bab02ab1cf48daa8e994fb0c5b9390075ebf9357d5f7d450b9ea889e908e2823ee47cbf5405432e32171d338653bebf1b5914b735c35
   languageName: node
   linkType: hard
 
@@ -3334,6 +3376,28 @@ __metadata:
   version: 1.1.1
   resolution: "@backstage/types@npm:1.1.1"
   checksum: 10/222f0534af8cc5d144a9ed11ca7118aaa6ec8a15b69dcb51588f4dd716d52944f7a456c9679c1263e9fb8a2684cf55b9d39473938ecf39c85c99ca14a7c048b0
+  languageName: node
+  linkType: hard
+
+"@backstage/types@npm:^1.2.1, @backstage/types@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@backstage/types@npm:1.2.2"
+  checksum: 10/813129ae2f4be2765b54a16457955c8bbeb7cc6685bc2cae8b981ae7010353d9cd1110acf846f5c23cf7fbbb6bee6d56b629d5f59933247bb529f4816218c1e7
+  languageName: node
+  linkType: hard
+
+"@backstage/version-bridge@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "@backstage/version-bridge@npm:1.0.11"
+  peerDependencies:
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^6.3.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/f95f498b33ff8a734ea6c176be12c30f3a95536f1ab6673f2691e9c180d245c8ee5fd27783c8298f8a8a636d43d0a5eb265ff63fa696d1c3e1dae0ba17619c48
   languageName: node
   linkType: hard
 
@@ -4231,7 +4295,7 @@ __metadata:
     "@backstage/cli": "npm:^0.23.1"
     "@backstage/core-app-api": "npm:^1.11.0"
     "@backstage/core-components": "npm:^0.13.6"
-    "@backstage/core-plugin-api": "npm:^1.7.0"
+    "@backstage/core-plugin-api": "npm:^1.11.1"
     "@backstage/dev-utils": "npm:^1.0.22"
     "@backstage/errors": "npm:^1.2.3"
     "@backstage/plugin-catalog-react": "npm:^1.8.5"
@@ -16715,7 +16779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ms@npm:2.1.3, ms@npm:^2.1.1":
+"ms@npm:2.1.3, ms@npm:^2.1.1, ms@npm:^2.1.3":
   version: 2.1.3
   resolution: "ms@npm:2.1.3"
   checksum: 10/aa92de608021b242401676e35cfa5aa42dd70cbdc082b916da7fb925c542173e36bce97ea3e804923fe92c0ad991434e4a38327e15a1b5b5f945d66df615ae6d
