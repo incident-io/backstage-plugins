@@ -2,6 +2,7 @@ import { TestApiProvider, renderInTestApp } from "@backstage/test-utils";
 import React from "react";
 import { IncidentApi, IncidentApiRef } from "../../api/client";
 import { HomePageIncidentCardContent } from "./Content";
+import { ContextProvider } from "./Context";
 
 const mockIncidentApi: jest.Mocked<Partial<IncidentApi>> = {
   request: jest.fn().mockResolvedValue({
@@ -46,7 +47,9 @@ describe("HomePageIncidentCardContent", () => {
   it("should render a list of live incidents", async () => {
     const { getByTestId } = await renderInTestApp(
       <TestApiProvider apis={[[IncidentApiRef, mockIncidentApi]]}>
-        <HomePageIncidentCardContent />
+        <ContextProvider filterType="status_category" filter="active">
+          <HomePageIncidentCardContent />
+        </ContextProvider>
       </TestApiProvider>,
     );
 
