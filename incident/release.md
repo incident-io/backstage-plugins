@@ -24,7 +24,21 @@ git pull
 ```
 
 Use `yarn version` to bump the version number (e.g. `yarn version patch`, or
-`minor`, etc.). Then build the plugin:
+`minor`, etc.):
+
+```shell
+yarn version patch  # or minor, major
+```
+
+Commit and push the version change:
+
+```shell
+git add package.json
+git commit -m "Bump version to $(node -p "require('./package.json').version")"
+git push
+```
+
+Build the plugin:
 
 ```shell
 yarn build
