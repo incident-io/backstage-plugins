@@ -2,6 +2,7 @@ import React from "react";
 import {
   ApiBlueprint,
   createFrontendPlugin,
+  FrontendPlugin,
 } from "@backstage/frontend-plugin-api";
 import {
   discoveryApiRef,
@@ -67,8 +68,10 @@ const homePageIncidentCard = HomePageWidgetBlueprint.make({
     },
   },
 });
+   
+const plugin: FrontendPlugin = createFrontendPlugin({                                                                                         
+    pluginId: "incident",
+    extensions: [incidentApi, entityIncidentCard, homePageIncidentCard],                                                                        
+  });             
 
-export default createFrontendPlugin({
-  pluginId: "incident",
-  extensions: [incidentApi, entityIncidentCard, homePageIncidentCard],
-});
+export default plugin;
