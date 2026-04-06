@@ -36,6 +36,21 @@ First, install the incident plugin via a CLI:
 yarn --cwd packages/app add @incident-io/backstage
 ```
 
+### Using the new extension-based architecture
+
+Next, enable the plugin's extensions in `app-config.yaml`. No other code changes are needed:
+
+```yaml
+app:
+  ...
+  extensions:
+    - entity-card:incident-io/incident
+    - api:incident-io/incident
+    ... 
+```
+
+### Using the legacy Backstage system 
+
 Next, add the plugin to `EntityPage.tsx` in
 `packages/app/src/components/catalog` by adding the following code snippets.
 
