@@ -1,11 +1,13 @@
+/// <reference types="@testing-library/jest-dom" />
 import { TestApiProvider, renderInTestApp } from "@backstage/test-utils";
 import React from "react";
+import { vi, type Mocked } from "vitest";
 import { IncidentApi, IncidentApiRef } from "../../api/client";
 import { HomePageIncidentCardContent } from "./Content";
 import { ContextProvider } from "./Context";
 
-const mockIncidentApi: jest.Mocked<Partial<IncidentApi>> = {
-  request: jest.fn().mockResolvedValue({
+const mockIncidentApi: Mocked<Partial<IncidentApi>> = {
+  request: vi.fn().mockResolvedValue({
     incidents: [
       {
         id: "incident-id",
