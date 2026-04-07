@@ -15,10 +15,13 @@
  */
 import "@testing-library/jest-dom/vitest";
 import "cross-fetch/polyfill";
+
+// eslint-disable-next-line no-console
 const originalError = console.error.bind(console);
+// eslint-disable-next-line no-console
 console.error = (...args: unknown[]) => {                                                                                                     
-    if (typeof args[0] === 'string' && args[0].includes('Could not parse CSS stylesheet')) {                                                    
+  if (typeof args[0] === 'string' && args[0].includes('Could not parse CSS stylesheet')) {                                                    
       return;                                                                                                                                   
-    }                                                                                                                                           
-    originalError(...args);                                                                                                                     
+  }                                                                                                                                           
+  originalError(...args);                                                                                                                     
 };              
