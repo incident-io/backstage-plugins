@@ -18,5 +18,5 @@ jobs:
           node-version: 20                                                                                                                                                     
           cache: yarn                                                                                                                                                          
           cache-dependency-path: incident/yarn.lock                                                                                                                            
-      - run: yarn install --frozen-lockfile                                                                                                                                    
+      - run: yarn install --immutable                                                                                                                              
       - run: npx tsc --noEmit --emitDeclarationOnly false  
