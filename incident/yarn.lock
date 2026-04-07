@@ -3735,6 +3735,7 @@ __metadata:
     "@backstage/core-plugin-api": "npm:>=1.7.0"
     "@backstage/dev-utils": "npm:^1.0.22"
     "@backstage/errors": "npm:^1.2.3"
+    "@backstage/frontend-plugin-api": "npm:^0.15.1"
     "@backstage/plugin-catalog-react": "npm:^2.1.1"
     "@backstage/plugin-home-react": "npm:^0.1.36"
     "@backstage/plugin-search-react": "npm:^1.11.0"
