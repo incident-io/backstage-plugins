@@ -1,0 +1,22 @@
+on:                                                                                                                                                                            
+  push:                                                                                                                                                                        
+    branches: 
+      - master                                                                                                                                                      
+  pull_request:  
+    types: [opened, reopened]
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    defaults:                                                                                                                                                                  
+      run:                                                                                                                                                                     
+        working-directory: incident                                                                                                                                            
+    steps:                                                                                                                                                                     
+      - uses: actions/checkout@v4                                                                                                                                              
+      - uses: actions/setup-node@v4                                                                                                                                         
+        with:
+          node-version: 20                                                                                                                                                     
+          cache: yarn                                                                                                                                                          
+          cache-dependency-path: incident/yarn.lock                                                                                                                            
+      - run: yarn install --frozen-lockfile                                                                                                                                    
+      - run: npx tsc --noEmit --emitDeclarationOnly false  
