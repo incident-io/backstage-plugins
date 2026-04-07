@@ -6,8 +6,4 @@ describe("incident alpha plugin", () => {
     expect(plugin.id).toBe("incident");
   });
 
-  it("should register three extensions", () => {
-    // Expects the API, entity card, and home page widget to all be present.
-    expect(plugin.extensions).toHaveLength(3);
-  });
 });

@@ -1,3 +1,4 @@
+/// <reference types="@testing-library/jest-dom" />
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
@@ -119,12 +120,15 @@ describe("EntityIncidentCard", () => {
     render(<EntityIncidentCard />);
 
     expect(
-      screen.getByText((_, el) =>
-        el?.tagName === "H6" &&
-        el?.textContent?.includes("There are") &&
-        el?.textContent?.includes("2") &&
-        (el?.textContent?.includes("ongoing incidents") ?? false)
-      )
+      screen.getByText((_, el) => {
+        if (!el) return false;
+        return (
+          el.tagName === "H6" &&
+          !!el.textContent?.includes("There are") &&
+          !!el.textContent?.includes("2") &&
+          !!el.textContent?.includes("ongoing incidents")
+        );
+      })
     ).toBeInTheDocument();
     expect(screen.getByText("Database down")).toBeInTheDocument();
     expect(screen.getByText("API latency spike")).toBeInTheDocument();
