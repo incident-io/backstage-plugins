@@ -1,0 +1,23 @@
+name: CI
+on:                                                                                                                                                                            
+  push:                                                                                                                                                                        
+    branches: 
+      - master                                                                                                                                                      
+  pull_request:  
+    branches:
+      - master
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    defaults:                                                                                                                                                                  
+      run:                                                                                                                                                                     
+        working-directory: incident                                                                                                                                            
+    steps:                                                                                                                                                                     
+      - uses: actions/checkout@v6                                                                                                                                              
+      - uses: actions/setup-node@v6                                                                                                                                         
+        with:
+          node-version: 24                                                                                                                                                     
+          cache: yarn                                                                                                                                                          
+          cache-dependency-path: incident/yarn.lock                                                                                                                            
+      - run: yarn install --immutable                                                                                                                              
+      - run: npx tsc --noEmit --emitDeclarationOnly false  
