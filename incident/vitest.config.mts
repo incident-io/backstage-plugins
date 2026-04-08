@@ -7,5 +7,8 @@
       environment: 'jsdom',
       setupFiles: ['./src/setupTests.ts'],                                                                                                      
       globals: true,
+      onConsoleLog(log) {
+        if (log.includes('Could not parse CSS stylesheet')) return false;
+      },
     },                                                                                                                                          
   });             
