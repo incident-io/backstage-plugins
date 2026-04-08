@@ -2693,7 +2693,6 @@ __metadata:
     "@vitest/ui": "npm:^2.0.0"
     cross-fetch: "npm:^3.1.5"
     luxon: "npm:^3.3.0"
-    moment: "npm:^2.29.4"
     msw: "npm:^1.0.0"
     prettier: "npm:3.8.1"
     qs: "npm:^6.14.2"
@@ -16852,13 +16851,6 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 10/d71b8dcd4b5af2fe13ecf3bd24070263489404fe216488c5ba7e38ece1f54daf219e72a833a3a2dc404331e870e9f44963a33399589490956bff003a3404d3b2
-  languageName: node
-  linkType: hard
-
-"moment@npm:^2.29.4":
-  version: 2.30.1
-  resolution: "moment@npm:2.30.1"
-  checksum: 10/ae42d876d4ec831ef66110bdc302c0657c664991e45cf2afffc4b0f6cd6d251dde11375c982a5c0564ccc0fa593fc564576ddceb8c8845e87c15f58aa6baca69
   languageName: node
   linkType: hard
 
