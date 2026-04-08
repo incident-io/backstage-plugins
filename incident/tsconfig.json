@@ -4,6 +4,7 @@
   "compilerOptions": {
     "outDir": "dist-types",
     "declaration": true,
-    "incremental": false
+    "incremental": false,
+    "jsx": "react-jsx"
   }
 }

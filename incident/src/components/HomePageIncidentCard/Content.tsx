@@ -1,7 +1,7 @@
+import { useMemo } from "react";
 import { Progress } from "@backstage/core-components";
 import Link from "@material-ui/core/Link";
 import { Alert } from "@material-ui/lab";
-import React from "react";
 import { useIncidentList } from "../../hooks/useIncidentRequest";
 import { Typography, List } from "@material-ui/core";
 import { IncidentListItem } from "../IncidentListItem";
@@ -14,7 +14,7 @@ export const HomePageIncidentCardContent = () => {
   const baseUrl =
     config.getOptionalString("incident.baseUrl") || "https://app.incident.io";
 
-  const query = React.useMemo(() => {
+  const query = useMemo(() => {
     const params = new URLSearchParams();
     params.set(`${filterType}[one_of]`, filter);
     return params;

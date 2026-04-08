@@ -21,5 +21,5 @@ jobs:
           cache-dependency-path: incident/yarn.lock                                                                                                                            
       - run: yarn install --immutable                                                                                                                              
       - run: npx tsc --noEmit --emitDeclarationOnly false  
-      - run: yarn lint
+      - run: yarn lint --max-warnings 0
       - run: yarn test --run

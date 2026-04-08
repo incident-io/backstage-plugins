@@ -1,6 +1,5 @@
 /// <reference types="@testing-library/jest-dom" />
 import { TestApiProvider, renderInTestApp } from "@backstage/test-utils";
-import React from "react";
 import { vi, type Mocked } from "vitest";
 import { IncidentApi, IncidentApiRef } from "../../api/client";
 import { HomePageIncidentCardContent } from "./Content";
