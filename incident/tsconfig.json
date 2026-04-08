@@ -5,6 +5,7 @@
     "outDir": "dist-types",
     "declaration": true,
     "incremental": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node", "webpack-env", "vitest/globals"]
   }
 }

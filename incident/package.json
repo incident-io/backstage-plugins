@@ -67,7 +67,8 @@
     "react-router-dom": "^6.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.34.4",
+    "@backstage/cli": "^0.36.0",
+    "@backstage/cli-defaults": "^0.1.0",
     "@backstage/core-app-api": "^1.11.0",
     "@backstage/dev-utils": "^1.0.22",
     "@backstage/test-utils": "^1.4.4",
@@ -80,6 +81,7 @@
     "@vitejs/plugin-react": "^4.3.0",
     "@vitest/ui": "^2.0.0",
     "cross-fetch": "^3.1.5",
+    "jsdom": "^29.0.2",
     "msw": "^1.0.0",
     "prettier": "3.8.1",
     "react": "^18.0.0",
