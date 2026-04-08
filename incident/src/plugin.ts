@@ -60,7 +60,7 @@ export const EntityIncidentCard = incidentPlugin.provide(
 
 export const HomePageIncidentCard: (
   props: CardExtensionProps<unknown>,
-) => React.JSX.Element = incidentPlugin.provide(
+) => JSX.Element = incidentPlugin.provide(
   createCardExtension({
     name: "HomePageIncidentCard",
     title: "Ongoing Incidents",

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 type HomePageIncidentCardContextValue = {
   filterType: "status_category" | "status";
@@ -10,7 +10,7 @@ const Context = createContext<HomePageIncidentCardContextValue | undefined>(
 );
 
 export const ContextProvider = (props: {
-  children: React.JSX.Element;
+  children: JSX.Element;
   filterType?: "status_category" | "status";
   filter?: string;
 }) => {
