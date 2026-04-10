@@ -229,7 +229,7 @@ export const EntityOnCallCard = () => {
                       </IconButton>
                     </Tooltip>
                   </Box>
-                  {escalationPath.current_responders.length > 0 && (
+                  {escalationPath.current_responders && escalationPath.current_responders.length > 0 && (
                     <Box mb={1}>
                       <Typography variant="body2"><strong>Current responders:</strong></Typography>
                       {escalationPath.current_responders.map((r) => (

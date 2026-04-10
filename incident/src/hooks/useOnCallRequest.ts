@@ -39,7 +39,7 @@ export type EscalationPathData = {
   id: string;
   name: string;
   path: EscalationPathNode[];
-  current_responders: Array<{ id: string; name: string }>;
+  current_responders?: Array<{ id: string; name: string }>;
 };
 
 export type ScheduleShift = {
