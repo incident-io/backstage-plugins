@@ -170,17 +170,22 @@ export const useOnCallData = (entityExternalId: string, deps?: DependencyList) =
     const escalationPath = escalationAttr ? entry.attribute_values[escalationAttr.id]?.value ?? null : null;
     const schedule = scheduleAttr ? entry.attribute_values[scheduleAttr.id]?.value ?? null : null;
 
-    const escalationPathStatus: 'ok' | 'no_field' | 'empty' =
-      !escalationAttr ? 'no_field' : !escalationPath ? 'empty' : 'ok';
-    const scheduleStatus: 'ok' | 'no_field' | 'empty' =
-      !scheduleAttr ? 'no_field' : !schedule ? 'empty' : 'ok';
+    let escalationPathStatus: 'ok' | 'no_field' | 'empty';
+    if (!escalationAttr) escalationPathStatus = 'no_field';
+    else if (!escalationPath) escalationPathStatus = 'empty';
+    else escalationPathStatus = 'ok';
+
+    let scheduleStatus: 'ok' | 'no_field' | 'empty';
+    if (!scheduleAttr) scheduleStatus = 'no_field';
+    else if (!schedule) scheduleStatus = 'empty';
+    else scheduleStatus = 'ok';
 
     let currentlyOnCall: CatalogAttributeValue[] = [];
     if (schedule) {
       const scheduleEntry = await IncidentApi.request<{ catalog_entry: CatalogEntry }>({
         path: `/v3/catalog_entries/${schedule.literal}`,
       });
-      currentlyOnCall = scheduleEntry.catalog_entry.attribute_values['currently_on_call']?.array_value ?? [];
+      currentlyOnCall = scheduleEntry.catalog_entry.attribute_values.currently_on_call?.array_value ?? [];
     }
 
     return { escalationPath, schedule, currentlyOnCall, escalationPathStatus, scheduleStatus };
