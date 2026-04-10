@@ -31,7 +31,11 @@ beforeEach(() => {
 });
 
 describe("HomePageOnCallCard Content", () => {
+<<<<<<< HEAD
   it("should show a loading indicator while fetching", async () => {
+=======
+  it("should show a loading indicator while fetching", () => {
+>>>>>>> 8131692 (Add tests for on-call cards)
     (useAllEscalationPaths as ReturnType<typeof vi.fn>).mockReturnValue({
       value: undefined,
       loading: true,
@@ -43,12 +47,20 @@ describe("HomePageOnCallCard Content", () => {
       error: undefined,
     });
 
+<<<<<<< HEAD
     await renderInTestApp(<Content />);
+=======
+    render(<Content />);
+>>>>>>> 8131692 (Add tests for on-call cards)
 
     expect(screen.getByTestId("progress")).toBeInTheDocument();
   });
 
+<<<<<<< HEAD
   it("should show empty states when there are no EPs or schedules", async () => {
+=======
+  it("should show empty states when there are no EPs or schedules", () => {
+>>>>>>> 8131692 (Add tests for on-call cards)
     (useAllEscalationPaths as ReturnType<typeof vi.fn>).mockReturnValue({
       value: [],
       loading: false,
@@ -60,13 +72,21 @@ describe("HomePageOnCallCard Content", () => {
       error: undefined,
     });
 
+<<<<<<< HEAD
     await renderInTestApp(<Content />);
+=======
+    render(<Content />);
+>>>>>>> 8131692 (Add tests for on-call cards)
 
     expect(screen.getByText(/No escalation paths/i)).toBeInTheDocument();
     expect(screen.getByText(/No schedules/i)).toBeInTheDocument();
   });
 
+<<<<<<< HEAD
   it("should render EP and schedule names when data is loaded", async () => {
+=======
+  it("should render EP and schedule names when data is loaded", () => {
+>>>>>>> 8131692 (Add tests for on-call cards)
     (useAllEscalationPaths as ReturnType<typeof vi.fn>).mockReturnValue({
       value: [
         { id: "ep-1", name: "Primary EP" },
@@ -81,7 +101,11 @@ describe("HomePageOnCallCard Content", () => {
       error: undefined,
     });
 
+<<<<<<< HEAD
     await renderInTestApp(<Content />);
+=======
+    render(<Content />);
+>>>>>>> 8131692 (Add tests for on-call cards)
 
     expect(screen.getByText("Primary EP")).toBeInTheDocument();
     expect(screen.getByText("Secondary EP")).toBeInTheDocument();
