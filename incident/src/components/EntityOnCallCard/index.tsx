@@ -208,40 +208,57 @@ export const EntityOnCallCard = () => {
         {!loading && !error && value && (
           <>
             {/* Escalation path */}
-            {escalationPath && (
-              <Box mb={2}>
-                <Box display="flex" alignItems="center" justifyContent="space-between">
-                  <Typography variant="subtitle1"><strong>Escalation path:</strong> {escalationPath.name}</Typography>
-                  <Tooltip title="View in incident.io" placement="top">
-                    <IconButton size="small" href={`${baseUrl}/on-call/escalation-paths/${escalationPath.id}`} target="_blank" rel="noopener noreferrer" color="primary">
-                      <OpenInBrowserIcon fontSize="small" />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
-                {escalationPath.current_responders.length > 0 && (
-                  <Box mb={1}>
-                    <Typography variant="body2"><strong>Current responders:</strong></Typography>
-                    {escalationPath.current_responders.map((r) => (
-                      <Typography key={r.id} variant="body2">{r.name}</Typography>
-                    ))}
+            <Box mb={2}>
+              <Typography variant="subtitle1"><strong>Escalation path</strong></Typography>
+              {value.escalationPathStatus === 'no_field' && (
+                <Alert severity="error">No escalation path field on this catalog type — add one in incident.io.</Alert>
+              )}
+              {value.escalationPathStatus === 'empty' && (
+                <Alert severity="warning">Escalation path field is empty for this component.</Alert>
+              )}
+              {value.escalationPathStatus === 'ok' && escalationPath && (
+                <>
+                  <Box display="flex" alignItems="center" justifyContent="space-between">
+                    <Typography variant="subtitle1">{escalationPath.name}</Typography>
+                    <Tooltip title="View in incident.io" placement="top">
+                      <IconButton size="small" href={`${baseUrl}/on-call/escalation-paths/${escalationPath.id}`} target="_blank" rel="noopener noreferrer" color="primary">
+                        <OpenInBrowserIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
                   </Box>
-                )}
-                {renderEscalationNodes(
-                  escalationPath.path,
-                  value.schedule?.literal ?? null,
-                  schedule?.name ?? null,
-                  channelNames,
-                )}
-              </Box>
-            )}
+                  {escalationPath.current_responders.length > 0 && (
+                    <Box mb={1}>
+                      <Typography variant="body2"><strong>Current responders:</strong></Typography>
+                      {escalationPath.current_responders.map((r) => (
+                        <Typography key={r.id} variant="body2">{r.name}</Typography>
+                      ))}
+                    </Box>
+                  )}
+                  {renderEscalationNodes(
+                    escalationPath.path,
+                    value.schedule?.literal ?? null,
+                    schedule?.name ?? null,
+                    channelNames,
+                  )}
+                </>
+              )}
+            </Box>
 
             <Divider />
 
             {/* Schedule */}
-            {schedule && (
-              <Box mt={2}>
+            <Box mt={2}>
+              <Typography variant="subtitle1"><strong>Schedule</strong></Typography>
+              {value.scheduleStatus === 'no_field' && (
+                <Alert severity="error">No schedule field on this catalog type — add one in incident.io.</Alert>
+              )}
+              {value.scheduleStatus === 'empty' && (
+                <Alert severity="warning">Schedule field is empty for this component.</Alert>
+              )}
+              {value.scheduleStatus === 'ok' && schedule && (
+                <>
                 <Box display="flex" alignItems="center" justifyContent="space-between">
-                  <Typography variant="subtitle1"><strong>Schedule:</strong> {schedule.name}</Typography>
+                  <Typography variant="subtitle1">{schedule.name}</Typography>
                   <Tooltip title="View in incident.io" placement="top">
                     <IconButton size="small" href={`${baseUrl}/on-call/schedules/${schedule.id}`} target="_blank" rel="noopener noreferrer" color="primary">
                       <OpenInBrowserIcon fontSize="small" />
@@ -256,8 +273,9 @@ export const EntityOnCallCard = () => {
                     currentShiftEnd={schedule.current_shifts[0]?.end_at ?? null}
                   />
                 ))}
-              </Box>
-            )}
+              </>
+              )}
+            </Box>
           </>
         )}
       </CardContent>

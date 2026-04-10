@@ -256,6 +256,11 @@ export const useOnCallData = (entityExternalId: string, deps?: DependencyList) =
     const escalationPath = escalationAttr ? entry.attribute_values[escalationAttr.id]?.value ?? null : null;
     const schedule = scheduleAttr ? entry.attribute_values[scheduleAttr.id]?.value ?? null : null;
 
+    const escalationPathStatus: 'ok' | 'no_field' | 'empty' =
+      !escalationAttr ? 'no_field' : !escalationPath ? 'empty' : 'ok';
+    const scheduleStatus: 'ok' | 'no_field' | 'empty' =
+      !scheduleAttr ? 'no_field' : !schedule ? 'empty' : 'ok';
+
     // currently_on_call is a path attribute — not resolved on the BackstageComponent entry.
     // Fetch the Schedule catalog entry directly to get it.
     let currentlyOnCall: CatalogAttributeValue[] = [];
@@ -266,6 +271,6 @@ export const useOnCallData = (entityExternalId: string, deps?: DependencyList) =
       currentlyOnCall = scheduleEntry.catalog_entry.attribute_values['currently_on_call']?.array_value ?? [];
     }
 
-    return { escalationPath, schedule, currentlyOnCall };
+    return { escalationPath, schedule, currentlyOnCall, escalationPathStatus, scheduleStatus };
   }, deps);
 };
