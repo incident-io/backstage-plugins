@@ -48,6 +48,13 @@ export const useStyles = makeStyles<BackstageTheme>((theme) => ({
       color: theme.palette.error.main,
     },
   },
+  success: {
+    borderColor: theme.palette.success.main,
+    color: theme.palette.success.main,
+    "& *": {
+      color: theme.palette.success.main,
+    },
+  },
 }));
 
 // Single item in the list of on-going incidents.

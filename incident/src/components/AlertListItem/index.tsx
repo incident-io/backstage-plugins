@@ -44,7 +44,7 @@ export const AlertListItem = ({
               className={
                 ["firing"].includes(alert.status)
                   ? classes.error
-                  : classes.warning
+                  : classes.success
               }
             />
             {alert.title}
