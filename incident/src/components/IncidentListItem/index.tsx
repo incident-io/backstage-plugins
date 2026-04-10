@@ -28,23 +28,24 @@ import {
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import { definitions } from "../../api/types";
 
-const useStyles = makeStyles<BackstageTheme>((theme) => ({
+export const useStyles = makeStyles<BackstageTheme>((theme) => ({
   listItemPrimary: {
     display: "flex", // vertically align with chip
     fontWeight: "bold",
+    gap: theme.spacing(1),    
   },
   warning: {
-    borderColor: theme.palette.status.warning,
-    color: theme.palette.status.warning,
+    borderColor: theme.palette.warning,
+    color: theme.palette.warning,
     "& *": {
-      color: theme.palette.status.warning,
+      color: theme.palette.warning,
     },
   },
   error: {
-    borderColor: theme.palette.status.error,
-    color: theme.palette.status.error,
+    borderColor: theme.palette.error,
+    color: theme.palette.error,
     "& *": {
-      color: theme.palette.status.error,
+      color: theme.palette.error,
     },
   },
 }));

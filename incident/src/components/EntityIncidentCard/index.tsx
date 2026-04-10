@@ -187,7 +187,7 @@ export const EntityIncidentCard = ({
 // to this type of entity.
 //
 // In practice, this will be kind=Component => ID of Affected components field.
-function getEntityFieldID(config: ConfigApi, entity: Entity) {
+export function getEntityFieldID(config: ConfigApi, entity: Entity) {
   switch (entity.kind) {
     case "API":
       return config.getOptional("incident.fields.api");

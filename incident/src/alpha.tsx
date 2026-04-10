@@ -36,6 +36,14 @@ const entityIncidentCard = EntityCardBlueprint.make({
   },
 });
 
+const entityAlertCard = EntityCardBlueprint.make({
+  name: "EntityAlertCard",
+  params: {
+    loader: async () => 
+      import("./components/EntityAlertCard").then(m=><m.EntityAlertCard />),
+  },
+});
+
 const homePageIncidentCard = HomePageWidgetBlueprint.make({
   name: "HomePageIncidentCard",
   params: {
@@ -67,10 +75,21 @@ const homePageIncidentCard = HomePageWidgetBlueprint.make({
     },
   },
 });
+
+
+const homePageAlertCard = HomePageWidgetBlueprint.make({
+  name: "HomePageAlertCard",
+  params: {
+    title: "Ongoing Alerts",    
+    components: () => import("./components/HomePageAlertCard"),
+  },
+});
+
+
    
 const plugin: FrontendPlugin = createFrontendPlugin({                                                                                         
     pluginId: "incident",
-    extensions: [incidentApi, entityIncidentCard, homePageIncidentCard],                                                                        
+    extensions: [incidentApi, entityIncidentCard, entityAlertCard, homePageIncidentCard, homePageAlertCard],                                                                        
   });             
 
 export default plugin;

@@ -11727,6 +11727,100 @@ export interface definitions {
      */
     id: string;
   };
+  //alert types
+  AlertAttributeValue: {
+    catalog_entry?: {
+      catalog_type_id: string;
+      id: string;
+      name: string;
+    };
+    label?: string;
+    literal?: string;
+  };
+  AlertAttributeEntry: {
+    array_value?: definitions["AlertAttributeValue"][];
+    attribute: {
+      array: boolean;
+      emoji?: string;
+      id: string;
+      name: string;
+      required: boolean;
+      type: string;
+    };
+    value?: definitions["AlertAttributeValue"];
+  };
+  AlertV2: {
+    alert_source_id: string;
+    attributes: definitions["AlertAttributeEntry"][];
+    created_at: string;
+    deduplication_key: string;
+    description?: string;
+    id: string;
+    resolved_at?: string;
+    source_url?: string;
+    status: "firing" | "resolved";
+    title: string;
+    /** @enum {string} */
+    updated_at: string;
+  };
+  AlertsV2ListResponseBody: {
+    alerts: definitions["AlertV2"][];
+    pagination_meta: {
+      after?: string;
+      page_size: number;
+    };
+  };
+  AlertSourceV2: {
+    id: string;
+    name: string;
+    source_type: string;
+  };
+  AlertSourcesV2ListResponseBody: {
+    alert_sources: definitions["AlertSourceV2"][];
+  };
+  AlertAttributeDefinition: {
+    id: string;
+    name: string;
+    type: string;
+    array: boolean;
+    emoji?: string;
+    required: boolean;
+  };
+  AlertAttributesV2ListResponseBody: {
+    alert_attributes: definitions["AlertAttributeDefinition"][];
+  };
+  IncidentAlertV2: {
+    id: string;
+    alert_route_id: string;
+    alert: {
+      id: string;
+      alert_source_id: string;
+      created_at: string;
+      updated_at: string;
+      resolved_at?: string;
+      deduplication_key: string;
+      description?: string;
+      source_url?: string;
+      status: "firing" | "resolved";
+      title: string;
+    };
+    incident: {
+      id: string;
+      external_id: number;
+      name: string;
+      reference: string;
+      status_category: string;
+      summary?: string;
+      visibility: string;
+    };
+  };
+  IncidentAlertsV2ListResponseBody: {
+    incident_alerts: definitions["IncidentAlertV2"][];
+    pagination_meta: {
+      after?: string;
+      page_size: number;
+    };
+  };
 }
 
 export interface operations {
