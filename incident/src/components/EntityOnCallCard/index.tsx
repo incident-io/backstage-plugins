@@ -41,7 +41,6 @@ import {
   EscalationPathTarget,
 } from "../../hooks/useOnCallRequest";
 
-
 // ── Schedule helpers ──────────────────────────────────────────────────────────
 
 const intervalTypeToUnit = (type: string): string => {
