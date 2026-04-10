@@ -58,7 +58,7 @@ export const EntityAlertCard = () => {
   const entityFieldID = getEntityFieldID(config, entity);
   const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
 
-  //query for incidents associated with this entity
+  // query for incidents associated with this entity
   const incidentQuery = new URLSearchParams();
   incidentQuery.set(`custom_field[${entityFieldID}][one_of]`, entityID);
 
@@ -66,7 +66,7 @@ export const EntityAlertCard = () => {
     useIncidentList(incidentQuery, [reload]);
   const incidentIds = (incidentsResponse?.incidents ?? []).map(i => i.id);
 
-  //query for alerts linked to those incidents
+  // query for alerts linked to those incidents
   const { value: incidentAlertsResponse, loading: incidentAlertsLoading } =
     useIncidentAlertList(incidentIds, [reload]);
   const linkedAlertIds = new Set(
@@ -78,7 +78,7 @@ export const EntityAlertCard = () => {
   const { value: sourcesResponse } = useAlertSourceList();
   const { value: identityResponse } = useIdentity();
 
-  //get alerts for this entity's incidents
+  // get alerts for this entity's incidents
   const allAlerts = alertsResponse?.alerts ?? [];
   const alerts = incidentIds.length > 0
     ? allAlerts.filter(a => linkedAlertIds.has(a.id))

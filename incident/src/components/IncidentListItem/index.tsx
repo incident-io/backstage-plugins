@@ -35,17 +35,17 @@ export const useStyles = makeStyles<BackstageTheme>((theme) => ({
     gap: theme.spacing(1),    
   },
   warning: {
-    borderColor: theme.palette.warning,
-    color: theme.palette.warning,
+    borderColor: theme.palette.warning.main,
+    color: theme.palette.warning.main,
     "& *": {
-      color: theme.palette.warning,
+      color: theme.palette.warning.main,
     },
   },
   error: {
-    borderColor: theme.palette.error,
-    color: theme.palette.error,
+    borderColor: theme.palette.error.main,
+    color: theme.palette.error.main,
     "& *": {
-      color: theme.palette.error,
+      color: theme.palette.error.main,
     },
   },
 }));

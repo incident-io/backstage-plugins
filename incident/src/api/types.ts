@@ -11727,7 +11727,7 @@ export interface definitions {
      */
     id: string;
   };
-  //alert types
+  // alert types
   AlertAttributeValue: {
     catalog_entry?: {
       catalog_type_id: string;

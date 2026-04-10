@@ -7,7 +7,6 @@ import {
   useIncidentAlertList,
   useAlertSourceList,
   useAlertAttributeList,
-  useAlert,
 } from "./useIncidentRequest";
 
 // Mock @backstage/core-plugin-api so useApi returns our fake client
@@ -191,33 +190,6 @@ describe("useAlertAttributeList", () => {
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.value).toEqual(mockResponse);
-    expect(result.current.error).toBeUndefined();
-  });
-});
-
-describe("useAlert", () => {
-  it("should return a single alert from the API", async () => {
-    const mockResponse = {
-      id: "alert-1",
-      title: "High error rate",
-      status: "firing",
-      created_at: "2026-04-09T12:00:00Z",
-      updated_at: "2026-04-09T12:00:00Z",
-      deduplication_key: "abc123",
-      alert_source_id: "src-1",
-      attributes: [],
-    };
-    const mockRequest = vi.fn().mockResolvedValue(mockResponse);
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({ request: mockRequest });
-
-    const { result } = renderHook(() => useAlert("alert-1"));
-
-    await waitFor(() => expect(result.current.loading).toBe(false));
-
-    expect(result.current.value).toEqual(mockResponse);
-    expect(mockRequest).toHaveBeenCalledWith(
-      expect.objectContaining({ path: "/v2/alerts/alert-1" }),
-    );
     expect(result.current.error).toBeUndefined();
   });
 });
