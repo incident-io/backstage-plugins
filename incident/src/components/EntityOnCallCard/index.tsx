@@ -25,19 +25,21 @@ import {
   IconButton,
   Tooltip,
   Typography,
+  Collapse,
 } from "@material-ui/core";
 import CachedIcon from "@material-ui/icons/Cached";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import { Alert } from "@material-ui/lab";
 import { useState } from "react";
+import { useIdentity } from "../../hooks/useIncidentRequest";
 import {
   useOnCallData,
   useSchedule,
   useEscalationPath,
-  useIdentity,
   ScheduleRotation,
   EscalationPathNode,
-} from "../../hooks/useIncidentRequest";
+  EscalationPathTarget,
+} from "../../hooks/useOnCallRequest";
 
 // ── Schedule helpers ──────────────────────────────────────────────────────────
 
@@ -138,7 +140,7 @@ const renderEscalationNodes = (
       return (
         <Box key={node.id} ml={`${indent}px`} mt={0.5}>
           <Typography variant="body2" color="textSecondary">
-            └ Retry {node.repeat.repeat_times}× from start
+            └ Retry {node.repeat.repeat_times}x from start
           </Typography>
         </Box>
       );
@@ -151,12 +153,12 @@ const renderEscalationNodes = (
           <Typography variant="body2"><strong>If {condLabel}:</strong></Typography>
           {node.if_else.then_path.length > 0
             ? renderEscalationNodes(node.if_else.then_path, scheduleId, scheduleName, channelNames, depth + 1)
-            : <Box ml="16px"><Typography variant="body2" color="textSecondary">└ (nothing)</Typography></Box>
+            : <Box ml="16px"><Typography variant="body2" color="textSecondary">└ Do nothing</Typography></Box>
           }
           <Typography variant="body2" style={{ marginTop: 4 }}><strong>Otherwise:</strong></Typography>
           {node.if_else.else_path.length > 0
             ? renderEscalationNodes(node.if_else.else_path, scheduleId, scheduleName, channelNames, depth + 1)
-            : <Box ml="16px"><Typography variant="body2" color="textSecondary">└ (nothing)</Typography></Box>
+            : <Box ml="16px"><Typography variant="body2" color="textSecondary">└ Do nothing</Typography></Box>
           }
         </Box>
       );
@@ -170,6 +172,7 @@ const renderEscalationNodes = (
 export const EntityOnCallCard = () => {
   const { entity } = useEntity();
   const [reload, setReload] = useState(false);
+  const [showPath, setShowPath] = useState(false);
 
   const entityExternalId = `${entity.metadata.namespace}/${entity.metadata.name}`;
 
@@ -234,12 +237,26 @@ export const EntityOnCallCard = () => {
                       ))}
                     </Box>
                   )}
-                  {renderEscalationNodes(
-                    escalationPath.path,
-                    value.schedule?.literal ?? null,
-                    schedule?.name ?? null,
-                    channelNames,
-                  )}
+                  <Box
+                    display="inline-flex"
+                    alignItems="center"
+                    style={{ cursor: "pointer", gap: 4 }}
+                    onClick={() => setShowPath(p => !p)}
+                    mt={0.5}
+                    mb={0.5}
+                  >
+                    <Typography variant="button" color="primary">
+                      {showPath ? "Hide path ▲" : "Show path ▼"}
+                    </Typography>
+                  </Box>
+                  <Collapse in={showPath}>
+                    {renderEscalationNodes(
+                      escalationPath.path,
+                      value.schedule?.literal ?? null,
+                      schedule?.name ?? null,
+                      channelNames,
+                    )}
+                  </Collapse>
                 </>
               )}
             </Box>
