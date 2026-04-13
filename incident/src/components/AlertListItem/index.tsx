@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
-import { definitions } from "../../api/types";
+import { components } from "../../api/types";
 import { useStyles } from "../IncidentListItem";
 
 // Single item in the list of on-going alerts.
@@ -20,7 +20,7 @@ export const AlertListItem = ({
   priority
 }: {
   baseUrl: string;
-  alert: definitions["AlertV2"];
+  alert: components["schemas"]["AlertV2"];
   source: string;
   priority?: string; 
 }) => {
