@@ -70,6 +70,16 @@ export const EntityAlertCard = incidentPlugin.provide(
   }),
 );
 
+export const HomePageAlertCard: (
+  props: CardExtensionProps<unknown>,
+) => JSX.Element = incidentPlugin.provide(
+  createCardExtension({
+    name: "HomePageAlertCard",
+    title: "Firing Alerts",
+    components: () => import("./components/HomePageAlertCard"),
+  }),
+);
+
 export const HomePageIncidentCard: (
   props: CardExtensionProps<unknown>,
 ) => JSX.Element = incidentPlugin.provide(

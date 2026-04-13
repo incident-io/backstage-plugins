@@ -75,10 +75,21 @@ const homePageIncidentCard = HomePageWidgetBlueprint.make({
     },
   },
 });
+
+
+const homePageAlertCard = HomePageWidgetBlueprint.make({
+  name: "HomePageAlertCard",
+  params: {
+    title: "Ongoing Alerts",    
+    components: () => import("./components/HomePageAlertCard"),
+  },
+});
+
+
    
 const plugin: FrontendPlugin = createFrontendPlugin({                                                                                         
     pluginId: "incident",
-    extensions: [incidentApi, entityIncidentCard, entityAlertCard, homePageIncidentCard],                                                                        
+    extensions: [incidentApi, entityIncidentCard, entityAlertCard, homePageIncidentCard, homePageAlertCard],                                                                        
   });             
 
 export default plugin;
