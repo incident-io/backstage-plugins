@@ -51,7 +51,7 @@ const intervalTypeToUnit = (type: string): string => {
 const formatInterval = (rotation: ScheduleRotation): string => {
   const h = rotation.handovers[0];
   if (!h) return "";
-  const unit = intervalTypeToUnit(h.interval_type);
+  const unit = intervalTypeToUnit(h.interval_type ?? '');
   return `Rotate every ${h.interval} ${unit}${h.interval !== 1 ? "s" : ""}`;
 };
 
@@ -125,7 +125,7 @@ const renderEscalationNodes = (
 
     if ((node.type === "level" && node.level) || (node.type === "notify_channel" && node.notify_channel)) {
       const data = node.level ?? node.notify_channel!;
-      const minutes = Math.floor(data.time_to_ack_seconds / 60);
+      const minutes = Math.floor((data.time_to_ack_seconds ?? 0) / 60);
       const label = data.targets.map(t => targetLabel(t, scheduleId, scheduleName, channelNames)).join(", ");
       const prefix = node.type === "notify_channel" ? "Notify" : "Page";
       return (
@@ -282,12 +282,12 @@ export const EntityOnCallCard = () => {
                     </IconButton>
                   </Tooltip>
                 </Box>
-                {schedule.config.rotations.map((rotation) => (
+                {schedule.config?.rotations.map((rotation) => (
                   <RotationDisplay
                     key={rotation.id}
                     rotation={rotation}
-                    currentUserId={schedule.current_shifts[0]?.user.id ?? null}
-                    currentShiftEnd={schedule.current_shifts[0]?.end_at ?? null}
+                    currentUserId={schedule.current_shifts?.[0]?.user?.id ?? null}
+                    currentShiftEnd={schedule.current_shifts?.[0]?.end_at ?? null}
                   />
                 ))}
               </>
