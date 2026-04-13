@@ -111,3 +111,14 @@ If you don't have a custom field set up for one of these entities, then you
 can omit that field completely. If you try and include the `EntityIncidentCard`
 on the page for an entity which doesn't have the configuration, we'll show you
 an error that directs you to update your config.
+
+If you are using the on-call card, you must also provide the ID of the
+incident.io catalog type that maps to your Backstage components. You can find
+this in the incident.io dashboard under **Settings → Catalog**, or from the
+URL when viewing the type (e.g. `https://app.incident.io/~/catalog/types/01ABC...`):
+
+```yaml
+incident:
+  onCall:
+    catalogTypeId: "<id-of-backstage-component-catalog-type>"
+```

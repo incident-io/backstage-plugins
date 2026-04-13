@@ -1,4 +1,4 @@
-import { useApi } from "@backstage/core-plugin-api";
+import { useApi, configApiRef } from "@backstage/core-plugin-api";
 import { useAsync } from "react-use";
 import { IncidentApiRef } from "../api/client";
 import { components } from "../api/types";
@@ -75,25 +75,24 @@ export const useSchedule = (scheduleId: string | null, deps?: DependencyList) =>
 
 export const useOnCallData = (entityExternalId: string, deps?: DependencyList) => {
   const IncidentApi = useApi(IncidentApiRef);
+  const config = useApi(configApiRef);
 
   return useAsync(async () => {
-    const typesResponse = await IncidentApi.request<components["schemas"]["CatalogListTypesResultV3"]>({
-      path: `/v3/catalog_types`,
+    const catalogTypeId = config.getString("incident.onCall.catalogTypeId");
+
+    const typeResponse = await IncidentApi.request<components["schemas"]["CatalogShowTypeResultV3"]>({
+      path: `/v3/catalog_types/${catalogTypeId}`,
     });
 
-    const backstageType = typesResponse.catalog_types.find(
-      t => t.type_name === 'Custom["BackstageComponent"]',
-    );
-    if (!backstageType) throw new Error('BackstageComponent catalog type not found in incident.io');
-
-    const escalationAttr = backstageType.schema.attributes.find(a => a.type === 'EscalationPath');
-    const scheduleAttr = backstageType.schema.attributes.find(a => a.type === 'Schedule');
+    const { schema } = typeResponse.catalog_type;
+    const escalationAttr = schema.attributes.find(a => a.type === 'EscalationPath');
+    const scheduleAttr = schema.attributes.find(a => a.type === 'Schedule');
 
     const entriesResponse = await IncidentApi.request<components["schemas"]["CatalogListEntriesResultV3"]>({
-      path: `/v3/catalog_entries?catalog_type_id=${backstageType.id}&search=${encodeURIComponent(entityExternalId)}&page_size=25`,
+      path: `/v3/catalog_entries?catalog_type_id=${catalogTypeId}&identifier=${encodeURIComponent(entityExternalId)}&page_size=1`,
     });
 
-    const entry = entriesResponse.catalog_entries.find(e => e.external_id === entityExternalId);
+    const entry = entriesResponse.catalog_entries[0];
     if (!entry) throw new Error(`No incident.io catalog entry found for ${entityExternalId}`);
 
     const escalationPath = escalationAttr ? entry.attribute_values[escalationAttr.id]?.value ?? null : null;
