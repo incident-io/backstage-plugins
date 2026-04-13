@@ -71,7 +71,7 @@
     "@backstage/cli-defaults": "^0.1.0",
     "@backstage/core-app-api": "^1.11.0",
     "@backstage/dev-utils": "^1.1.21",
-    "@backstage/test-utils": "^1.4.4",
+    "@backstage/test-utils": "^1.7.16",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^16.0.0",
