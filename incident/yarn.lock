@@ -1070,17 +1070,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/config@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@backstage/config@npm:1.1.1"
-  dependencies:
-    "@backstage/errors": "npm:^1.2.3"
-    "@backstage/types": "npm:^1.1.1"
-    lodash: "npm:^4.17.21"
-  checksum: 10/1119ca585b9bf361499eb728118c06e4726332022bc1caebdd188d1c0c5fd01366c167ec49b119d0d98993c9d3496f3829cb139fcf2375fd7b3ed79d7bd64fc6
-  languageName: node
-  linkType: hard
-
 "@backstage/config@npm:^1.3.6":
   version: 1.3.6
   resolution: "@backstage/config@npm:1.3.6"
@@ -1089,31 +1078,6 @@ __metadata:
     "@backstage/types": "npm:^1.2.2"
     ms: "npm:^2.1.3"
   checksum: 10/668245a7eb20681ec0864540b8db1a99df40e17181c561b70ef8a3a644e8ceae31b4defe2bf696d31af17ea14d7cf1927459bf3ce91a530cb7b505647430c58a
-  languageName: node
-  linkType: hard
-
-"@backstage/core-app-api@npm:^1.11.0":
-  version: 1.12.0
-  resolution: "@backstage/core-app-api@npm:1.12.0"
-  dependencies:
-    "@backstage/config": "npm:^1.1.1"
-    "@backstage/core-plugin-api": "npm:^1.9.0"
-    "@backstage/types": "npm:^1.1.1"
-    "@backstage/version-bridge": "npm:^1.0.7"
-    "@types/prop-types": "npm:^15.7.3"
-    "@types/react": "npm:^16.13.1 || ^17.0.0 || ^18.0.0"
-    history: "npm:^5.0.0"
-    i18next: "npm:^22.4.15"
-    lodash: "npm:^4.17.21"
-    prop-types: "npm:^15.7.2"
-    react-use: "npm:^17.2.4"
-    zen-observable: "npm:^0.10.0"
-    zod: "npm:^3.22.4"
-  peerDependencies:
-    react: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-router-dom: 6.0.0-beta.0 || ^6.3.0
-  checksum: 10/1f49d16350752886f677abeec09229ee43d1541d4d5793f0102b04a8e7f88ab7476ef93b826eba9cefce81948adea08592b84652e55ee8d85a5bd1f7616cfb38
   languageName: node
   linkType: hard
 
@@ -1253,24 +1217,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/core-plugin-api@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "@backstage/core-plugin-api@npm:1.9.0"
-  dependencies:
-    "@backstage/config": "npm:^1.1.1"
-    "@backstage/errors": "npm:^1.2.3"
-    "@backstage/types": "npm:^1.1.1"
-    "@backstage/version-bridge": "npm:^1.0.7"
-    "@types/react": "npm:^16.13.1 || ^17.0.0 || ^18.0.0"
-    history: "npm:^5.0.0"
-  peerDependencies:
-    react: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-router-dom: 6.0.0-beta.0 || ^6.3.0
-  checksum: 10/cf8856f050901075b026b6d767a06ef6336bddb4c9a9ade6272ed458e3f4283c9e9af1a26f632fb8b9d9f2b9b3418a7fa7560c0688ce0024b8eb46125d0d1b40
-  languageName: node
-  linkType: hard
-
 "@backstage/dev-utils@npm:^1.1.21":
   version: 1.1.21
   resolution: "@backstage/dev-utils@npm:1.1.21"
@@ -1296,16 +1242,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10/b7d6ee4637056c0d82670ab91983fedbf74b5703908b1448eb225d49a15fcf99f7f75297769e52fa62f37bb62a6702f0b5b3524d7cf50e96f2f2ca511c21a88f
-  languageName: node
-  linkType: hard
-
-"@backstage/errors@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "@backstage/errors@npm:1.2.3"
-  dependencies:
-    "@backstage/types": "npm:^1.1.1"
-    serialize-error: "npm:^8.0.1"
-  checksum: 10/6905832590058344da7893c9dff3f99fad94d173feab16772edadf46ffa4e0c9ee3b5a4deaa7d10b4e9056543e6ab44ab074df72d0e42f897755125a47dad0fd
   languageName: node
   linkType: hard
 
@@ -1662,13 +1598,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/types@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@backstage/types@npm:1.1.1"
-  checksum: 10/222f0534af8cc5d144a9ed11ca7118aaa6ec8a15b69dcb51588f4dd716d52944f7a456c9679c1263e9fb8a2684cf55b9d39473938ecf39c85c99ca14a7c048b0
-  languageName: node
-  linkType: hard
-
 "@backstage/types@npm:^1.2.1, @backstage/types@npm:^1.2.2":
   version: 1.2.2
   resolution: "@backstage/types@npm:1.2.2"
@@ -1710,19 +1639,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10/a577e272e0c5ca1aa6cd5222faa33b44bd98ee9c777ce05d0c9904cc2d70b002be0a8467d8e4228f74fc0da5a95d08d2c413f091e74d34eb3d658b152338692f
-  languageName: node
-  linkType: hard
-
-"@backstage/version-bridge@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@backstage/version-bridge@npm:1.0.7"
-  dependencies:
-    "@types/react": "npm:^16.13.1 || ^17.0.0"
-  peerDependencies:
-    react: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
-    react-router-dom: 6.0.0-beta.0 || ^6.3.0
-  checksum: 10/257c468cac45a24c3b23e7d29fbf85f8ba6a5a4a20c80dd6965e5068259a7685eb88b83634d3e8b180c95c8826d1abbb655766c8b864b5ae476fff7beeb15a81
   languageName: node
   linkType: hard
 
@@ -2562,7 +2478,7 @@ __metadata:
     "@backstage/catalog-model": "npm:^1.7.7"
     "@backstage/cli": "npm:^0.36.0"
     "@backstage/cli-defaults": "npm:^0.1.0"
-    "@backstage/core-app-api": "npm:^1.11.0"
+    "@backstage/core-app-api": "npm:^1.19.6"
     "@backstage/core-components": "npm:^0.18.8"
     "@backstage/core-plugin-api": "npm:^1.11.1"
     "@backstage/dev-utils": "npm:^1.1.21"
@@ -7362,7 +7278,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^16.13.1 || ^17.0.0 || ^18.0.0":
+"@types/react@npm:*":
   version: 18.2.60
   resolution: "@types/react@npm:18.2.60"
   dependencies:
@@ -7370,17 +7286,6 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/5f2f6091623f13375a5bbc7e5c222cd212b5d6366ead737b76c853f6f52b314db24af5ae3f688d2d49814c668c216858a75433f145311839d8989d46bb3cbecf
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^16.13.1 || ^17.0.0":
-  version: 17.0.76
-  resolution: "@types/react@npm:17.0.76"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10/1a46c86a6dc9d407ccceb47c534599b73331d3d9581c4ce75f12a7b1442ebc40688fa2fad05bfef96080f80310c4189ab03516fbacc4d12e3fb96660c6b2d45e
   languageName: node
   linkType: hard
 
@@ -22430,13 +22335,6 @@ __metadata:
   peerDependencies:
     zod: ^3.25.0 || ^4.0.0
   checksum: 10/5e35ca8ebb4602dcb526e122d7e9fca695c4a479bd97535f3400a732d49160f24f7213a9ed64986fc9dc3a2e8a6c4e1241ec0c4d8a4e3e69ea91a0328ded2192
-  languageName: node
-  linkType: hard
-
-"zod@npm:^3.22.4":
-  version: 3.22.4
-  resolution: "zod@npm:3.22.4"
-  checksum: 10/73622ca36a916f785cf528fe612a884b3e0f183dbe6b33365a7d0fc92abdbedf7804c5e2bd8df0a278e1472106d46674281397a3dd800fa9031dc3429758c6ac
   languageName: node
   linkType: hard
 
