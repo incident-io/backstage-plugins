@@ -70,6 +70,28 @@ export const EntityAlertCard = incidentPlugin.provide(
   }),
 );
 
+export const EntityOnCallCard = incidentPlugin.provide(
+  createComponentExtension({
+    name: "EntityOnCallCard",
+    component: {
+      lazy: () =>
+        import("./components/EntityOnCallCard").then(
+          (m) => m.EntityOnCallCard,
+        ),
+    },
+  }),
+);
+
+export const HomePageOnCallCard: (
+  props: CardExtensionProps<unknown>,
+) => JSX.Element = incidentPlugin.provide(
+  createCardExtension({
+    name: "HomePageOnCallCard",
+    title: "On-call",
+    components: () => import("./components/HomePageOnCallCard"),
+  }),
+);
+
 export const HomePageAlertCard: (
   props: CardExtensionProps<unknown>,
 ) => JSX.Element = incidentPlugin.provide(
