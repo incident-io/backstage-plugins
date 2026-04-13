@@ -623,18 +623,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/catalog-model@npm:^1.4.3":
-  version: 1.4.4
-  resolution: "@backstage/catalog-model@npm:1.4.4"
-  dependencies:
-    "@backstage/errors": "npm:^1.2.3"
-    "@backstage/types": "npm:^1.1.1"
-    ajv: "npm:^8.10.0"
-    lodash: "npm:^4.17.21"
-  checksum: 10/872e9ae2e2cbe36557924d60d7f56fc4079a4d3cc1e8c67f1a7e523dbbcb2aa16491051d22803f661384e6a65688548724197814dbbc5653c61cc82fbea3685d
-  languageName: node
-  linkType: hard
-
 "@backstage/catalog-model@npm:^1.7.6, @backstage/catalog-model@npm:^1.7.7":
   version: 1.7.7
   resolution: "@backstage/catalog-model@npm:1.7.7"
@@ -2612,7 +2600,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@incident-io/backstage@workspace:."
   dependencies:
-    "@backstage/catalog-model": "npm:^1.4.3"
+    "@backstage/catalog-model": "npm:^1.7.7"
     "@backstage/cli": "npm:^0.36.0"
     "@backstage/cli-defaults": "npm:^0.1.0"
     "@backstage/core-app-api": "npm:^1.11.0"
