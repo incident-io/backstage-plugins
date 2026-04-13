@@ -48316,6 +48316,7603 @@ export interface components {
       workflow: components["schemas"]["WorkflowV2"];
     };
   };
+  // alert types
+  AlertAttributeValue: {
+    catalog_entry?: {
+      catalog_type_id: string;
+      id: string;
+      name: string;
+      /**
+       * Format: int64
+       * @description Rank to help sort severities (lower numbers are less severe)
+       * @example 1
+       */
+      rank?: number;
+    };
+    /**
+     * @example {
+     *   "severity": {
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Issues with **low impact**.",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "name": "Minor",
+     *     "rank": 1,
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    SeveritiesUpdateResultV1: {
+      severity: components["schemas"]["SeverityV1"];
+    };
+    /**
+     * @example {
+     *   "created_at": "2021-08-17T13:28:57.801578Z",
+     *   "description": "Issues with **low impact**.",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Minor",
+     *   "rank": 1,
+     *   "updated_at": "2021-08-17T13:28:57.801578Z"
+     * }
+     */
+    SeverityV1: {
+      /**
+       * Format: date-time
+       * @description When the action was created
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      created_at: string;
+      /**
+       * @description Description of the severity
+       * @example Issues with **low impact**.
+       */
+      description: string;
+      /**
+       * @description Unique identifier of the severity
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Human readable name of the severity
+       * @example Minor
+       */
+      name: string;
+      /**
+       * Format: int64
+       * @description Rank to help sort severities (lower numbers are less severe)
+       * @example 1
+       */
+      rank: number;
+      /**
+       * Format: date-time
+       * @description When the action was last updated
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      updated_at: string;
+    };
+    /**
+     * @example {
+     *   "created_at": "2021-08-17T13:28:57.801578Z",
+     *   "description": "Issues with **low impact**.",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Minor",
+     *   "rank": 1,
+     *   "updated_at": "2021-08-17T13:28:57.801578Z"
+     * }
+     */
+    SeverityV2: {
+      /**
+       * Format: date-time
+       * @description When the action was created
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      created_at: string;
+      /**
+       * @description Description of the severity
+       * @example Issues with **low impact**.
+       */
+      description: string;
+      /**
+       * @description Unique identifier of the severity
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Human readable name of the severity
+       * @example Minor
+       */
+      name: string;
+      /**
+       * Format: int64
+       * @description Rank to help sort severities (lower numbers are less severe)
+       * @example 1
+       */
+      rank: number;
+      /**
+       * Format: date-time
+       * @description When the action was last updated
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      updated_at: string;
+    };
+    /**
+     * @example {
+     *   "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *   "component_status": "operational"
+     * }
+     */
+    StatusPageIncidentAffectedComponentV2: {
+      /**
+       * @description The ID of the affected component. This may be found by calling the ShowStatusPageStructure endpoint.
+       * @example 01FCNDV6P870EA6S7TK1DSYDG2
+       */
+      component_id: string;
+      /**
+       * @description The status of the relevant component in a status page incident
+       * @example operational
+       * @enum {string}
+       */
+      component_status:
+        | "operational"
+        | "degraded_performance"
+        | "partial_outage"
+        | "full_outage";
+    };
+    /**
+     * @example {
+     *   "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *   "component_status": "degraded_performance",
+     *   "end_at": "2021-08-17T13:28:57.801578Z",
+     *   "start_at": "2021-08-17T13:28:57.801578Z"
+     * }
+     */
+    StatusPageIncidentComponentImpactV2: {
+      /**
+       * @description The ID of the affected component. This may be found by calling the ShowStatusPageStructure endpoint.
+       * @example 01GW7P4ES31Q6V1ZQH321T0GJN
+       */
+      component_id: string;
+      /**
+       * @description The status of the relevant component impact in a status page incident - this excludes the operational status.
+       * @example degraded_performance
+       * @enum {string}
+       */
+      component_status:
+        | "degraded_performance"
+        | "partial_outage"
+        | "full_outage";
+      /**
+       * Format: date-time
+       * @description When the component left this status. If this is null, the impact is ongoing.
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      end_at?: string;
+      /**
+       * Format: date-time
+       * @description When the component entered this status
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      start_at: string;
+    };
+    /**
+     * @example {
+     *   "component_statuses": [
+     *     {
+     *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *       "component_status": "operational"
+     *     }
+     *   ],
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "incident_status": "investigating",
+     *   "message": "abc123",
+     *   "published_at": "2021-08-17T13:28:57.801578Z",
+     *   "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     * }
+     */
+    StatusPageIncidentUpdateV2: {
+      /**
+       * @description The updated statuses of affected components
+       * @example [
+       *   {
+       *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *     "component_status": "operational"
+       *   }
+       * ]
+       */
+      component_statuses: components["schemas"]["StatusPageIncidentAffectedComponentV2"][];
+      /**
+       * @description A unique ID for this status page incident update
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Current status for this incident
+       * @example investigating
+       * @enum {string}
+       */
+      incident_status:
+        | "investigating"
+        | "identified"
+        | "monitoring"
+        | "resolved";
+      /**
+       * @description Markdown update on what's changed about this status page incident
+       * @example abc123
+       */
+      message: string;
+      /**
+       * Format: date-time
+       * @description When this status page incident update was published to the status page
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      published_at: string;
+      /**
+       * @description The ID of the corresponding status page incident
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      status_page_incident_id: string;
+    };
+    /**
+     * @example {
+     *   "component_impacts": [
+     *     {
+     *       "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *       "component_status": "degraded_performance",
+     *       "end_at": "2021-08-17T13:28:57.801578Z",
+     *       "start_at": "2021-08-17T13:28:57.801578Z"
+     *     }
+     *   ],
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "incident_status": "investigating",
+     *   "name": "Elevated API latency",
+     *   "published_at": "2021-08-17T13:28:57.801578Z",
+     *   "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "updates": [
+     *     {
+     *       "component_statuses": [
+     *         {
+     *           "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *           "component_status": "operational"
+     *         }
+     *       ],
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "incident_status": "investigating",
+     *       "message": "abc123",
+     *       "published_at": "2021-08-17T13:28:57.801578Z",
+     *       "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *     }
+     *   ]
+     * }
+     */
+    StatusPageIncidentV2: {
+      /**
+       * @description A list of time periods that this status page incident had an impact on a component
+       * @example [
+       *   {
+       *     "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+       *     "component_status": "degraded_performance",
+       *     "end_at": "2021-08-17T13:28:57.801578Z",
+       *     "start_at": "2021-08-17T13:28:57.801578Z"
+       *   }
+       * ]
+       */
+      component_impacts: components["schemas"]["StatusPageIncidentComponentImpactV2"][];
+      /**
+       * @description A unique ID for this status page incident
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Current status for this incident
+       * @example investigating
+       * @enum {string}
+       */
+      incident_status:
+        | "investigating"
+        | "identified"
+        | "monitoring"
+        | "resolved";
+      /**
+       * @description A title for the incident
+       * @example Elevated API latency
+       */
+      name: string;
+      /**
+       * Format: date-time
+       * @description When this status page incident was published to the status page
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      published_at: string;
+      /**
+       * @description The ID of the corresponding status page
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      status_page_id: string;
+      /**
+       * @description A list of updates posted to this status page incident
+       * @example [
+       *   {
+       *     "component_statuses": [
+       *       {
+       *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *         "component_status": "operational"
+       *       }
+       *     ],
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "incident_status": "investigating",
+       *     "message": "abc123",
+       *     "published_at": "2021-08-17T13:28:57.801578Z",
+       *     "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+       *   }
+       * ]
+       */
+      updates: components["schemas"]["StatusPageIncidentUpdateV2"][];
+    };
+    /**
+     * @example {
+     *   "id": "01FDAG4SAH3GYPT98WGR2N7W91",
+     *   "linked_at": "2021-08-17T13:28:57.801578Z"
+     * }
+     */
+    StatusPageLinkedResponseIncidentV1: {
+      /**
+       * @description ID of the Response incident
+       * @example 01FDAG4SAH3GYPT98WGR2N7W91
+       */
+      id: string;
+      /**
+       * Format: date-time
+       * @description When the Response incident was linked to the status page incident
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      linked_at: string;
+    };
+    /**
+     * @example {
+     *   "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *   "component_status": "operational"
+     * }
+     */
+    StatusPageMaintenanceAffectedComponentV2: {
+      /**
+       * @description The ID of the affected component. This may be found by calling the ShowStatusPageStructure endpoint.
+       * @example 01FCNDV6P870EA6S7TK1DSYDG2
+       */
+      component_id: string;
+      /**
+       * @description The status of the relevant component in a status page maintenance window
+       * @example operational
+       * @enum {string}
+       */
+      component_status: "operational" | "under_maintenance";
+    };
+    /**
+     * @example {
+     *   "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *   "end_at": "2021-08-17T13:28:57.801578Z",
+     *   "start_at": "2021-08-17T13:28:57.801578Z"
+     * }
+     */
+    StatusPageMaintenanceComponentMaintenancePeriodV2: {
+      /**
+       * @description The ID of the affected component. This may be found by calling the ShowStatusPageStructure endpoint.
+       * @example 01GW7P4ES31Q6V1ZQH321T0GJN
+       */
+      component_id: string;
+      /**
+       * Format: date-time
+       * @description When the component stopped being under maintenance. If this is null, the impact is ongoing.
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      end_at?: string;
+      /**
+       * Format: date-time
+       * @description When the component started being under maintenance
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      start_at: string;
+    };
+    /**
+     * @example {
+     *   "component_statuses": [
+     *     {
+     *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *       "component_status": "operational"
+     *     }
+     *   ],
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "maintenance_status": "maintenance_scheduled",
+     *   "message": "abc123",
+     *   "published_at": "2021-08-17T13:28:57.801578Z",
+     *   "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     * }
+     */
+    StatusPageMaintenanceUpdateV2: {
+      /**
+       * @description The updated statuses of affected components
+       * @example [
+       *   {
+       *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *     "component_status": "operational"
+       *   }
+       * ]
+       */
+      component_statuses: components["schemas"]["StatusPageMaintenanceAffectedComponentV2"][];
+      /**
+       * @description A unique ID for this status page maintenance update
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Current status for this maintenance window
+       * @example maintenance_scheduled
+       * @enum {string}
+       */
+      maintenance_status:
+        | "maintenance_scheduled"
+        | "maintenance_in_progress"
+        | "maintenance_complete";
+      /**
+       * @description Markdown update on what's changed about this status page maintenance window
+       * @example abc123
+       */
+      message: string;
+      /**
+       * Format: date-time
+       * @description When this status page maintenance update was published to the status page
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      published_at: string;
+      /**
+       * @description The ID of the corresponding status page maintenance window
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      status_page_maintenance_id: string;
+    };
+    /**
+     * @example {
+     *   "component_maintenance_periods": [
+     *     {
+     *       "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *       "end_at": "2021-08-17T13:28:57.801578Z",
+     *       "start_at": "2021-08-17T13:28:57.801578Z"
+     *     }
+     *   ],
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "maintenance_status": "maintenance_scheduled",
+     *   "name": "Routine infrastructure upgrade",
+     *   "published_at": "2021-08-17T13:28:57.801578Z",
+     *   "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "updates": [
+     *     {
+     *       "component_statuses": [
+     *         {
+     *           "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *           "component_status": "operational"
+     *         }
+     *       ],
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "maintenance_status": "maintenance_scheduled",
+     *       "message": "abc123",
+     *       "published_at": "2021-08-17T13:28:57.801578Z",
+     *       "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *     }
+     *   ]
+     * }
+     */
+    StatusPageMaintenanceV2: {
+      /**
+       * @description A list of time periods where components were under maintenance during this status page maintenance window
+       * @example [
+       *   {
+       *     "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+       *     "end_at": "2021-08-17T13:28:57.801578Z",
+       *     "start_at": "2021-08-17T13:28:57.801578Z"
+       *   }
+       * ]
+       */
+      component_maintenance_periods: components["schemas"]["StatusPageMaintenanceComponentMaintenancePeriodV2"][];
+      /**
+       * @description A unique ID for this status page maintenance window
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Current status for this maintenance window
+       * @example maintenance_scheduled
+       * @enum {string}
+       */
+      maintenance_status:
+        | "maintenance_scheduled"
+        | "maintenance_in_progress"
+        | "maintenance_complete";
+      /**
+       * @description A title for the maintenance window
+       * @example Routine infrastructure upgrade
+       */
+      name: string;
+      /**
+       * Format: date-time
+       * @description When this status page maintenance window was published to the status page
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      published_at: string;
+      /**
+       * @description The ID of the corresponding status page
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      status_page_id: string;
+      /**
+       * @description A list of updates posted to this status page maintenance window
+       * @example [
+       *   {
+       *     "component_statuses": [
+       *       {
+       *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *         "component_status": "operational"
+       *       }
+       *     ],
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "maintenance_status": "maintenance_scheduled",
+       *     "message": "abc123",
+       *     "published_at": "2021-08-17T13:28:57.801578Z",
+       *     "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+       *   }
+       * ]
+       */
+      updates: components["schemas"]["StatusPageMaintenanceUpdateV2"][];
+    };
+    /**
+     * @example {
+     *   "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *   "name": "App"
+     * }
+     */
+    StatusPageStructureComponentV2: {
+      /**
+       * @description The ID of the affected component. This may be found by calling the ShowStatusPageStructure endpoint.
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      component_id: string;
+      /**
+       * @description The name of this component
+       * @example App
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "components": [
+     *     {
+     *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *       "name": "App"
+     *     }
+     *   ],
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *   "name": "EU Data center"
+     * }
+     */
+    StatusPageStructureGroupV2: {
+      /**
+       * @description Array of components belonging to this group
+       * @example [
+       *   {
+       *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *     "name": "App"
+       *   }
+       * ]
+       */
+      components: components["schemas"]["StatusPageStructureComponentV2"][];
+      /**
+       * @description Unique ID of this component group
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      id: string;
+      /**
+       * @description The name of this component group
+       * @example EU Data center
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "component": {
+     *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *     "name": "App"
+     *   },
+     *   "group": {
+     *     "components": [
+     *       {
+     *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "name": "App"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *     "name": "EU Data center"
+     *   },
+     *   "sub_page": {
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *     "items": [
+     *       {
+     *         "component": {
+     *           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *           "name": "App"
+     *         },
+     *         "group": {
+     *           "components": [
+     *             {
+     *               "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *               "name": "App"
+     *             }
+     *           ],
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *           "name": "EU Data center"
+     *         }
+     *       }
+     *     ],
+     *     "name": "United Kingdom"
+     *   }
+     * }
+     */
+    StatusPageStructureItemV2: {
+      component?: components["schemas"]["StatusPageStructureComponentV2"];
+      group?: components["schemas"]["StatusPageStructureGroupV2"];
+      sub_page?: components["schemas"]["StatusPageStructureSubPageV2"];
+    };
+    /**
+     * @example {
+     *   "component": {
+     *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *     "name": "App"
+     *   },
+     *   "group": {
+     *     "components": [
+     *       {
+     *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "name": "App"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *     "name": "EU Data center"
+     *   }
+     * }
+     */
+    StatusPageStructureSubPageItemV2: {
+      component?: components["schemas"]["StatusPageStructureComponentV2"];
+      group?: components["schemas"]["StatusPageStructureGroupV2"];
+    };
+    /**
+     * @example {
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *   "items": [
+     *     {
+     *       "component": {
+     *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "name": "App"
+     *       },
+     *       "group": {
+     *         "components": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *             "name": "App"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "name": "EU Data center"
+     *       }
+     *     }
+     *   ],
+     *   "name": "United Kingdom"
+     * }
+     */
+    StatusPageStructureSubPageV2: {
+      /**
+       * @description Unique ID of this subpage
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      id: string;
+      /**
+       * @description Array of components and groups belonging to this subpage
+       * @example [
+       *   {
+       *     "component": {
+       *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *       "name": "App"
+       *     },
+       *     "group": {
+       *       "components": [
+       *         {
+       *           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *           "name": "App"
+       *         }
+       *       ],
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *       "name": "EU Data center"
+       *     }
+       *   }
+       * ]
+       */
+      items: components["schemas"]["StatusPageStructureSubPageItemV2"][];
+      /**
+       * @description The name of this subpage
+       * @example United Kingdom
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "items": [
+     *     {
+     *       "component": {
+     *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "name": "App"
+     *       },
+     *       "group": {
+     *         "components": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *             "name": "App"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "name": "EU Data center"
+     *       },
+     *       "sub_page": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *         "items": [
+     *           {
+     *             "component": {
+     *               "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *               "name": "App"
+     *             },
+     *             "group": {
+     *               "components": [
+     *                 {
+     *                   "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *                   "name": "App"
+     *                 }
+     *               ],
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *               "name": "EU Data center"
+     *             }
+     *           }
+     *         ],
+     *         "name": "United Kingdom"
+     *       }
+     *     }
+     *   ]
+     * }
+     */
+    StatusPageStructureV2: {
+      /**
+       * @description Array of components and groups to display in the status page
+       * @example [
+       *   {
+       *     "component": {
+       *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *       "name": "App"
+       *     },
+       *     "group": {
+       *       "components": [
+       *         {
+       *           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *           "name": "App"
+       *         }
+       *       ],
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *       "name": "EU Data center"
+       *     },
+       *     "sub_page": {
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *       "items": [
+       *         {
+       *           "component": {
+       *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *             "name": "App"
+       *           },
+       *           "group": {
+       *             "components": [
+       *               {
+       *                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *                 "name": "App"
+       *               }
+       *             ],
+       *             "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+       *             "name": "EU Data center"
+       *           }
+       *         }
+       *       ],
+       *       "name": "United Kingdom"
+       *     }
+       *   }
+       * ]
+       */
+      items: components["schemas"]["StatusPageStructureItemV2"][];
+    };
+    /**
+     * @example {
+     *   "description": "This status page is our public status page.",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Our public status page",
+     *   "public_url": "https://statuspage.incident.io/our-public-status-page"
+     * }
+     */
+    StatusPageV2: {
+      /**
+       * @description The description of this status page
+       * @example This status page is our public status page.
+       */
+      description?: string;
+      /**
+       * @description Unique ID of this status page
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description The title of this status page
+       * @example Our public status page
+       */
+      name: string;
+      /**
+       * @description The public URL of this status page
+       * @example https://statuspage.incident.io/our-public-status-page
+       */
+      public_url?: string;
+    };
+    /**
+     * @example {
+     *   "component_statuses": [
+     *     {
+     *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *       "component_status": "operational"
+     *     }
+     *   ],
+     *   "idempotency_key": "alert-12345-abcde",
+     *   "incident_status": "investigating",
+     *   "message": "We are currently investigating reports of elevated error rates affecting our API.",
+     *   "name": "Elevated API latency",
+     *   "notify_subscribers": true,
+     *   "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+     * }
+     */
+    StatusPagesCreateStatusPageIncidentPayloadV2: {
+      /**
+       * @description An array of mappings from component ID to current component status
+       * @example [
+       *   {
+       *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *     "component_status": "operational"
+       *   }
+       * ]
+       */
+      component_statuses?: components["schemas"]["StatusPageIncidentAffectedComponentV2"][];
+      /**
+       * @description A unique key to de-duplicate requests. If you send a request with an idempotency_key that was already used, the original response will be returned.
+       * @example alert-12345-abcde
+       */
+      idempotency_key: string;
+      /**
+       * @description Current status for this status page incident
+       * @example investigating
+       * @enum {string}
+       */
+      incident_status:
+        | "investigating"
+        | "identified"
+        | "monitoring"
+        | "resolved";
+      /**
+       * @description Markdown initial update on this status page incident
+       * @example We are currently investigating reports of elevated error rates affecting our API.
+       */
+      message: string;
+      /**
+       * @description A title for the incident
+       * @example Elevated API latency
+       */
+      name: string;
+      /**
+       * @description Whether to notify subscribers about this status page incident. This will not work if your status page has more than 1000 subscribers.
+       * @example true
+       */
+      notify_subscribers: boolean;
+      /**
+       * @description ID of the status page. You can find this by calling the ListStatusPages endpoint.
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      status_page_id: string;
+    };
+    /**
+     * @example {
+     *   "status_page_incident": {
+     *     "component_impacts": [
+     *       {
+     *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *         "component_status": "degraded_performance",
+     *         "end_at": "2021-08-17T13:28:57.801578Z",
+     *         "start_at": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_status": "investigating",
+     *     "name": "Elevated API latency",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "updates": [
+     *       {
+     *         "component_statuses": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *             "component_status": "operational"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "incident_status": "investigating",
+     *         "message": "abc123",
+     *         "published_at": "2021-08-17T13:28:57.801578Z",
+     *         "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    StatusPagesCreateStatusPageIncidentResultV2: {
+      status_page_incident?: components["schemas"]["StatusPageIncidentV2"];
+    };
+    /**
+     * @example {
+     *   "component_statuses": [
+     *     {
+     *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *       "component_status": "operational"
+     *     }
+     *   ],
+     *   "incident_status": "investigating",
+     *   "message": "The fix has been deployed and we are monitoring the situation. Some users may still experience intermittent issues.",
+     *   "notify_subscribers": true,
+     *   "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     * }
+     */
+    StatusPagesCreateStatusPageIncidentUpdatePayloadV2: {
+      /**
+       * @description An array of mappings from component ID to component status. This must not be set if the status page incident status is being set to "resolved", as all components statuses will update to "operational".
+       * @example [
+       *   {
+       *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *     "component_status": "operational"
+       *   }
+       * ]
+       */
+      component_statuses?: components["schemas"]["StatusPageIncidentAffectedComponentV2"][];
+      /**
+       * @description Optional new status for this status page incident. If not provided, the status will remain unchanged. Setting to "resolved" will end the incident and all component statuses will update to "operational".
+       * @example investigating
+       * @enum {string}
+       */
+      incident_status?:
+        | "investigating"
+        | "identified"
+        | "monitoring"
+        | "resolved";
+      /**
+       * @description Markdown update on what's changed about this status page incident
+       * @example The fix has been deployed and we are monitoring the situation. Some users may still experience intermittent issues.
+       */
+      message: string;
+      /**
+       * @description Whether to notify subscribers about this incident update. This will not work if your status page has more than 1000 subscribers.
+       * @example true
+       */
+      notify_subscribers: boolean;
+      /**
+       * @description ID of the status page incident
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      status_page_incident_id: string;
+    };
+    /**
+     * @example {
+     *   "status_page_incident_update": {
+     *     "component_statuses": [
+     *       {
+     *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *         "component_status": "operational"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_status": "investigating",
+     *     "message": "abc123",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *   }
+     * }
+     */
+    StatusPagesCreateStatusPageIncidentUpdateResultV2: {
+      status_page_incident_update?: components["schemas"]["StatusPageIncidentUpdateV2"];
+    };
+    /**
+     * @example {
+     *   "affected_component_ids": [
+     *     "01FCNDV6P870EA6S7TK1DSYDG2"
+     *   ],
+     *   "end_at": "2025-01-28T12:00:00Z",
+     *   "idempotency_key": "maintenance-12345-abcde",
+     *   "maintenance_status": "maintenance_scheduled",
+     *   "message": "Planned maintenance has been scheduled to upgrade our infrastructure. We expect minimal disruption, but some features may be briefly unavailable.",
+     *   "name": "Routine infrastructure upgrade",
+     *   "notify_subscribers": true,
+     *   "start_at": "2025-01-28T10:00:00Z",
+     *   "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0"
+     * }
+     */
+    StatusPagesCreateStatusPageMaintenancePayloadV2: {
+      /**
+       * @description An array of IDs of component affected by the maintenance window
+       * @example [
+       *   "01FCNDV6P870EA6S7TK1DSYDG2"
+       * ]
+       */
+      affected_component_ids: string[];
+      /**
+       * Format: date-time
+       * @description The time the maintenance window ends
+       * @example 2025-01-28T12:00:00Z
+       */
+      end_at: string;
+      /**
+       * @description A unique key to de-duplicate requests. If you send a request with an idempotency_key that was already used, the original response will be returned.
+       * @example maintenance-12345-abcde
+       */
+      idempotency_key: string;
+      /**
+       * @description Current status for this status page maintenance window
+       * @example maintenance_scheduled
+       * @enum {string}
+       */
+      maintenance_status:
+        | "maintenance_scheduled"
+        | "maintenance_in_progress"
+        | "maintenance_complete";
+      /**
+       * @description Markdown initial update on this status page maintenance window
+       * @example Planned maintenance has been scheduled to upgrade our infrastructure. We expect minimal disruption, but some features may be briefly unavailable.
+       */
+      message: string;
+      /**
+       * @description A title for the maintenance window
+       * @example Routine infrastructure upgrade
+       */
+      name: string;
+      /**
+       * @description Whether to notify subscribers about this status page maintenance. This will not work if your status page has more than 1000 subscribers.
+       * @example true
+       */
+      notify_subscribers: boolean;
+      /**
+       * Format: date-time
+       * @description The time the maintenance window starts
+       * @example 2025-01-28T10:00:00Z
+       */
+      start_at: string;
+      /**
+       * @description ID of the status page. You can find this by calling the ListStatusPages endpoint.
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      status_page_id: string;
+    };
+    /**
+     * @example {
+     *   "status_page_maintenance": {
+     *     "component_maintenance_periods": [
+     *       {
+     *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *         "end_at": "2021-08-17T13:28:57.801578Z",
+     *         "start_at": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "maintenance_status": "maintenance_scheduled",
+     *     "name": "Routine infrastructure upgrade",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "updates": [
+     *       {
+     *         "component_statuses": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *             "component_status": "operational"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "maintenance_status": "maintenance_scheduled",
+     *         "message": "abc123",
+     *         "published_at": "2021-08-17T13:28:57.801578Z",
+     *         "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    StatusPagesCreateStatusPageMaintenanceResultV2: {
+      status_page_maintenance?: components["schemas"]["StatusPageMaintenanceV2"];
+    };
+    /**
+     * @example {
+     *   "component_statuses": [
+     *     {
+     *       "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *       "component_status": "operational"
+     *     }
+     *   ],
+     *   "maintenance_status": "maintenance_scheduled",
+     *   "message": "Scheduled maintenance is underway for our database infrastructure. Some services may experience brief interruptions during this window.",
+     *   "notify_subscribers": true,
+     *   "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     * }
+     */
+    StatusPagesCreateStatusPageMaintenanceUpdatePayloadV2: {
+      /**
+       * @description An array of mappings from component ID to component status. This must not be set if the status page maintenance window status is being set to "maintenance_complete", as all components statuses will update to "operational".
+       * @example [
+       *   {
+       *     "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *     "component_status": "operational"
+       *   }
+       * ]
+       */
+      component_statuses?: components["schemas"]["StatusPageMaintenanceAffectedComponentV2"][];
+      /**
+       * @description Optional new status for this status page maintenance window. If not provided, the status will remain unchanged. Setting to "maintenance_complete" will end the maintenance window and all component statuses will update to "operational".
+       * @example maintenance_scheduled
+       * @enum {string}
+       */
+      maintenance_status?:
+        | "maintenance_scheduled"
+        | "maintenance_in_progress"
+        | "maintenance_complete";
+      /**
+       * @description Markdown update on what's changed about this status page maintenance window
+       * @example Scheduled maintenance is underway for our database infrastructure. Some services may experience brief interruptions during this window.
+       */
+      message: string;
+      /**
+       * @description Whether to notify subscribers about this status page maintenance update. This will not work if your status page has more than 1000 subscribers.
+       * @example true
+       */
+      notify_subscribers: boolean;
+      /**
+       * @description ID of the status page maintenance window
+       * @example 01FCNDV6P870EA6S7TK1DSYDG1
+       */
+      status_page_maintenance_id: string;
+    };
+    /**
+     * @example {
+     *   "status_page_maintenance_update": {
+     *     "component_statuses": [
+     *       {
+     *         "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *         "component_status": "operational"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "maintenance_status": "maintenance_scheduled",
+     *     "message": "abc123",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *   }
+     * }
+     */
+    StatusPagesCreateStatusPageMaintenanceUpdateResultV2: {
+      status_page_maintenance_update?: components["schemas"]["StatusPageMaintenanceUpdateV2"];
+    };
+    /**
+     * @example {
+     *   "incidents": [
+     *     {
+     *       "id": "01FDAG4SAH3GYPT98WGR2N7W91",
+     *       "linked_at": "2021-08-17T13:28:57.801578Z"
+     *     }
+     *   ]
+     * }
+     */
+    StatusPagesListResponseIncidentsResultV1: {
+      /**
+       * @example [
+       *   {
+       *     "id": "01FDAG4SAH3GYPT98WGR2N7W91",
+       *     "linked_at": "2021-08-17T13:28:57.801578Z"
+       *   }
+       * ]
+       */
+      incidents: components["schemas"]["StatusPageLinkedResponseIncidentV1"][];
+    };
+    /**
+     * @example {
+     *   "pagination_meta": {
+     *     "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "page_size": 25
+     *   },
+     *   "status_page_incidents": [
+     *     {
+     *       "component_impacts": [
+     *         {
+     *           "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *           "component_status": "degraded_performance",
+     *           "end_at": "2021-08-17T13:28:57.801578Z",
+     *           "start_at": "2021-08-17T13:28:57.801578Z"
+     *         }
+     *       ],
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "incident_status": "investigating",
+     *       "name": "Elevated API latency",
+     *       "published_at": "2021-08-17T13:28:57.801578Z",
+     *       "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "updates": [
+     *         {
+     *           "component_statuses": [
+     *             {
+     *               "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *               "component_status": "operational"
+     *             }
+     *           ],
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "incident_status": "investigating",
+     *           "message": "abc123",
+     *           "published_at": "2021-08-17T13:28:57.801578Z",
+     *           "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *         }
+     *       ]
+     *     }
+     *   ]
+     * }
+     */
+    StatusPagesListStatusPageIncidentsResultV2: {
+      pagination_meta: components["schemas"]["PaginationMetaResultV2"];
+      /**
+       * @example [
+       *   {
+       *     "component_impacts": [
+       *       {
+       *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+       *         "component_status": "degraded_performance",
+       *         "end_at": "2021-08-17T13:28:57.801578Z",
+       *         "start_at": "2021-08-17T13:28:57.801578Z"
+       *       }
+       *     ],
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "incident_status": "investigating",
+       *     "name": "Elevated API latency",
+       *     "published_at": "2021-08-17T13:28:57.801578Z",
+       *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "updates": [
+       *       {
+       *         "component_statuses": [
+       *           {
+       *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *             "component_status": "operational"
+       *           }
+       *         ],
+       *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *         "incident_status": "investigating",
+       *         "message": "abc123",
+       *         "published_at": "2021-08-17T13:28:57.801578Z",
+       *         "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      status_page_incidents: components["schemas"]["StatusPageIncidentV2"][];
+    };
+    /**
+     * @example {
+     *   "pagination_meta": {
+     *     "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "page_size": 25
+     *   },
+     *   "status_page_maintenances": [
+     *     {
+     *       "component_maintenance_periods": [
+     *         {
+     *           "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *           "end_at": "2021-08-17T13:28:57.801578Z",
+     *           "start_at": "2021-08-17T13:28:57.801578Z"
+     *         }
+     *       ],
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "maintenance_status": "maintenance_scheduled",
+     *       "name": "Routine infrastructure upgrade",
+     *       "published_at": "2021-08-17T13:28:57.801578Z",
+     *       "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "updates": [
+     *         {
+     *           "component_statuses": [
+     *             {
+     *               "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *               "component_status": "operational"
+     *             }
+     *           ],
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "maintenance_status": "maintenance_scheduled",
+     *           "message": "abc123",
+     *           "published_at": "2021-08-17T13:28:57.801578Z",
+     *           "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *         }
+     *       ]
+     *     }
+     *   ]
+     * }
+     */
+    StatusPagesListStatusPageMaintenancesResultV2: {
+      pagination_meta: components["schemas"]["PaginationMetaResultV2"];
+      /**
+       * @example [
+       *   {
+       *     "component_maintenance_periods": [
+       *       {
+       *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+       *         "end_at": "2021-08-17T13:28:57.801578Z",
+       *         "start_at": "2021-08-17T13:28:57.801578Z"
+       *       }
+       *     ],
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "maintenance_status": "maintenance_scheduled",
+       *     "name": "Routine infrastructure upgrade",
+       *     "published_at": "2021-08-17T13:28:57.801578Z",
+       *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "updates": [
+       *       {
+       *         "component_statuses": [
+       *           {
+       *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+       *             "component_status": "operational"
+       *           }
+       *         ],
+       *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *         "maintenance_status": "maintenance_scheduled",
+       *         "message": "abc123",
+       *         "published_at": "2021-08-17T13:28:57.801578Z",
+       *         "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      status_page_maintenances: components["schemas"]["StatusPageMaintenanceV2"][];
+    };
+    /**
+     * @example {
+     *   "pagination_meta": {
+     *     "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "page_size": 25
+     *   },
+     *   "status_pages": [
+     *     {
+     *       "description": "This status page is our public status page.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Our public status page",
+     *       "public_url": "https://statuspage.incident.io/our-public-status-page"
+     *     }
+     *   ]
+     * }
+     */
+    StatusPagesListStatusPagesResultV2: {
+      pagination_meta: components["schemas"]["PaginationMetaResultV2"];
+      /**
+       * @example [
+       *   {
+       *     "description": "This status page is our public status page.",
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "name": "Our public status page",
+       *     "public_url": "https://statuspage.incident.io/our-public-status-page"
+       *   }
+       * ]
+       */
+      status_pages: components["schemas"]["StatusPageV2"][];
+    };
+    /**
+     * @example {
+     *   "status_page_incident": {
+     *     "component_impacts": [
+     *       {
+     *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *         "component_status": "degraded_performance",
+     *         "end_at": "2021-08-17T13:28:57.801578Z",
+     *         "start_at": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_status": "investigating",
+     *     "name": "Elevated API latency",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "updates": [
+     *       {
+     *         "component_statuses": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *             "component_status": "operational"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "incident_status": "investigating",
+     *         "message": "abc123",
+     *         "published_at": "2021-08-17T13:28:57.801578Z",
+     *         "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    StatusPagesShowStatusPageIncidentResultV2: {
+      status_page_incident?: components["schemas"]["StatusPageIncidentV2"];
+    };
+    /**
+     * @example {
+     *   "status_page_maintenance": {
+     *     "component_maintenance_periods": [
+     *       {
+     *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *         "end_at": "2021-08-17T13:28:57.801578Z",
+     *         "start_at": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "maintenance_status": "maintenance_scheduled",
+     *     "name": "Routine infrastructure upgrade",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "updates": [
+     *       {
+     *         "component_statuses": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *             "component_status": "operational"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "maintenance_status": "maintenance_scheduled",
+     *         "message": "abc123",
+     *         "published_at": "2021-08-17T13:28:57.801578Z",
+     *         "status_page_maintenance_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    StatusPagesShowStatusPageMaintenanceResultV2: {
+      status_page_maintenance?: components["schemas"]["StatusPageMaintenanceV2"];
+    };
+    /**
+     * @example {
+     *   "current_structure": {
+     *     "items": [
+     *       {
+     *         "component": {
+     *           "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *           "name": "App"
+     *         },
+     *         "group": {
+     *           "components": [
+     *             {
+     *               "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *               "name": "App"
+     *             }
+     *           ],
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *           "name": "EU Data center"
+     *         },
+     *         "sub_page": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *           "items": [
+     *             {
+     *               "component": {
+     *                 "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *                 "name": "App"
+     *               },
+     *               "group": {
+     *                 "components": [
+     *                   {
+     *                     "component_id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *                     "name": "App"
+     *                   }
+     *                 ],
+     *                 "id": "01FCNDV6P870EA6S7TK1DSYDG1",
+     *                 "name": "EU Data center"
+     *               }
+     *             }
+     *           ],
+     *           "name": "United Kingdom"
+     *         }
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    StatusPagesShowStatusPageStructureResultV2: {
+      current_structure: components["schemas"]["StatusPageStructureV2"];
+    };
+    /**
+     * @example {
+     *   "name": "Elevated API latency"
+     * }
+     */
+    StatusPagesUpdateStatusPageIncidentPayloadV2: {
+      /**
+       * @description A title for the incident
+       * @example Elevated API latency
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "status_page_incident": {
+     *     "component_impacts": [
+     *       {
+     *         "component_id": "01GW7P4ES31Q6V1ZQH321T0GJN",
+     *         "component_status": "degraded_performance",
+     *         "end_at": "2021-08-17T13:28:57.801578Z",
+     *         "start_at": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     ],
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_status": "investigating",
+     *     "name": "Elevated API latency",
+     *     "published_at": "2021-08-17T13:28:57.801578Z",
+     *     "status_page_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "updates": [
+     *       {
+     *         "component_statuses": [
+     *           {
+     *             "component_id": "01FCNDV6P870EA6S7TK1DSYDG2",
+     *             "component_status": "operational"
+     *           }
+     *         ],
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "incident_status": "investigating",
+     *         "message": "abc123",
+     *         "published_at": "2021-08-17T13:28:57.801578Z",
+     *         "status_page_incident_id": "01FCNDV6P870EA6S7TK1DSYDG1"
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    StatusPagesUpdateStatusPageIncidentResultV2: {
+      status_page_incident?: components["schemas"]["StatusPageIncidentV2"];
+    };
+    /**
+     * @example {
+     *   "for_each": "abc123",
+     *   "id": "abc123",
+     *   "name": "pagerduty.escalate",
+     *   "param_bindings": [
+     *     {
+     *       "array_value": [
+     *         {
+     *           "literal": "SEV123",
+     *           "reference": "incident.severity"
+     *         }
+     *       ],
+     *       "value": {
+     *         "literal": "SEV123",
+     *         "reference": "incident.severity"
+     *       }
+     *     }
+     *   ]
+     * }
+     */
+    StepConfigPayloadV2: {
+      /**
+       * @description Reference to an expression that returns resources to run this step over
+       * @example abc123
+       */
+      for_each?: string;
+      /**
+       * @description Unique ID of this step in a workflow
+       * @example abc123
+       */
+      id: string;
+      /**
+       * @description Unique name of the step in the engine
+       * @example pagerduty.escalate
+       */
+      name: string;
+      /**
+       * @description List of parameter bindings
+       * @example [
+       *   {
+       *     "array_value": [
+       *       {
+       *         "literal": "SEV123",
+       *         "reference": "incident.severity"
+       *       }
+       *     ],
+       *     "value": {
+       *       "literal": "SEV123",
+       *       "reference": "incident.severity"
+       *     }
+       *   }
+       * ]
+       */
+      param_bindings: components["schemas"]["EngineParamBindingPayloadV2"][];
+    };
+    /**
+     * @example {
+     *   "label": "PagerDuty Escalate",
+     *   "name": "pagerduty.escalate"
+     * }
+     */
+    StepConfigSlimV2: {
+      /**
+       * @description Human readable identifier for this step
+       * @example PagerDuty Escalate
+       */
+      label: string;
+      /**
+       * @description Unique name of the step in the engine
+       * @example pagerduty.escalate
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "for_each": "abc123",
+     *   "id": "abc123",
+     *   "label": "PagerDuty Escalate",
+     *   "name": "pagerduty.escalate",
+     *   "param_bindings": [
+     *     {
+     *       "array_value": [
+     *         {
+     *           "label": "Lawrence Jones",
+     *           "literal": "SEV123",
+     *           "reference": "incident.severity"
+     *         }
+     *       ],
+     *       "value": {
+     *         "label": "Lawrence Jones",
+     *         "literal": "SEV123",
+     *         "reference": "incident.severity"
+     *       }
+     *     }
+     *   ]
+     * }
+     */
+    StepConfigV2: {
+      /**
+       * @description Reference to an expression that returns resources to run this step over
+       * @example abc123
+       */
+      for_each?: string;
+      /**
+       * @description Unique ID of this step in a workflow
+       * @example abc123
+       */
+      id: string;
+      /**
+       * @description Human readable identifier for this step
+       * @example PagerDuty Escalate
+       */
+      label: string;
+      /**
+       * @description Unique name of the step in the engine
+       * @example pagerduty.escalate
+       */
+      name: string;
+      /**
+       * @description Bindings for the step parameters
+       * @example [
+       *   {
+       *     "array_value": [
+       *       {
+       *         "label": "Lawrence Jones",
+       *         "literal": "SEV123",
+       *         "reference": "incident.severity"
+       *       }
+       *     ],
+       *     "value": {
+       *       "label": "Lawrence Jones",
+       *       "literal": "SEV123",
+       *       "reference": "incident.severity"
+       *     }
+       *   }
+       * ]
+       */
+      param_bindings: components["schemas"]["EngineParamBindingV2"][];
+    };
+    /**
+     * @example {
+     *   "catalog_entry": {
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "name": "Primary On-call"
+     *   },
+     *   "id": "abc123",
+     *   "members": [
+     *     {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     }
+     *   ],
+     *   "name": "abc123"
+     * }
+     */
+    TeamV3: {
+      catalog_entry: components["schemas"]["CatalogEntrySlimV3V3"];
+      /**
+       * @description Unique ID of the team
+       * @example abc123
+       */
+      id: string;
+      /**
+       * @description Members of the team
+       * @example [
+       *   {
+       *     "email": "lisa@incident.io",
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "name": "Lisa Karlin Curtis",
+       *     "slack_user_id": "U02AYNF2XJM"
+       *   }
+       * ]
+       */
+      members: components["schemas"]["UserV3"][];
+      /**
+       * @description Name of the team
+       * @example abc123
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "pagination_meta": {
+     *     "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "page_size": 25
+     *   },
+     *   "teams": [
+     *     {
+     *       "catalog_entry": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Primary On-call"
+     *       },
+     *       "id": "abc123",
+     *       "members": [
+     *         {
+     *           "email": "lisa@incident.io",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Lisa Karlin Curtis",
+     *           "slack_user_id": "U02AYNF2XJM"
+     *         }
+     *       ],
+     *       "name": "abc123"
+     *     }
+     *   ]
+     * }
+     */
+    TeamsListResultV3: {
+      pagination_meta: components["schemas"]["PaginationMetaResultV3"];
+      /**
+       * @example [
+       *   {
+       *     "catalog_entry": {
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *       "name": "Primary On-call"
+       *     },
+       *     "id": "abc123",
+       *     "members": [
+       *       {
+       *         "email": "lisa@incident.io",
+       *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *         "name": "Lisa Karlin Curtis",
+       *         "slack_user_id": "U02AYNF2XJM"
+       *       }
+       *     ],
+       *     "name": "abc123"
+       *   }
+       * ]
+       */
+      teams: components["schemas"]["TeamV3"][];
+    };
+    /**
+     * @example {
+     *   "team": {
+     *     "catalog_entry": {
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Primary On-call"
+     *     },
+     *     "id": "abc123",
+     *     "members": [
+     *       {
+     *         "email": "lisa@incident.io",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Lisa Karlin Curtis",
+     *         "slack_user_id": "U02AYNF2XJM"
+     *       }
+     *     ],
+     *     "name": "abc123"
+     *   }
+     * }
+     */
+    TeamsShowResultV3: {
+      team: components["schemas"]["TeamV3"];
+    };
+    /**
+     * @description A telemetry data source integration
+     * @example {
+     *   "created_at": "2021-08-17T13:28:57.801578Z",
+     *   "enabled": true,
+     *   "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+     *   "name": "Primary Prometheus",
+     *   "provider": "grafana",
+     *   "source_type": "grafana",
+     *   "updated_at": "2021-08-17T13:28:57.801578Z"
+     * }
+     */
+    TelemetryDataSourceV2: {
+      /**
+       * Format: date-time
+       * @description When this data source was created
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      created_at: string;
+      /**
+       * @description Whether this data source is enabled
+       * @example true
+       */
+      enabled: boolean;
+      /**
+       * @description Unique identifier for this data source
+       * @example 01G0J1EXE7AXZ2C93K61WBPYEH
+       */
+      id: string;
+      /**
+       * @description Human-readable name of the data source
+       * @example Primary Prometheus
+       */
+      name: string;
+      /**
+       * @description Provider that hosts this data source
+       * @example grafana
+       */
+      provider: string;
+      /**
+       * @description Type of data source (e.g., prometheus, loki, tempo)
+       * @example grafana
+       */
+      source_type: string;
+      /**
+       * Format: date-time
+       * @description When this data source was last updated
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      updated_at: string;
+    };
+    /**
+     * @description Datadog-specific credential updates
+     * @example {
+     *   "api_key": "abc123"
+     * }
+     */
+    TelemetryDatadogUpdateConfigV2: {
+      /**
+       * @description New Datadog API key
+       * @example abc123
+       */
+      api_key?: string;
+    };
+    /**
+     * @description Grafana-specific credential updates
+     * @example {
+     *   "api_key": "glsa_123"
+     * }
+     */
+    TelemetryGrafanaUpdateConfigV2: {
+      /**
+       * @description New Grafana service account token
+       * @example glsa_123
+       */
+      api_key?: string;
+    };
+    /**
+     * @example {
+     *   "datadog_config": {
+     *     "api_key": "abc123"
+     *   },
+     *   "grafana_config": {
+     *     "api_key": "glsa_123"
+     *   },
+     *   "name": "Production Grafana"
+     * }
+     */
+    TelemetryUpdateDataSourcePayloadV2: {
+      datadog_config?: components["schemas"]["TelemetryDatadogUpdateConfigV2"];
+      grafana_config?: components["schemas"]["TelemetryGrafanaUpdateConfigV2"];
+      /**
+       * @description Updated display name
+       * @example Production Grafana
+       */
+      name?: string;
+    };
+    /**
+     * @example {
+     *   "data_source": {
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "enabled": true,
+     *     "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+     *     "name": "Primary Prometheus",
+     *     "provider": "grafana",
+     *     "source_type": "grafana",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    TelemetryUpdateDataSourceResultV2: {
+      data_source: components["schemas"]["TelemetryDataSourceV2"];
+    };
+    /**
+     * @example {
+     *   "label": "Incident Updated",
+     *   "name": "incident.updated"
+     * }
+     */
+    TriggerSlimV2: {
+      /**
+       * @description Human readable identifier for this trigger
+       * @example Incident Updated
+       */
+      label: string;
+      /**
+       * @description Unique name of the trigger
+       * @example incident.updated
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "email": "bob@example.com",
+     *   "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+     *   "slack_user_id": "USER123"
+     * }
+     */
+    UserReferencePayloadV1: {
+      /**
+       * @description The user's email address, matching the email on their Slack account
+       * @example bob@example.com
+       */
+      email?: string;
+      /**
+       * @description The incident.io ID of a user
+       * @example 01G0J1EXE7AXZ2C93K61WBPYEH
+       */
+      id?: string;
+      /**
+       * @description The ID of the user's Slack account.
+       * @example USER123
+       */
+      slack_user_id?: string;
+    };
+    /**
+     * @example {
+     *   "email": "bob@example.com",
+     *   "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+     *   "slack_user_id": "USER123"
+     * }
+     */
+    UserReferencePayloadV2: {
+      /**
+       * @description The user's email address, matching the email on their Slack account
+       * @example bob@example.com
+       */
+      email?: string;
+      /**
+       * @description The incident.io ID of a user
+       * @example 01G0J1EXE7AXZ2C93K61WBPYEH
+       */
+      id?: string;
+      /**
+       * @description The ID of the user's Slack account.
+       * @example USER123
+       */
+      slack_user_id?: string;
+    };
+    /**
+     * @example {
+     *   "on_call": "full_access",
+     *   "response": "viewer_only"
+     * }
+     */
+    UserSeatsV2: {
+      /**
+       * @description On-call seat access level
+       * @example full_access
+       * @enum {string}
+       */
+      on_call: "full_access" | "viewer_only" | "none";
+      /**
+       * @description Response seat access level
+       * @example viewer_only
+       * @enum {string}
+       */
+      response: "full_access" | "viewer_only" | "none";
+    };
+    /**
+     * @example {
+     *   "email": "lisa@incident.io",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Lisa Karlin Curtis",
+     *   "role": "viewer",
+     *   "slack_user_id": "U02AYNF2XJM"
+     * }
+     */
+    UserV1: {
+      /**
+       * @description Email address of the user.
+       * @example lisa@incident.io
+       */
+      email?: string;
+      /**
+       * @description Unique identifier of the user
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Name of the user
+       * @example Lisa Karlin Curtis
+       */
+      name: string;
+      /**
+       * @description DEPRECATED: Role of the user as of March 9th 2023, this value is no longer updated.
+       * @example viewer
+       * @enum {string}
+       */
+      role: "viewer" | "responder" | "administrator" | "owner" | "unset";
+      /**
+       * @description Slack ID of the user
+       * @example U02AYNF2XJM
+       */
+      slack_user_id?: string;
+    };
+    /**
+     * @example {
+     *   "email": "lisa@incident.io",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Lisa Karlin Curtis",
+     *   "role": "owner",
+     *   "slack_user_id": "U02AYNF2XJM"
+     * }
+     */
+    UserV2: {
+      /**
+       * @description Email address of the user.
+       * @example lisa@incident.io
+       */
+      email?: string;
+      /**
+       * @description Unique identifier of the user
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Name of the user
+       * @example Lisa Karlin Curtis
+       */
+      name: string;
+      /**
+       * @description DEPRECATED: Role of the user as of March 9th 2023, this value is no longer updated.
+       * @example owner
+       * @enum {string}
+       */
+      role: "viewer" | "responder" | "administrator" | "owner" | "unset";
+      /**
+       * @description Slack ID of the user
+       * @example U02AYNF2XJM
+       */
+      slack_user_id?: string;
+    };
+    /**
+     * @example {
+     *   "email": "lisa@incident.io",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Lisa Karlin Curtis",
+     *   "slack_user_id": "U02AYNF2XJM"
+     * }
+     */
+    UserV3: {
+      /**
+       * @description Email address of the user.
+       * @example lisa@incident.io
+       */
+      email?: string;
+      /**
+       * @description Unique identifier of the user
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Name of the user
+       * @example Lisa Karlin Curtis
+       */
+      name: string;
+      /**
+       * @description Slack ID of the user
+       * @example U02AYNF2XJM
+       */
+      slack_user_id?: string;
+    };
+    /**
+     * @example {
+     *   "base_role": {
+     *     "description": "Elevated permissions for the customer success team.",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "name": "Customer Success",
+     *     "slug": "customer-success"
+     *   },
+     *   "custom_roles": [
+     *     {
+     *       "description": "Elevated permissions for the customer success team.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Customer Success",
+     *       "slug": "customer-success"
+     *     }
+     *   ],
+     *   "email": "lisa@incident.io",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "Lisa Karlin Curtis",
+     *   "role": "owner",
+     *   "seats": {
+     *     "on_call": "full_access",
+     *     "response": "viewer_only"
+     *   },
+     *   "slack_user_id": "U02AYNF2XJM"
+     * }
+     */
+    UserWithRolesV2: {
+      base_role: components["schemas"]["RBACRoleV2"];
+      /**
+       * @example [
+       *   {
+       *     "description": "Elevated permissions for the customer success team.",
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "name": "Customer Success",
+       *     "slug": "customer-success"
+       *   }
+       * ]
+       */
+      custom_roles: components["schemas"]["RBACRoleV2"][];
+      /**
+       * @description Email address of the user.
+       * @example lisa@incident.io
+       */
+      email?: string;
+      /**
+       * @description Unique identifier of the user
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Name of the user
+       * @example Lisa Karlin Curtis
+       */
+      name: string;
+      /**
+       * @description DEPRECATED: Role of the user as of March 9th 2023, this value is no longer updated.
+       * @example owner
+       * @enum {string}
+       */
+      role: "viewer" | "responder" | "administrator" | "owner" | "unset";
+      seats: components["schemas"]["UserSeatsV2"];
+      /**
+       * @description Slack ID of the user
+       * @example U02AYNF2XJM
+       */
+      slack_user_id?: string;
+    };
+    /**
+     * @example {
+     *   "notification_methods": [
+     *     {
+     *       "address": "•••••••6789",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "is_usable": true,
+     *       "method_type": "app"
+     *     }
+     *   ]
+     * }
+     */
+    UsersListNotificationMethodsResultV2: {
+      /**
+       * @example [
+       *   {
+       *     "address": "•••••••6789",
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "is_usable": true,
+       *     "method_type": "app"
+       *   }
+       * ]
+       */
+      notification_methods: components["schemas"]["OnCallNotificationMethodPublicV2"][];
+    };
+    /**
+     * @example {
+     *   "notification_rules": [
+     *     {
+     *       "app": {
+     *         "push_notification_criticality": "critical"
+     *       },
+     *       "delay_seconds": 0,
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "method_target": {
+     *         "all": {},
+     *         "specific": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0"
+     *         },
+     *         "type": "specific"
+     *       },
+     *       "method_type": "app",
+     *       "rule_type": "low_urgency"
+     *     }
+     *   ]
+     * }
+     */
+    UsersListNotificationRulesResultV2: {
+      /**
+       * @example [
+       *   {
+       *     "app": {
+       *       "push_notification_criticality": "critical"
+       *     },
+       *     "delay_seconds": 0,
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "method_target": {
+       *       "all": {},
+       *       "specific": {
+       *         "id": "01FCNDV6P870EA6S7TK1DSYDG0"
+       *       },
+       *       "type": "specific"
+       *     },
+       *     "method_type": "app",
+       *     "rule_type": "low_urgency"
+       *   }
+       * ]
+       */
+      notification_rules: components["schemas"]["OnCallNotificationRulePublicV2"][];
+    };
+    /**
+     * @example {
+     *   "pagination_meta": {
+     *     "after": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "page_size": 25
+     *   },
+     *   "users": [
+     *     {
+     *       "base_role": {
+     *         "description": "Elevated permissions for the customer success team.",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Customer Success",
+     *         "slug": "customer-success"
+     *       },
+     *       "custom_roles": [
+     *         {
+     *           "description": "Elevated permissions for the customer success team.",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Customer Success",
+     *           "slug": "customer-success"
+     *         }
+     *       ],
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "owner",
+     *       "seats": {
+     *         "on_call": "full_access",
+     *         "response": "viewer_only"
+     *       },
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     }
+     *   ]
+     * }
+     */
+    UsersListResultV2: {
+      pagination_meta: components["schemas"]["PaginationMetaResultV2"];
+      /**
+       * @example [
+       *   {
+       *     "base_role": {
+       *       "description": "Elevated permissions for the customer success team.",
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *       "name": "Customer Success",
+       *       "slug": "customer-success"
+       *     },
+       *     "custom_roles": [
+       *       {
+       *         "description": "Elevated permissions for the customer success team.",
+       *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *         "name": "Customer Success",
+       *         "slug": "customer-success"
+       *       }
+       *     ],
+       *     "email": "lisa@incident.io",
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "name": "Lisa Karlin Curtis",
+       *     "role": "owner",
+       *     "seats": {
+       *       "on_call": "full_access",
+       *       "response": "viewer_only"
+       *     },
+       *     "slack_user_id": "U02AYNF2XJM"
+       *   }
+       * ]
+       */
+      users: components["schemas"]["UserWithRolesV2"][];
+    };
+    /**
+     * @example {
+     *   "user": {
+     *     "base_role": {
+     *       "description": "Elevated permissions for the customer success team.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Customer Success",
+     *       "slug": "customer-success"
+     *     },
+     *     "custom_roles": [
+     *       {
+     *         "description": "Elevated permissions for the customer success team.",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Customer Success",
+     *         "slug": "customer-success"
+     *       }
+     *     ],
+     *     "email": "lisa@incident.io",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "name": "Lisa Karlin Curtis",
+     *     "role": "owner",
+     *     "seats": {
+     *       "on_call": "full_access",
+     *       "response": "viewer_only"
+     *     },
+     *     "slack_user_id": "U02AYNF2XJM"
+     *   }
+     * }
+     */
+    UsersShowResultV2: {
+      user: components["schemas"]["UserWithRolesV2"];
+    };
+    /**
+     * @example {
+     *   "identity": {
+     *     "dashboard_url": "https://app.incident.io/my-org",
+     *     "name": "Alertmanager token",
+     *     "roles": [
+     *       "viewer"
+     *     ],
+     *     "team_roles": [
+     *       "schedules_editor"
+     *     ],
+     *     "teams": [
+     *       {
+     *         "id": "01G0J1EXE7AXZ2C93K61WBPYEH",
+     *         "name": "Platform"
+     *       }
+     *     ]
+     *   }
+     * }
+     */
+    UtilitiesIdentityResultV1: {
+      identity: components["schemas"]["IdentityV1"];
+    };
+    /**
+     * @example {
+     *   "actor_user_id": "abc123",
+     *   "incident_id": "abc123",
+     *   "user_id": "abc123"
+     * }
+     */
+    WebhookIncidentUserV2: {
+      /**
+       * @description The ID of the user who performed this action. If the action was not taken by a user, for example it was taken by a Workflow, this will be empty.
+       * @example abc123
+       */
+      actor_user_id?: string;
+      /**
+       * @description The ID of the incident
+       * @example abc123
+       */
+      incident_id: string;
+      /**
+       * @description The ID of the user
+       * @example abc123
+       */
+      user_id: string;
+    };
+    /**
+     * @example {
+     *   "call_url": "https://zoom.us/foo",
+     *   "created_at": "2021-08-17T13:28:57.801578Z",
+     *   "creator": {
+     *     "alert": {
+     *       "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *       "title": "*errors.withMessage: PG::Error failed to connect"
+     *     },
+     *     "api_key": {
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "My test API key"
+     *     },
+     *     "user": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "owner",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "workflow": {
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "My little workflow"
+     *     }
+     *   },
+     *   "custom_field_entries": [
+     *     {
+     *       "custom_field": {
+     *         "description": "Which team is impacted by this issue",
+     *         "field_type": "single_select",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Affected Team",
+     *         "options": [
+     *           {
+     *             "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "sort_key": 10,
+     *             "value": "Product"
+     *           }
+     *         ]
+     *       },
+     *       "values": [
+     *         {
+     *           "value_catalog_entry": {
+     *             "aliases": [
+     *               "lawrence@incident.io",
+     *               "lawrence"
+     *             ],
+     *             "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "name": "Primary On-call"
+     *           },
+     *           "value_link": "https://google.com/",
+     *           "value_numeric": "123.456",
+     *           "value_option": {
+     *             "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "sort_key": 10,
+     *             "value": "Product"
+     *           },
+     *           "value_text": "This is my text field, I hope you like it"
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "duration_metrics": [
+     *     {
+     *       "duration_metric": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *         "name": "Lasted"
+     *       },
+     *       "value_seconds": 10800
+     *     }
+     *   ],
+     *   "external_issue_reference": {
+     *     "issue_name": "INC-123",
+     *     "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *     "provider": "asana"
+     *   },
+     *   "has_debrief": false,
+     *   "id": "01FDAG4SAP5TYPT98WGR2N7W91",
+     *   "incident_role_assignments": [
+     *     {
+     *       "assignee": {
+     *         "email": "lisa@incident.io",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Lisa Karlin Curtis",
+     *         "role": "owner",
+     *         "slack_user_id": "U02AYNF2XJM"
+     *       },
+     *       "role": {
+     *         "created_at": "2021-08-17T13:28:57.801578Z",
+     *         "description": "The person currently coordinating the incident",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "instructions": "Take point on the incident; Make sure people are clear on responsibilities",
+     *         "name": "Incident Lead",
+     *         "required": false,
+     *         "role_type": "lead",
+     *         "shortform": "lead",
+     *         "updated_at": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     }
+     *   ],
+     *   "incident_status": {
+     *     "category": "triage",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *     "name": "Closed",
+     *     "rank": 4,
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   },
+     *   "incident_timestamp_values": [
+     *     {
+     *       "incident_timestamp": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *         "name": "Impact started",
+     *         "rank": 1
+     *       },
+     *       "value": {
+     *         "value": "2021-08-17T13:28:57.801578Z"
+     *       }
+     *     }
+     *   ],
+     *   "incident_type": {
+     *     "create_in_triage": "always",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Customer facing production outages",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "is_default": false,
+     *     "name": "Production Outage",
+     *     "private_incidents_only": false,
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   },
+     *   "mode": "standard",
+     *   "most_recent_update_message": "We're working on a fix, hoping to ship in the next 30 minutes",
+     *   "name": "Our database is sad",
+     *   "permalink": "https://app.incident.io/incidents/123",
+     *   "postmortem_document_ids": [
+     *     "01FCNDV6P870EA6S7TK1DSYD5H"
+     *   ],
+     *   "postmortem_document_url": "https://docs.google.com/my_doc_id",
+     *   "reference": "INC-123",
+     *   "related_incidents": [
+     *     "INC-237"
+     *   ],
+     *   "severity": {
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Issues with **low impact**.",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "name": "Minor",
+     *     "rank": 1,
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   },
+     *   "slack_channel_id": "C02AW36C1M5",
+     *   "slack_channel_name": "inc-165-green-parrot",
+     *   "slack_team_id": "T02A1FSLE8J",
+     *   "summary": "Our database is really really sad, and we don't know why yet.",
+     *   "updated_at": "2021-08-17T13:28:57.801578Z",
+     *   "visibility": "public",
+     *   "workload_minutes_late": 40.7,
+     *   "workload_minutes_sleeping": 0,
+     *   "workload_minutes_total": 60.7,
+     *   "workload_minutes_working": 20
+     * }
+     */
+    WebhookIncidentV2: {
+      /**
+       * @description The call URL attached to this incident
+       * @example https://zoom.us/foo
+       */
+      call_url?: string;
+      /**
+       * Format: date-time
+       * @description When the incident was created
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      created_at: string;
+      creator: components["schemas"]["ActorV2"];
+      /**
+       * @description Custom field entries for this incident
+       * @example [
+       *   {
+       *     "custom_field": {
+       *       "description": "Which team is impacted by this issue",
+       *       "field_type": "single_select",
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *       "name": "Affected Team",
+       *       "options": [
+       *         {
+       *           "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *           "sort_key": 10,
+       *           "value": "Product"
+       *         }
+       *       ]
+       *     },
+       *     "values": [
+       *       {
+       *         "value_catalog_entry": {
+       *           "aliases": [
+       *             "lawrence@incident.io",
+       *             "lawrence"
+       *           ],
+       *           "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
+       *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *           "name": "Primary On-call"
+       *         },
+       *         "value_link": "https://google.com/",
+       *         "value_numeric": "123.456",
+       *         "value_option": {
+       *           "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *           "sort_key": 10,
+       *           "value": "Product"
+       *         },
+       *         "value_text": "This is my text field, I hope you like it"
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      custom_field_entries: components["schemas"]["CustomFieldEntryV2"][];
+      /**
+       * @description Incident duration metrics and their measurements for this incident
+       * @example [
+       *   {
+       *     "duration_metric": {
+       *       "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+       *       "name": "Lasted"
+       *     },
+       *     "value_seconds": 10800
+       *   }
+       * ]
+       */
+      duration_metrics?: components["schemas"]["IncidentDurationMetricWithValueV2"][];
+      external_issue_reference?: components["schemas"]["ExternalIssueReferenceV2"];
+      /**
+       * @description If this incident has a debrief attached
+       * @example false
+       */
+      has_debrief?: boolean;
+      /**
+       * @description Unique identifier for the incident
+       * @example 01FDAG4SAP5TYPT98WGR2N7W91
+       */
+      id: string;
+      /**
+       * @description A list of who is assigned to each role for this incident
+       * @example [
+       *   {
+       *     "assignee": {
+       *       "email": "lisa@incident.io",
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *       "name": "Lisa Karlin Curtis",
+       *       "role": "owner",
+       *       "slack_user_id": "U02AYNF2XJM"
+       *     },
+       *     "role": {
+       *       "created_at": "2021-08-17T13:28:57.801578Z",
+       *       "description": "The person currently coordinating the incident",
+       *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *       "instructions": "Take point on the incident; Make sure people are clear on responsibilities",
+       *       "name": "Incident Lead",
+       *       "required": false,
+       *       "role_type": "lead",
+       *       "shortform": "lead",
+       *       "updated_at": "2021-08-17T13:28:57.801578Z"
+       *     }
+       *   }
+       * ]
+       */
+      incident_role_assignments: components["schemas"]["IncidentRoleAssignmentV2"][];
+      incident_status: components["schemas"]["IncidentStatusV2"];
+      /**
+       * @description Incident lifecycle events and when they occurred
+       * @example [
+       *   {
+       *     "incident_timestamp": {
+       *       "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+       *       "name": "Impact started",
+       *       "rank": 1
+       *     },
+       *     "value": {
+       *       "value": "2021-08-17T13:28:57.801578Z"
+       *     }
+       *   }
+       * ]
+       */
+      incident_timestamp_values?: components["schemas"]["IncidentTimestampWithValueV2"][];
+      incident_type?: components["schemas"]["IncidentTypeV2"];
+      /**
+       * @description Whether the incident is real, a test, a tutorial, or importing as a retrospective incident
+       * @example standard
+       * @enum {string}
+       */
+      mode: "standard" | "retrospective" | "test" | "tutorial";
+      /**
+       * @description Message that explains the context behind the update
+       * @example We're working on a fix, hoping to ship in the next 30 minutes
+       */
+      most_recent_update_message?: string;
+      /**
+       * @description Explanation of the incident
+       * @example Our database is sad
+       */
+      name: string;
+      /**
+       * @description A permanent link to the homepage for this incident
+       * @example https://app.incident.io/incidents/123
+       */
+      permalink?: string;
+      /**
+       * @description An array of IDs of postmortem documents for this incident
+       * @example [
+       *   "01FCNDV6P870EA6S7TK1DSYD5H"
+       * ]
+       */
+      postmortem_document_ids?: string[];
+      /**
+       * @description The URL of the incident post-mortem document
+       * @example https://docs.google.com/my_doc_id
+       */
+      postmortem_document_url?: string;
+      /**
+       * @description Reference to this incident, as displayed across the product
+       * @example INC-123
+       */
+      reference: string;
+      /**
+       * @description Incident IDs of incidents related to this incident
+       * @example [
+       *   "INC-237"
+       * ]
+       */
+      related_incidents?: string[];
+      severity?: components["schemas"]["SeverityV2"];
+      /**
+       * @description ID of the Slack channel in the organisation Slack workspace. Note that the channel is sometimes created asynchronously, so may not be present when the incident is just created.
+       * @example C02AW36C1M5
+       */
+      slack_channel_id: string;
+      /**
+       * @description Name of the slack channel
+       * @example inc-165-green-parrot
+       */
+      slack_channel_name?: string;
+      /**
+       * @description ID of the Slack team / workspace. This is only required if you are using a Slack Enterprise Grid with multiple teams.
+       * @example T02A1FSLE8J
+       */
+      slack_team_id: string;
+      /**
+       * @description Detailed description of the incident
+       * @example Our database is really really sad, and we don't know why yet.
+       */
+      summary?: string;
+      /**
+       * Format: date-time
+       * @description When the incident was last updated
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      updated_at: string;
+      /**
+       * @description Whether the incident should be open to anyone in your Slack workspace (public), or invite-only (private). For more information on Private Incidents see our [docs](https://docs.incident.io/incidents/sensitive-incidents).
+       * @example public
+       * @enum {string}
+       */
+      visibility: "public" | "private";
+      /**
+       * Format: double
+       * @description Amount of time spent on the incident in late hours
+       * @example 40.7
+       */
+      workload_minutes_late?: number;
+      /**
+       * Format: double
+       * @description Amount of time spent on the incident in sleeping hours
+       * @example 0
+       */
+      workload_minutes_sleeping?: number;
+      /**
+       * Format: double
+       * @description Amount of time spent on the incident in total
+       * @example 60.7
+       */
+      workload_minutes_total?: number;
+      /**
+       * Format: double
+       * @description Amount of time spent on the incident in working hours
+       * @example 20
+       */
+      workload_minutes_working?: number;
+    };
+    /**
+     * @example {
+     *   "id": "abc123"
+     * }
+     */
+    WebhookPrivateResourceV2: {
+      /**
+       * @description The ID of the resource
+       * @example abc123
+       */
+      id: string;
+    };
+    /**
+     * @example {
+     *   "event_type": "private_alert.alert_created_v1",
+     *   "private_alert.alert_created_v1": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateAlertCreatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_alert.alert_created_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_alert.alert_created_v1": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.action_created_v1",
+     *   "private_incident.action_created_v1": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentActionCreatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.action_created_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.action_created_v1": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.action_updated_v1",
+     *   "private_incident.action_updated_v1": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentActionUpdatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.action_updated_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.action_updated_v1": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.follow_up_created_v1",
+     *   "private_incident.follow_up_created_v1": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.follow_up_created_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.follow_up_created_v1": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.follow_up_created_v2",
+     *   "private_incident.follow_up_created_v2": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentFollowUpCreatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.follow_up_created_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.follow_up_created_v2": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.follow_up_updated_v1",
+     *   "private_incident.follow_up_updated_v1": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentFollowUpUpdatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.follow_up_updated_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.follow_up_updated_v1": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.follow_up_updated_v2",
+     *   "private_incident.follow_up_updated_v2": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentFollowUpUpdatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.follow_up_updated_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.follow_up_updated_v2": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.incident_created_v2",
+     *   "private_incident.incident_created_v2": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentIncidentCreatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.incident_created_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.incident_created_v2": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.incident_updated_v2",
+     *   "private_incident.incident_updated_v2": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentIncidentUpdatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.incident_updated_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.incident_updated_v2": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.membership_granted_v1",
+     *   "private_incident.membership_granted_v1": {
+     *     "actor_user_id": "abc123",
+     *     "incident_id": "abc123",
+     *     "user_id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentMembershipGrantedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.membership_granted_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.membership_granted_v1": components["schemas"]["WebhookIncidentUserV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.membership_revoked_v1",
+     *   "private_incident.membership_revoked_v1": {
+     *     "actor_user_id": "abc123",
+     *     "incident_id": "abc123",
+     *     "user_id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentMembershipRevokedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.membership_revoked_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.membership_revoked_v1": components["schemas"]["WebhookIncidentUserV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "private_incident.postmortem_document_status_updated_v1",
+     *   "private_incident.postmortem_document_status_updated_v1": {
+     *     "id": "abc123"
+     *   }
+     * }
+     */
+    WebhooksPrivateIncidentPostmortemDocumentStatusUpdatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example private_incident.postmortem_document_status_updated_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "private_incident.postmortem_document_status_updated_v1": components["schemas"]["WebhookPrivateResourceV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_alert.alert_created_v1",
+     *   "public_alert.alert_created_v1": {
+     *     "alert_source_id": "01GW2G3V0S59R238FAHPDS1R66",
+     *     "attributes": [
+     *       {
+     *         "array_value": [
+     *           {
+     *             "catalog_entry": {
+     *               "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "name": "Primary On-call"
+     *             },
+     *             "label": "Payments Team",
+     *             "literal": "SEV123"
+     *           }
+     *         ],
+     *         "attribute": {
+     *           "array": false,
+     *           "emoji": "fire",
+     *           "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *           "name": "service",
+     *           "required": false,
+     *           "type": "CatalogEntry[\"01GW2G3V0S59R238FAHPDS1R67\"]"
+     *         },
+     *         "value": {
+     *           "catalog_entry": {
+     *             "catalog_type_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "name": "Primary On-call"
+     *           },
+     *           "label": "Payments Team",
+     *           "literal": "SEV123"
+     *         }
+     *       }
+     *     ],
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "deduplication_key": "4293868629",
+     *     "description": "CPU on the payments service has exceeded 75 percent for 5 minutes",
+     *     "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *     "resolved_at": "2021-08-17T14:28:57.801578Z",
+     *     "source_url": "https://www.my-alerting-platform.com/alerts/my-alert-123",
+     *     "status": "firing",
+     *     "title": "*errors.withMessage: PG::Error failed to connect",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicAlertCreatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_alert.alert_created_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_alert.alert_created_v1": components["schemas"]["AlertV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.action_created_v1",
+     *   "public_incident.action_created_v1": {
+     *     "assignee": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "viewer",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "completed_at": "2021-08-17T13:28:57.801578Z",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Call the fire brigade",
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "follow_up": true,
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "status": "outstanding",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentActionCreatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.action_created_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.action_created_v1": components["schemas"]["ActionV1"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.action_updated_v1",
+     *   "public_incident.action_updated_v1": {
+     *     "assignee": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "viewer",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "completed_at": "2021-08-17T13:28:57.801578Z",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Call the fire brigade",
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "follow_up": true,
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "status": "outstanding",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentActionUpdatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.action_updated_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.action_updated_v1": components["schemas"]["ActionV1"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.follow_up_created_v1",
+     *   "public_incident.follow_up_created_v1": {
+     *     "assignee": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "viewer",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "completed_at": "2021-08-17T13:28:57.801578Z",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Call the fire brigade",
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "follow_up": true,
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "status": "outstanding",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentFollowUpCreatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.follow_up_created_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.follow_up_created_v1": components["schemas"]["ActionV1"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.follow_up_created_v2",
+     *   "public_incident.follow_up_created_v2": {
+     *     "assignee": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "owner",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "completed_at": "2021-08-17T13:28:57.801578Z",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "creator": {
+     *       "alert": {
+     *         "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *         "title": "*errors.withMessage: PG::Error failed to connect"
+     *       },
+     *       "api_key": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My test API key"
+     *       },
+     *       "user": {
+     *         "email": "lisa@incident.io",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Lisa Karlin Curtis",
+     *         "role": "owner",
+     *         "slack_user_id": "U02AYNF2XJM"
+     *       },
+     *       "workflow": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My little workflow"
+     *       }
+     *     },
+     *     "description": "Call the fire brigade",
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "labels": [
+     *       "bug",
+     *       "urgent"
+     *     ],
+     *     "priority": {
+     *       "description": "A follow-up that requires immediate attention.",
+     *       "id": "01GNW4BAQ7XRMFF6FHKNXDFPRW",
+     *       "name": "Urgent",
+     *       "rank": 10
+     *     },
+     *     "status": "outstanding",
+     *     "title": "Cat is stuck in the tree",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentFollowUpCreatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.follow_up_created_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.follow_up_created_v2": components["schemas"]["FollowUpV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.follow_up_updated_v1",
+     *   "public_incident.follow_up_updated_v1": {
+     *     "assignee": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "viewer",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "completed_at": "2021-08-17T13:28:57.801578Z",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "description": "Call the fire brigade",
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "follow_up": true,
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "status": "outstanding",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentFollowUpUpdatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.follow_up_updated_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.follow_up_updated_v1": components["schemas"]["ActionV1"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.follow_up_updated_v2",
+     *   "public_incident.follow_up_updated_v2": {
+     *     "assignee": {
+     *       "email": "lisa@incident.io",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Lisa Karlin Curtis",
+     *       "role": "owner",
+     *       "slack_user_id": "U02AYNF2XJM"
+     *     },
+     *     "completed_at": "2021-08-17T13:28:57.801578Z",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "creator": {
+     *       "alert": {
+     *         "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *         "title": "*errors.withMessage: PG::Error failed to connect"
+     *       },
+     *       "api_key": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My test API key"
+     *       },
+     *       "user": {
+     *         "email": "lisa@incident.io",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Lisa Karlin Curtis",
+     *         "role": "owner",
+     *         "slack_user_id": "U02AYNF2XJM"
+     *       },
+     *       "workflow": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My little workflow"
+     *       }
+     *     },
+     *     "description": "Call the fire brigade",
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "incident_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "labels": [
+     *       "bug",
+     *       "urgent"
+     *     ],
+     *     "priority": {
+     *       "description": "A follow-up that requires immediate attention.",
+     *       "id": "01GNW4BAQ7XRMFF6FHKNXDFPRW",
+     *       "name": "Urgent",
+     *       "rank": 10
+     *     },
+     *     "status": "outstanding",
+     *     "title": "Cat is stuck in the tree",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentFollowUpUpdatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.follow_up_updated_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.follow_up_updated_v2": components["schemas"]["FollowUpV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.incident_created_v2",
+     *   "public_incident.incident_created_v2": {
+     *     "call_url": "https://zoom.us/foo",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "creator": {
+     *       "alert": {
+     *         "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *         "title": "*errors.withMessage: PG::Error failed to connect"
+     *       },
+     *       "api_key": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My test API key"
+     *       },
+     *       "user": {
+     *         "email": "lisa@incident.io",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Lisa Karlin Curtis",
+     *         "role": "owner",
+     *         "slack_user_id": "U02AYNF2XJM"
+     *       },
+     *       "workflow": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My little workflow"
+     *       }
+     *     },
+     *     "custom_field_entries": [
+     *       {
+     *         "custom_field": {
+     *           "description": "Which team is impacted by this issue",
+     *           "field_type": "single_select",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Affected Team",
+     *           "options": [
+     *             {
+     *               "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "sort_key": 10,
+     *               "value": "Product"
+     *             }
+     *           ]
+     *         },
+     *         "values": [
+     *           {
+     *             "value_catalog_entry": {
+     *               "aliases": [
+     *                 "lawrence@incident.io",
+     *                 "lawrence"
+     *               ],
+     *               "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "name": "Primary On-call"
+     *             },
+     *             "value_link": "https://google.com/",
+     *             "value_numeric": "123.456",
+     *             "value_option": {
+     *               "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "sort_key": 10,
+     *               "value": "Product"
+     *             },
+     *             "value_text": "This is my text field, I hope you like it"
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "duration_metrics": [
+     *       {
+     *         "duration_metric": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *           "name": "Lasted"
+     *         },
+     *         "value_seconds": 10800
+     *       }
+     *     ],
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "has_debrief": false,
+     *     "id": "01FDAG4SAP5TYPT98WGR2N7W91",
+     *     "incident_role_assignments": [
+     *       {
+     *         "assignee": {
+     *           "email": "lisa@incident.io",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Lisa Karlin Curtis",
+     *           "role": "owner",
+     *           "slack_user_id": "U02AYNF2XJM"
+     *         },
+     *         "role": {
+     *           "created_at": "2021-08-17T13:28:57.801578Z",
+     *           "description": "The person currently coordinating the incident",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "instructions": "Take point on the incident; Make sure people are clear on responsibilities",
+     *           "name": "Incident Lead",
+     *           "required": false,
+     *           "role_type": "lead",
+     *           "shortform": "lead",
+     *           "updated_at": "2021-08-17T13:28:57.801578Z"
+     *         }
+     *       }
+     *     ],
+     *     "incident_status": {
+     *       "category": "triage",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *       "name": "Closed",
+     *       "rank": 4,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "incident_timestamp_values": [
+     *       {
+     *         "incident_timestamp": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *           "name": "Impact started",
+     *           "rank": 1
+     *         },
+     *         "value": {
+     *           "value": "2021-08-17T13:28:57.801578Z"
+     *         }
+     *       }
+     *     ],
+     *     "incident_type": {
+     *       "create_in_triage": "always",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Customer facing production outages",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "is_default": false,
+     *       "name": "Production Outage",
+     *       "private_incidents_only": false,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "mode": "standard",
+     *     "most_recent_update_message": "We're working on a fix, hoping to ship in the next 30 minutes",
+     *     "name": "Our database is sad",
+     *     "permalink": "https://app.incident.io/incidents/123",
+     *     "postmortem_document_ids": [
+     *       "01FCNDV6P870EA6S7TK1DSYD5H"
+     *     ],
+     *     "postmortem_document_url": "https://docs.google.com/my_doc_id",
+     *     "reference": "INC-123",
+     *     "related_incidents": [
+     *       "INC-237"
+     *     ],
+     *     "severity": {
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Issues with **low impact**.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Minor",
+     *       "rank": 1,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "slack_channel_id": "C02AW36C1M5",
+     *     "slack_channel_name": "inc-165-green-parrot",
+     *     "slack_team_id": "T02A1FSLE8J",
+     *     "summary": "Our database is really really sad, and we don't know why yet.",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z",
+     *     "visibility": "public",
+     *     "workload_minutes_late": 40.7,
+     *     "workload_minutes_sleeping": 0,
+     *     "workload_minutes_total": 60.7,
+     *     "workload_minutes_working": 20
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentIncidentCreatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.incident_created_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.incident_created_v2": components["schemas"]["WebhookIncidentV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.incident_status_updated_v2",
+     *   "public_incident.incident_status_updated_v2": {
+     *     "incident": {
+     *       "call_url": "https://zoom.us/foo",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "creator": {
+     *         "alert": {
+     *           "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *           "title": "*errors.withMessage: PG::Error failed to connect"
+     *         },
+     *         "api_key": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "My test API key"
+     *         },
+     *         "user": {
+     *           "email": "lisa@incident.io",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Lisa Karlin Curtis",
+     *           "role": "owner",
+     *           "slack_user_id": "U02AYNF2XJM"
+     *         },
+     *         "workflow": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "My little workflow"
+     *         }
+     *       },
+     *       "custom_field_entries": [
+     *         {
+     *           "custom_field": {
+     *             "description": "Which team is impacted by this issue",
+     *             "field_type": "single_select",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "name": "Affected Team",
+     *             "options": [
+     *               {
+     *                 "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *                 "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *                 "sort_key": 10,
+     *                 "value": "Product"
+     *               }
+     *             ]
+     *           },
+     *           "values": [
+     *             {
+     *               "value_catalog_entry": {
+     *                 "aliases": [
+     *                   "lawrence@incident.io",
+     *                   "lawrence"
+     *                 ],
+     *                 "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
+     *                 "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *                 "name": "Primary On-call"
+     *               },
+     *               "value_link": "https://google.com/",
+     *               "value_numeric": "123.456",
+     *               "value_option": {
+     *                 "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *                 "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *                 "sort_key": 10,
+     *                 "value": "Product"
+     *               },
+     *               "value_text": "This is my text field, I hope you like it"
+     *             }
+     *           ]
+     *         }
+     *       ],
+     *       "duration_metrics": [
+     *         {
+     *           "duration_metric": {
+     *             "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *             "name": "Lasted"
+     *           },
+     *           "value_seconds": 10800
+     *         }
+     *       ],
+     *       "external_issue_reference": {
+     *         "issue_name": "INC-123",
+     *         "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *         "provider": "asana"
+     *       },
+     *       "has_debrief": false,
+     *       "id": "01FDAG4SAP5TYPT98WGR2N7W91",
+     *       "incident_role_assignments": [
+     *         {
+     *           "assignee": {
+     *             "email": "lisa@incident.io",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "name": "Lisa Karlin Curtis",
+     *             "role": "owner",
+     *             "slack_user_id": "U02AYNF2XJM"
+     *           },
+     *           "role": {
+     *             "created_at": "2021-08-17T13:28:57.801578Z",
+     *             "description": "The person currently coordinating the incident",
+     *             "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *             "instructions": "Take point on the incident; Make sure people are clear on responsibilities",
+     *             "name": "Incident Lead",
+     *             "required": false,
+     *             "role_type": "lead",
+     *             "shortform": "lead",
+     *             "updated_at": "2021-08-17T13:28:57.801578Z"
+     *           }
+     *         }
+     *       ],
+     *       "incident_status": {
+     *         "category": "triage",
+     *         "created_at": "2021-08-17T13:28:57.801578Z",
+     *         "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *         "name": "Closed",
+     *         "rank": 4,
+     *         "updated_at": "2021-08-17T13:28:57.801578Z"
+     *       },
+     *       "incident_timestamp_values": [
+     *         {
+     *           "incident_timestamp": {
+     *             "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *             "name": "Impact started",
+     *             "rank": 1
+     *           },
+     *           "value": {
+     *             "value": "2021-08-17T13:28:57.801578Z"
+     *           }
+     *         }
+     *       ],
+     *       "incident_type": {
+     *         "create_in_triage": "always",
+     *         "created_at": "2021-08-17T13:28:57.801578Z",
+     *         "description": "Customer facing production outages",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "is_default": false,
+     *         "name": "Production Outage",
+     *         "private_incidents_only": false,
+     *         "updated_at": "2021-08-17T13:28:57.801578Z"
+     *       },
+     *       "mode": "standard",
+     *       "name": "Our database is sad",
+     *       "permalink": "https://app.incident.io/incidents/123",
+     *       "postmortem_document_ids": [
+     *         "01FCNDV6P870EA6S7TK1DSYD5H"
+     *       ],
+     *       "postmortem_document_url": "https://docs.google.com/my_doc_id",
+     *       "reference": "INC-123",
+     *       "severity": {
+     *         "created_at": "2021-08-17T13:28:57.801578Z",
+     *         "description": "Issues with **low impact**.",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Minor",
+     *         "rank": 1,
+     *         "updated_at": "2021-08-17T13:28:57.801578Z"
+     *       },
+     *       "slack_channel_id": "C02AW36C1M5",
+     *       "slack_channel_name": "inc-165-green-parrot",
+     *       "slack_team_id": "T02A1FSLE8J",
+     *       "summary": "Our database is really really sad, and we don't know why yet.",
+     *       "updated_at": "2021-08-17T13:28:57.801578Z",
+     *       "visibility": "public",
+     *       "workload_minutes_late": 40.7,
+     *       "workload_minutes_sleeping": 0,
+     *       "workload_minutes_total": 60.7,
+     *       "workload_minutes_working": 20
+     *     },
+     *     "message": "We're working on a fix, hoping to ship in the next 30 minutes",
+     *     "new_status": {
+     *       "category": "triage",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *       "name": "Closed",
+     *       "rank": 4,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "previous_status": {
+     *       "category": "triage",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *       "name": "Closed",
+     *       "rank": 4,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     }
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentIncidentStatusUpdatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.incident_status_updated_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.incident_status_updated_v2": components["schemas"]["IncidentWithStatusChangeV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.incident_updated_v2",
+     *   "public_incident.incident_updated_v2": {
+     *     "call_url": "https://zoom.us/foo",
+     *     "created_at": "2021-08-17T13:28:57.801578Z",
+     *     "creator": {
+     *       "alert": {
+     *         "id": "01GW2G3V0S59R238FAHPDS1R66",
+     *         "title": "*errors.withMessage: PG::Error failed to connect"
+     *       },
+     *       "api_key": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My test API key"
+     *       },
+     *       "user": {
+     *         "email": "lisa@incident.io",
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "Lisa Karlin Curtis",
+     *         "role": "owner",
+     *         "slack_user_id": "U02AYNF2XJM"
+     *       },
+     *       "workflow": {
+     *         "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *         "name": "My little workflow"
+     *       }
+     *     },
+     *     "custom_field_entries": [
+     *       {
+     *         "custom_field": {
+     *           "description": "Which team is impacted by this issue",
+     *           "field_type": "single_select",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Affected Team",
+     *           "options": [
+     *             {
+     *               "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "sort_key": 10,
+     *               "value": "Product"
+     *             }
+     *           ]
+     *         },
+     *         "values": [
+     *           {
+     *             "value_catalog_entry": {
+     *               "aliases": [
+     *                 "lawrence@incident.io",
+     *                 "lawrence"
+     *               ],
+     *               "external_id": "761722cd-d1d7-477b-ac7e-90f9e079dc33",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "name": "Primary On-call"
+     *             },
+     *             "value_link": "https://google.com/",
+     *             "value_numeric": "123.456",
+     *             "value_option": {
+     *               "custom_field_id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *               "sort_key": 10,
+     *               "value": "Product"
+     *             },
+     *             "value_text": "This is my text field, I hope you like it"
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "duration_metrics": [
+     *       {
+     *         "duration_metric": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *           "name": "Lasted"
+     *         },
+     *         "value_seconds": 10800
+     *       }
+     *     ],
+     *     "external_issue_reference": {
+     *       "issue_name": "INC-123",
+     *       "issue_permalink": "https://linear.app/incident-io/issue/INC-1609/find-copywriter-to-write-up",
+     *       "provider": "asana"
+     *     },
+     *     "has_debrief": false,
+     *     "id": "01FDAG4SAP5TYPT98WGR2N7W91",
+     *     "incident_role_assignments": [
+     *       {
+     *         "assignee": {
+     *           "email": "lisa@incident.io",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Lisa Karlin Curtis",
+     *           "role": "owner",
+     *           "slack_user_id": "U02AYNF2XJM"
+     *         },
+     *         "role": {
+     *           "created_at": "2021-08-17T13:28:57.801578Z",
+     *           "description": "The person currently coordinating the incident",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "instructions": "Take point on the incident; Make sure people are clear on responsibilities",
+     *           "name": "Incident Lead",
+     *           "required": false,
+     *           "role_type": "lead",
+     *           "shortform": "lead",
+     *           "updated_at": "2021-08-17T13:28:57.801578Z"
+     *         }
+     *       }
+     *     ],
+     *     "incident_status": {
+     *       "category": "triage",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Impact has been **fully mitigated**, and we're ready to learn from this incident.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *       "name": "Closed",
+     *       "rank": 4,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "incident_timestamp_values": [
+     *       {
+     *         "incident_timestamp": {
+     *           "id": "01FCNDV6P870EA6S7TK1DSYD5H",
+     *           "name": "Impact started",
+     *           "rank": 1
+     *         },
+     *         "value": {
+     *           "value": "2021-08-17T13:28:57.801578Z"
+     *         }
+     *       }
+     *     ],
+     *     "incident_type": {
+     *       "create_in_triage": "always",
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Customer facing production outages",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "is_default": false,
+     *       "name": "Production Outage",
+     *       "private_incidents_only": false,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "mode": "standard",
+     *     "most_recent_update_message": "We're working on a fix, hoping to ship in the next 30 minutes",
+     *     "name": "Our database is sad",
+     *     "permalink": "https://app.incident.io/incidents/123",
+     *     "postmortem_document_ids": [
+     *       "01FCNDV6P870EA6S7TK1DSYD5H"
+     *     ],
+     *     "postmortem_document_url": "https://docs.google.com/my_doc_id",
+     *     "reference": "INC-123",
+     *     "related_incidents": [
+     *       "INC-237"
+     *     ],
+     *     "severity": {
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "description": "Issues with **low impact**.",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "name": "Minor",
+     *       "rank": 1,
+     *       "updated_at": "2021-08-17T13:28:57.801578Z"
+     *     },
+     *     "slack_channel_id": "C02AW36C1M5",
+     *     "slack_channel_name": "inc-165-green-parrot",
+     *     "slack_team_id": "T02A1FSLE8J",
+     *     "summary": "Our database is really really sad, and we don't know why yet.",
+     *     "updated_at": "2021-08-17T13:28:57.801578Z",
+     *     "visibility": "public",
+     *     "workload_minutes_late": 40.7,
+     *     "workload_minutes_sleeping": 0,
+     *     "workload_minutes_total": 60.7,
+     *     "workload_minutes_working": 20
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentIncidentUpdatedV2ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.incident_updated_v2
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.incident_updated_v2": components["schemas"]["WebhookIncidentV2"];
+    };
+    /**
+     * @example {
+     *   "event_type": "public_incident.postmortem_document_status_updated_v1",
+     *   "public_incident.postmortem_document_status_updated_v1": {
+     *     "new_status": "complete",
+     *     "postmortem_document": {
+     *       "created_at": "2021-08-17T13:28:57.801578Z",
+     *       "document_url": "https://app.incident.io/my-org/incidents/123/post-mortems/01GDZEW57FDA1K4S63MGMQ5DS9",
+     *       "editors": [
+     *         {
+     *           "email": "lisa@incident.io",
+     *           "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *           "name": "Lisa Karlin Curtis",
+     *           "role": "viewer",
+     *           "slack_user_id": "U02AYNF2XJM"
+     *         }
+     *       ],
+     *       "exported_urls": [
+     *         "https://www.notion.so/INC-123-sad-database",
+     *         "https://docs.google.com/document/d/1234"
+     *       ],
+     *       "id": "01GDZEW57FDA1K4S63MGMQ5DS9",
+     *       "incident_id": "01GBA8J19SMXQWPJMX3P2ESCVG",
+     *       "status": "in_progress",
+     *       "title": "INC-123: Database is sad",
+     *       "updated_at": "abc123"
+     *     },
+     *     "previous_status": "review"
+     *   }
+     * }
+     */
+    WebhooksPublicIncidentPostmortemDocumentStatusUpdatedV1ResponseBody: {
+      /**
+       * @description What type of event is this webhook for?
+       * @example public_incident.postmortem_document_status_updated_v1
+       * @enum {string}
+       */
+      event_type:
+        | "public_incident.incident_created_v2"
+        | "private_incident.incident_created_v2"
+        | "public_incident.incident_updated_v2"
+        | "private_incident.incident_updated_v2"
+        | "public_incident.incident_status_updated_v2"
+        | "public_incident.follow_up_created_v1"
+        | "private_incident.follow_up_created_v1"
+        | "public_incident.follow_up_updated_v1"
+        | "private_incident.follow_up_updated_v1"
+        | "public_incident.follow_up_created_v2"
+        | "private_incident.follow_up_created_v2"
+        | "public_incident.follow_up_updated_v2"
+        | "private_incident.follow_up_updated_v2"
+        | "public_incident.action_created_v1"
+        | "private_incident.action_created_v1"
+        | "public_incident.action_updated_v1"
+        | "private_incident.action_updated_v1"
+        | "public_alert.alert_created_v1"
+        | "private_alert.alert_created_v1"
+        | "private_incident.membership_granted_v1"
+        | "private_incident.membership_revoked_v1"
+        | "public_incident.postmortem_document_status_updated_v1"
+        | "private_incident.postmortem_document_status_updated_v1";
+      "public_incident.postmortem_document_status_updated_v1": components["schemas"]["PostmortemDocumentWithStatusChangeV1"];
+    };
+    /**
+     * @example {
+     *   "id": "abc123",
+     *   "name": "abc123",
+     *   "timezone": "abc123",
+     *   "weekday_intervals": [
+     *     {
+     *       "end_time": "17:00",
+     *       "start_time": "09:00",
+     *       "weekday": "monday"
+     *     }
+     *   ]
+     * }
+     */
+    WeekdayIntervalConfigV2: {
+      /**
+       * @description The unique identifier for this set of working intervals
+       * @example abc123
+       */
+      id: string;
+      /**
+       * @description A human readable label for this set of working intervals
+       * @example abc123
+       */
+      name: string;
+      /**
+       * @description How to interpret all the intervals
+       * @example abc123
+       */
+      timezone: string;
+      /**
+       * @example [
+       *   {
+       *     "end_time": "17:00",
+       *     "start_time": "09:00",
+       *     "weekday": "monday"
+       *   }
+       * ]
+       */
+      weekday_intervals: components["schemas"]["WeekdayIntervalV2"][];
+    };
+    /**
+     * @example {
+     *   "end_time": "17:00",
+     *   "start_time": "09:00",
+     *   "weekday": "monday"
+     * }
+     */
+    WeekdayIntervalV2: {
+      /**
+       * @description End time of the interval, in 24hr format
+       * @example 17:00
+       */
+      end_time: string;
+      /**
+       * @description Start time of the interval, in 24hr format
+       * @example 09:00
+       */
+      start_time: string;
+      /**
+       * @description Weekdays for use within a schedule or escalation path
+       * @example monday
+       * @enum {string}
+       */
+      weekday:
+        | "monday"
+        | "tuesday"
+        | "wednesday"
+        | "thursday"
+        | "friday"
+        | "saturday"
+        | "sunday";
+    };
+    /**
+     * @example {
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "name": "My little workflow"
+     * }
+     */
+    WorkflowActorV2: {
+      /**
+       * @description Unique identifier for the workflow
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Name provided by the user when creating the workflow
+       * @example My little workflow
+       */
+      name: string;
+    };
+    /**
+     * @example {
+     *   "conditions_apply_over_delay": false,
+     *   "for_seconds": 60
+     * }
+     */
+    WorkflowDelayV2: {
+      /**
+       * @description If this workflow is delayed, whether the conditions should be rechecked between trigger firing and execution
+       * @example false
+       */
+      conditions_apply_over_delay: boolean;
+      /**
+       * Format: int64
+       * @description Delay in seconds between trigger firing and running the workflow
+       * @example 60
+       */
+      for_seconds: number;
+    };
+    /**
+     * @example {
+     *   "condition_groups": [
+     *     {
+     *       "conditions": [
+     *         {
+     *           "operation": {
+     *             "label": "Lawrence Jones",
+     *             "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *           },
+     *           "param_bindings": [
+     *             {
+     *               "array_value": [
+     *                 {
+     *                   "label": "Lawrence Jones",
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               ],
+     *               "value": {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             }
+     *           ],
+     *           "subject": {
+     *             "label": "Incident Severity",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "continue_on_step_error": true,
+     *   "delay": {
+     *     "conditions_apply_over_delay": false,
+     *     "for_seconds": 60
+     *   },
+     *   "expressions": [
+     *     {
+     *       "else_branch": {
+     *         "result": {
+     *           "array_value": [
+     *             {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "label": "Lawrence Jones",
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       },
+     *       "label": "Team Slack channel",
+     *       "operations": [
+     *         {
+     *           "branches": {
+     *             "branches": [
+     *               {
+     *                 "condition_groups": [
+     *                   {
+     *                     "conditions": [
+     *                       {
+     *                         "operation": {
+     *                           "label": "Lawrence Jones",
+     *                           "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                         },
+     *                         "param_bindings": [
+     *                           {
+     *                             "array_value": [
+     *                               {
+     *                                 "label": "Lawrence Jones",
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             ],
+     *                             "value": {
+     *                               "label": "Lawrence Jones",
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           }
+     *                         ],
+     *                         "subject": {
+     *                           "label": "Incident Severity",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ]
+     *                   }
+     *                 ],
+     *                 "result": {
+     *                   "array_value": [
+     *                     {
+     *                       "label": "Lawrence Jones",
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   ],
+     *                   "value": {
+     *                     "label": "Lawrence Jones",
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 }
+     *               }
+     *             ],
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           },
+     *           "filter": {
+     *             "condition_groups": [
+     *               {
+     *                 "conditions": [
+     *                   {
+     *                     "operation": {
+     *                       "label": "Lawrence Jones",
+     *                       "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                     },
+     *                     "param_bindings": [
+     *                       {
+     *                         "array_value": [
+     *                           {
+     *                             "label": "Lawrence Jones",
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         ],
+     *                         "value": {
+     *                           "label": "Lawrence Jones",
+     *                           "literal": "SEV123",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ],
+     *                     "subject": {
+     *                       "label": "Incident Severity",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   }
+     *                 ]
+     *               }
+     *             ]
+     *           },
+     *           "navigate": {
+     *             "reference": "1235",
+     *             "reference_label": "Teams"
+     *           },
+     *           "operation_type": "navigate",
+     *           "parse": {
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             },
+     *             "source": "metadata.annotations[\"github.com/repo\"]"
+     *           },
+     *           "returns": {
+     *             "array": true,
+     *             "type": "IncidentStatus"
+     *           }
+     *         }
+     *       ],
+     *       "reference": "abc123",
+     *       "returns": {
+     *         "array": true,
+     *         "type": "IncidentStatus"
+     *       },
+     *       "root_reference": "incident.status"
+     *     }
+     *   ],
+     *   "folder": "My folder 01",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "include_private_escalations": true,
+     *   "include_private_incidents": true,
+     *   "name": "My little workflow",
+     *   "once_for": [
+     *     {
+     *       "array": false,
+     *       "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+     *       "label": "Incident -> Affected Team",
+     *       "type": "IncidentSeverity"
+     *     }
+     *   ],
+     *   "runs_from": "2021-08-17T13:28:57.801578Z",
+     *   "runs_on_incident_modes": [
+     *     "standard",
+     *     "test",
+     *     "retrospective"
+     *   ],
+     *   "runs_on_incidents": "newly_created",
+     *   "shortform": "page-the-ceo",
+     *   "state": "active",
+     *   "steps": [
+     *     {
+     *       "label": "PagerDuty Escalate",
+     *       "name": "pagerduty.escalate"
+     *     }
+     *   ],
+     *   "trigger": {
+     *     "label": "Incident Updated",
+     *     "name": "incident.updated"
+     *   },
+     *   "version": 3
+     * }
+     */
+    WorkflowSlimV2: {
+      /**
+       * @description Conditions that apply to the workflow trigger
+       * @example [
+       *   {
+       *     "conditions": [
+       *       {
+       *         "operation": {
+       *           "label": "Lawrence Jones",
+       *           "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *         },
+       *         "param_bindings": [
+       *           {
+       *             "array_value": [
+       *               {
+       *                 "label": "Lawrence Jones",
+       *                 "literal": "SEV123",
+       *                 "reference": "incident.severity"
+       *               }
+       *             ],
+       *             "value": {
+       *               "label": "Lawrence Jones",
+       *               "literal": "SEV123",
+       *               "reference": "incident.severity"
+       *             }
+       *           }
+       *         ],
+       *         "subject": {
+       *           "label": "Incident Severity",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      condition_groups: components["schemas"]["ConditionGroupV2"][];
+      /**
+       * @description Whether to continue executing the workflow if a step fails
+       * @example true
+       */
+      continue_on_step_error: boolean;
+      delay?: components["schemas"]["WorkflowDelayV2"];
+      /**
+       * @description Expressions that make variables available in the scope
+       * @example [
+       *   {
+       *     "else_branch": {
+       *       "result": {
+       *         "array_value": [
+       *           {
+       *             "label": "Lawrence Jones",
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "label": "Lawrence Jones",
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     },
+       *     "label": "Team Slack channel",
+       *     "operations": [
+       *       {
+       *         "branches": {
+       *           "branches": [
+       *             {
+       *               "condition_groups": [
+       *                 {
+       *                   "conditions": [
+       *                     {
+       *                       "operation": {
+       *                         "label": "Lawrence Jones",
+       *                         "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *                       },
+       *                       "param_bindings": [
+       *                         {
+       *                           "array_value": [
+       *                             {
+       *                               "label": "Lawrence Jones",
+       *                               "literal": "SEV123",
+       *                               "reference": "incident.severity"
+       *                             }
+       *                           ],
+       *                           "value": {
+       *                             "label": "Lawrence Jones",
+       *                             "literal": "SEV123",
+       *                             "reference": "incident.severity"
+       *                           }
+       *                         }
+       *                       ],
+       *                       "subject": {
+       *                         "label": "Incident Severity",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ]
+       *                 }
+       *               ],
+       *               "result": {
+       *                 "array_value": [
+       *                   {
+       *                     "label": "Lawrence Jones",
+       *                     "literal": "SEV123",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 ],
+       *                 "value": {
+       *                   "label": "Lawrence Jones",
+       *                   "literal": "SEV123",
+       *                   "reference": "incident.severity"
+       *                 }
+       *               }
+       *             }
+       *           ],
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           }
+       *         },
+       *         "filter": {
+       *           "condition_groups": [
+       *             {
+       *               "conditions": [
+       *                 {
+       *                   "operation": {
+       *                     "label": "Lawrence Jones",
+       *                     "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *                   },
+       *                   "param_bindings": [
+       *                     {
+       *                       "array_value": [
+       *                         {
+       *                           "label": "Lawrence Jones",
+       *                           "literal": "SEV123",
+       *                           "reference": "incident.severity"
+       *                         }
+       *                       ],
+       *                       "value": {
+       *                         "label": "Lawrence Jones",
+       *                         "literal": "SEV123",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ],
+       *                   "subject": {
+       *                     "label": "Incident Severity",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 }
+       *               ]
+       *             }
+       *           ]
+       *         },
+       *         "navigate": {
+       *           "reference": "1235",
+       *           "reference_label": "Teams"
+       *         },
+       *         "operation_type": "navigate",
+       *         "parse": {
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           },
+       *           "source": "metadata.annotations[\"github.com/repo\"]"
+       *         },
+       *         "returns": {
+       *           "array": true,
+       *           "type": "IncidentStatus"
+       *         }
+       *       }
+       *     ],
+       *     "reference": "abc123",
+       *     "returns": {
+       *       "array": true,
+       *       "type": "IncidentStatus"
+       *     },
+       *     "root_reference": "incident.status"
+       *   }
+       * ]
+       */
+      expressions: components["schemas"]["ExpressionV2"][];
+      /**
+       * @description Folder to display the workflow in
+       * @example My folder 01
+       */
+      folder?: string;
+      /**
+       * @description Unique identifier for the workflow
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Whether to include private escalations
+       * @example true
+       */
+      include_private_escalations: boolean;
+      /**
+       * @description Whether to include private incidents
+       * @example true
+       */
+      include_private_incidents: boolean;
+      /**
+       * @description Name provided by the user when creating the workflow
+       * @example My little workflow
+       */
+      name: string;
+      /**
+       * @description This workflow will run 'once for' a list of references
+       * @example [
+       *   {
+       *     "array": false,
+       *     "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+       *     "label": "Incident -> Affected Team",
+       *     "type": "IncidentSeverity"
+       *   }
+       * ]
+       */
+      once_for: components["schemas"]["EngineReferenceV2"][];
+      /**
+       * Format: date-time
+       * @description The time from which this workflow will run on incidents
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      runs_from?: string;
+      /**
+       * @description Which incident modes should this workflow run on? By default, workflows only run on standard incidents, but can also be configured to run on test and retrospective incidents.
+       * @example [
+       *   "standard",
+       *   "test",
+       *   "retrospective"
+       * ]
+       */
+      runs_on_incident_modes: ("standard" | "test" | "retrospective")[];
+      /**
+       * @description Which incidents should the workflow be applied to?
+       * @example newly_created
+       * @enum {string}
+       */
+      runs_on_incidents: "newly_created" | "newly_created_and_active";
+      /**
+       * @description The shortform used to trigger this workflow (only applicable for manual triggers)
+       * @example page-the-ceo
+       */
+      shortform?: string;
+      /**
+       * @description What state this workflow is in
+       * @example active
+       * @enum {string}
+       */
+      state: "active" | "disabled" | "draft" | "error";
+      /**
+       * @description Steps that are executed as part of the workflow
+       * @example [
+       *   {
+       *     "label": "PagerDuty Escalate",
+       *     "name": "pagerduty.escalate"
+       *   }
+       * ]
+       */
+      steps: components["schemas"]["StepConfigSlimV2"][];
+      trigger: components["schemas"]["TriggerSlimV2"];
+      /**
+       * Format: int64
+       * @description Revision of the workflow, uniquely identifying it's version
+       * @example 3
+       */
+      version: number;
+    };
+    /**
+     * @example {
+     *   "condition_groups": [
+     *     {
+     *       "conditions": [
+     *         {
+     *           "operation": {
+     *             "label": "Lawrence Jones",
+     *             "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *           },
+     *           "param_bindings": [
+     *             {
+     *               "array_value": [
+     *                 {
+     *                   "label": "Lawrence Jones",
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               ],
+     *               "value": {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             }
+     *           ],
+     *           "subject": {
+     *             "label": "Incident Severity",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "continue_on_step_error": true,
+     *   "delay": {
+     *     "conditions_apply_over_delay": false,
+     *     "for_seconds": 60
+     *   },
+     *   "expressions": [
+     *     {
+     *       "else_branch": {
+     *         "result": {
+     *           "array_value": [
+     *             {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "label": "Lawrence Jones",
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       },
+     *       "label": "Team Slack channel",
+     *       "operations": [
+     *         {
+     *           "branches": {
+     *             "branches": [
+     *               {
+     *                 "condition_groups": [
+     *                   {
+     *                     "conditions": [
+     *                       {
+     *                         "operation": {
+     *                           "label": "Lawrence Jones",
+     *                           "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                         },
+     *                         "param_bindings": [
+     *                           {
+     *                             "array_value": [
+     *                               {
+     *                                 "label": "Lawrence Jones",
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             ],
+     *                             "value": {
+     *                               "label": "Lawrence Jones",
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           }
+     *                         ],
+     *                         "subject": {
+     *                           "label": "Incident Severity",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ]
+     *                   }
+     *                 ],
+     *                 "result": {
+     *                   "array_value": [
+     *                     {
+     *                       "label": "Lawrence Jones",
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   ],
+     *                   "value": {
+     *                     "label": "Lawrence Jones",
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 }
+     *               }
+     *             ],
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           },
+     *           "filter": {
+     *             "condition_groups": [
+     *               {
+     *                 "conditions": [
+     *                   {
+     *                     "operation": {
+     *                       "label": "Lawrence Jones",
+     *                       "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                     },
+     *                     "param_bindings": [
+     *                       {
+     *                         "array_value": [
+     *                           {
+     *                             "label": "Lawrence Jones",
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         ],
+     *                         "value": {
+     *                           "label": "Lawrence Jones",
+     *                           "literal": "SEV123",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ],
+     *                     "subject": {
+     *                       "label": "Incident Severity",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   }
+     *                 ]
+     *               }
+     *             ]
+     *           },
+     *           "navigate": {
+     *             "reference": "1235",
+     *             "reference_label": "Teams"
+     *           },
+     *           "operation_type": "navigate",
+     *           "parse": {
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             },
+     *             "source": "metadata.annotations[\"github.com/repo\"]"
+     *           },
+     *           "returns": {
+     *             "array": true,
+     *             "type": "IncidentStatus"
+     *           }
+     *         }
+     *       ],
+     *       "reference": "abc123",
+     *       "returns": {
+     *         "array": true,
+     *         "type": "IncidentStatus"
+     *       },
+     *       "root_reference": "incident.status"
+     *     }
+     *   ],
+     *   "folder": "My folder 01",
+     *   "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *   "include_private_escalations": true,
+     *   "include_private_incidents": true,
+     *   "name": "My little workflow",
+     *   "once_for": [
+     *     {
+     *       "array": false,
+     *       "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+     *       "label": "Incident -> Affected Team",
+     *       "type": "IncidentSeverity"
+     *     }
+     *   ],
+     *   "runs_from": "2021-08-17T13:28:57.801578Z",
+     *   "runs_on_incident_modes": [
+     *     "standard",
+     *     "test",
+     *     "retrospective"
+     *   ],
+     *   "runs_on_incidents": "newly_created",
+     *   "shortform": "page-the-ceo",
+     *   "state": "active",
+     *   "steps": [
+     *     {
+     *       "for_each": "abc123",
+     *       "id": "abc123",
+     *       "label": "PagerDuty Escalate",
+     *       "name": "pagerduty.escalate",
+     *       "param_bindings": [
+     *         {
+     *           "array_value": [
+     *             {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "label": "Lawrence Jones",
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "trigger": {
+     *     "label": "Incident Updated",
+     *     "name": "incident.updated"
+     *   },
+     *   "version": 3
+     * }
+     */
+    WorkflowV2: {
+      /**
+       * @description Conditions that apply to the workflow trigger
+       * @example [
+       *   {
+       *     "conditions": [
+       *       {
+       *         "operation": {
+       *           "label": "Lawrence Jones",
+       *           "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *         },
+       *         "param_bindings": [
+       *           {
+       *             "array_value": [
+       *               {
+       *                 "label": "Lawrence Jones",
+       *                 "literal": "SEV123",
+       *                 "reference": "incident.severity"
+       *               }
+       *             ],
+       *             "value": {
+       *               "label": "Lawrence Jones",
+       *               "literal": "SEV123",
+       *               "reference": "incident.severity"
+       *             }
+       *           }
+       *         ],
+       *         "subject": {
+       *           "label": "Incident Severity",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      condition_groups: components["schemas"]["ConditionGroupV2"][];
+      /**
+       * @description Whether to continue executing the workflow if a step fails
+       * @example true
+       */
+      continue_on_step_error: boolean;
+      delay?: components["schemas"]["WorkflowDelayV2"];
+      /**
+       * @description Expressions that make variables available in the scope
+       * @example [
+       *   {
+       *     "else_branch": {
+       *       "result": {
+       *         "array_value": [
+       *           {
+       *             "label": "Lawrence Jones",
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "label": "Lawrence Jones",
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     },
+       *     "label": "Team Slack channel",
+       *     "operations": [
+       *       {
+       *         "branches": {
+       *           "branches": [
+       *             {
+       *               "condition_groups": [
+       *                 {
+       *                   "conditions": [
+       *                     {
+       *                       "operation": {
+       *                         "label": "Lawrence Jones",
+       *                         "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *                       },
+       *                       "param_bindings": [
+       *                         {
+       *                           "array_value": [
+       *                             {
+       *                               "label": "Lawrence Jones",
+       *                               "literal": "SEV123",
+       *                               "reference": "incident.severity"
+       *                             }
+       *                           ],
+       *                           "value": {
+       *                             "label": "Lawrence Jones",
+       *                             "literal": "SEV123",
+       *                             "reference": "incident.severity"
+       *                           }
+       *                         }
+       *                       ],
+       *                       "subject": {
+       *                         "label": "Incident Severity",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ]
+       *                 }
+       *               ],
+       *               "result": {
+       *                 "array_value": [
+       *                   {
+       *                     "label": "Lawrence Jones",
+       *                     "literal": "SEV123",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 ],
+       *                 "value": {
+       *                   "label": "Lawrence Jones",
+       *                   "literal": "SEV123",
+       *                   "reference": "incident.severity"
+       *                 }
+       *               }
+       *             }
+       *           ],
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           }
+       *         },
+       *         "filter": {
+       *           "condition_groups": [
+       *             {
+       *               "conditions": [
+       *                 {
+       *                   "operation": {
+       *                     "label": "Lawrence Jones",
+       *                     "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *                   },
+       *                   "param_bindings": [
+       *                     {
+       *                       "array_value": [
+       *                         {
+       *                           "label": "Lawrence Jones",
+       *                           "literal": "SEV123",
+       *                           "reference": "incident.severity"
+       *                         }
+       *                       ],
+       *                       "value": {
+       *                         "label": "Lawrence Jones",
+       *                         "literal": "SEV123",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ],
+       *                   "subject": {
+       *                     "label": "Incident Severity",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 }
+       *               ]
+       *             }
+       *           ]
+       *         },
+       *         "navigate": {
+       *           "reference": "1235",
+       *           "reference_label": "Teams"
+       *         },
+       *         "operation_type": "navigate",
+       *         "parse": {
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           },
+       *           "source": "metadata.annotations[\"github.com/repo\"]"
+       *         },
+       *         "returns": {
+       *           "array": true,
+       *           "type": "IncidentStatus"
+       *         }
+       *       }
+       *     ],
+       *     "reference": "abc123",
+       *     "returns": {
+       *       "array": true,
+       *       "type": "IncidentStatus"
+       *     },
+       *     "root_reference": "incident.status"
+       *   }
+       * ]
+       */
+      expressions: components["schemas"]["ExpressionV2"][];
+      /**
+       * @description Folder to display the workflow in
+       * @example My folder 01
+       */
+      folder?: string;
+      /**
+       * @description Unique identifier for the workflow
+       * @example 01FCNDV6P870EA6S7TK1DSYDG0
+       */
+      id: string;
+      /**
+       * @description Whether to include private escalations
+       * @example true
+       */
+      include_private_escalations: boolean;
+      /**
+       * @description Whether to include private incidents
+       * @example true
+       */
+      include_private_incidents: boolean;
+      /**
+       * @description Name provided by the user when creating the workflow
+       * @example My little workflow
+       */
+      name: string;
+      /**
+       * @description This workflow will run 'once for' a list of references
+       * @example [
+       *   {
+       *     "array": false,
+       *     "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+       *     "label": "Incident -> Affected Team",
+       *     "type": "IncidentSeverity"
+       *   }
+       * ]
+       */
+      once_for: components["schemas"]["EngineReferenceV2"][];
+      /**
+       * Format: date-time
+       * @description The time from which this workflow will run on incidents
+       * @example 2021-08-17T13:28:57.801578Z
+       */
+      runs_from?: string;
+      /**
+       * @description Which incident modes should this workflow run on? By default, workflows only run on standard incidents, but can also be configured to run on test and retrospective incidents.
+       * @example [
+       *   "standard",
+       *   "test",
+       *   "retrospective"
+       * ]
+       */
+      runs_on_incident_modes: ("standard" | "test" | "retrospective")[];
+      /**
+       * @description Which incidents should the workflow be applied to?
+       * @example newly_created
+       * @enum {string}
+       */
+      runs_on_incidents: "newly_created" | "newly_created_and_active";
+      /**
+       * @description The shortform used to trigger this workflow (only applicable for manual triggers)
+       * @example page-the-ceo
+       */
+      shortform?: string;
+      /**
+       * @description What state this workflow is in
+       * @example active
+       * @enum {string}
+       */
+      state: "active" | "disabled" | "draft" | "error";
+      /**
+       * @description Steps that are executed as part of the workflow
+       * @example [
+       *   {
+       *     "for_each": "abc123",
+       *     "id": "abc123",
+       *     "label": "PagerDuty Escalate",
+       *     "name": "pagerduty.escalate",
+       *     "param_bindings": [
+       *       {
+       *         "array_value": [
+       *           {
+       *             "label": "Lawrence Jones",
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "label": "Lawrence Jones",
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      steps: components["schemas"]["StepConfigV2"][];
+      trigger: components["schemas"]["TriggerSlimV2"];
+      /**
+       * Format: int64
+       * @description Revision of the workflow, uniquely identifying it's version
+       * @example 3
+       */
+      version: number;
+    };
+    /**
+     * @example {
+     *   "annotations": {
+     *     "incident.io/terraform/version": "3.0.0"
+     *   },
+     *   "condition_groups": [
+     *     {
+     *       "conditions": [
+     *         {
+     *           "operation": "one_of",
+     *           "param_bindings": [
+     *             {
+     *               "array_value": [
+     *                 {
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               ],
+     *               "value": {
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             }
+     *           ],
+     *           "subject": "incident.severity"
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "continue_on_step_error": true,
+     *   "delay": {
+     *     "conditions_apply_over_delay": false,
+     *     "for_seconds": 60
+     *   },
+     *   "expressions": [
+     *     {
+     *       "else_branch": {
+     *         "result": {
+     *           "array_value": [
+     *             {
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       },
+     *       "label": "Team Slack channel",
+     *       "operations": [
+     *         {
+     *           "branches": {
+     *             "branches": [
+     *               {
+     *                 "condition_groups": [
+     *                   {
+     *                     "conditions": [
+     *                       {
+     *                         "operation": "one_of",
+     *                         "param_bindings": [
+     *                           {
+     *                             "array_value": [
+     *                               {
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             ],
+     *                             "value": {
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           }
+     *                         ],
+     *                         "subject": "incident.severity"
+     *                       }
+     *                     ]
+     *                   }
+     *                 ],
+     *                 "result": {
+     *                   "array_value": [
+     *                     {
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   ],
+     *                   "value": {
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 }
+     *               }
+     *             ],
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           },
+     *           "concatenate": {
+     *             "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+     *           },
+     *           "filter": {
+     *             "condition_groups": [
+     *               {
+     *                 "conditions": [
+     *                   {
+     *                     "operation": "one_of",
+     *                     "param_bindings": [
+     *                       {
+     *                         "array_value": [
+     *                           {
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         ],
+     *                         "value": {
+     *                           "literal": "SEV123",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ],
+     *                     "subject": "incident.severity"
+     *                   }
+     *                 ]
+     *               }
+     *             ]
+     *           },
+     *           "navigate": {
+     *             "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+     *           },
+     *           "operation_type": "navigate",
+     *           "parse": {
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             },
+     *             "source": "metadata.annotations[\"github.com/repo\"]"
+     *           }
+     *         }
+     *       ],
+     *       "reference": "abc123",
+     *       "root_reference": "incident.status"
+     *     }
+     *   ],
+     *   "folder": "My folder 01",
+     *   "include_private_escalations": true,
+     *   "include_private_incidents": true,
+     *   "name": "My little workflow",
+     *   "once_for": [
+     *     "incident.url"
+     *   ],
+     *   "runs_on_incident_modes": [
+     *     "standard",
+     *     "test",
+     *     "retrospective"
+     *   ],
+     *   "runs_on_incidents": "newly_created",
+     *   "shortform": "page-the-ceo",
+     *   "state": "active",
+     *   "steps": [
+     *     {
+     *       "for_each": "abc123",
+     *       "id": "abc123",
+     *       "name": "pagerduty.escalate",
+     *       "param_bindings": [
+     *         {
+     *           "array_value": [
+     *             {
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "trigger": "incident.updated"
+     * }
+     */
+    WorkflowsCreateWorkflowPayloadV2: {
+      /**
+       * @description Annotations that track metadata about this resource
+       * @example {
+       *   "incident.io/terraform/version": "3.0.0"
+       * }
+       */
+      annotations?: { [key: string]: string };
+      /**
+       * @description Conditions that apply to the workflow trigger
+       * @example [
+       *   {
+       *     "conditions": [
+       *       {
+       *         "operation": "one_of",
+       *         "param_bindings": [
+       *           {
+       *             "array_value": [
+       *               {
+       *                 "literal": "SEV123",
+       *                 "reference": "incident.severity"
+       *               }
+       *             ],
+       *             "value": {
+       *               "literal": "SEV123",
+       *               "reference": "incident.severity"
+       *             }
+       *           }
+       *         ],
+       *         "subject": "incident.severity"
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      condition_groups: components["schemas"]["ConditionGroupPayloadV2"][];
+      /**
+       * @description Whether to continue executing the workflow if a step fails
+       * @example true
+       */
+      continue_on_step_error: boolean;
+      delay?: components["schemas"]["WorkflowDelayV2"];
+      /**
+       * @description The expressions to use in the workflow
+       * @example [
+       *   {
+       *     "else_branch": {
+       *       "result": {
+       *         "array_value": [
+       *           {
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     },
+       *     "label": "Team Slack channel",
+       *     "operations": [
+       *       {
+       *         "branches": {
+       *           "branches": [
+       *             {
+       *               "condition_groups": [
+       *                 {
+       *                   "conditions": [
+       *                     {
+       *                       "operation": "one_of",
+       *                       "param_bindings": [
+       *                         {
+       *                           "array_value": [
+       *                             {
+       *                               "literal": "SEV123",
+       *                               "reference": "incident.severity"
+       *                             }
+       *                           ],
+       *                           "value": {
+       *                             "literal": "SEV123",
+       *                             "reference": "incident.severity"
+       *                           }
+       *                         }
+       *                       ],
+       *                       "subject": "incident.severity"
+       *                     }
+       *                   ]
+       *                 }
+       *               ],
+       *               "result": {
+       *                 "array_value": [
+       *                   {
+       *                     "literal": "SEV123",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 ],
+       *                 "value": {
+       *                   "literal": "SEV123",
+       *                   "reference": "incident.severity"
+       *                 }
+       *               }
+       *             }
+       *           ],
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           }
+       *         },
+       *         "concatenate": {
+       *           "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+       *         },
+       *         "filter": {
+       *           "condition_groups": [
+       *             {
+       *               "conditions": [
+       *                 {
+       *                   "operation": "one_of",
+       *                   "param_bindings": [
+       *                     {
+       *                       "array_value": [
+       *                         {
+       *                           "literal": "SEV123",
+       *                           "reference": "incident.severity"
+       *                         }
+       *                       ],
+       *                       "value": {
+       *                         "literal": "SEV123",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ],
+       *                   "subject": "incident.severity"
+       *                 }
+       *               ]
+       *             }
+       *           ]
+       *         },
+       *         "navigate": {
+       *           "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+       *         },
+       *         "operation_type": "navigate",
+       *         "parse": {
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           },
+       *           "source": "metadata.annotations[\"github.com/repo\"]"
+       *         }
+       *       }
+       *     ],
+       *     "reference": "abc123",
+       *     "root_reference": "incident.status"
+       *   }
+       * ]
+       */
+      expressions: components["schemas"]["ExpressionPayloadV2"][];
+      /**
+       * @description Folder to display the workflow in
+       * @example My folder 01
+       */
+      folder?: string;
+      /**
+       * @description Whether to include private escalations
+       * @example true
+       */
+      include_private_escalations?: boolean;
+      /**
+       * @description Whether to include private incidents
+       * @example true
+       */
+      include_private_incidents: boolean;
+      /**
+       * @description Name provided by the user when creating the workflow
+       * @example My little workflow
+       */
+      name: string;
+      /**
+       * @description This workflow will run 'once for' a list of references
+       * @example [
+       *   "incident.url"
+       * ]
+       */
+      once_for: string[];
+      /**
+       * @description Which incident modes should this workflow run on? By default, workflows only run on standard incidents, but can also be configured to run on test and retrospective incidents.
+       * @example [
+       *   "standard",
+       *   "test",
+       *   "retrospective"
+       * ]
+       */
+      runs_on_incident_modes: ("standard" | "test" | "retrospective")[];
+      /**
+       * @description Which incidents should the workflow be applied to?
+       * @example newly_created
+       * @enum {string}
+       */
+      runs_on_incidents: "newly_created" | "newly_created_and_active";
+      /**
+       * @description The shortform used to trigger this workflow (only applicable for manual triggers)
+       * @example page-the-ceo
+       */
+      shortform?: string;
+      /**
+       * @description What state this workflow is in
+       * @example active
+       * @enum {string}
+       */
+      state?: "active" | "disabled" | "draft" | "error";
+      /**
+       * @description Steps that are executed as part of the workflow
+       * @example [
+       *   {
+       *     "for_each": "abc123",
+       *     "id": "abc123",
+       *     "name": "pagerduty.escalate",
+       *     "param_bindings": [
+       *       {
+       *         "array_value": [
+       *           {
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      steps: components["schemas"]["StepConfigPayloadV2"][];
+      /**
+       * @description Trigger to set on the workflow
+       * @example incident.updated
+       */
+      trigger: string;
+    };
+    /**
+     * @example {
+     *   "management_meta": {
+     *     "annotations": {
+     *       "incident.io/terraform/version": "3.0.0"
+     *     },
+     *     "managed_by": "dashboard",
+     *     "source_url": "https://github.com/my-company/infrastructure"
+     *   },
+     *   "workflow": {
+     *     "condition_groups": [
+     *       {
+     *         "conditions": [
+     *           {
+     *             "operation": {
+     *               "label": "Lawrence Jones",
+     *               "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *             },
+     *             "param_bindings": [
+     *               {
+     *                 "array_value": [
+     *                   {
+     *                     "label": "Lawrence Jones",
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 ],
+     *                 "value": {
+     *                   "label": "Lawrence Jones",
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               }
+     *             ],
+     *             "subject": {
+     *               "label": "Incident Severity",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "continue_on_step_error": true,
+     *     "delay": {
+     *       "conditions_apply_over_delay": false,
+     *       "for_seconds": 60
+     *     },
+     *     "expressions": [
+     *       {
+     *         "else_branch": {
+     *           "result": {
+     *             "array_value": [
+     *               {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             ],
+     *             "value": {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         },
+     *         "label": "Team Slack channel",
+     *         "operations": [
+     *           {
+     *             "branches": {
+     *               "branches": [
+     *                 {
+     *                   "condition_groups": [
+     *                     {
+     *                       "conditions": [
+     *                         {
+     *                           "operation": {
+     *                             "label": "Lawrence Jones",
+     *                             "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                           },
+     *                           "param_bindings": [
+     *                             {
+     *                               "array_value": [
+     *                                 {
+     *                                   "label": "Lawrence Jones",
+     *                                   "literal": "SEV123",
+     *                                   "reference": "incident.severity"
+     *                                 }
+     *                               ],
+     *                               "value": {
+     *                                 "label": "Lawrence Jones",
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             }
+     *                           ],
+     *                           "subject": {
+     *                             "label": "Incident Severity",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         }
+     *                       ]
+     *                     }
+     *                   ],
+     *                   "result": {
+     *                     "array_value": [
+     *                       {
+     *                         "label": "Lawrence Jones",
+     *                         "literal": "SEV123",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     ],
+     *                     "value": {
+     *                       "label": "Lawrence Jones",
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   }
+     *                 }
+     *               ],
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               }
+     *             },
+     *             "filter": {
+     *               "condition_groups": [
+     *                 {
+     *                   "conditions": [
+     *                     {
+     *                       "operation": {
+     *                         "label": "Lawrence Jones",
+     *                         "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                       },
+     *                       "param_bindings": [
+     *                         {
+     *                           "array_value": [
+     *                             {
+     *                               "label": "Lawrence Jones",
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           ],
+     *                           "value": {
+     *                             "label": "Lawrence Jones",
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         }
+     *                       ],
+     *                       "subject": {
+     *                         "label": "Incident Severity",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     }
+     *                   ]
+     *                 }
+     *               ]
+     *             },
+     *             "navigate": {
+     *               "reference": "1235",
+     *               "reference_label": "Teams"
+     *             },
+     *             "operation_type": "navigate",
+     *             "parse": {
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               },
+     *               "source": "metadata.annotations[\"github.com/repo\"]"
+     *             },
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           }
+     *         ],
+     *         "reference": "abc123",
+     *         "returns": {
+     *           "array": true,
+     *           "type": "IncidentStatus"
+     *         },
+     *         "root_reference": "incident.status"
+     *       }
+     *     ],
+     *     "folder": "My folder 01",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "include_private_escalations": true,
+     *     "include_private_incidents": true,
+     *     "name": "My little workflow",
+     *     "once_for": [
+     *       {
+     *         "array": false,
+     *         "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+     *         "label": "Incident -> Affected Team",
+     *         "type": "IncidentSeverity"
+     *       }
+     *     ],
+     *     "runs_from": "2021-08-17T13:28:57.801578Z",
+     *     "runs_on_incident_modes": [
+     *       "standard",
+     *       "test",
+     *       "retrospective"
+     *     ],
+     *     "runs_on_incidents": "newly_created",
+     *     "shortform": "page-the-ceo",
+     *     "state": "active",
+     *     "steps": [
+     *       {
+     *         "for_each": "abc123",
+     *         "id": "abc123",
+     *         "label": "PagerDuty Escalate",
+     *         "name": "pagerduty.escalate",
+     *         "param_bindings": [
+     *           {
+     *             "array_value": [
+     *               {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             ],
+     *             "value": {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "trigger": {
+     *       "label": "Incident Updated",
+     *       "name": "incident.updated"
+     *     },
+     *     "version": 3
+     *   }
+     * }
+     */
+    WorkflowsCreateWorkflowResultV2: {
+      management_meta: components["schemas"]["ManagementMetaV2"];
+      workflow: components["schemas"]["WorkflowV2"];
+    };
+    /**
+     * @example {
+     *   "workflows": [
+     *     {
+     *       "condition_groups": [
+     *         {
+     *           "conditions": [
+     *             {
+     *               "operation": {
+     *                 "label": "Lawrence Jones",
+     *                 "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *               },
+     *               "param_bindings": [
+     *                 {
+     *                   "array_value": [
+     *                     {
+     *                       "label": "Lawrence Jones",
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   ],
+     *                   "value": {
+     *                     "label": "Lawrence Jones",
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 }
+     *               ],
+     *               "subject": {
+     *                 "label": "Incident Severity",
+     *                 "reference": "incident.severity"
+     *               }
+     *             }
+     *           ]
+     *         }
+     *       ],
+     *       "continue_on_step_error": true,
+     *       "delay": {
+     *         "conditions_apply_over_delay": false,
+     *         "for_seconds": 60
+     *       },
+     *       "expressions": [
+     *         {
+     *           "else_branch": {
+     *             "result": {
+     *               "array_value": [
+     *                 {
+     *                   "label": "Lawrence Jones",
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               ],
+     *               "value": {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             }
+     *           },
+     *           "label": "Team Slack channel",
+     *           "operations": [
+     *             {
+     *               "branches": {
+     *                 "branches": [
+     *                   {
+     *                     "condition_groups": [
+     *                       {
+     *                         "conditions": [
+     *                           {
+     *                             "operation": {
+     *                               "label": "Lawrence Jones",
+     *                               "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                             },
+     *                             "param_bindings": [
+     *                               {
+     *                                 "array_value": [
+     *                                   {
+     *                                     "label": "Lawrence Jones",
+     *                                     "literal": "SEV123",
+     *                                     "reference": "incident.severity"
+     *                                   }
+     *                                 ],
+     *                                 "value": {
+     *                                   "label": "Lawrence Jones",
+     *                                   "literal": "SEV123",
+     *                                   "reference": "incident.severity"
+     *                                 }
+     *                               }
+     *                             ],
+     *                             "subject": {
+     *                               "label": "Incident Severity",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           }
+     *                         ]
+     *                       }
+     *                     ],
+     *                     "result": {
+     *                       "array_value": [
+     *                         {
+     *                           "label": "Lawrence Jones",
+     *                           "literal": "SEV123",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       ],
+     *                       "value": {
+     *                         "label": "Lawrence Jones",
+     *                         "literal": "SEV123",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     }
+     *                   }
+     *                 ],
+     *                 "returns": {
+     *                   "array": true,
+     *                   "type": "IncidentStatus"
+     *                 }
+     *               },
+     *               "filter": {
+     *                 "condition_groups": [
+     *                   {
+     *                     "conditions": [
+     *                       {
+     *                         "operation": {
+     *                           "label": "Lawrence Jones",
+     *                           "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                         },
+     *                         "param_bindings": [
+     *                           {
+     *                             "array_value": [
+     *                               {
+     *                                 "label": "Lawrence Jones",
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             ],
+     *                             "value": {
+     *                               "label": "Lawrence Jones",
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           }
+     *                         ],
+     *                         "subject": {
+     *                           "label": "Incident Severity",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ]
+     *                   }
+     *                 ]
+     *               },
+     *               "navigate": {
+     *                 "reference": "1235",
+     *                 "reference_label": "Teams"
+     *               },
+     *               "operation_type": "navigate",
+     *               "parse": {
+     *                 "returns": {
+     *                   "array": true,
+     *                   "type": "IncidentStatus"
+     *                 },
+     *                 "source": "metadata.annotations[\"github.com/repo\"]"
+     *               },
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               }
+     *             }
+     *           ],
+     *           "reference": "abc123",
+     *           "returns": {
+     *             "array": true,
+     *             "type": "IncidentStatus"
+     *           },
+     *           "root_reference": "incident.status"
+     *         }
+     *       ],
+     *       "folder": "My folder 01",
+     *       "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *       "include_private_escalations": true,
+     *       "include_private_incidents": true,
+     *       "name": "My little workflow",
+     *       "once_for": [
+     *         {
+     *           "array": false,
+     *           "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+     *           "label": "Incident -> Affected Team",
+     *           "type": "IncidentSeverity"
+     *         }
+     *       ],
+     *       "runs_from": "2021-08-17T13:28:57.801578Z",
+     *       "runs_on_incident_modes": [
+     *         "standard",
+     *         "test",
+     *         "retrospective"
+     *       ],
+     *       "runs_on_incidents": "newly_created",
+     *       "shortform": "page-the-ceo",
+     *       "state": "active",
+     *       "steps": [
+     *         {
+     *           "label": "PagerDuty Escalate",
+     *           "name": "pagerduty.escalate"
+     *         }
+     *       ],
+     *       "trigger": {
+     *         "label": "Incident Updated",
+     *         "name": "incident.updated"
+     *       },
+     *       "version": 3
+     *     }
+     *   ]
+     * }
+     */
+    WorkflowsListWorkflowsResultV2: {
+      /**
+       * @example [
+       *   {
+       *     "condition_groups": [
+       *       {
+       *         "conditions": [
+       *           {
+       *             "operation": {
+       *               "label": "Lawrence Jones",
+       *               "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *             },
+       *             "param_bindings": [
+       *               {
+       *                 "array_value": [
+       *                   {
+       *                     "label": "Lawrence Jones",
+       *                     "literal": "SEV123",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 ],
+       *                 "value": {
+       *                   "label": "Lawrence Jones",
+       *                   "literal": "SEV123",
+       *                   "reference": "incident.severity"
+       *                 }
+       *               }
+       *             ],
+       *             "subject": {
+       *               "label": "Incident Severity",
+       *               "reference": "incident.severity"
+       *             }
+       *           }
+       *         ]
+       *       }
+       *     ],
+       *     "continue_on_step_error": true,
+       *     "delay": {
+       *       "conditions_apply_over_delay": false,
+       *       "for_seconds": 60
+       *     },
+       *     "expressions": [
+       *       {
+       *         "else_branch": {
+       *           "result": {
+       *             "array_value": [
+       *               {
+       *                 "label": "Lawrence Jones",
+       *                 "literal": "SEV123",
+       *                 "reference": "incident.severity"
+       *               }
+       *             ],
+       *             "value": {
+       *               "label": "Lawrence Jones",
+       *               "literal": "SEV123",
+       *               "reference": "incident.severity"
+       *             }
+       *           }
+       *         },
+       *         "label": "Team Slack channel",
+       *         "operations": [
+       *           {
+       *             "branches": {
+       *               "branches": [
+       *                 {
+       *                   "condition_groups": [
+       *                     {
+       *                       "conditions": [
+       *                         {
+       *                           "operation": {
+       *                             "label": "Lawrence Jones",
+       *                             "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *                           },
+       *                           "param_bindings": [
+       *                             {
+       *                               "array_value": [
+       *                                 {
+       *                                   "label": "Lawrence Jones",
+       *                                   "literal": "SEV123",
+       *                                   "reference": "incident.severity"
+       *                                 }
+       *                               ],
+       *                               "value": {
+       *                                 "label": "Lawrence Jones",
+       *                                 "literal": "SEV123",
+       *                                 "reference": "incident.severity"
+       *                               }
+       *                             }
+       *                           ],
+       *                           "subject": {
+       *                             "label": "Incident Severity",
+       *                             "reference": "incident.severity"
+       *                           }
+       *                         }
+       *                       ]
+       *                     }
+       *                   ],
+       *                   "result": {
+       *                     "array_value": [
+       *                       {
+       *                         "label": "Lawrence Jones",
+       *                         "literal": "SEV123",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     ],
+       *                     "value": {
+       *                       "label": "Lawrence Jones",
+       *                       "literal": "SEV123",
+       *                       "reference": "incident.severity"
+       *                     }
+       *                   }
+       *                 }
+       *               ],
+       *               "returns": {
+       *                 "array": true,
+       *                 "type": "IncidentStatus"
+       *               }
+       *             },
+       *             "filter": {
+       *               "condition_groups": [
+       *                 {
+       *                   "conditions": [
+       *                     {
+       *                       "operation": {
+       *                         "label": "Lawrence Jones",
+       *                         "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+       *                       },
+       *                       "param_bindings": [
+       *                         {
+       *                           "array_value": [
+       *                             {
+       *                               "label": "Lawrence Jones",
+       *                               "literal": "SEV123",
+       *                               "reference": "incident.severity"
+       *                             }
+       *                           ],
+       *                           "value": {
+       *                             "label": "Lawrence Jones",
+       *                             "literal": "SEV123",
+       *                             "reference": "incident.severity"
+       *                           }
+       *                         }
+       *                       ],
+       *                       "subject": {
+       *                         "label": "Incident Severity",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ]
+       *                 }
+       *               ]
+       *             },
+       *             "navigate": {
+       *               "reference": "1235",
+       *               "reference_label": "Teams"
+       *             },
+       *             "operation_type": "navigate",
+       *             "parse": {
+       *               "returns": {
+       *                 "array": true,
+       *                 "type": "IncidentStatus"
+       *               },
+       *               "source": "metadata.annotations[\"github.com/repo\"]"
+       *             },
+       *             "returns": {
+       *               "array": true,
+       *               "type": "IncidentStatus"
+       *             }
+       *           }
+       *         ],
+       *         "reference": "abc123",
+       *         "returns": {
+       *           "array": true,
+       *           "type": "IncidentStatus"
+       *         },
+       *         "root_reference": "incident.status"
+       *       }
+       *     ],
+       *     "folder": "My folder 01",
+       *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+       *     "include_private_escalations": true,
+       *     "include_private_incidents": true,
+       *     "name": "My little workflow",
+       *     "once_for": [
+       *       {
+       *         "array": false,
+       *         "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+       *         "label": "Incident -> Affected Team",
+       *         "type": "IncidentSeverity"
+       *       }
+       *     ],
+       *     "runs_from": "2021-08-17T13:28:57.801578Z",
+       *     "runs_on_incident_modes": [
+       *       "standard",
+       *       "test",
+       *       "retrospective"
+       *     ],
+       *     "runs_on_incidents": "newly_created",
+       *     "shortform": "page-the-ceo",
+       *     "state": "active",
+       *     "steps": [
+       *       {
+       *         "label": "PagerDuty Escalate",
+       *         "name": "pagerduty.escalate"
+       *       }
+       *     ],
+       *     "trigger": {
+       *       "label": "Incident Updated",
+       *       "name": "incident.updated"
+       *     },
+       *     "version": 3
+       *   }
+       * ]
+       */
+      workflows: components["schemas"]["WorkflowSlimV2"][];
+    };
+    /**
+     * @example {
+     *   "management_meta": {
+     *     "annotations": {
+     *       "incident.io/terraform/version": "3.0.0"
+     *     },
+     *     "managed_by": "dashboard",
+     *     "source_url": "https://github.com/my-company/infrastructure"
+     *   },
+     *   "workflow": {
+     *     "condition_groups": [
+     *       {
+     *         "conditions": [
+     *           {
+     *             "operation": {
+     *               "label": "Lawrence Jones",
+     *               "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *             },
+     *             "param_bindings": [
+     *               {
+     *                 "array_value": [
+     *                   {
+     *                     "label": "Lawrence Jones",
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 ],
+     *                 "value": {
+     *                   "label": "Lawrence Jones",
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               }
+     *             ],
+     *             "subject": {
+     *               "label": "Incident Severity",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "continue_on_step_error": true,
+     *     "delay": {
+     *       "conditions_apply_over_delay": false,
+     *       "for_seconds": 60
+     *     },
+     *     "expressions": [
+     *       {
+     *         "else_branch": {
+     *           "result": {
+     *             "array_value": [
+     *               {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             ],
+     *             "value": {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         },
+     *         "label": "Team Slack channel",
+     *         "operations": [
+     *           {
+     *             "branches": {
+     *               "branches": [
+     *                 {
+     *                   "condition_groups": [
+     *                     {
+     *                       "conditions": [
+     *                         {
+     *                           "operation": {
+     *                             "label": "Lawrence Jones",
+     *                             "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                           },
+     *                           "param_bindings": [
+     *                             {
+     *                               "array_value": [
+     *                                 {
+     *                                   "label": "Lawrence Jones",
+     *                                   "literal": "SEV123",
+     *                                   "reference": "incident.severity"
+     *                                 }
+     *                               ],
+     *                               "value": {
+     *                                 "label": "Lawrence Jones",
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             }
+     *                           ],
+     *                           "subject": {
+     *                             "label": "Incident Severity",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         }
+     *                       ]
+     *                     }
+     *                   ],
+     *                   "result": {
+     *                     "array_value": [
+     *                       {
+     *                         "label": "Lawrence Jones",
+     *                         "literal": "SEV123",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     ],
+     *                     "value": {
+     *                       "label": "Lawrence Jones",
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   }
+     *                 }
+     *               ],
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               }
+     *             },
+     *             "filter": {
+     *               "condition_groups": [
+     *                 {
+     *                   "conditions": [
+     *                     {
+     *                       "operation": {
+     *                         "label": "Lawrence Jones",
+     *                         "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                       },
+     *                       "param_bindings": [
+     *                         {
+     *                           "array_value": [
+     *                             {
+     *                               "label": "Lawrence Jones",
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           ],
+     *                           "value": {
+     *                             "label": "Lawrence Jones",
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         }
+     *                       ],
+     *                       "subject": {
+     *                         "label": "Incident Severity",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     }
+     *                   ]
+     *                 }
+     *               ]
+     *             },
+     *             "navigate": {
+     *               "reference": "1235",
+     *               "reference_label": "Teams"
+     *             },
+     *             "operation_type": "navigate",
+     *             "parse": {
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               },
+     *               "source": "metadata.annotations[\"github.com/repo\"]"
+     *             },
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           }
+     *         ],
+     *         "reference": "abc123",
+     *         "returns": {
+     *           "array": true,
+     *           "type": "IncidentStatus"
+     *         },
+     *         "root_reference": "incident.status"
+     *       }
+     *     ],
+     *     "folder": "My folder 01",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "include_private_escalations": true,
+     *     "include_private_incidents": true,
+     *     "name": "My little workflow",
+     *     "once_for": [
+     *       {
+     *         "array": false,
+     *         "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+     *         "label": "Incident -> Affected Team",
+     *         "type": "IncidentSeverity"
+     *       }
+     *     ],
+     *     "runs_from": "2021-08-17T13:28:57.801578Z",
+     *     "runs_on_incident_modes": [
+     *       "standard",
+     *       "test",
+     *       "retrospective"
+     *     ],
+     *     "runs_on_incidents": "newly_created",
+     *     "shortform": "page-the-ceo",
+     *     "state": "active",
+     *     "steps": [
+     *       {
+     *         "for_each": "abc123",
+     *         "id": "abc123",
+     *         "label": "PagerDuty Escalate",
+     *         "name": "pagerduty.escalate",
+     *         "param_bindings": [
+     *           {
+     *             "array_value": [
+     *               {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             ],
+     *             "value": {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "trigger": {
+     *       "label": "Incident Updated",
+     *       "name": "incident.updated"
+     *     },
+     *     "version": 3
+     *   }
+     * }
+     */
+    WorkflowsShowWorkflowResultV2: {
+      management_meta: components["schemas"]["ManagementMetaV2"];
+      workflow: components["schemas"]["WorkflowV2"];
+    };
+    /**
+     * @example {
+     *   "annotations": {
+     *     "incident.io/terraform/version": "3.0.0"
+     *   },
+     *   "condition_groups": [
+     *     {
+     *       "conditions": [
+     *         {
+     *           "operation": "one_of",
+     *           "param_bindings": [
+     *             {
+     *               "array_value": [
+     *                 {
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               ],
+     *               "value": {
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             }
+     *           ],
+     *           "subject": "incident.severity"
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "continue_on_step_error": true,
+     *   "delay": {
+     *     "conditions_apply_over_delay": false,
+     *     "for_seconds": 60
+     *   },
+     *   "expressions": [
+     *     {
+     *       "else_branch": {
+     *         "result": {
+     *           "array_value": [
+     *             {
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       },
+     *       "label": "Team Slack channel",
+     *       "operations": [
+     *         {
+     *           "branches": {
+     *             "branches": [
+     *               {
+     *                 "condition_groups": [
+     *                   {
+     *                     "conditions": [
+     *                       {
+     *                         "operation": "one_of",
+     *                         "param_bindings": [
+     *                           {
+     *                             "array_value": [
+     *                               {
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             ],
+     *                             "value": {
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           }
+     *                         ],
+     *                         "subject": "incident.severity"
+     *                       }
+     *                     ]
+     *                   }
+     *                 ],
+     *                 "result": {
+     *                   "array_value": [
+     *                     {
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   ],
+     *                   "value": {
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 }
+     *               }
+     *             ],
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           },
+     *           "concatenate": {
+     *             "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+     *           },
+     *           "filter": {
+     *             "condition_groups": [
+     *               {
+     *                 "conditions": [
+     *                   {
+     *                     "operation": "one_of",
+     *                     "param_bindings": [
+     *                       {
+     *                         "array_value": [
+     *                           {
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         ],
+     *                         "value": {
+     *                           "literal": "SEV123",
+     *                           "reference": "incident.severity"
+     *                         }
+     *                       }
+     *                     ],
+     *                     "subject": "incident.severity"
+     *                   }
+     *                 ]
+     *               }
+     *             ]
+     *           },
+     *           "navigate": {
+     *             "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+     *           },
+     *           "operation_type": "navigate",
+     *           "parse": {
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             },
+     *             "source": "metadata.annotations[\"github.com/repo\"]"
+     *           }
+     *         }
+     *       ],
+     *       "reference": "abc123",
+     *       "root_reference": "incident.status"
+     *     }
+     *   ],
+     *   "folder": "My folder 01",
+     *   "include_private_escalations": true,
+     *   "include_private_incidents": true,
+     *   "name": "My little workflow",
+     *   "once_for": [
+     *     "incident.url"
+     *   ],
+     *   "runs_on_incident_modes": [
+     *     "standard",
+     *     "test",
+     *     "retrospective"
+     *   ],
+     *   "runs_on_incidents": "newly_created",
+     *   "shortform": "page-the-ceo",
+     *   "skip_step_upgrades": false,
+     *   "state": "active",
+     *   "steps": [
+     *     {
+     *       "for_each": "abc123",
+     *       "id": "abc123",
+     *       "name": "pagerduty.escalate",
+     *       "param_bindings": [
+     *         {
+     *           "array_value": [
+     *             {
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           ],
+     *           "value": {
+     *             "literal": "SEV123",
+     *             "reference": "incident.severity"
+     *           }
+     *         }
+     *       ]
+     *     }
+     *   ]
+     * }
+     */
+    WorkflowsUpdateWorkflowPayloadV2: {
+      /**
+       * @description Annotations that track metadata about this resource
+       * @example {
+       *   "incident.io/terraform/version": "3.0.0"
+       * }
+       */
+      annotations?: { [key: string]: string };
+      /**
+       * @description Conditions that apply to the workflow trigger
+       * @example [
+       *   {
+       *     "conditions": [
+       *       {
+       *         "operation": "one_of",
+       *         "param_bindings": [
+       *           {
+       *             "array_value": [
+       *               {
+       *                 "literal": "SEV123",
+       *                 "reference": "incident.severity"
+       *               }
+       *             ],
+       *             "value": {
+       *               "literal": "SEV123",
+       *               "reference": "incident.severity"
+       *             }
+       *           }
+       *         ],
+       *         "subject": "incident.severity"
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      condition_groups: components["schemas"]["ConditionGroupPayloadV2"][];
+      /**
+       * @description Whether to continue executing the workflow if a step fails
+       * @example true
+       */
+      continue_on_step_error: boolean;
+      delay?: components["schemas"]["WorkflowDelayV2"];
+      /**
+       * @description The expressions to use in the workflow
+       * @example [
+       *   {
+       *     "else_branch": {
+       *       "result": {
+       *         "array_value": [
+       *           {
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     },
+       *     "label": "Team Slack channel",
+       *     "operations": [
+       *       {
+       *         "branches": {
+       *           "branches": [
+       *             {
+       *               "condition_groups": [
+       *                 {
+       *                   "conditions": [
+       *                     {
+       *                       "operation": "one_of",
+       *                       "param_bindings": [
+       *                         {
+       *                           "array_value": [
+       *                             {
+       *                               "literal": "SEV123",
+       *                               "reference": "incident.severity"
+       *                             }
+       *                           ],
+       *                           "value": {
+       *                             "literal": "SEV123",
+       *                             "reference": "incident.severity"
+       *                           }
+       *                         }
+       *                       ],
+       *                       "subject": "incident.severity"
+       *                     }
+       *                   ]
+       *                 }
+       *               ],
+       *               "result": {
+       *                 "array_value": [
+       *                   {
+       *                     "literal": "SEV123",
+       *                     "reference": "incident.severity"
+       *                   }
+       *                 ],
+       *                 "value": {
+       *                   "literal": "SEV123",
+       *                   "reference": "incident.severity"
+       *                 }
+       *               }
+       *             }
+       *           ],
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           }
+       *         },
+       *         "concatenate": {
+       *           "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+       *         },
+       *         "filter": {
+       *           "condition_groups": [
+       *             {
+       *               "conditions": [
+       *                 {
+       *                   "operation": "one_of",
+       *                   "param_bindings": [
+       *                     {
+       *                       "array_value": [
+       *                         {
+       *                           "literal": "SEV123",
+       *                           "reference": "incident.severity"
+       *                         }
+       *                       ],
+       *                       "value": {
+       *                         "literal": "SEV123",
+       *                         "reference": "incident.severity"
+       *                       }
+       *                     }
+       *                   ],
+       *                   "subject": "incident.severity"
+       *                 }
+       *               ]
+       *             }
+       *           ]
+       *         },
+       *         "navigate": {
+       *           "reference": "catalog_attribute[\"01FCNDV6P870EA6S7TK1DSYD5H\"]"
+       *         },
+       *         "operation_type": "navigate",
+       *         "parse": {
+       *           "returns": {
+       *             "array": true,
+       *             "type": "IncidentStatus"
+       *           },
+       *           "source": "metadata.annotations[\"github.com/repo\"]"
+       *         }
+       *       }
+       *     ],
+       *     "reference": "abc123",
+       *     "root_reference": "incident.status"
+       *   }
+       * ]
+       */
+      expressions: components["schemas"]["ExpressionPayloadV2"][];
+      /**
+       * @description Folder to display the workflow in
+       * @example My folder 01
+       */
+      folder?: string;
+      /**
+       * @description Whether to include private escalations
+       * @example true
+       */
+      include_private_escalations?: boolean;
+      /**
+       * @description Whether to include private incidents
+       * @example true
+       */
+      include_private_incidents: boolean;
+      /**
+       * @description Name provided by the user when creating the workflow
+       * @example My little workflow
+       */
+      name: string;
+      /**
+       * @description This workflow will run 'once for' a list of references
+       * @example [
+       *   "incident.url"
+       * ]
+       */
+      once_for: string[];
+      /**
+       * @description Which incident modes should this workflow run on? By default, workflows only run on standard incidents, but can also be configured to run on test and retrospective incidents.
+       * @example [
+       *   "standard",
+       *   "test",
+       *   "retrospective"
+       * ]
+       */
+      runs_on_incident_modes: ("standard" | "test" | "retrospective")[];
+      /**
+       * @description Which incidents should the workflow be applied to?
+       * @example newly_created
+       * @enum {string}
+       */
+      runs_on_incidents: "newly_created" | "newly_created_and_active";
+      /**
+       * @description The shortform used to trigger this workflow (only applicable for manual triggers)
+       * @example page-the-ceo
+       */
+      shortform?: string;
+      /**
+       * @description Skips workflow step upgrades, when the parameters for an existing workflow step change
+       * @example false
+       */
+      skip_step_upgrades?: boolean;
+      /**
+       * @description What state this workflow is in
+       * @example active
+       * @enum {string}
+       */
+      state?: "active" | "disabled" | "draft" | "error";
+      /**
+       * @description Steps that are executed as part of the workflow
+       * @example [
+       *   {
+       *     "for_each": "abc123",
+       *     "id": "abc123",
+       *     "name": "pagerduty.escalate",
+       *     "param_bindings": [
+       *       {
+       *         "array_value": [
+       *           {
+       *             "literal": "SEV123",
+       *             "reference": "incident.severity"
+       *           }
+       *         ],
+       *         "value": {
+       *           "literal": "SEV123",
+       *           "reference": "incident.severity"
+       *         }
+       *       }
+       *     ]
+       *   }
+       * ]
+       */
+      steps: components["schemas"]["StepConfigPayloadV2"][];
+    };
+    /**
+     * @example {
+     *   "management_meta": {
+     *     "annotations": {
+     *       "incident.io/terraform/version": "3.0.0"
+     *     },
+     *     "managed_by": "dashboard",
+     *     "source_url": "https://github.com/my-company/infrastructure"
+     *   },
+     *   "workflow": {
+     *     "condition_groups": [
+     *       {
+     *         "conditions": [
+     *           {
+     *             "operation": {
+     *               "label": "Lawrence Jones",
+     *               "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *             },
+     *             "param_bindings": [
+     *               {
+     *                 "array_value": [
+     *                   {
+     *                     "label": "Lawrence Jones",
+     *                     "literal": "SEV123",
+     *                     "reference": "incident.severity"
+     *                   }
+     *                 ],
+     *                 "value": {
+     *                   "label": "Lawrence Jones",
+     *                   "literal": "SEV123",
+     *                   "reference": "incident.severity"
+     *                 }
+     *               }
+     *             ],
+     *             "subject": {
+     *               "label": "Incident Severity",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "continue_on_step_error": true,
+     *     "delay": {
+     *       "conditions_apply_over_delay": false,
+     *       "for_seconds": 60
+     *     },
+     *     "expressions": [
+     *       {
+     *         "else_branch": {
+     *           "result": {
+     *             "array_value": [
+     *               {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             ],
+     *             "value": {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         },
+     *         "label": "Team Slack channel",
+     *         "operations": [
+     *           {
+     *             "branches": {
+     *               "branches": [
+     *                 {
+     *                   "condition_groups": [
+     *                     {
+     *                       "conditions": [
+     *                         {
+     *                           "operation": {
+     *                             "label": "Lawrence Jones",
+     *                             "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                           },
+     *                           "param_bindings": [
+     *                             {
+     *                               "array_value": [
+     *                                 {
+     *                                   "label": "Lawrence Jones",
+     *                                   "literal": "SEV123",
+     *                                   "reference": "incident.severity"
+     *                                 }
+     *                               ],
+     *                               "value": {
+     *                                 "label": "Lawrence Jones",
+     *                                 "literal": "SEV123",
+     *                                 "reference": "incident.severity"
+     *                               }
+     *                             }
+     *                           ],
+     *                           "subject": {
+     *                             "label": "Incident Severity",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         }
+     *                       ]
+     *                     }
+     *                   ],
+     *                   "result": {
+     *                     "array_value": [
+     *                       {
+     *                         "label": "Lawrence Jones",
+     *                         "literal": "SEV123",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     ],
+     *                     "value": {
+     *                       "label": "Lawrence Jones",
+     *                       "literal": "SEV123",
+     *                       "reference": "incident.severity"
+     *                     }
+     *                   }
+     *                 }
+     *               ],
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               }
+     *             },
+     *             "filter": {
+     *               "condition_groups": [
+     *                 {
+     *                   "conditions": [
+     *                     {
+     *                       "operation": {
+     *                         "label": "Lawrence Jones",
+     *                         "value": "01FCQSP07Z74QMMYPDDGQB9FTG"
+     *                       },
+     *                       "param_bindings": [
+     *                         {
+     *                           "array_value": [
+     *                             {
+     *                               "label": "Lawrence Jones",
+     *                               "literal": "SEV123",
+     *                               "reference": "incident.severity"
+     *                             }
+     *                           ],
+     *                           "value": {
+     *                             "label": "Lawrence Jones",
+     *                             "literal": "SEV123",
+     *                             "reference": "incident.severity"
+     *                           }
+     *                         }
+     *                       ],
+     *                       "subject": {
+     *                         "label": "Incident Severity",
+     *                         "reference": "incident.severity"
+     *                       }
+     *                     }
+     *                   ]
+     *                 }
+     *               ]
+     *             },
+     *             "navigate": {
+     *               "reference": "1235",
+     *               "reference_label": "Teams"
+     *             },
+     *             "operation_type": "navigate",
+     *             "parse": {
+     *               "returns": {
+     *                 "array": true,
+     *                 "type": "IncidentStatus"
+     *               },
+     *               "source": "metadata.annotations[\"github.com/repo\"]"
+     *             },
+     *             "returns": {
+     *               "array": true,
+     *               "type": "IncidentStatus"
+     *             }
+     *           }
+     *         ],
+     *         "reference": "abc123",
+     *         "returns": {
+     *           "array": true,
+     *           "type": "IncidentStatus"
+     *         },
+     *         "root_reference": "incident.status"
+     *       }
+     *     ],
+     *     "folder": "My folder 01",
+     *     "id": "01FCNDV6P870EA6S7TK1DSYDG0",
+     *     "include_private_escalations": true,
+     *     "include_private_incidents": true,
+     *     "name": "My little workflow",
+     *     "once_for": [
+     *       {
+     *         "array": false,
+     *         "key": "incident.custom_field[\"01FCNDV6P870EA6S7TK1DSYDG0\"]",
+     *         "label": "Incident -> Affected Team",
+     *         "type": "IncidentSeverity"
+     *       }
+     *     ],
+     *     "runs_from": "2021-08-17T13:28:57.801578Z",
+     *     "runs_on_incident_modes": [
+     *       "standard",
+     *       "test",
+     *       "retrospective"
+     *     ],
+     *     "runs_on_incidents": "newly_created",
+     *     "shortform": "page-the-ceo",
+     *     "state": "active",
+     *     "steps": [
+     *       {
+     *         "for_each": "abc123",
+     *         "id": "abc123",
+     *         "label": "PagerDuty Escalate",
+     *         "name": "pagerduty.escalate",
+     *         "param_bindings": [
+     *           {
+     *             "array_value": [
+     *               {
+     *                 "label": "Lawrence Jones",
+     *                 "literal": "SEV123",
+     *                 "reference": "incident.severity"
+     *               }
+     *             ],
+     *             "value": {
+     *               "label": "Lawrence Jones",
+     *               "literal": "SEV123",
+     *               "reference": "incident.severity"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "trigger": {
+     *       "label": "Incident Updated",
+     *       "name": "incident.updated"
+     *     },
+     *     "version": 3
+     *   }
+     * }
+     */
+    WorkflowsUpdateWorkflowResultV2: {
+      management_meta: components["schemas"]["ManagementMetaV2"];
+      workflow: components["schemas"]["WorkflowV2"];
+    };
+  };
 }
 
 export interface operations {

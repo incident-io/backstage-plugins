@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { DateTime, Duration } from "luxon";
-import { BackstageTheme } from "@backstage/theme";
 import {
   Chip,
   IconButton,
@@ -23,31 +22,10 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-  makeStyles,
 } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import { components } from "../../api/types";
-
-const useStyles = makeStyles<BackstageTheme>((theme) => ({
-  listItemPrimary: {
-    display: "flex", // vertically align with chip
-    fontWeight: "bold",
-  },
-  warning: {
-    borderColor: theme.palette.status.warning,
-    color: theme.palette.status.warning,
-    "& *": {
-      color: theme.palette.status.warning,
-    },
-  },
-  error: {
-    borderColor: theme.palette.status.error,
-    color: theme.palette.status.error,
-    "& *": {
-      color: theme.palette.status.error,
-    },
-  },
-}));
+import {useStyles} from "../styles";
 
 // Single item in the list of on-going incidents.
 export const IncidentListItem = ({
