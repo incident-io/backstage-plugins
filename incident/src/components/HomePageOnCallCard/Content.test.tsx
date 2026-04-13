@@ -3,11 +3,6 @@ import { screen } from "@testing-library/react";
 import { renderInTestApp } from "@backstage/test-utils";
 import { vi } from "vitest";
 
-vi.mock("@backstage/core-plugin-api", () => ({
-  useApi: vi.fn(),
-  createApiRef: vi.fn(),
-}));
-
 vi.mock("../../hooks/useIncidentRequest", () => ({
   useIdentity: vi.fn(),
 }));
