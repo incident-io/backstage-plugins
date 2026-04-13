@@ -44,10 +44,13 @@ Next, enable the plugin's extensions in `app-config.yaml`. No other code changes
 app:
   ...
   extensions:
-    - entity-card:incident-io/incident
-    - api:incident-io/incident
+    - entity-card:incident-io/EntityIncidentCard: true
+    - entity-card:incident-io/EntityAlertCard: true
+    - home-page-widget:incident-io/HomePageIncidentCard: true
+    - home-page-widget:incident-io/HomePageAlertCard: true
     ... 
 ```
+
 
 ### Using the legacy Backstage system 
 
@@ -57,7 +60,7 @@ Next, add the plugin to `EntityPage.tsx` in
 Add the following imports to the top of the file:
 
 ```ts
-import { EntityIncidentCard } from "@incident-io/backstage";
+import { EntityIncidentCard, EntityAlertCard } from "@incident-io/backstage";
 ```
 
 Find `const overviewContent` in `EntityPage.tsx`, and add the following snippet
@@ -67,6 +70,9 @@ tag:
 ```ts
 <Grid item md={6}>
   <EntityIncidentCard />
+</Grid>
+<Grid item md={6}>
+  <EntityAlertCard />
 </Grid>
 ```
 
