@@ -1,7 +1,7 @@
 import { useApi } from "@backstage/core-plugin-api";
 import { useAsync } from "react-use";
 import { IncidentApiRef } from "../api/client";
-import { definitions } from "../api/types";
+import { components } from "../api/types";
 import { DependencyList } from "react";
 
 export const useIncidentList = (
@@ -12,7 +12,7 @@ export const useIncidentList = (
 
   const { value, loading, error } = useAsync(async () => {
     return await IncidentApi.request<
-      definitions["IncidentsV2ListResponseBody"]
+      components["schemas"]["IncidentsListResultV2"]
     >({
       path: `/v2/incidents?${query.toString()}`,
     });
@@ -28,7 +28,7 @@ export const useAlertList = (status?: "firing" | "resolved", deps?: DependencyLi
     const query = new URLSearchParams({ page_size: "25" });
     if (status) query.set("status[one_of]", status);
     return await IncidentApi.request<
-      definitions["AlertsV2ListResponseBody"]
+      components["schemas"]["AlertsListResultV2"]
     >({
       path: `/v2/alerts?${query.toString()}`,
     });
@@ -42,7 +42,7 @@ export const useAlertSourceList = () => {
 
   const { value, loading, error } = useAsync(async () => {
     return await IncidentApi.request<
-      definitions["AlertSourcesV2ListResponseBody"]
+      components["schemas"]["AlertSourcesListResultV2"]
     >({
       path: `/v2/alert_sources`,
     });
@@ -60,7 +60,7 @@ export const useIncidentAlertList = (incidentIds: string[], deps?: DependencyLis
     }
     const results = await Promise.all(
       incidentIds.map(id =>
-        IncidentApi.request<definitions["IncidentAlertsV2ListResponseBody"]>({
+        IncidentApi.request<components["schemas"]["AlertsListIncidentAlertsResultV2"]>({
           path: `/v2/incident_alerts?incident_id=${id}&page_size=25`,
         }),
       ),
@@ -74,27 +74,12 @@ export const useIncidentAlertList = (incidentIds: string[], deps?: DependencyLis
   return { loading, error, value };
 };
 
-export const useAlertAttributeList = () => {
-  const IncidentApi = useApi(IncidentApiRef);
-
-  const { value, loading, error } = useAsync(async () => {
-    return await IncidentApi.request<
-      definitions["AlertAttributesV2ListResponseBody"]
-    >({
-      path: `/v2/alert_attributes`,
-    });
-  });
-
-  return { loading, error, value };
-};
-
-
 export const useIdentity = () => {
   const IncidentApi = useApi(IncidentApiRef);
 
   const { value, loading, error } = useAsync(async () => {
     return await IncidentApi.request<
-      definitions["UtilitiesV1IdentityResponseBody"]
+      components["schemas"]["UtilitiesIdentityResultV1"]
     >({
       path: `/v1/identity`,
     });

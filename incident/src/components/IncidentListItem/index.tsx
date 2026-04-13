@@ -26,7 +26,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
-import { definitions } from "../../api/types";
+import { components } from "../../api/types";
 
 const useStyles = makeStyles<BackstageTheme>((theme) => ({
   listItemPrimary: {
@@ -55,7 +55,7 @@ export const IncidentListItem = ({
   incident,
 }: {
   baseUrl: string;
-  incident: definitions["IncidentV2ResponseBody"];
+  incident: components["schemas"]["IncidentV2"];
 }) => {
   const classes = useStyles();
   const reportedAt = incident.incident_timestamp_values?.find((ts) =>

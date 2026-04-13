@@ -6,7 +6,6 @@ import {
   useAlertList,
   useIncidentAlertList,
   useAlertSourceList,
-  useAlertAttributeList,
 } from "./useIncidentRequest";
 
 // Mock @backstage/core-plugin-api so useApi returns our fake client
@@ -46,7 +45,6 @@ describe("useAlertList", () => {
     deduplication_key: "abc123",
     alert_source_id: "src-1",
     source_url: "https://datadog.com/alerts/123",
-    attributes: [],
   };
   const mockResponse = { alerts: [mockAlert], pagination_meta: { page_size: 25 } };
 
@@ -166,26 +164,6 @@ describe("useAlertSourceList", () => {
     });
 
     const { result } = renderHook(() => useAlertSourceList());
-
-    await waitFor(() => expect(result.current.loading).toBe(false));
-
-    expect(result.current.value).toEqual(mockResponse);
-    expect(result.current.error).toBeUndefined();
-  });
-});
-
-describe("useAlertAttributeList", () => {
-  it("should return alert attributes from the API", async () => {
-    const mockResponse = {
-      alert_attributes: [
-        { id: "attr-1", name: "Priority", type: "string", array: false, required: false },
-      ],
-    };
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
-      request: vi.fn().mockResolvedValue(mockResponse),
-    });
-
-    const { result } = renderHook(() => useAlertAttributeList());
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
