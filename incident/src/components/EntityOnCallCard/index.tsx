@@ -206,11 +206,9 @@ export const EntityOnCallCard = () => {
       />
       <Divider />
       <CardContent>
-        {anyLoading ? (
-          <Progress />
-        ) : anyError ? (
-          <Alert severity="error">{anyError.message}</Alert>
-        ) : value && (
+        {anyLoading && <Progress />}
+        {anyError && <Alert severity="error">{anyError.message}</Alert>}
+        {!loading && !error && value && (
           <>
             {/* Escalation path */}
             <Box mb={2}>
