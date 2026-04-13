@@ -1,4 +1,4 @@
-import { DateTime, Duration } from "luxon";
+import { DateTime } from "luxon";
 import {
   Chip,
   IconButton,
@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import { components } from "../../api/types";
-import { useStyles } from "../IncidentListItem";
+import { useStyles } from "../styles";
 
 // Single item in the list of on-going alerts.
 export const AlertListItem = ({
