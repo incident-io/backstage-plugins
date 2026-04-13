@@ -24,7 +24,7 @@ import {
   useIncidentAlertList,
   useIncidentList,
 } from "../../hooks/useIncidentRequest";
-import { getEntityFieldID } from "../EntityIncidentCard";
+import { getEntityFieldID } from "../utils";
 import { AlertListItem } from "../AlertListItem";
 
 type StatusFilter = "firing" | "resolved" | undefined;

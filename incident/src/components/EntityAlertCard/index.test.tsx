@@ -29,7 +29,7 @@ vi.mock("../AlertListItem", () => ({
   ),
 }));
 
-vi.mock("../EntityIncidentCard", () => ({
+vi.mock("../utils", () => ({
   getEntityFieldID: vi.fn(),
 }));
 
@@ -42,7 +42,7 @@ import {
   useAlertSourceList,
   useIdentity,
 } from "../../hooks/useIncidentRequest";
-import { getEntityFieldID } from "../EntityIncidentCard";
+import { getEntityFieldID } from "../utils";
 import { EntityAlertCard } from "./index";
 
 const mockEntity = {
