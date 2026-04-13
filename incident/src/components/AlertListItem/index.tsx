@@ -26,10 +26,7 @@ export const AlertListItem = ({
 }) => {
   const classes = useStyles();
 
-  const sinceCreated = new Date().getTime() - new Date(alert.created_at).getTime();
-  const sinceCreatedLabel = DateTime.local()
-    .minus(Duration.fromMillis(sinceCreated))
-    .toRelative({ locale: "en" });
+  const sinceCreatedLabel = DateTime.fromISO(alert.created_at).toRelative({ base: DateTime.now() });
 
   return (
     <ListItem dense key={alert.id}>
