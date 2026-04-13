@@ -46,8 +46,7 @@ app:
   extensions:
     - entity-card:incident-io/EntityIncidentCard: true
     - entity-card:incident-io/EntityAlertCard: true
-    - home-page-widget:incident-io/HomePageIncidentCard: true
-    - home-page-widget:incident-io/HomePageAlertCard: true
+    - entity-card:incident-io/EntityOnCallCard: true
     ... 
 ```
 
@@ -60,7 +59,7 @@ Next, add the plugin to `EntityPage.tsx` in
 Add the following imports to the top of the file:
 
 ```ts
-import { EntityIncidentCard, EntityAlertCard } from "@incident-io/backstage";
+import { EntityIncidentCard, EntityAlertCard, EntityOnCallCard } from "@incident-io/backstage";
 ```
 
 Find `const overviewContent` in `EntityPage.tsx`, and add the following snippet
@@ -73,6 +72,9 @@ tag:
 </Grid>
 <Grid item md={6}>
   <EntityAlertCard />
+</Grid>
+<Grid item md={6}>
+  <EntityOnCallCard />
 </Grid>
 ```
 
