@@ -105,7 +105,7 @@ const homePageOnCallCard = HomePageWidgetBlueprint.make({
 
 const plugin: FrontendPlugin = createFrontendPlugin({
     pluginId: "incident",
-    extensions: [incidentApi, entityIncidentCard, entityAlertCard, homePageIncidentCard, homePageAlertCard, entityOnCallCard],                                                                        
+    extensions: [incidentApi, entityIncidentCard, entityAlertCard, homePageIncidentCard, homePageAlertCard, homePageOnCallCard, entityOnCallCard],                                                                        
   });
 
 export default plugin;

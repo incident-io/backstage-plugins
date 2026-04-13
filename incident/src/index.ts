@@ -20,4 +20,5 @@ export {
   EntityOnCallCard,
   HomePageIncidentCard,
   HomePageAlertCard,
+  HomePageOnCallCard,
 } from "./plugin";

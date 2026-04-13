@@ -1,5 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderInTestApp } from "@backstage/test-utils";
 import { vi } from "vitest";
 
 vi.mock("@backstage/core-plugin-api", () => ({
@@ -35,7 +36,7 @@ beforeEach(() => {
 });
 
 describe("HomePageOnCallCard Content", () => {
-  it("should show a loading indicator while fetching", () => {
+  it("should show a loading indicator while fetching", async () => {
     (useAllEscalationPaths as ReturnType<typeof vi.fn>).mockReturnValue({
       value: undefined,
       loading: true,
@@ -47,12 +48,12 @@ describe("HomePageOnCallCard Content", () => {
       error: undefined,
     });
 
-    render(<Content />);
+    await renderInTestApp(<Content />);
 
     expect(screen.getByTestId("progress")).toBeInTheDocument();
   });
 
-  it("should show empty states when there are no EPs or schedules", () => {
+  it("should show empty states when there are no EPs or schedules", async () => {
     (useAllEscalationPaths as ReturnType<typeof vi.fn>).mockReturnValue({
       value: [],
       loading: false,
@@ -64,13 +65,13 @@ describe("HomePageOnCallCard Content", () => {
       error: undefined,
     });
 
-    render(<Content />);
+    await renderInTestApp(<Content />);
 
     expect(screen.getByText(/No escalation paths/i)).toBeInTheDocument();
     expect(screen.getByText(/No schedules/i)).toBeInTheDocument();
   });
 
-  it("should render EP and schedule names when data is loaded", () => {
+  it("should render EP and schedule names when data is loaded", async () => {
     (useAllEscalationPaths as ReturnType<typeof vi.fn>).mockReturnValue({
       value: [
         { id: "ep-1", name: "Primary EP" },
@@ -85,7 +86,7 @@ describe("HomePageOnCallCard Content", () => {
       error: undefined,
     });
 
-    render(<Content />);
+    await renderInTestApp(<Content />);
 
     expect(screen.getByText("Primary EP")).toBeInTheDocument();
     expect(screen.getByText("Secondary EP")).toBeInTheDocument();

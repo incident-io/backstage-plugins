@@ -38,6 +38,17 @@ export interface Config {
     /*
      * @visibility frontend
      */
+    /*
+     * @visibility frontend
+     */
+    onCall?: {
+      /**
+       * The catalog type ID used to look up on-call information for entities.
+       * @visibility frontend
+       */
+      catalogTypeId?: string;
+    };
+
     fields: {
       /**
        * The custom field ID that associated API entities to incidents.
