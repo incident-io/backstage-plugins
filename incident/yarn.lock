@@ -2643,7 +2643,7 @@ __metadata:
     msw: "npm:^1.0.0"
     prettier: "npm:3.8.1"
     qs: "npm:^6.14.2"
-    react: "npm:^18.0.0"
+    react: "npm:^19.2.5"
     react-dom: "npm:^18.0.0"
     react-router-dom: "npm:^6.0.0"
     react-use: "npm:^17.6.0"
@@ -18577,12 +18577,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.0.0":
-  version: 18.3.1
-  resolution: "react@npm:18.3.1"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
+"react@npm:^19.2.5":
+  version: 19.2.5
+  resolution: "react@npm:19.2.5"
+  checksum: 10/1c3c7ffecb90b7f89a5c3ef635e6811f3a84600097f203b918150cb7e6b0a52915e858e5b4c82317a520dffccfa46ee4819ccf92c59c5b2d6c25cffe258dd20c
   languageName: node
   linkType: hard
 
