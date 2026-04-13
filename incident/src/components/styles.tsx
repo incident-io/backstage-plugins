@@ -1,7 +1,6 @@
-import { BackstageTheme } from "@backstage/theme";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 
-export const useStyles = makeStyles<BackstageTheme>((theme) => ({
+export const useStyles = makeStyles<Theme>((theme) => ({
   listItemPrimary: {
     display: "flex", // vertically align with chip
     fontWeight: "bold",
