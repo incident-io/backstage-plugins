@@ -13,7 +13,7 @@ import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 
 export const Content = () => {
   const { value: identity } = useIdentity();
-  const baseUrl = identity?.identity.dashboard_url ?? "";
+  const baseUrl = identity?.identity.dashboard_url ?? "app.incident.io";
 
   const { value: eps, loading: epsLoading, error: epsError } = useAllEscalationPaths();
   const { value: schedules, loading: schedulesLoading, error: schedulesError } = useAllSchedules();

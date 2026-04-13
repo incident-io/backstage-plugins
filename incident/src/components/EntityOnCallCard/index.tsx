@@ -189,7 +189,7 @@ export const EntityOnCallCard = () => {
   const channelNames = escalationPathResult?.channelNames ?? {};
 
   const { value: identity } = useIdentity();
-  const baseUrl = identity?.identity.dashboard_url ?? "";
+  const baseUrl = identity?.identity.dashboard_url ?? "app.incident.io";
 
   const anyLoading = loading || scheduleLoading || escalationLoading;
   const anyError = error || scheduleError || escalationError;
@@ -206,9 +206,11 @@ export const EntityOnCallCard = () => {
       />
       <Divider />
       <CardContent>
-        {anyLoading && <Progress />}
-        {anyError && <Alert severity="error">{anyError.message}</Alert>}
-        {!loading && !error && value && (
+        {anyLoading ? (
+          <Progress />
+        ) : anyError ? (
+          <Alert severity="error">{anyError.message}</Alert>
+        ) : value && (
           <>
             {/* Escalation path */}
             <Box mb={2}>
