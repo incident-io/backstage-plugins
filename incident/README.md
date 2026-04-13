@@ -122,8 +122,8 @@ an error that directs you to update your config.
 
 If you are using the on-call card, you must also provide the ID of the
 incident.io catalog type that maps to your Backstage components. You can find
-this in the incident.io dashboard under **Settings → Catalog**, or from the
-URL when viewing the type (e.g. `https://app.incident.io/~/catalog/types/01ABC...`):
+this in the URL when viewing the type 
+(e.g. `https://app.incident.io/~/catalog/01ABC...`):
 
 ```yaml
 incident:
