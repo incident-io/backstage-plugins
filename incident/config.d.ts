@@ -18,11 +18,6 @@ export interface Config {
    * @visibility frontend
    */
   incident?: {
-    /**
-     * The API key that provides access to the incident.io API.
-     * @see https://app.incident.io/settings/api-keys
-     */
-    apiKey: string;
 
     /**
      * The base URL of the incident dashboard, only useful in development.
