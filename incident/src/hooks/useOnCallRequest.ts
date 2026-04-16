@@ -87,6 +87,9 @@ export const useOnCallData = (entityExternalId: string, deps?: DependencyList) =
     const { schema } = typeResponse.catalog_type;
     const escalationAttr = schema.attributes.find(a => a.type === 'EscalationPath');
     const scheduleAttr = schema.attributes.find(a => a.type === 'Schedule');
+    const currentlyOnCallAttr = schema.attributes.find(
+      a => a.path?.[a.path.length - 1]?.attribute_id === 'currently_on_call'
+    );
 
     const entriesResponse = await IncidentApi.request<components["schemas"]["CatalogListEntriesResultV3"]>({
       path: `/v3/catalog_entries?catalog_type_id=${catalogTypeId}&identifier=${encodeURIComponent(entityExternalId)}&page_size=1`,
@@ -95,8 +98,16 @@ export const useOnCallData = (entityExternalId: string, deps?: DependencyList) =
     const entry = entriesResponse.catalog_entries[0];
     if (!entry) throw new Error(`No incident.io catalog entry found for ${entityExternalId}`);
 
-    const escalationPath = escalationAttr ? entry.attribute_values[escalationAttr.id]?.value ?? null : null;
-    const schedule = scheduleAttr ? entry.attribute_values[scheduleAttr.id]?.value ?? null : null;
+    const showResponse = await IncidentApi.request<components["schemas"]["CatalogShowEntryResultV3"]>({
+      path: `/v3/catalog_entries/${entry.id}?expand=true`,
+    });
+    const fullEntry = showResponse.catalog_entry;
+
+    const escalationPath = escalationAttr ? fullEntry.attribute_values[escalationAttr.id]?.value ?? null : null;
+    const schedule = scheduleAttr ? fullEntry.attribute_values[scheduleAttr.id]?.value ?? null : null;
+    const currentlyOnCall = currentlyOnCallAttr
+      ? fullEntry.attribute_values[currentlyOnCallAttr.id]?.array_value ?? []
+      : [];
 
     let escalationPathStatus: 'ok' | 'no_field' | 'empty';
     if (!escalationAttr) escalationPathStatus = 'no_field';
@@ -107,14 +118,6 @@ export const useOnCallData = (entityExternalId: string, deps?: DependencyList) =
     if (!scheduleAttr) scheduleStatus = 'no_field';
     else if (!schedule) scheduleStatus = 'empty';
     else scheduleStatus = 'ok';
-
-    let currentlyOnCall: NonNullable<components["schemas"]["CatalogEntryEngineParamBindingV3"]["array_value"]> = [];
-    if (schedule) {
-      const scheduleEntry = await IncidentApi.request<components["schemas"]["CatalogShowEntryResultV3"]>({
-        path: `/v3/catalog_entries/${schedule.literal}`,
-      });
-      currentlyOnCall = scheduleEntry.catalog_entry.attribute_values.currently_on_call?.array_value ?? [];
-    }
 
     return { escalationPath, schedule, currentlyOnCall, escalationPathStatus, scheduleStatus };
   }, deps);
