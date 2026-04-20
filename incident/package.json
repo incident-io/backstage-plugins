@@ -57,7 +57,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "luxon": "^3.3.0",
-    "qs": "^6.14.2",
+    "qs": "^6.15.1",
     "react-use": "^17.6.0"
   },
   "peerDependencies": {
