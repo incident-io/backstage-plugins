@@ -1578,7 +1578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/theme@npm:^0.7.0, @backstage/theme@npm:^0.7.2":
+"@backstage/theme@npm:^0.7.2":
   version: 0.7.2
   resolution: "@backstage/theme@npm:0.7.2"
   dependencies:
@@ -1595,6 +1595,26 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10/41eb70fe25aef5026d221de7bc10010902b8ed03acf5695969fd6d6fc946eb58a6a94c70d5ad354fd53ed2b7a2cc3b82935971f9771cb91d4b6314e0edf38214
+  languageName: node
+  linkType: hard
+
+"@backstage/theme@npm:^0.7.3":
+  version: 0.7.3
+  resolution: "@backstage/theme@npm:0.7.3"
+  dependencies:
+    "@emotion/react": "npm:^11.10.5"
+    "@emotion/styled": "npm:^11.10.5"
+    "@mui/material": "npm:^5.12.2"
+  peerDependencies:
+    "@material-ui/core": ^4.12.2
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^6.30.2
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/78977e885149be43a52b12c9c199afcd7dbf9fead62f7630273ad12841955b802bb02ca23f8516bdc7f0e968407228bb6fee07ccef20603679c0801df7e210f6
   languageName: node
   linkType: hard
 
@@ -2327,7 +2347,7 @@ __metadata:
     "@backstage/plugin-home-react": "npm:^0.1.36"
     "@backstage/plugin-search-react": "npm:^1.11.0"
     "@backstage/test-utils": "npm:^1.7.16"
-    "@backstage/theme": "npm:^0.7.0"
+    "@backstage/theme": "npm:^0.7.3"
     "@material-ui/core": "npm:^4.9.13"
     "@material-ui/icons": "npm:^4.9.1"
     "@material-ui/lab": "npm:^4.0.0-alpha.60"
