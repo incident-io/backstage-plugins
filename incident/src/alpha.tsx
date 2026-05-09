@@ -3,26 +3,23 @@ import {
   createFrontendPlugin,
   FrontendPlugin,
 } from "@backstage/frontend-plugin-api";
-import {
-  discoveryApiRef,
-  fetchApiRef,
-} from "@backstage/core-plugin-api";
+import { discoveryApiRef, fetchApiRef } from "@backstage/core-plugin-api";
 import { EntityCardBlueprint } from "@backstage/plugin-catalog-react/alpha";
 import { HomePageWidgetBlueprint } from "@backstage/plugin-home-react/alpha";
 import { IncidentApi, IncidentApiRef } from "./api/client";
 
 const incidentApi = ApiBlueprint.make({
-  params: defineParams =>
+  params: (defineParams) =>
     defineParams({
       api: IncidentApiRef,
       deps: {
         discoveryApi: discoveryApiRef,
         fetchApi: fetchApiRef,
       },
-      factory: ({ discoveryApi, fetchApi }) =>{ 
-        return new IncidentApi({ 
-          discoveryApi: discoveryApi, 
-          fetchApi: fetchApi 
+      factory: ({ discoveryApi, fetchApi }) => {
+        return new IncidentApi({
+          discoveryApi: discoveryApi,
+          fetchApi: fetchApi,
         });
       },
     }),
@@ -34,10 +31,12 @@ const entityIncidentCard = EntityCardBlueprint.make({
     filter: {
       kind: {
         $in: ["api", "component", "domain", "group", "system"],
-      }
+      },
     },
     loader: async () =>
-      import("./components/EntityIncidentCard").then(m=><m.EntityIncidentCard />),
+      import("./components/EntityIncidentCard").then((m) => (
+        <m.EntityIncidentCard />
+      )),
   },
 });
 
@@ -47,11 +46,11 @@ const entityAlertCard = EntityCardBlueprint.make({
     filter: {
       kind: {
         $in: ["api", "component", "domain", "group", "system"],
-      }
+      },
     },
     loader: async () =>
-      import("./components/EntityAlertCard").then(m=><m.EntityAlertCard />),
-  }
+      import("./components/EntityAlertCard").then((m) => <m.EntityAlertCard />),
+  },
 });
 
 const entityOnCallCard = EntityCardBlueprint.make({
@@ -60,17 +59,19 @@ const entityOnCallCard = EntityCardBlueprint.make({
     filter: {
       kind: {
         $in: ["api", "component", "domain", "group", "system"],
-      }
+      },
     },
     loader: async () =>
-      import("./components/EntityOnCallCard").then(m=><m.EntityOnCallCard />),
+      import("./components/EntityOnCallCard").then((m) => (
+        <m.EntityOnCallCard />
+      )),
   },
 });
 
 const homePageIncidentCard = HomePageWidgetBlueprint.make({
   name: "HomePageIncidentCard",
   params: {
-    title: "Ongoing Incidents",    
+    title: "Ongoing Incidents",
     components: () => import("./components/HomePageIncidentCard"),
     settings: {
       schema: {
@@ -99,17 +100,14 @@ const homePageIncidentCard = HomePageWidgetBlueprint.make({
   },
 });
 
-
 const homePageAlertCard = HomePageWidgetBlueprint.make({
   name: "HomePageAlertCard",
   params: {
-    title: "Ongoing Alerts",    
+    title: "Ongoing Alerts",
     components: () => import("./components/HomePageAlertCard"),
   },
 });
 
-
-   
 const homePageOnCallCard = HomePageWidgetBlueprint.make({
   name: "HomePageOnCallCard",
   params: {
@@ -119,8 +117,16 @@ const homePageOnCallCard = HomePageWidgetBlueprint.make({
 });
 
 const plugin: FrontendPlugin = createFrontendPlugin({
-    pluginId: "incident",
-    extensions: [incidentApi, entityIncidentCard, entityAlertCard, homePageIncidentCard, homePageAlertCard, homePageOnCallCard, entityOnCallCard],                                                                        
-  });
+  pluginId: "incident",
+  extensions: [
+    incidentApi,
+    entityIncidentCard,
+    entityAlertCard,
+    homePageIncidentCard,
+    homePageAlertCard,
+    homePageOnCallCard,
+    entityOnCallCard,
+  ],
+});
 
 export default plugin;

@@ -5,5 +5,4 @@ describe("incident alpha plugin", () => {
     expect(plugin).toBeDefined();
     expect(plugin.id).toBe("incident");
   });
-
 });

@@ -27,7 +27,11 @@ vi.mock("@backstage/core-components", () => ({
 
 import { useEntity } from "@backstage/plugin-catalog-react";
 import { useIdentity } from "../../hooks/useIncidentRequest";
-import { useOnCallData, useSchedule, useEscalationPath } from "../../hooks/useOnCallRequest";
+import {
+  useOnCallData,
+  useSchedule,
+  useEscalationPath,
+} from "../../hooks/useOnCallRequest";
 import { EntityOnCallCard } from "./index";
 
 const mockEntity = {
@@ -41,10 +45,20 @@ const mockIdentityLoaded = {
 };
 
 beforeEach(() => {
-  (useEntity as ReturnType<typeof vi.fn>).mockReturnValue({ entity: mockEntity });
+  (useEntity as ReturnType<typeof vi.fn>).mockReturnValue({
+    entity: mockEntity,
+  });
   (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(mockIdentityLoaded);
-  (useSchedule as ReturnType<typeof vi.fn>).mockReturnValue({ value: null, loading: false, error: undefined });
-  (useEscalationPath as ReturnType<typeof vi.fn>).mockReturnValue({ value: null, loading: false, error: undefined });
+  (useSchedule as ReturnType<typeof vi.fn>).mockReturnValue({
+    value: null,
+    loading: false,
+    error: undefined,
+  });
+  (useEscalationPath as ReturnType<typeof vi.fn>).mockReturnValue({
+    value: null,
+    loading: false,
+    error: undefined,
+  });
 });
 
 describe("EntityOnCallCard", () => {
@@ -74,8 +88,12 @@ describe("EntityOnCallCard", () => {
 
     render(<EntityOnCallCard />);
 
-    expect(screen.getByText(/No escalation path field on this catalog type/i)).toBeInTheDocument();
-    expect(screen.getByText(/No schedule field on this catalog type/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/No escalation path field on this catalog type/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/No schedule field on this catalog type/i),
+    ).toBeInTheDocument();
   });
 
   it("should show warning alerts when EP and schedule fields are empty", () => {
@@ -92,8 +110,12 @@ describe("EntityOnCallCard", () => {
 
     render(<EntityOnCallCard />);
 
-    expect(screen.getByText(/Escalation path field is empty for this component/i)).toBeInTheDocument();
-    expect(screen.getByText(/Schedule field is empty for this component/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Escalation path field is empty for this component/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Schedule field is empty for this component/i),
+    ).toBeInTheDocument();
   });
 
   it("should show escalation path and schedule names when loaded", () => {
@@ -109,7 +131,12 @@ describe("EntityOnCallCard", () => {
     });
     (useEscalationPath as ReturnType<typeof vi.fn>).mockReturnValue({
       value: {
-        ep: { id: "ep-1", name: "Primary EP", path: [], current_responders: [] },
+        ep: {
+          id: "ep-1",
+          name: "Primary EP",
+          path: [],
+          current_responders: [],
+        },
         channelNames: {},
       },
       loading: false,
