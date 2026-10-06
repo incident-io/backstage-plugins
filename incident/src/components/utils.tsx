@@ -2,6 +2,18 @@ import { Entity } from "@backstage/catalog-model";
 import { ConfigApi } from "@backstage/core-plugin-api";
 
 
+export const EXTERNAL_ID_ANNOTATION = "incident.io/external-id";
+
+// Find the external ID of this entity's incident.io catalog entry. Entries
+// imported from Backstage use `namespace/name`; the annotation covers catalogs
+// managed some other way.
+export function getEntityExternalID(entity: Entity) {
+  return (
+    entity.metadata.annotations?.[EXTERNAL_ID_ANNOTATION] ??
+    `${entity.metadata.namespace}/${entity.metadata.name}`
+  );
+}
+
 // Find the ID of the custom field in incident that represents the association
 // to this type of entity.
 //

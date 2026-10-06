@@ -37,7 +37,7 @@ import { Alert } from "@material-ui/lab";
 import { useState } from "react";
 import { useIncidentList, useIdentity } from "../../hooks/useIncidentRequest";
 import { IncidentListItem } from "../IncidentListItem";
-import { getEntityFieldID } from "../utils";
+import { getEntityExternalID, getEntityFieldID } from "../utils";
 
 const IncorrectConfigCard = () => {
   return (
@@ -73,7 +73,7 @@ export const EntityIncidentCard = ({
   const [reload, setReload] = useState(false);
 
   const entityFieldID = getEntityFieldID(config, entity);
-  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
+  const entityID = getEntityExternalID(entity);
 
   // This query filters incidents for those that are associated with this
   // entity.
@@ -106,7 +106,9 @@ export const EntityIncidentCard = ({
     label: "Declare incident",
     disabled: false,
     icon: <WhatshotIcon />,
-    href: `${baseUrl}/incidents/create`,
+    href: `${baseUrl}/incidents/create?${new URLSearchParams({
+      [`custom_field_${entityFieldID}`]: entityID,
+    })}`,
   };
 
   const viewIncidentsLink: IconLinkVerticalProps = {

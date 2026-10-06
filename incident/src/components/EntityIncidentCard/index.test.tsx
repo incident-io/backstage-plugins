@@ -18,7 +18,12 @@ vi.mock("../../hooks/useIncidentRequest", () => ({
 
 vi.mock("@backstage/core-components", () => ({
   Progress: () => <div data-testid="progress" />,
-  HeaderIconLinkRow: () => null,
+  HeaderIconLinkRow: ({ links }: any) =>
+    links.map((link: any) => (
+      <a key={link.label} href={link.href}>
+        {link.label}
+      </a>
+    )),
 }));
 
 vi.mock("../IncidentListItem", () => ({
@@ -98,6 +103,25 @@ describe("EntityIncidentCard", () => {
     render(<EntityIncidentCard />);
 
     expect(screen.getByText(/No ongoing incidents/i)).toBeInTheDocument();
+  });
+
+  it("should pre-fill the entity's custom field when declaring an incident", () => {
+    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
+      getOptional: () => "01FIELD123",
+    });
+    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(mockIdentityLoaded);
+    (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
+      value: { incidents: [] },
+      loading: false,
+      error: undefined,
+    });
+
+    render(<EntityIncidentCard />);
+
+    expect(screen.getByText("Declare incident")).toHaveAttribute(
+      "href",
+      "https://app.incident.io/incidents/create?custom_field_01FIELD123=default%2Fmy-service",
+    );
   });
 
   it("should show incident count and list items when incidents exist", () => {

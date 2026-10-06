@@ -24,7 +24,7 @@ import {
   useIncidentAlertList,
   useIncidentList,
 } from "../../hooks/useIncidentRequest";
-import { getEntityFieldID } from "../utils";
+import { getEntityExternalID, getEntityFieldID } from "../utils";
 import { AlertListItem } from "../AlertListItem";
 
 type StatusFilter = "firing" | "resolved" | undefined;
@@ -56,7 +56,7 @@ export const EntityAlertCard = () => {
   const config = useApi(configApiRef);
   const { entity } = useEntity();
   const entityFieldID = getEntityFieldID(config, entity);
-  const entityID = `${entity.metadata.namespace}/${entity.metadata.name}`;
+  const entityID = getEntityExternalID(entity);
 
   // query for incidents associated with this entity
   const incidentQuery = new URLSearchParams();

@@ -40,6 +40,7 @@ import {
   EscalationPathNode,
   EscalationPathTarget,
 } from "../../hooks/useOnCallRequest";
+import { getEntityExternalID } from "../utils";
 
 // ── Schedule helpers ──────────────────────────────────────────────────────────
 
@@ -174,7 +175,7 @@ export const EntityOnCallCard = () => {
   const [reload, setReload] = useState(false);
   const [showPath, setShowPath] = useState(false);
 
-  const entityExternalId = `${entity.metadata.namespace}/${entity.metadata.name}`;
+  const entityExternalId = getEntityExternalID(entity);
 
   const { value, loading, error } = useOnCallData(entityExternalId, [reload]);
   const { value: schedule, loading: scheduleLoading, error: scheduleError } = useSchedule(
