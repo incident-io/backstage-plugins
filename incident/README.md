@@ -130,3 +130,16 @@ incident:
   onCall:
     catalogTypeId: "<id-of-backstage-component-catalog-type>"
 ```
+
+### Matching entities to catalog entries
+
+The plugin finds an entity's incident.io catalog entry by its external ID.
+By default that's `<namespace>/<name>`, which is what the catalog-importer uses
+when it syncs from Backstage. If your incident.io catalog is managed some other
+way, set the entity's external ID with an annotation:
+
+```yaml
+metadata:
+  annotations:
+    incident.io/external-id: payments-service
+```

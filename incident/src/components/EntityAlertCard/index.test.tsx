@@ -29,7 +29,8 @@ vi.mock("../AlertListItem", () => ({
   ),
 }));
 
-vi.mock("../utils", () => ({
+vi.mock("../utils", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../utils")>()),
   getEntityFieldID: vi.fn(),
 }));
 
