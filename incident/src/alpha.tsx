@@ -31,7 +31,12 @@ const incidentApi = ApiBlueprint.make({
 const entityIncidentCard = EntityCardBlueprint.make({
   name: "EntityIncidentCard",
   params: {
-    loader: async () => 
+    filter: {
+      kind: {
+        $in: ["api", "component", "domain", "group", "system"],
+      }
+    },
+    loader: async () =>
       import("./components/EntityIncidentCard").then(m=><m.EntityIncidentCard />),
   },
 });
@@ -39,7 +44,12 @@ const entityIncidentCard = EntityCardBlueprint.make({
 const entityAlertCard = EntityCardBlueprint.make({
   name: "EntityAlertCard",
   params: {
-    loader: async () => 
+    filter: {
+      kind: {
+        $in: ["api", "component", "domain", "group", "system"],
+      }
+    },
+    loader: async () =>
       import("./components/EntityAlertCard").then(m=><m.EntityAlertCard />),
   }
 });
@@ -47,7 +57,12 @@ const entityAlertCard = EntityCardBlueprint.make({
 const entityOnCallCard = EntityCardBlueprint.make({
   name: "EntityOnCallCard",
   params: {
-    loader: async () => 
+    filter: {
+      kind: {
+        $in: ["api", "component", "domain", "group", "system"],
+      }
+    },
+    loader: async () =>
       import("./components/EntityOnCallCard").then(m=><m.EntityOnCallCard />),
   },
 });
