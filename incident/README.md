@@ -44,10 +44,10 @@ Next, enable the plugin's extensions in `app-config.yaml`. No other code changes
 app:
   ...
   extensions:
-    - entity-card:incident-io/EntityIncidentCard: true
-    - entity-card:incident-io/EntityAlertCard: true
-    - entity-card:incident-io/EntityOnCallCard: true
-    ... 
+    - entity-card:incident/EntityIncidentCard: true
+    - entity-card:incident/EntityAlertCard: true
+    - entity-card:incident/EntityOnCallCard: true
+    ...
 ```
 
 
