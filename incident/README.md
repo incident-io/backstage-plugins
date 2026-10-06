@@ -47,11 +47,10 @@ app:
     - entity-card:incident-io/EntityIncidentCard: true
     - entity-card:incident-io/EntityAlertCard: true
     - entity-card:incident-io/EntityOnCallCard: true
-    ... 
+    ...
 ```
 
-
-### Using the legacy Backstage system 
+### Using the legacy Backstage system
 
 Next, add the plugin to `EntityPage.tsx` in
 `packages/app/src/components/catalog` by adding the following code snippets.
@@ -59,7 +58,11 @@ Next, add the plugin to `EntityPage.tsx` in
 Add the following imports to the top of the file:
 
 ```ts
-import { EntityIncidentCard, EntityAlertCard, EntityOnCallCard } from "@incident-io/backstage";
+import {
+  EntityIncidentCard,
+  EntityAlertCard,
+  EntityOnCallCard,
+} from "@incident-io/backstage";
 ```
 
 Find `const overviewContent` in `EntityPage.tsx`, and add the following snippet
@@ -122,7 +125,7 @@ an error that directs you to update your config.
 
 If you are using the on-call card, you must also provide the ID of the
 incident.io catalog type that maps to your Backstage components. You can find
-this in the URL when viewing the type 
+this in the URL when viewing the type
 (e.g. `https://app.incident.io/~/catalog/01ABC...`):
 
 ```yaml

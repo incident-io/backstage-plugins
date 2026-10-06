@@ -18,7 +18,9 @@ import { useApi } from "@backstage/core-plugin-api";
 
 describe("useIncidentList", () => {
   it("should return incidents from the API", async () => {
-    const mockResponse = { incidents: [{ id: "INC-1", name: "Test incident" }] };
+    const mockResponse = {
+      incidents: [{ id: "INC-1", name: "Test incident" }],
+    };
     (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
       request: vi.fn().mockResolvedValue(mockResponse),
     });
@@ -46,7 +48,10 @@ describe("useAlertList", () => {
     alert_source_id: "src-1",
     source_url: "https://datadog.com/alerts/123",
   };
-  const mockResponse = { alerts: [mockAlert], pagination_meta: { page_size: 25 } };
+  const mockResponse = {
+    alerts: [mockAlert],
+    pagination_meta: { page_size: 25 },
+  };
 
   it("should return alerts from the API", async () => {
     (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
@@ -63,20 +68,26 @@ describe("useAlertList", () => {
 
   it("passes the status filter as a query param", async () => {
     const mockRequest = vi.fn().mockResolvedValue(mockResponse);
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({ request: mockRequest });
+    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
+      request: mockRequest,
+    });
 
     const { result } = renderHook(() => useAlertList("firing"));
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(mockRequest).toHaveBeenCalledWith(
-      expect.objectContaining({ path: expect.stringContaining("status%5Bone_of%5D=firing") }),
+      expect.objectContaining({
+        path: expect.stringContaining("status%5Bone_of%5D=firing"),
+      }),
     );
   });
 
   it("does not pass a status param when status is undefined", async () => {
     const mockRequest = vi.fn().mockResolvedValue(mockResponse);
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({ request: mockRequest });
+    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
+      request: mockRequest,
+    });
 
     const { result } = renderHook(() => useAlertList(undefined));
 
@@ -89,15 +100,21 @@ describe("useAlertList", () => {
 
   it("re-fetches when deps change", async () => {
     const mockRequest = vi.fn().mockResolvedValue(mockResponse);
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({ request: mockRequest });
+    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
+      request: mockRequest,
+    });
 
     let reload = false;
-    const { result, rerender } = renderHook(() => useAlertList("firing", [reload]));
+    const { result, rerender } = renderHook(() =>
+      useAlertList("firing", [reload]),
+    );
 
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(mockRequest).toHaveBeenCalledTimes(1);
 
-    act(() => { reload = true; });
+    act(() => {
+      reload = true;
+    });
     rerender();
 
     await waitFor(() => expect(mockRequest).toHaveBeenCalledTimes(2));
@@ -119,35 +136,61 @@ describe("useIncidentAlertList", () => {
   });
 
   it("makes one request per incident ID and flattens results", async () => {
-    const mockRequest = vi.fn()
-      .mockResolvedValueOnce({ incident_alerts: [{ id: "ia-1", alert: { id: "a-1" }, incident: { id: "inc-1" } }], pagination_meta: { page_size: 25 } })
-      .mockResolvedValueOnce({ incident_alerts: [{ id: "ia-2", alert: { id: "a-2" }, incident: { id: "inc-2" } }], pagination_meta: { page_size: 25 } });
+    const mockRequest = vi
+      .fn()
+      .mockResolvedValueOnce({
+        incident_alerts: [
+          { id: "ia-1", alert: { id: "a-1" }, incident: { id: "inc-1" } },
+        ],
+        pagination_meta: { page_size: 25 },
+      })
+      .mockResolvedValueOnce({
+        incident_alerts: [
+          { id: "ia-2", alert: { id: "a-2" }, incident: { id: "inc-2" } },
+        ],
+        pagination_meta: { page_size: 25 },
+      });
 
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({ request: mockRequest });
+    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
+      request: mockRequest,
+    });
 
-    const { result } = renderHook(() => useIncidentAlertList(["inc-1", "inc-2"]));
+    const { result } = renderHook(() =>
+      useIncidentAlertList(["inc-1", "inc-2"]),
+    );
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(mockRequest).toHaveBeenCalledTimes(2);
     expect(result.current.value?.incident_alerts).toHaveLength(2);
-    expect(result.current.value?.incident_alerts.map(ia => ia.id)).toEqual(["ia-1", "ia-2"]);
+    expect(result.current.value?.incident_alerts.map((ia) => ia.id)).toEqual([
+      "ia-1",
+      "ia-2",
+    ]);
   });
 
   it("re-fetches when deps change even if incident IDs are unchanged", async () => {
     const mockRequest = vi.fn().mockResolvedValue({
-      incident_alerts: [{ id: "ia-1", alert: { id: "a-1" }, incident: { id: "inc-1" } }],
+      incident_alerts: [
+        { id: "ia-1", alert: { id: "a-1" }, incident: { id: "inc-1" } },
+      ],
       pagination_meta: { page_size: 25 },
     });
-    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({ request: mockRequest });
+    (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
+      request: mockRequest,
+    });
 
     let reload = false;
-    const { result, rerender } = renderHook(() => useIncidentAlertList(["inc-1"], [reload]));
+    const { result, rerender } = renderHook(() =>
+      useIncidentAlertList(["inc-1"], [reload]),
+    );
 
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(mockRequest).toHaveBeenCalledTimes(1);
 
-    act(() => { reload = true; });
+    act(() => {
+      reload = true;
+    });
     rerender();
 
     await waitFor(() => expect(mockRequest).toHaveBeenCalledTimes(2));

@@ -1,14 +1,14 @@
- import { defineConfig } from 'vitest/config';                                                                                                 
- import react from '@vitejs/plugin-react';                                                                                                     
+import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
 
-  export default defineConfig({
-    plugins: [react()], 
-    test: {
-      environment: 'jsdom',
-      setupFiles: ['./src/setupTests.ts'],                                                                                                      
-      globals: true,
-      onConsoleLog(log) {
-        if (log.includes('Could not parse CSS stylesheet')) return false;
-      },
-    },                                                                                                                                          
-  });             
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./src/setupTests.ts"],
+    globals: true,
+    onConsoleLog(log) {
+      if (log.includes("Could not parse CSS stylesheet")) return false;
+    },
+  },
+});

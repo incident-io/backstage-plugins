@@ -1,7 +1,6 @@
 import { Entity } from "@backstage/catalog-model";
 import { ConfigApi } from "@backstage/core-plugin-api";
 
-
 // Find the ID of the custom field in incident that represents the association
 // to this type of entity.
 //

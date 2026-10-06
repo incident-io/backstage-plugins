@@ -18,7 +18,6 @@ export interface Config {
    * @visibility frontend
    */
   incident?: {
-
     /**
      * The base URL of the incident dashboard, only useful in development.
      * @visibility frontend

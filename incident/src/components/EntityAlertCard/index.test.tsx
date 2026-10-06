@@ -103,7 +103,9 @@ describe("EntityAlertCard", () => {
   });
 
   it("should show progress when a hook is loading", () => {
-    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue("01FIELD123");
+    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue(
+      "01FIELD123",
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: undefined,
       loading: true,
@@ -126,7 +128,9 @@ describe("EntityAlertCard", () => {
   });
 
   it("should show 'No alerts.' when incidentIds is empty", () => {
-    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue("01FIELD123");
+    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue(
+      "01FIELD123",
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: { incidents: [] },
       loading: false,
@@ -149,7 +153,9 @@ describe("EntityAlertCard", () => {
   });
 
   it("should show alert count and AlertListItem when alerts are linked", () => {
-    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue("01FIELD123");
+    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue(
+      "01FIELD123",
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: { incidents: [{ id: "inc-1" }] },
       loading: false,
@@ -193,7 +199,9 @@ describe("EntityAlertCard", () => {
   });
 
   it("should render a refresh button", () => {
-    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue("01FIELD123");
+    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue(
+      "01FIELD123",
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: { incidents: [] },
       loading: false,
@@ -216,7 +224,9 @@ describe("EntityAlertCard", () => {
   });
 
   it("should render status filter tabs", () => {
-    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue("01FIELD123");
+    (getEntityFieldID as ReturnType<typeof vi.fn>).mockReturnValue(
+      "01FIELD123",
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: { incidents: [] },
       loading: false,

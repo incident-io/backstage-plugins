@@ -17,16 +17,18 @@ export const AlertListItem = ({
   baseUrl,
   alert,
   source,
-  priority
+  priority,
 }: {
   baseUrl: string;
   alert: components["schemas"]["AlertV2"];
   source: string;
-  priority?: string; 
+  priority?: string;
 }) => {
   const classes = useStyles();
 
-  const sinceCreatedLabel = DateTime.fromISO(alert.created_at).toRelative({ base: DateTime.now() });
+  const sinceCreatedLabel = DateTime.fromISO(alert.created_at).toRelative({
+    base: DateTime.now(),
+  });
 
   return (
     <ListItem dense key={alert.id}>

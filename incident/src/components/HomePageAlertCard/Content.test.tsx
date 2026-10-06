@@ -16,7 +16,7 @@ const mockAlert = {
 };
 
 const makeIncidentApi = (
-  alerts: typeof mockAlert[],
+  alerts: (typeof mockAlert)[],
 ): Mocked<Partial<IncidentApi>> => ({
   request: vi.fn().mockImplementation(({ path }: { path: string }) => {
     if (path.startsWith("/v2/alerts")) {
@@ -29,7 +29,7 @@ const makeIncidentApi = (
   }),
 });
 
-const renderContent = (alerts: typeof mockAlert[]) =>
+const renderContent = (alerts: (typeof mockAlert)[]) =>
   renderInTestApp(
     <TestApiProvider apis={[[IncidentApiRef, makeIncidentApi(alerts)]]}>
       <HomePageAlertCardContent />

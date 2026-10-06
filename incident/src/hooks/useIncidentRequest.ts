@@ -21,7 +21,10 @@ export const useIncidentList = (
   return { loading, error, value };
 };
 
-export const useAlertList = (status?: "firing" | "resolved", deps?: DependencyList) => {
+export const useAlertList = (
+  status?: "firing" | "resolved",
+  deps?: DependencyList,
+) => {
   const IncidentApi = useApi(IncidentApiRef);
 
   const { value, loading, error } = useAsync(async () => {
@@ -51,7 +54,10 @@ export const useAlertSourceList = () => {
   return { loading, error, value };
 };
 
-export const useIncidentAlertList = (incidentIds: string[], deps?: DependencyList) => {
+export const useIncidentAlertList = (
+  incidentIds: string[],
+  deps?: DependencyList,
+) => {
   const IncidentApi = useApi(IncidentApiRef);
 
   const { value, loading, error } = useAsync(async () => {
@@ -59,14 +65,16 @@ export const useIncidentAlertList = (incidentIds: string[], deps?: DependencyLis
       return { incident_alerts: [], pagination_meta: { page_size: 25 } };
     }
     const results = await Promise.all(
-      incidentIds.map(id =>
-        IncidentApi.request<components["schemas"]["AlertsListIncidentAlertsResultV2"]>({
+      incidentIds.map((id) =>
+        IncidentApi.request<
+          components["schemas"]["AlertsListIncidentAlertsResultV2"]
+        >({
           path: `/v2/incident_alerts?incident_id=${id}&page_size=25`,
         }),
       ),
     );
     return {
-      incident_alerts: results.flatMap(r => r.incident_alerts),
+      incident_alerts: results.flatMap((r) => r.incident_alerts),
       pagination_meta: { page_size: 25 },
     };
   }, [incidentIds.join(","), ...(deps ?? [])]);

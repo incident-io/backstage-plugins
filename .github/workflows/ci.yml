@@ -23,3 +23,4 @@ jobs:
       - run: npx tsc --noEmit --emitDeclarationOnly false  
       - run: yarn lint
       - run: yarn test --run
+      - run: npx prettier . --check

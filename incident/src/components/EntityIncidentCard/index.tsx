@@ -182,4 +182,3 @@ export const EntityIncidentCard = ({
     </Card>
   );
 };
-

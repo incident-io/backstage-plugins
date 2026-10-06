@@ -17,7 +17,10 @@ vi.mock("@backstage/core-components", () => ({
 }));
 
 import { useIdentity } from "../../hooks/useIncidentRequest";
-import { useAllEscalationPaths, useAllSchedules } from "../../hooks/useOnCallRequest";
+import {
+  useAllEscalationPaths,
+  useAllSchedules,
+} from "../../hooks/useOnCallRequest";
 import { Content } from "./Content";
 
 const mockIdentityLoaded = {

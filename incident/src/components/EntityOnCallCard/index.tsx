@@ -44,23 +44,36 @@ import {
 // ── Schedule helpers ──────────────────────────────────────────────────────────
 
 const intervalTypeToUnit = (type: string): string => {
-  const map: Record<string, string> = { hourly: "hour", daily: "day", weekly: "week", monthly: "month" };
+  const map: Record<string, string> = {
+    hourly: "hour",
+    daily: "day",
+    weekly: "week",
+    monthly: "month",
+  };
   return map[type] ?? type;
 };
 
 const formatInterval = (rotation: ScheduleRotation): string => {
   const h = rotation.handovers[0];
   if (!h) return "";
-  const unit = intervalTypeToUnit(h.interval_type ?? '');
+  const unit = intervalTypeToUnit(h.interval_type ?? "");
   return `Rotate every ${h.interval} ${unit}${h.interval !== 1 ? "s" : ""}`;
 };
 
 const formatShiftEnd = (isoString: string): string =>
   new Date(isoString).toLocaleString("en-GB", {
-    weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit",
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 
-const RotationDisplay = ({ rotation, currentUserId, currentShiftEnd }: {
+const RotationDisplay = ({
+  rotation,
+  currentUserId,
+  currentShiftEnd,
+}: {
   rotation: ScheduleRotation;
   currentUserId: string | null;
   currentShiftEnd: string | null;
@@ -77,13 +90,29 @@ const RotationDisplay = ({ rotation, currentUserId, currentShiftEnd }: {
           const showBadge = isCurrent && !onCallBadgeShown;
           if (showBadge) onCallBadgeShown = true;
           return (
-            <Box key={user.id} display="flex" alignItems="center" style={{ gap: 8 }}>
-              <Box width={10} height={10} borderRadius="50%" bgcolor={showBadge ? "primary.main" : "grey.400"} flexShrink={0} />
+            <Box
+              key={user.id}
+              display="flex"
+              alignItems="center"
+              style={{ gap: 8 }}
+            >
+              <Box
+                width={10}
+                height={10}
+                borderRadius="50%"
+                bgcolor={showBadge ? "primary.main" : "grey.400"}
+                flexShrink={0}
+              />
               <Box display="flex" alignItems="center" style={{ gap: 6 }}>
-                <Typography variant="body2" style={{ fontWeight: showBadge ? 600 : 400 }}>
+                <Typography
+                  variant="body2"
+                  style={{ fontWeight: showBadge ? 600 : 400 }}
+                >
                   {user.name}
                 </Typography>
-                {showBadge && <Chip label="on call" size="small" color="primary" />}
+                {showBadge && (
+                  <Chip label="on call" size="small" color="primary" />
+                )}
                 {showBadge && currentShiftEnd && (
                   <Typography variant="caption" color="textSecondary">
                     until {formatShiftEnd(currentShiftEnd)}
@@ -100,15 +129,29 @@ const RotationDisplay = ({ rotation, currentUserId, currentShiftEnd }: {
 
 // ── Escalation path helpers ───────────────────────────────────────────────────
 
-const formatCondition = (cond: EscalationPathNode['if_else'] extends undefined ? never : NonNullable<EscalationPathNode['if_else']>['conditions'][0]): string => {
+const formatCondition = (
+  cond: EscalationPathNode["if_else"] extends undefined
+    ? never
+    : NonNullable<EscalationPathNode["if_else"]>["conditions"][0],
+): string => {
   const subject = cond.subject.label.replace(/^Escalation → /i, "");
   const op = cond.operation.label;
-  const values = cond.param_bindings.flatMap(b => b.array_value?.map(v => v.label) ?? []);
-  return values.length > 0 ? `${subject} ${op} ${values.join(", ")}` : `${subject} ${op}`;
+  const values = cond.param_bindings.flatMap(
+    (b) => b.array_value?.map((v) => v.label) ?? [],
+  );
+  return values.length > 0
+    ? `${subject} ${op} ${values.join(", ")}`
+    : `${subject} ${op}`;
 };
 
-const targetLabel = (t: EscalationPathTarget, scheduleId: string | null, scheduleName: string | null, channelNames: Record<string, string>): string => {
-  if (t.type === "schedule") return t.id === scheduleId && scheduleName ? scheduleName : "schedule";
+const targetLabel = (
+  t: EscalationPathTarget,
+  scheduleId: string | null,
+  scheduleName: string | null,
+  channelNames: Record<string, string>,
+): string => {
+  if (t.type === "schedule")
+    return t.id === scheduleId && scheduleName ? scheduleName : "schedule";
   if (t.type === "slack_channel") return `${channelNames[t.id] ?? t.id}`;
   return "user";
 };
@@ -123,15 +166,31 @@ const renderEscalationNodes = (
   nodes.map((node) => {
     const indent = depth * 16;
 
-    if ((node.type === "level" && node.level) || (node.type === "notify_channel" && node.notify_channel)) {
+    if (
+      (node.type === "level" && node.level) ||
+      (node.type === "notify_channel" && node.notify_channel)
+    ) {
       const data = node.level ?? node.notify_channel!;
       const minutes = Math.floor((data.time_to_ack_seconds ?? 0) / 60);
-      const label = data.targets.map(t => targetLabel(t, scheduleId, scheduleName, channelNames)).join(", ");
+      const label = data.targets
+        .map((t) => targetLabel(t, scheduleId, scheduleName, channelNames))
+        .join(", ");
       const prefix = node.type === "notify_channel" ? "Notify" : "Page";
       return (
-        <Box key={node.id} ml={`${indent}px`} display="flex" alignItems="center" style={{ gap: 6 }} mt={0.5}>
-          <Typography variant="body2">└ {prefix}: {label}</Typography>
-          <Typography variant="caption" color="textSecondary">· {minutes} min to ack</Typography>
+        <Box
+          key={node.id}
+          ml={`${indent}px`}
+          display="flex"
+          alignItems="center"
+          style={{ gap: 6 }}
+          mt={0.5}
+        >
+          <Typography variant="body2">
+            └ {prefix}: {label}
+          </Typography>
+          <Typography variant="caption" color="textSecondary">
+            · {minutes} min to ack
+          </Typography>
         </Box>
       );
     }
@@ -150,16 +209,42 @@ const renderEscalationNodes = (
       const condLabel = node.if_else.conditions.map(formatCondition).join(", ");
       return (
         <Box key={node.id} ml={`${indent}px`} mt={0.5}>
-          <Typography variant="body2"><strong>If {condLabel}:</strong></Typography>
-          {node.if_else.then_path.length > 0
-            ? renderEscalationNodes(node.if_else.then_path, scheduleId, scheduleName, channelNames, depth + 1)
-            : <Box ml="16px"><Typography variant="body2" color="textSecondary">└ Do nothing</Typography></Box>
-          }
-          <Typography variant="body2" style={{ marginTop: 4 }}><strong>Otherwise:</strong></Typography>
-          {node.if_else.else_path.length > 0
-            ? renderEscalationNodes(node.if_else.else_path, scheduleId, scheduleName, channelNames, depth + 1)
-            : <Box ml="16px"><Typography variant="body2" color="textSecondary">└ Do nothing</Typography></Box>
-          }
+          <Typography variant="body2">
+            <strong>If {condLabel}:</strong>
+          </Typography>
+          {node.if_else.then_path.length > 0 ? (
+            renderEscalationNodes(
+              node.if_else.then_path,
+              scheduleId,
+              scheduleName,
+              channelNames,
+              depth + 1,
+            )
+          ) : (
+            <Box ml="16px">
+              <Typography variant="body2" color="textSecondary">
+                └ Do nothing
+              </Typography>
+            </Box>
+          )}
+          <Typography variant="body2" style={{ marginTop: 4 }}>
+            <strong>Otherwise:</strong>
+          </Typography>
+          {node.if_else.else_path.length > 0 ? (
+            renderEscalationNodes(
+              node.if_else.else_path,
+              scheduleId,
+              scheduleName,
+              channelNames,
+              depth + 1,
+            )
+          ) : (
+            <Box ml="16px">
+              <Typography variant="body2" color="textSecondary">
+                └ Do nothing
+              </Typography>
+            </Box>
+          )}
         </Box>
       );
     }
@@ -177,14 +262,22 @@ export const EntityOnCallCard = () => {
   const entityExternalId = `${entity.metadata.namespace}/${entity.metadata.name}`;
 
   const { value, loading, error } = useOnCallData(entityExternalId, [reload]);
-  const { value: schedule, loading: scheduleLoading, error: scheduleError } = useSchedule(
-    value?.schedule?.literal ?? null,
-    [value?.schedule?.literal, reload],
-  );
-  const { value: escalationPathResult, loading: escalationLoading, error: escalationError } = useEscalationPath(
-    value?.escalationPath?.literal ?? null,
-    [value?.escalationPath?.literal, reload],
-  );
+  const {
+    value: schedule,
+    loading: scheduleLoading,
+    error: scheduleError,
+  } = useSchedule(value?.schedule?.literal ?? null, [
+    value?.schedule?.literal,
+    reload,
+  ]);
+  const {
+    value: escalationPathResult,
+    loading: escalationLoading,
+    error: escalationError,
+  } = useEscalationPath(value?.escalationPath?.literal ?? null, [
+    value?.escalationPath?.literal,
+    reload,
+  ]);
   const escalationPath = escalationPathResult?.ep ?? null;
   const channelNames = escalationPathResult?.channelNames ?? {};
 
@@ -199,7 +292,11 @@ export const EntityOnCallCard = () => {
       <CardHeader
         title="On-call"
         action={
-          <IconButton aria-label="Refresh" title="Refresh" onClick={() => setReload(!reload)}>
+          <IconButton
+            aria-label="Refresh"
+            title="Refresh"
+            onClick={() => setReload(!reload)}
+          >
             <CachedIcon />
           </IconButton>
         }
@@ -212,36 +309,60 @@ export const EntityOnCallCard = () => {
           <>
             {/* Escalation path */}
             <Box mb={2}>
-              <Typography variant="subtitle1"><strong>Escalation path</strong></Typography>
-              {value.escalationPathStatus === 'no_field' && (
-                <Alert severity="error">No escalation path field on this catalog type — add one in incident.io.</Alert>
+              <Typography variant="subtitle1">
+                <strong>Escalation path</strong>
+              </Typography>
+              {value.escalationPathStatus === "no_field" && (
+                <Alert severity="error">
+                  No escalation path field on this catalog type — add one in
+                  incident.io.
+                </Alert>
               )}
-              {value.escalationPathStatus === 'empty' && (
-                <Alert severity="warning">Escalation path field is empty for this component.</Alert>
+              {value.escalationPathStatus === "empty" && (
+                <Alert severity="warning">
+                  Escalation path field is empty for this component.
+                </Alert>
               )}
-              {value.escalationPathStatus === 'ok' && escalationPath && (
+              {value.escalationPathStatus === "ok" && escalationPath && (
                 <>
-                  <Box display="flex" alignItems="center" justifyContent="space-between">
-                    <Typography variant="subtitle1">{escalationPath.name}</Typography>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <Typography variant="subtitle1">
+                      {escalationPath.name}
+                    </Typography>
                     <Tooltip title="View in incident.io" placement="top">
-                      <IconButton size="small" href={`${baseUrl}/on-call/escalation-paths/${escalationPath.id}`} target="_blank" rel="noopener noreferrer" color="primary">
+                      <IconButton
+                        size="small"
+                        href={`${baseUrl}/on-call/escalation-paths/${escalationPath.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="primary"
+                      >
                         <OpenInBrowserIcon fontSize="small" />
                       </IconButton>
                     </Tooltip>
                   </Box>
-                  {escalationPath.current_responders && escalationPath.current_responders.length > 0 && (
-                    <Box mb={1}>
-                      <Typography variant="body2"><strong>Current responders:</strong></Typography>
-                      {escalationPath.current_responders.map((r) => (
-                        <Typography key={r.id} variant="body2">{r.name}</Typography>
-                      ))}
-                    </Box>
-                  )}
+                  {escalationPath.current_responders &&
+                    escalationPath.current_responders.length > 0 && (
+                      <Box mb={1}>
+                        <Typography variant="body2">
+                          <strong>Current responders:</strong>
+                        </Typography>
+                        {escalationPath.current_responders.map((r) => (
+                          <Typography key={r.id} variant="body2">
+                            {r.name}
+                          </Typography>
+                        ))}
+                      </Box>
+                    )}
                   <Box
                     display="inline-flex"
                     alignItems="center"
                     style={{ cursor: "pointer", gap: 4 }}
-                    onClick={() => setShowPath(p => !p)}
+                    onClick={() => setShowPath((p) => !p)}
                     mt={0.5}
                     mb={0.5}
                   >
@@ -265,32 +386,53 @@ export const EntityOnCallCard = () => {
 
             {/* Schedule */}
             <Box mt={2}>
-              <Typography variant="subtitle1"><strong>Schedule</strong></Typography>
-              {value.scheduleStatus === 'no_field' && (
-                <Alert severity="error">No schedule field on this catalog type — add one in incident.io.</Alert>
+              <Typography variant="subtitle1">
+                <strong>Schedule</strong>
+              </Typography>
+              {value.scheduleStatus === "no_field" && (
+                <Alert severity="error">
+                  No schedule field on this catalog type — add one in
+                  incident.io.
+                </Alert>
               )}
-              {value.scheduleStatus === 'empty' && (
-                <Alert severity="warning">Schedule field is empty for this component.</Alert>
+              {value.scheduleStatus === "empty" && (
+                <Alert severity="warning">
+                  Schedule field is empty for this component.
+                </Alert>
               )}
-              {value.scheduleStatus === 'ok' && schedule && (
+              {value.scheduleStatus === "ok" && schedule && (
                 <>
-                <Box display="flex" alignItems="center" justifyContent="space-between">
-                  <Typography variant="subtitle1">{schedule.name}</Typography>
-                  <Tooltip title="View in incident.io" placement="top">
-                    <IconButton size="small" href={`${baseUrl}/on-call/schedules/${schedule.id}`} target="_blank" rel="noopener noreferrer" color="primary">
-                      <OpenInBrowserIcon fontSize="small" />
-                    </IconButton>
-                  </Tooltip>
-                </Box>
-                {schedule.config?.rotations.map((rotation) => (
-                  <RotationDisplay
-                    key={rotation.id}
-                    rotation={rotation}
-                    currentUserId={schedule.current_shifts?.[0]?.user?.id ?? null}
-                    currentShiftEnd={schedule.current_shifts?.[0]?.end_at ?? null}
-                  />
-                ))}
-              </>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <Typography variant="subtitle1">{schedule.name}</Typography>
+                    <Tooltip title="View in incident.io" placement="top">
+                      <IconButton
+                        size="small"
+                        href={`${baseUrl}/on-call/schedules/${schedule.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="primary"
+                      >
+                        <OpenInBrowserIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  {schedule.config?.rotations.map((rotation) => (
+                    <RotationDisplay
+                      key={rotation.id}
+                      rotation={rotation}
+                      currentUserId={
+                        schedule.current_shifts?.[0]?.user?.id ?? null
+                      }
+                      currentShiftEnd={
+                        schedule.current_shifts?.[0]?.end_at ?? null
+                      }
+                    />
+                  ))}
+                </>
               )}
             </Box>
           </>

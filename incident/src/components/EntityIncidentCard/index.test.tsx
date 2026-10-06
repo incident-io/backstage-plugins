@@ -42,7 +42,9 @@ const mockIdentityLoaded = {
 };
 
 beforeEach(() => {
-  (useEntity as ReturnType<typeof vi.fn>).mockReturnValue({ entity: mockEntity });
+  (useEntity as ReturnType<typeof vi.fn>).mockReturnValue({
+    entity: mockEntity,
+  });
 });
 
 describe("EntityIncidentCard", () => {
@@ -50,7 +52,9 @@ describe("EntityIncidentCard", () => {
     (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
       getOptional: () => undefined,
     });
-    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(mockIdentityLoaded);
+    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(
+      mockIdentityLoaded,
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: undefined,
       loading: false,
@@ -88,7 +92,9 @@ describe("EntityIncidentCard", () => {
     (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
       getOptional: () => "01FIELD123",
     });
-    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(mockIdentityLoaded);
+    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(
+      mockIdentityLoaded,
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: { incidents: [] },
       loading: false,
@@ -104,7 +110,9 @@ describe("EntityIncidentCard", () => {
     (useApi as ReturnType<typeof vi.fn>).mockReturnValue({
       getOptional: () => "01FIELD123",
     });
-    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(mockIdentityLoaded);
+    (useIdentity as ReturnType<typeof vi.fn>).mockReturnValue(
+      mockIdentityLoaded,
+    );
     (useIncidentList as ReturnType<typeof vi.fn>).mockReturnValue({
       value: {
         incidents: [
@@ -127,7 +135,7 @@ describe("EntityIncidentCard", () => {
           !!el.textContent?.includes("2") &&
           !!el.textContent?.includes("ongoing incidents")
         );
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Database down")).toBeInTheDocument();
     expect(screen.getByText("API latency spike")).toBeInTheDocument();

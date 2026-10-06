@@ -63,9 +63,7 @@ export const EntityAlertCard = incidentPlugin.provide(
     name: "EntityAlertCard",
     component: {
       lazy: () =>
-        import("./components/EntityAlertCard").then(
-          (m) => m.EntityAlertCard,
-        ),
+        import("./components/EntityAlertCard").then((m) => m.EntityAlertCard),
     },
   }),
 );
@@ -75,9 +73,7 @@ export const EntityOnCallCard = incidentPlugin.provide(
     name: "EntityOnCallCard",
     component: {
       lazy: () =>
-        import("./components/EntityOnCallCard").then(
-          (m) => m.EntityOnCallCard,
-        ),
+        import("./components/EntityOnCallCard").then((m) => m.EntityOnCallCard),
     },
   }),
 );
