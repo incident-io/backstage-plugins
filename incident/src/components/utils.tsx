@@ -1,7 +1,6 @@
 import { Entity } from "@backstage/catalog-model";
 import { ConfigApi } from "@backstage/core-plugin-api";
 
-
 export const EXTERNAL_ID_ANNOTATION = "incident.io/external-id";
 
 // Find the external ID of this entity's incident.io catalog entry. Entries

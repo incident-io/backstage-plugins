@@ -4,7 +4,7 @@ export const useStyles = makeStyles<Theme>((theme) => ({
   listItemPrimary: {
     display: "flex", // vertically align with chip
     fontWeight: "bold",
-    gap: theme.spacing(1),    
+    gap: theme.spacing(1),
   },
   warning: {
     borderColor: theme.palette.warning.main,
