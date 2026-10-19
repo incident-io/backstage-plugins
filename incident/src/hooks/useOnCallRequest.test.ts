@@ -1,6 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
-import { useAllEscalationPaths, useAllSchedules, useOnCallData } from "./useOnCallRequest";
+import {
+  useAllEscalationPaths,
+  useAllSchedules,
+  useOnCallData,
+} from "./useOnCallRequest";
 
 vi.mock("@backstage/core-plugin-api", () => ({
   useApi: vi.fn(),
@@ -57,7 +61,8 @@ describe("useOnCallData", () => {
     attributes: object[],
     attributeValues: Record<string, unknown>,
   ) => {
-    const mockRequest = vi.fn()
+    const mockRequest = vi
+      .fn()
       .mockResolvedValueOnce({
         catalog_type: { schema: { attributes } },
       })
@@ -84,16 +89,27 @@ describe("useOnCallData", () => {
       [
         { id: "attr-ep", type: "EscalationPath" },
         { id: "attr-sched", type: "Schedule" },
-        { id: "attr-oncall", type: "User", path: [{ attribute_id: "sched" }, { attribute_id: "currently_on_call" }] },
+        {
+          id: "attr-oncall",
+          type: "User",
+          path: [
+            { attribute_id: "sched" },
+            { attribute_id: "currently_on_call" },
+          ],
+        },
       ],
       {
         "attr-ep": { value: { label: "Primary EP", literal: "ep-1" } },
-        "attr-sched": { value: { label: "Primary Schedule", literal: "sched-1" } },
+        "attr-sched": {
+          value: { label: "Primary Schedule", literal: "sched-1" },
+        },
         "attr-oncall": { array_value: [onCallPerson] },
       },
     );
 
-    const { result } = renderHook(() => useOnCallData("default/core-server", []));
+    const { result } = renderHook(() =>
+      useOnCallData("default/core-server", []),
+    );
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.value?.currentlyOnCall).toEqual([onCallPerson]);
@@ -108,11 +124,15 @@ describe("useOnCallData", () => {
       ],
       {
         "attr-ep": { value: { label: "Primary EP", literal: "ep-1" } },
-        "attr-sched": { value: { label: "Primary Schedule", literal: "sched-1" } },
+        "attr-sched": {
+          value: { label: "Primary Schedule", literal: "sched-1" },
+        },
       },
     );
 
-    const { result } = renderHook(() => useOnCallData("default/core-server", []));
+    const { result } = renderHook(() =>
+      useOnCallData("default/core-server", []),
+    );
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.value?.currentlyOnCall).toEqual([]);
@@ -123,7 +143,11 @@ describe("useOnCallData", () => {
     setupApiMock(
       [
         { id: "attr-ep", type: "EscalationPath" },
-        { id: "attr-oncall", type: "User", path: [{ attribute_id: "currently_on_call" }] },
+        {
+          id: "attr-oncall",
+          type: "User",
+          path: [{ attribute_id: "currently_on_call" }],
+        },
       ],
       {
         "attr-ep": { value: { label: "Primary EP", literal: "ep-1" } },
@@ -131,7 +155,9 @@ describe("useOnCallData", () => {
       },
     );
 
-    const { result } = renderHook(() => useOnCallData("default/core-server", []));
+    const { result } = renderHook(() =>
+      useOnCallData("default/core-server", []),
+    );
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.value?.currentlyOnCall).toEqual([]);

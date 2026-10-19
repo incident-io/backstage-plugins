@@ -25,7 +25,7 @@ import {
 } from "@material-ui/core";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import { components } from "../../api/types";
-import {useStyles} from "../styles";
+import { useStyles } from "../styles";
 
 // Single item in the list of on-going incidents.
 export const IncidentListItem = ({

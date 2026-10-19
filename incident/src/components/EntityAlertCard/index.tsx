@@ -64,33 +64,39 @@ export const EntityAlertCard = () => {
 
   const { value: incidentsResponse, loading: incidentsLoading } =
     useIncidentList(incidentQuery, [reload]);
-  const incidentIds = (incidentsResponse?.incidents ?? []).map(i => i.id);
+  const incidentIds = (incidentsResponse?.incidents ?? []).map((i) => i.id);
 
   // query for alerts linked to those incidents
   const { value: incidentAlertsResponse, loading: incidentAlertsLoading } =
     useIncidentAlertList(incidentIds, [reload]);
   const linkedAlertIds = new Set(
-    (incidentAlertsResponse?.incident_alerts ?? []).map(ia => ia.alert.id),
+    (incidentAlertsResponse?.incident_alerts ?? []).map((ia) => ia.alert.id),
   );
 
-  const { value: alertsResponse, loading: alertsLoading, error } =
-    useAlertList(statusFilter, [reload]);
+  const {
+    value: alertsResponse,
+    loading: alertsLoading,
+    error,
+  } = useAlertList(statusFilter, [reload]);
   const { value: sourcesResponse } = useAlertSourceList();
   const { value: identityResponse } = useIdentity();
 
   // get alerts for this entity's incidents
   const allAlerts = alertsResponse?.alerts ?? [];
-  const alerts = incidentIds.length > 0
-    ? allAlerts.filter(a => linkedAlertIds.has(a.id))
-    : [];
+  const alerts =
+    incidentIds.length > 0
+      ? allAlerts.filter((a) => linkedAlertIds.has(a.id))
+      : [];
 
   const baseUrl = identityResponse?.identity.dashboard_url ?? "";
 
   const sourceById = Object.fromEntries(
-    (sourcesResponse?.alert_sources ?? []).map(s => [s.id, s]),
+    (sourcesResponse?.alert_sources ?? []).map((s) => [s.id, s]),
   );
 
-  const currentTabIndex = STATUS_TABS.findIndex(t => t.value === statusFilter);
+  const currentTabIndex = STATUS_TABS.findIndex(
+    (t) => t.value === statusFilter,
+  );
   if (!entityFieldID) {
     return <IncorrectConfigCard />;
   }
@@ -124,7 +130,7 @@ export const EntityAlertCard = () => {
         indicatorColor="primary"
         textColor="primary"
       >
-        {STATUS_TABS.map(tab => (
+        {STATUS_TABS.map((tab) => (
           <Tab key={tab.label} label={tab.label} />
         ))}
       </Tabs>
@@ -137,18 +143,22 @@ export const EntityAlertCard = () => {
         {!error && alerts.length > 0 && (
           <>
             <Typography variant="subtitle1">
-              There are <strong>{alerts.length}</strong>{" "}
-              {statusFilter ?? ""} alerts.
+              There are <strong>{alerts.length}</strong> {statusFilter ?? ""}{" "}
+              alerts.
             </Typography>
             <Box style={{ maxHeight: 400, overflowY: "auto" }}>
               <List dense>
-                {alerts.map(alert => (
+                {alerts.map((alert) => (
                   <AlertListItem
                     key={alert.id}
                     alert={alert}
                     baseUrl={baseUrl}
                     source={sourceById[alert.alert_source_id]?.name ?? "-"}
-                    priority={alert.attributes.find(a => a.attribute.name === "Priority")?.value?.label}
+                    priority={
+                      alert.attributes.find(
+                        (a) => a.attribute.name === "Priority",
+                      )?.value?.label
+                    }
                   />
                 ))}
               </List>
